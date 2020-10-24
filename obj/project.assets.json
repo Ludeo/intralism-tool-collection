@@ -1,0 +1,473 @@
+{
+  "version": 3,
+  "targets": {
+    ".NETCoreApp,Version=v3.0": {
+      "Microsoft.NETCore.Platforms/3.1.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard1.0/_._": {}
+        },
+        "runtime": {
+          "lib/netstandard1.0/_._": {}
+        }
+      },
+      "Microsoft.Win32.Registry/4.7.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Security.AccessControl": "4.7.0",
+          "System.Security.Principal.Windows": "4.7.0"
+        },
+        "compile": {
+          "ref/netstandard2.0/Microsoft.Win32.Registry.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Win32.Registry.dll": {}
+        },
+        "runtimeTargets": {
+          "runtimes/unix/lib/netstandard2.0/Microsoft.Win32.Registry.dll": {
+            "assetType": "runtime",
+            "rid": "unix"
+          },
+          "runtimes/win/lib/netstandard2.0/Microsoft.Win32.Registry.dll": {
+            "assetType": "runtime",
+            "rid": "win"
+          }
+        }
+      },
+      "NAudio/1.10.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Win32.Registry": "4.7.0",
+          "System.Resources.Extensions": "4.7.0"
+        },
+        "compile": {
+          "lib/netcoreapp3.0/NAudio.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.0/NAudio.dll": {}
+        }
+      },
+      "System.Resources.Extensions/4.7.0": {
+        "type": "package",
+        "compile": {
+          "ref/netstandard2.0/System.Resources.Extensions.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Resources.Extensions.dll": {}
+        }
+      },
+      "System.Security.AccessControl/4.7.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "3.1.0",
+          "System.Security.Principal.Windows": "4.7.0"
+        },
+        "compile": {
+          "ref/netstandard2.0/System.Security.AccessControl.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Security.AccessControl.dll": {}
+        },
+        "runtimeTargets": {
+          "runtimes/win/lib/netcoreapp2.0/System.Security.AccessControl.dll": {
+            "assetType": "runtime",
+            "rid": "win"
+          }
+        }
+      },
+      "System.Security.Principal.Windows/4.7.0": {
+        "type": "package",
+        "compile": {
+          "ref/netcoreapp3.0/System.Security.Principal.Windows.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Security.Principal.Windows.dll": {}
+        },
+        "runtimeTargets": {
+          "runtimes/unix/lib/netcoreapp2.1/System.Security.Principal.Windows.dll": {
+            "assetType": "runtime",
+            "rid": "unix"
+          },
+          "runtimes/win/lib/netcoreapp2.1/System.Security.Principal.Windows.dll": {
+            "assetType": "runtime",
+            "rid": "win"
+          }
+        }
+      },
+      "Windows7APICodePack-Core/1.1.0": {
+        "type": "package",
+        "compile": {
+          "lib/Microsoft.WindowsAPICodePack.dll": {}
+        },
+        "runtime": {
+          "lib/Microsoft.WindowsAPICodePack.dll": {}
+        }
+      },
+      "Windows7APICodePack-Shell/1.1.0": {
+        "type": "package",
+        "dependencies": {
+          "Windows7APICodePack-Core": "1.1.0"
+        },
+        "compile": {
+          "lib/Microsoft.WindowsAPICodePack.Shell.dll": {}
+        },
+        "runtime": {
+          "lib/Microsoft.WindowsAPICodePack.Shell.dll": {}
+        }
+      },
+      "xFFmpeg.NET/3.4.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/FFmpeg.NET.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/FFmpeg.NET.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Microsoft.NETCore.Platforms/3.1.0": {
+      "sha512": "z7aeg8oHln2CuNulfhiLYxCVMPEwBl3rzicjvIX+4sUuCwvXw5oXQEtbiU2c0z4qYL5L3Kmx0mMA/+t/SbY67w==",
+      "type": "package",
+      "path": "microsoft.netcore.platforms/3.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/netstandard1.0/_._",
+        "microsoft.netcore.platforms.3.1.0.nupkg.sha512",
+        "microsoft.netcore.platforms.nuspec",
+        "runtime.json",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
+    "Microsoft.Win32.Registry/4.7.0": {
+      "sha512": "KSrRMb5vNi0CWSGG1++id2ZOs/1QhRqROt+qgbEAdQuGjGrFcl4AOl4/exGPUYz2wUnU42nvJqon1T3U0kPXLA==",
+      "type": "package",
+      "path": "microsoft.win32.registry/4.7.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net46/Microsoft.Win32.Registry.dll",
+        "lib/net461/Microsoft.Win32.Registry.dll",
+        "lib/net461/Microsoft.Win32.Registry.xml",
+        "lib/netstandard1.3/Microsoft.Win32.Registry.dll",
+        "lib/netstandard2.0/Microsoft.Win32.Registry.dll",
+        "lib/netstandard2.0/Microsoft.Win32.Registry.xml",
+        "microsoft.win32.registry.4.7.0.nupkg.sha512",
+        "microsoft.win32.registry.nuspec",
+        "ref/net46/Microsoft.Win32.Registry.dll",
+        "ref/net461/Microsoft.Win32.Registry.dll",
+        "ref/net461/Microsoft.Win32.Registry.xml",
+        "ref/net472/Microsoft.Win32.Registry.dll",
+        "ref/net472/Microsoft.Win32.Registry.xml",
+        "ref/netstandard1.3/Microsoft.Win32.Registry.dll",
+        "ref/netstandard1.3/Microsoft.Win32.Registry.xml",
+        "ref/netstandard1.3/de/Microsoft.Win32.Registry.xml",
+        "ref/netstandard1.3/es/Microsoft.Win32.Registry.xml",
+        "ref/netstandard1.3/fr/Microsoft.Win32.Registry.xml",
+        "ref/netstandard1.3/it/Microsoft.Win32.Registry.xml",
+        "ref/netstandard1.3/ja/Microsoft.Win32.Registry.xml",
+        "ref/netstandard1.3/ko/Microsoft.Win32.Registry.xml",
+        "ref/netstandard1.3/ru/Microsoft.Win32.Registry.xml",
+        "ref/netstandard1.3/zh-hans/Microsoft.Win32.Registry.xml",
+        "ref/netstandard1.3/zh-hant/Microsoft.Win32.Registry.xml",
+        "ref/netstandard2.0/Microsoft.Win32.Registry.dll",
+        "ref/netstandard2.0/Microsoft.Win32.Registry.xml",
+        "runtimes/unix/lib/netstandard2.0/Microsoft.Win32.Registry.dll",
+        "runtimes/unix/lib/netstandard2.0/Microsoft.Win32.Registry.xml",
+        "runtimes/win/lib/net46/Microsoft.Win32.Registry.dll",
+        "runtimes/win/lib/net461/Microsoft.Win32.Registry.dll",
+        "runtimes/win/lib/net461/Microsoft.Win32.Registry.xml",
+        "runtimes/win/lib/netstandard1.3/Microsoft.Win32.Registry.dll",
+        "runtimes/win/lib/netstandard2.0/Microsoft.Win32.Registry.dll",
+        "runtimes/win/lib/netstandard2.0/Microsoft.Win32.Registry.xml",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
+    "NAudio/1.10.0": {
+      "sha512": "y6VvwSPfJhElUllkzE2FHXHAADYFGLwMPt048KlPyuUXcq4E0VEi+4hWrFd+lBsrb+Q5DvPA9w86oRTvKRO9UQ==",
+      "type": "package",
+      "path": "naudio/1.10.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net35/NAudio.dll",
+        "lib/net35/NAudio.xml",
+        "lib/netcoreapp3.0/NAudio.dll",
+        "lib/netcoreapp3.0/NAudio.xml",
+        "lib/netstandard2.0/NAudio.dll",
+        "lib/netstandard2.0/NAudio.xml",
+        "lib/uap10.0/NAudio.dll",
+        "lib/uap10.0/NAudio.pri",
+        "lib/uap10.0/NAudio.xml",
+        "naudio.1.10.0.nupkg.sha512",
+        "naudio.nuspec"
+      ]
+    },
+    "System.Resources.Extensions/4.7.0": {
+      "sha512": "Efd5jls31pR1MkEl/IlT/lOzG0nGRCoYnHctZTq597+absekOXaP53yUlv5U4DfcfImSAAupWVpTW1tE54lF7A==",
+      "type": "package",
+      "path": "system.resources.extensions/4.7.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/netstandard2.0/System.Resources.Extensions.dll",
+        "lib/netstandard2.0/System.Resources.Extensions.xml",
+        "ref/netstandard2.0/System.Resources.Extensions.dll",
+        "ref/netstandard2.0/System.Resources.Extensions.xml",
+        "system.resources.extensions.4.7.0.nupkg.sha512",
+        "system.resources.extensions.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
+    "System.Security.AccessControl/4.7.0": {
+      "sha512": "JECvTt5aFF3WT3gHpfofL2MNNP6v84sxtXxpqhLBCcDRzqsPBmHhQ6shv4DwwN2tRlzsUxtb3G9M3763rbXKDg==",
+      "type": "package",
+      "path": "system.security.accesscontrol/4.7.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net46/System.Security.AccessControl.dll",
+        "lib/net461/System.Security.AccessControl.dll",
+        "lib/net461/System.Security.AccessControl.xml",
+        "lib/netstandard1.3/System.Security.AccessControl.dll",
+        "lib/netstandard2.0/System.Security.AccessControl.dll",
+        "lib/netstandard2.0/System.Security.AccessControl.xml",
+        "lib/uap10.0.16299/_._",
+        "ref/net46/System.Security.AccessControl.dll",
+        "ref/net461/System.Security.AccessControl.dll",
+        "ref/net461/System.Security.AccessControl.xml",
+        "ref/netstandard1.3/System.Security.AccessControl.dll",
+        "ref/netstandard1.3/System.Security.AccessControl.xml",
+        "ref/netstandard1.3/de/System.Security.AccessControl.xml",
+        "ref/netstandard1.3/es/System.Security.AccessControl.xml",
+        "ref/netstandard1.3/fr/System.Security.AccessControl.xml",
+        "ref/netstandard1.3/it/System.Security.AccessControl.xml",
+        "ref/netstandard1.3/ja/System.Security.AccessControl.xml",
+        "ref/netstandard1.3/ko/System.Security.AccessControl.xml",
+        "ref/netstandard1.3/ru/System.Security.AccessControl.xml",
+        "ref/netstandard1.3/zh-hans/System.Security.AccessControl.xml",
+        "ref/netstandard1.3/zh-hant/System.Security.AccessControl.xml",
+        "ref/netstandard2.0/System.Security.AccessControl.dll",
+        "ref/netstandard2.0/System.Security.AccessControl.xml",
+        "ref/uap10.0.16299/_._",
+        "runtimes/win/lib/net46/System.Security.AccessControl.dll",
+        "runtimes/win/lib/net461/System.Security.AccessControl.dll",
+        "runtimes/win/lib/net461/System.Security.AccessControl.xml",
+        "runtimes/win/lib/netcoreapp2.0/System.Security.AccessControl.dll",
+        "runtimes/win/lib/netcoreapp2.0/System.Security.AccessControl.xml",
+        "runtimes/win/lib/netstandard1.3/System.Security.AccessControl.dll",
+        "runtimes/win/lib/uap10.0.16299/_._",
+        "system.security.accesscontrol.4.7.0.nupkg.sha512",
+        "system.security.accesscontrol.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
+    "System.Security.Principal.Windows/4.7.0": {
+      "sha512": "ojD0PX0XhneCsUbAZVKdb7h/70vyYMDYs85lwEI+LngEONe/17A0cFaRFqZU+sOEidcVswYWikYOQ9PPfjlbtQ==",
+      "type": "package",
+      "path": "system.security.principal.windows/4.7.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net46/System.Security.Principal.Windows.dll",
+        "lib/net461/System.Security.Principal.Windows.dll",
+        "lib/net461/System.Security.Principal.Windows.xml",
+        "lib/netstandard1.3/System.Security.Principal.Windows.dll",
+        "lib/netstandard2.0/System.Security.Principal.Windows.dll",
+        "lib/netstandard2.0/System.Security.Principal.Windows.xml",
+        "lib/uap10.0.16299/_._",
+        "ref/net46/System.Security.Principal.Windows.dll",
+        "ref/net461/System.Security.Principal.Windows.dll",
+        "ref/net461/System.Security.Principal.Windows.xml",
+        "ref/netcoreapp3.0/System.Security.Principal.Windows.dll",
+        "ref/netcoreapp3.0/System.Security.Principal.Windows.xml",
+        "ref/netstandard1.3/System.Security.Principal.Windows.dll",
+        "ref/netstandard1.3/System.Security.Principal.Windows.xml",
+        "ref/netstandard1.3/de/System.Security.Principal.Windows.xml",
+        "ref/netstandard1.3/es/System.Security.Principal.Windows.xml",
+        "ref/netstandard1.3/fr/System.Security.Principal.Windows.xml",
+        "ref/netstandard1.3/it/System.Security.Principal.Windows.xml",
+        "ref/netstandard1.3/ja/System.Security.Principal.Windows.xml",
+        "ref/netstandard1.3/ko/System.Security.Principal.Windows.xml",
+        "ref/netstandard1.3/ru/System.Security.Principal.Windows.xml",
+        "ref/netstandard1.3/zh-hans/System.Security.Principal.Windows.xml",
+        "ref/netstandard1.3/zh-hant/System.Security.Principal.Windows.xml",
+        "ref/netstandard2.0/System.Security.Principal.Windows.dll",
+        "ref/netstandard2.0/System.Security.Principal.Windows.xml",
+        "ref/uap10.0.16299/_._",
+        "runtimes/unix/lib/netcoreapp2.0/System.Security.Principal.Windows.dll",
+        "runtimes/unix/lib/netcoreapp2.0/System.Security.Principal.Windows.xml",
+        "runtimes/unix/lib/netcoreapp2.1/System.Security.Principal.Windows.dll",
+        "runtimes/unix/lib/netcoreapp2.1/System.Security.Principal.Windows.xml",
+        "runtimes/win/lib/net46/System.Security.Principal.Windows.dll",
+        "runtimes/win/lib/net461/System.Security.Principal.Windows.dll",
+        "runtimes/win/lib/net461/System.Security.Principal.Windows.xml",
+        "runtimes/win/lib/netcoreapp2.0/System.Security.Principal.Windows.dll",
+        "runtimes/win/lib/netcoreapp2.0/System.Security.Principal.Windows.xml",
+        "runtimes/win/lib/netcoreapp2.1/System.Security.Principal.Windows.dll",
+        "runtimes/win/lib/netcoreapp2.1/System.Security.Principal.Windows.xml",
+        "runtimes/win/lib/netstandard1.3/System.Security.Principal.Windows.dll",
+        "runtimes/win/lib/uap10.0.16299/_._",
+        "system.security.principal.windows.4.7.0.nupkg.sha512",
+        "system.security.principal.windows.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
+    "Windows7APICodePack-Core/1.1.0": {
+      "sha512": "T0cccZ6PQcauKk+rU8zSSIQuDjKPhAsyu8u0MDaa3hggA00tk/CcJ6ukzzKaXrXyHYzFbDAWdUdlLE4NSUdWnA==",
+      "type": "package",
+      "path": "windows7apicodepack-core/1.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/Microsoft.WindowsAPICodePack.dll",
+        "lib/Microsoft.WindowsAPICodePack.pdb",
+        "windows7apicodepack-core.1.1.0.nupkg.sha512",
+        "windows7apicodepack-core.nuspec"
+      ]
+    },
+    "Windows7APICodePack-Shell/1.1.0": {
+      "sha512": "IVlZAP3MPktm/aNl0gptCAnfm0IblGvWu0J7b8zu7Di9Lc9Ep0ABu8757X1n5GACk/UIAg+tUCQGYQ2hWqWV7A==",
+      "type": "package",
+      "path": "windows7apicodepack-shell/1.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/Microsoft.WindowsAPICodePack.Shell.dll",
+        "lib/Microsoft.WindowsAPICodePack.Shell.pdb",
+        "windows7apicodepack-shell.1.1.0.nupkg.sha512",
+        "windows7apicodepack-shell.nuspec"
+      ]
+    },
+    "xFFmpeg.NET/3.4.0": {
+      "sha512": "gUWRBhI7XDsnCEP9dFf/DRM6AINQsZngr7K99LD/u2e2TAOCg152ntquLbhplyXjRczu9Ytm87a5EdS9G5Dqzw==",
+      "type": "package",
+      "path": "xffmpeg.net/3.4.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/FFmpeg.NET.dll",
+        "xffmpeg.net.3.4.0.nupkg.sha512",
+        "xffmpeg.net.nuspec"
+      ]
+    }
+  },
+  "projectFileDependencyGroups": {
+    ".NETCoreApp,Version=v3.0": [
+      "NAudio >= 1.10.0",
+      "Windows7APICodePack-Shell >= 1.1.0",
+      "xFFmpeg.NET >= 3.4.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\lucas\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Users\\lucas\\RiderProjects\\Mania to Intralism\\maniatointralism\\maniatointralism.csproj",
+      "projectName": "maniatointralism",
+      "projectPath": "C:\\Users\\lucas\\RiderProjects\\Mania to Intralism\\maniatointralism\\maniatointralism.csproj",
+      "packagesPath": "C:\\Users\\lucas\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\lucas\\RiderProjects\\Mania to Intralism\\maniatointralism\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\lucas\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "netcoreapp3.0"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "netcoreapp3.0": {
+          "projectReferences": {}
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "netcoreapp3.0": {
+        "dependencies": {
+          "NAudio": {
+            "target": "Package",
+            "version": "[1.10.0, )"
+          },
+          "Windows7APICodePack-Shell": {
+            "target": "Package",
+            "version": "[1.1.0, )"
+          },
+          "xFFmpeg.NET": {
+            "target": "Package",
+            "version": "[3.4.0, )"
+          }
+        },
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          },
+          "Microsoft.WindowsDesktop.App.WindowsForms": {
+            "privateAssets": "none"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+      }
+    }
+  },
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Windows7APICodePack-Core 1.1.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v3.0'. This package may not be fully compatible with your project.",
+      "libraryId": "Windows7APICodePack-Core",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Windows7APICodePack-Shell 1.1.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v3.0'. This package may not be fully compatible with your project.",
+      "libraryId": "Windows7APICodePack-Shell",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.0"
+      ]
+    }
+  ]
+}
