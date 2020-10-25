@@ -7,16 +7,22 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="Avalonia" Version="0.10.0-preview5" />
-      <PackageReference Include="NAudio" Version="1.10.0" />
-      <PackageReference Include="Windows7APICodePack-Shell" Version="1.1.0" />
-      <PackageReference Include="xFFmpeg.NET" Version="3.4.0" />
+        <PackageReference Include="FileHelpers" Version="3.4.1" />
+        <PackageReference Include="NAudio" Version="1.10.0" />
+        <PackageReference Include="Windows7APICodePack-Shell" Version="1.1.0" />
+        <PackageReference Include="xFFmpeg.NET" Version="3.4.0" />
     </ItemGroup>
 
     <ItemGroup>
       <Compile Update="FormSetting.cs">
         <SubType>Form</SubType>
       </Compile>
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Update="config.xml">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
     </ItemGroup>
 
 </Project>

@@ -1,7 +1,8 @@
 using System;
 using System.Windows.Forms;
+using ManiaToIntralism.Forms;
 
-namespace maniatointralism
+namespace ManiaToIntralism
 {
     internal static class Program
     {
