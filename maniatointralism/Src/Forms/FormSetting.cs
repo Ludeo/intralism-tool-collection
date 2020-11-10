@@ -11,10 +11,7 @@ namespace ManiaToIntralism.Forms
         private string _maniaconfigpath;
         private string _editorconfigpath;
         
-        public FormSetting()
-        {
-            this.InitializeComponent();
-        }
+        public FormSetting() => this.InitializeComponent();
 
         private void FormSetting_Load(object sender, EventArgs e)
         {
@@ -43,10 +40,8 @@ namespace ManiaToIntralism.Forms
 
         }
 
-        private void SaveManiaPath(object sender, EventArgs e)
+        private void SaveConfig()
         {
-
-            this._maniaconfigpath = this.maniaPathTxt.Text;
             XmlDocument config = new XmlDocument();
             config.Load("config.xml");
 
@@ -54,12 +49,24 @@ namespace ManiaToIntralism.Forms
             {
                 node.Attributes[1].Value = node.Attributes[0].Value switch
                 {
-                    "maniapath"  => this._maniaconfigpath,
-                    "editorpath" => this._editorconfigpath,
-                    _            => node.Attributes[1].Value
+                    "maniapath"   => this._maniaconfigpath,
+                    "editorpath"  => this._editorconfigpath,
+                    _             => node.Attributes[1].Value,
                 };
             }
             config.Save("config.xml");
+        }
+
+        private void SaveAllConfig()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void SaveManiaPath(object sender, EventArgs e)
+        {
+
+            this._maniaconfigpath = this.maniaPathTxt.Text;
+            this.SaveConfig();
         }
 
         private void SelectManiaFolder(object sender, EventArgs e)
@@ -67,7 +74,7 @@ namespace ManiaToIntralism.Forms
             CommonOpenFileDialog folderDialog = new CommonOpenFileDialog
             {
                 InitialDirectory = this.maniaPathTxt.Text,
-                IsFolderPicker = true
+                IsFolderPicker = true,
             };
             folderDialog.ShowDialog();
 
@@ -77,19 +84,7 @@ namespace ManiaToIntralism.Forms
         private void SaveEditorPath(object sender, EventArgs e)
         {
             this._editorconfigpath = this.editorPathTxt.Text;
-            XmlDocument config = new XmlDocument();
-            config.Load("config.xml");
-
-            foreach (XmlNode node in config.DocumentElement)
-            {
-                node.Attributes[1].Value = node.Attributes[0].Value switch
-                {
-                    "maniapath"  => this._maniaconfigpath,
-                    "editorpath" => this._editorconfigpath,
-                    _            => node.Attributes[1].Value
-                };
-            }
-            config.Save("config.xml");
+            this.SaveConfig();
         }
 
         private void SelectEditorFolder(object sender, EventArgs e)
@@ -97,7 +92,7 @@ namespace ManiaToIntralism.Forms
             CommonOpenFileDialog folderDialog = new CommonOpenFileDialog
             {
                 InitialDirectory = this.editorPathTxt.Text,
-                IsFolderPicker = true
+                IsFolderPicker = true,
             };
             folderDialog.ShowDialog();
 

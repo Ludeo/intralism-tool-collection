@@ -2,6 +2,7 @@
 using System.IO;
 using System.Net;
 using System.Text.RegularExpressions;
+using System.Xml;
 using HtmlAgilityPack;
 using ManiaToIntralism.Forms;
 
@@ -120,8 +121,6 @@ namespace ManiaToIntralism
             int hundredCount = (int)recalcResult[6];
             int mapCount = allScores.Length;
 
-            //TODO SaveLastChecked(link)
-
             FormUserProfile profileForm = new FormUserProfile(
                 globalRank,
                 totalGlobalRank,
@@ -138,11 +137,11 @@ namespace ManiaToIntralism
                 mapCount,
                 rankUpPoints,
                 pictureLink);
-
-            profileForm.ShowDialog();
+            
+            profileForm.Show();
             
             FormUserScore userScore = new FormUserScore(allScores);
-            userScore.ShowDialog();
+            userScore.Show();
             
         }
 
@@ -234,7 +233,7 @@ namespace ManiaToIntralism
                     if (points == maxPoints)
                     {
                         actPoints = points - 0.01;
-                        allScores[i][4] = actPoints;
+                        allScores[i][4] = Math.Round(actPoints * 100) / 100;
                     }
 
                     rankedPoints += actPoints;
@@ -250,7 +249,7 @@ namespace ManiaToIntralism
 
                 double a = (double)allScores[i][5];
                 double b = (double)allScores[i][4];
-                allScores[i][6] = a - b;
+                allScores[i][6] = Math.Round((a - b) * 100) / 100;
                 totalDifference += (double)allScores[i][6];
 
                 if ((double)allScores[i][2] == 100.00)
@@ -266,7 +265,7 @@ namespace ManiaToIntralism
 
             double avgAccExact = totalAcc / (mapCount - notPlayed);
             double avgAcc = (double)Math.Round(avgAccExact * 10000) / 10000;
-
+            
             double avgMiss = (double)totalMiss / mapCount;
             avgMiss = (double)Math.Round(avgMiss * 100) / 100;
 
@@ -336,7 +335,28 @@ namespace ManiaToIntralism
 
             double beforePoints = double.Parse(before.SelectNodes("td")[3].InnerText.Replace(" ", ""));
 
+            if (globalRankInt == 1) return 0;
+            
             return Math.Round((beforePoints - currentPoints) * 10000) / 10000;
+        }
+
+        public static void SaveLastChecked(string playerLink)
+        {
+            XmlDocument config = new XmlDocument();
+            config.Load("config.xml");
+            string lastChecked = playerLink;
+
+            foreach (XmlNode node in config.DocumentElement)
+            {
+                switch (node.Attributes[0].Value)
+                {
+                    case "lastchecked":
+                        node.Attributes[1].Value = lastChecked;
+                        break;
+                }
+            }
+            
+            config.Save("config.xml");
         }
     }
 }

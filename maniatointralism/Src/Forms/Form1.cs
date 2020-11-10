@@ -173,11 +173,26 @@ namespace ManiaToIntralism.Forms
         {
             string playerLink = this.playerLinkText.Text;
             CheckPlayer(playerLink);
+            SaveLastChecked(playerLink);
         }
 
         private void LastCheckedClicked(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            XmlDocument config = new XmlDocument();
+            config.Load("config.xml");
+            string lastChecked = "";
+
+            foreach (XmlNode node in config.DocumentElement)
+            {
+                switch (node.Attributes[0].Value)
+                {
+                    case "lastchecked":
+                        lastChecked = node.Attributes[1].Value;
+                        break;
+                }
+            }
+            
+            CheckPlayer(lastChecked);
         }
 
         private void PlayerListClicked(object sender, EventArgs e)
