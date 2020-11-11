@@ -166,14 +166,13 @@ namespace ManiaToIntralism.Forms
         private void OpenSetting(object sender, EventArgs e)
         {
             Form setting = new FormSetting();
-            setting.ShowDialog();
+            setting.Show();
         }
 
         private void CheckClicked(object sender, EventArgs e)
         {
             string playerLink = this.playerLinkText.Text;
             CheckPlayer(playerLink);
-            SaveLastChecked(playerLink);
         }
 
         private void LastCheckedClicked(object sender, EventArgs e)
@@ -197,7 +196,8 @@ namespace ManiaToIntralism.Forms
 
         private void PlayerListClicked(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            Form playerList = new FormPlayerList();
+            playerList.Show();
         }
         
     }

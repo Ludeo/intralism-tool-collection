@@ -24,6 +24,12 @@
       <Compile Update="Src\Forms\FormUserProfile.cs">
         <SubType>Form</SubType>
       </Compile>
+      <Compile Update="Src\Forms\FormPlayerList.cs">
+        <SubType>Form</SubType>
+      </Compile>
+      <Compile Update="Src\Forms\FormAddPlayer.cs">
+        <SubType>Form</SubType>
+      </Compile>
     </ItemGroup>
 
     <ItemGroup>

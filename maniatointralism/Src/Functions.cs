@@ -143,6 +143,7 @@ namespace ManiaToIntralism
             FormUserScore userScore = new FormUserScore(allScores);
             userScore.Show();
             
+            SaveLastChecked(link);
         }
 
         private static object[][] FillAllScores(string[][] mapData)
