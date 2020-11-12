@@ -1,4 +1,4 @@
-﻿namespace ManiaToIntralism.Forms
+﻿namespace ManiaToIntralism.Enums
 {
     public enum Mode
     {

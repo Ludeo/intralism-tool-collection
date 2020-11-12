@@ -1,21 +1,21 @@
-﻿using System.Configuration;
+﻿using System.Text.Json.Serialization;
 
 namespace ManiaToIntralism
 {
     public class Player
     {
-        public string name { get; }
-        public string link { get; }
+        [JsonPropertyName("name")]
+        public string Name { get; }
+        
+        [JsonPropertyName("link")]
+        public string Link { get; }
 
         public Player(string name, string link)
         {
-            this.name = name;
-            this.link = link;
+            this.Name = name;
+            this.Link = link;
         }
 
-        public override string ToString()
-        {
-            return this.name;
-        }
+        public override string ToString() => this.Name;
     }
 }

@@ -7,28 +7,38 @@ namespace ManiaToIntralism.Forms
 {
     public partial class FormAddPlayer : Form
     {
-        public FormAddPlayer()
-        {
-            InitializeComponent();
-        }
+        private const string SavedPlayersCsvPath = "savedplayers.csv";
+
+        private readonly StringBuilder stringBuilder = new StringBuilder();
+        private readonly string[][] players = new CsvReader().GetCsvContent(SavedPlayersCsvPath);
+        
+        public FormAddPlayer() => this.InitializeComponent();
 
         private void AddClicked(object sender, EventArgs e)
         {
-            CsvReader reader = new CsvReader();
-            string[][] players = reader.GetCsvContent("savedplayers.csv");
-            
-            StringBuilder sb = new StringBuilder();
-
-            for (int i = 0; i < players.Length; i++)
-            {
-                sb.Append(players[i][0] + "," + players[i][1] + "\n");
-            }
-
-            sb.Append(this.nameTextBox.Text + "," + this.linkTextBox.Text);
-            
-            File.WriteAllText("savedplayers.csv", sb.ToString());
-            
+            this.AppendTextBoxContents();
+            this.SaveContents();
             this.Close();
+        }
+
+        private void AppendTextBoxContents()
+        {
+            // idk what "t" supposed to represent, but variables should not just be named like that so i just guessed "player"
+            foreach (string[] player in this.players)
+            {
+                this.CombineString(player[0], player[1]);
+            }
+            this.CombineString(this.nameTextBox.Text, this.linkTextBox.Text);
+        }
+
+        private void CombineString(string a, string b)
+        {
+            this.stringBuilder.AppendLine(a + "," + b);
+        }
+
+        private void SaveContents()
+        {
+            File.WriteAllText(SavedPlayersCsvPath, this.stringBuilder.ToString());
         }
     }
 }

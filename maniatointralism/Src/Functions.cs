@@ -23,7 +23,6 @@ namespace ManiaToIntralism
             string[][] mapData = reader.GetCsvContent("scores.csv");
             object[][] allScores = FillAllScores(mapData);
 
-            string user;
             string globalRank = string.Empty;
             string totalGlobalRank = string.Empty;
             string countryRank = string.Empty;
@@ -40,10 +39,17 @@ namespace ManiaToIntralism
                 {
                     int i = FindIForAllScores(line, mapData);
 
-                    if (i == int.MaxValue) continue;
-                    
+                    if (i == int.MaxValue)
+                    {
+                        continue;
+                    }
+
                     string score = sr.ReadLine();
-                    while (!score.Contains("text-center")) score = sr.ReadLine();
+                    while (!score.Contains("text-center"))
+                    {
+                        score = sr.ReadLine();
+                    }
+
                     string acc = sr.ReadLine();
                     string miss = sr.ReadLine();
                     string points = sr.ReadLine();
@@ -53,59 +59,61 @@ namespace ManiaToIntralism
                     allScores[i][2] = double.Parse(mapDetail[1]);
                     allScores[i][3] = int.Parse(mapDetail[2]);
                     allScores[i][4] = double.Parse(mapDetail[3]);
-
                 }
                 else if (line.Contains("<title>"))
                 {
-                    user = line;
-                    int aNumber = user.IndexOf(">");
-                    int bNumber = user.IndexOf("<", aNumber);
+                    string user = line;
+                    int aNumber = user.IndexOf(">", StringComparison.Ordinal);
+                    int bNumber = user.IndexOf("<", aNumber, StringComparison.Ordinal);
                     user = user[(aNumber + 13)..bNumber];
-
                 }
                 else if (line.Contains("strong>Global Rank"))
                 {
                     globalRank = line;
 
-                    if (globalRank == null) continue;
-                    int aNumber = globalRank.IndexOf("\">");
-                    int bNumber = globalRank.IndexOf("</span", aNumber);
+                    if (globalRank == null)
+                    {
+                        continue;
+                    }
+
+                    int aNumber = globalRank.IndexOf("\">", StringComparison.Ordinal);
+                    int bNumber = globalRank.IndexOf("</span", aNumber, StringComparison.Ordinal);
                     globalRank = globalRank[(aNumber + 2)..bNumber];
 
                     totalGlobalRank = line;
-                    aNumber = totalGlobalRank.IndexOf("</span>");
+                    aNumber = totalGlobalRank.IndexOf("</span>", StringComparison.Ordinal);
                     totalGlobalRank = totalGlobalRank[(aNumber + 10)..(line.Length - 4)];
-
                 }
                 else if (line.Contains("Country Rank"))
                 {
                     countryRank = line;
 
-                    if (countryRank == null) continue;
-                    int aNumber = countryRank.IndexOf("\">");
-                    int bNumber = countryRank.IndexOf("</span", aNumber);
+                    if (countryRank == null)
+                    {
+                        continue;
+                    }
+
+                    int aNumber = countryRank.IndexOf("\">", StringComparison.Ordinal);
+                    int bNumber = countryRank.IndexOf("</span", aNumber, StringComparison.Ordinal);
                     countryRank = countryRank[(aNumber + 2)..bNumber];
 
                     totalCountryRank = line;
-                    aNumber = totalCountryRank.IndexOf("</span");
+                    aNumber = totalCountryRank.IndexOf("</span", StringComparison.Ordinal);
                     totalCountryRank = totalCountryRank[(aNumber + 10)..(line.Length - 4)];
-
                 }
                 else if (line.Contains(">#"))
                 {
                     country = sr.ReadLine();
-                    int aNumber = country.IndexOf("title=\"");
-                    int bNumber = country.IndexOf("><span", aNumber);
+                    int aNumber = country.IndexOf("title=\"", StringComparison.Ordinal);
+                    int bNumber = country.IndexOf("><span", aNumber, StringComparison.Ordinal);
                     country = country[(aNumber + 7)..(bNumber - 3)];
-
                 }
                 else if (line.Contains("og:image"))
                 {
                     pictureLink = line;
-                    int aNumber = pictureLink.IndexOf("content");
-                    int bNumber = pictureLink.IndexOf(">");
+                    int aNumber = pictureLink.IndexOf("content", StringComparison.Ordinal);
+                    int bNumber = pictureLink.IndexOf(">", StringComparison.Ordinal);
                     pictureLink = pictureLink[(aNumber + 9)..(bNumber - 3)];
-                    
                 }
             }
 
@@ -189,8 +197,8 @@ namespace ManiaToIntralism
             for (int i = 0; i < inputValues.Length; i++)
             {
                 string value = inputValues[i];
-                int aNumber = value.IndexOf(">");
-                int bNumber = value.IndexOf("<", aNumber);
+                int aNumber = value.IndexOf(">", StringComparison.Ordinal);
+                int bNumber = value.IndexOf("<", aNumber, StringComparison.Ordinal);
                 value = value[(aNumber + 1)..bNumber];
 
                 if (i != 1)
@@ -221,7 +229,10 @@ namespace ManiaToIntralism
 
             for (int i = 0; i < allScores.Length; i++)
             {
-                if (allScores[i][0] == null) continue;
+                if (allScores[i][0] == null)
+                {
+                    continue;
+                }
 
                 double points = (double)allScores[i][4];
                 double maxPoints = (double)allScores[i][5];
@@ -265,18 +276,18 @@ namespace ManiaToIntralism
             }
 
             double avgAccExact = totalAcc / (mapCount - notPlayed);
-            double avgAcc = (double)Math.Round(avgAccExact * 10000) / 10000;
+            double avgAcc = Math.Round(avgAccExact * 10000) / 10000;
             
             double avgMiss = (double)totalMiss / mapCount;
-            avgMiss = (double)Math.Round(avgMiss * 100) / 100;
+            avgMiss = Math.Round(avgMiss * 100) / 100;
 
-            totalDifference = (double)Math.Round(totalDifference * 100) / 100;
+            totalDifference = Math.Round(totalDifference * 100) / 100;
 
-            realPoints = (double)Math.Round(realPoints * 100) / 100;
-            rankedPoints = (double)Math.Round(rankedPoints * 100) / 100;
-            maximumPoints = (double)Math.Round(maximumPoints * 100) / 100;
+            realPoints = Math.Round(realPoints * 100) / 100;
+            rankedPoints = Math.Round(rankedPoints * 100) / 100;
+            maximumPoints = Math.Round(maximumPoints * 100) / 100;
 
-            return new double[]
+            return new[]
             {
                 avgMiss, avgAcc, rankedPoints, realPoints, maximumPoints, totalDifference, hundredCount,
             };
@@ -336,8 +347,11 @@ namespace ManiaToIntralism
 
             double beforePoints = double.Parse(before.SelectNodes("td")[3].InnerText.Replace(" ", ""));
 
-            if (globalRankInt == 1) return 0;
-            
+            if (globalRankInt == 1)
+            {
+                return 0;
+            }
+
             return Math.Round((beforePoints - currentPoints) * 10000) / 10000;
         }
 
