@@ -1,0 +1,3 @@
+﻿Try to write a function in Function.cs for loading and saving the config instead of doing that many times in other 
+functions
+

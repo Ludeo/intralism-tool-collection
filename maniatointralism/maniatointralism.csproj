@@ -8,6 +8,7 @@
 
     <ItemGroup>
         <PackageReference Include="FileHelpers" Version="3.4.1" />
+        <PackageReference Include="HtmlAgilityPack" Version="1.11.25" />
         <PackageReference Include="NAudio" Version="1.10.0" />
         <PackageReference Include="Windows7APICodePack-Shell" Version="1.1.0" />
         <PackageReference Include="xFFmpeg.NET" Version="3.4.0" />
@@ -17,11 +18,26 @@
       <Compile Update="FormSetting.cs">
         <SubType>Form</SubType>
       </Compile>
+      <Compile Update="Src\Forms\FormUserScore.cs">
+        <SubType>Form</SubType>
+      </Compile>
+      <Compile Update="Src\Forms\FormUserProfile.cs">
+        <SubType>Form</SubType>
+      </Compile>
+      <Compile Update="Src\Forms\FormPlayerList.cs">
+        <SubType>Form</SubType>
+      </Compile>
+      <Compile Update="Src\Forms\FormAddPlayer.cs">
+        <SubType>Form</SubType>
+      </Compile>
     </ItemGroup>
 
     <ItemGroup>
       <None Update="config.xml">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+      <None Update="scores.csv">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
     </ItemGroup>
 
