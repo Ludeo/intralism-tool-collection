@@ -7,96 +7,77 @@ namespace ManiaToIntralism.Forms
 {
     public partial class FormSetting : Form
     {
-
-        private string _maniaconfigpath;
-        private string _editorconfigpath;
+        private readonly XmlDocument config = new XmlDocument();
         
         public FormSetting() => this.InitializeComponent();
 
         private void FormSetting_Load(object sender, EventArgs e)
         {
+            this.config.Load("config.xml");
             this.LoadConfig();
-            this.maniaPathTxt.Text = this._maniaconfigpath;
-            this.editorPathTxt.Text = this._editorconfigpath;
         }
         
         private void LoadConfig()
         {
-            XmlDocument config = new XmlDocument();
-            config.Load("config.xml");
-
-            foreach (XmlNode node in config.DocumentElement)
+            foreach (XmlNode node in this.config.DocumentElement)
             {
-                switch (node.Attributes[0].Value)
+                string firstValue = node.Attributes[0].Value;
+                string secondValue = node.Attributes[1].Value;
+
+                if (string.Equals(firstValue, "maniapath"))
                 {
-                    case "maniapath":
-                        this._maniaconfigpath = node.Attributes[1].Value;
-                        break;
-                    case "editorpath":
-                        this._editorconfigpath = node.Attributes[1].Value;
-                        break;
+                    this.maniaPathTxt.Text = secondValue;
+                }
+                else if (string.Equals(firstValue, "editorpath"))
+                {
+                    this.editorPathTxt.Text = secondValue;
                 }
             }
-
         }
 
-        private void SaveConfig()
+        // Why have the switch if you have 2 methods that you know exactly what game path you are saving?
+        private void SaveConfig(string path)
         {
-            XmlDocument config = new XmlDocument();
-            config.Load("config.xml");
-
-            foreach (XmlNode node in config.DocumentElement)
+            foreach (XmlNode node in this.config.DocumentElement)
             {
-                node.Attributes[1].Value = node.Attributes[0].Value switch
-                {
-                    "maniapath"   => this._maniaconfigpath,
-                    "editorpath"  => this._editorconfigpath,
-                    _             => node.Attributes[1].Value,
-                };
+                node.Attributes[1].Value = path ?? node.Attributes[1].Value;
             }
-            config.Save("config.xml");
-        }
 
-        private void SaveAllConfig()
-        {
-            throw new NotImplementedException();
+            this.config.Save("config.xml");
         }
 
         private void SaveManiaPath(object sender, EventArgs e)
         {
-
-            this._maniaconfigpath = this.maniaPathTxt.Text;
-            this.SaveConfig();
+            this.SaveConfig(this.maniaPathTxt.Text);
+        }
+        
+        private void SaveEditorPath(object sender, EventArgs e)
+        {
+            this.SaveConfig(this.editorPathTxt.Text);
         }
 
         private void SelectManiaFolder(object sender, EventArgs e)
         {
-            CommonOpenFileDialog folderDialog = new CommonOpenFileDialog
-            {
-                InitialDirectory = this.maniaPathTxt.Text,
-                IsFolderPicker = true,
-            };
-            folderDialog.ShowDialog();
-
-            this.maniaPathTxt.Text = folderDialog.FileName;
-        }
-
-        private void SaveEditorPath(object sender, EventArgs e)
-        {
-            this._editorconfigpath = this.editorPathTxt.Text;
-            this.SaveConfig();
+            this.maniaPathTxt.Text = GetFolderName(this.maniaPathTxt.Text);
         }
 
         private void SelectEditorFolder(object sender, EventArgs e)
         {
+            this.editorPathTxt.Text = GetFolderName(this.editorPathTxt.Text);
+        }
+
+        private static string GetFolderName(string initialDirectory)
+        {
             CommonOpenFileDialog folderDialog = new CommonOpenFileDialog
             {
-                InitialDirectory = this.editorPathTxt.Text,
+                InitialDirectory = initialDirectory,
                 IsFolderPicker = true,
             };
             folderDialog.ShowDialog();
-
-            this.editorPathTxt.Text = folderDialog.FileName;
+            
+            return folderDialog.FileName;
         }
+
+        private void SaveAllConfig() => throw new NotImplementedException();
     }
 }

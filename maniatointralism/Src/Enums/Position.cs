@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ManiaToIntralism
+namespace ManiaToIntralism.Enums
 {
     [Flags]
     public enum Position

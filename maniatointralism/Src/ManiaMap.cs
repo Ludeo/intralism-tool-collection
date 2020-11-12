@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using ManiaToIntralism.Forms;
+using ManiaToIntralism.Enums;
 using NAudio.Wave;
 
 namespace ManiaToIntralism
@@ -37,7 +37,7 @@ namespace ManiaToIntralism
 
         public string Folder { get; }
 
-        private readonly List<HitObject> _rawNotes = new List<HitObject>();
+        private readonly List<HitObject> rawNotes = new List<HitObject>();
 
         public ManiaMap(string path)
         {
@@ -93,7 +93,7 @@ namespace ManiaToIntralism
                     while ((line = sr.ReadLine()) != null)
                     {
                         string[] cur = line.Split(",");
-                        this._rawNotes.Add(new HitObject((Position)int.Parse(cur[0]), double.Parse(cur[2])));
+                        this.rawNotes.Add(new HitObject((Position)int.Parse(cur[0]), double.Parse(cur[2])));
                     }
                 }
             }
@@ -110,7 +110,7 @@ namespace ManiaToIntralism
             HitObject lastNote = new HitObject(Position.Down, -100);
             List<HitObject> lastNotes = new List<HitObject> { lastNote };
 
-            foreach (HitObject x in this._rawNotes.Where(x => !Enum.IsDefined(typeof(Position), x.Position)))
+            foreach (HitObject x in this.rawNotes.Where(x => !Enum.IsDefined(typeof(Position), x.Position)))
             {
                 if (lastNote.Timing == x.Timing)
                 {

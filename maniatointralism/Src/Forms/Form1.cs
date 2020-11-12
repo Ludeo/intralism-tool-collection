@@ -4,6 +4,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Xml;
 using FFmpeg.NET;
+using ManiaToIntralism.Enums;
 using Microsoft.WindowsAPICodePack.Dialogs;
 using static ManiaToIntralism.Functions;
 

@@ -29,7 +29,7 @@ namespace ManiaToIntralism.Forms
         private void CheckClicked(object sender, EventArgs e)
         {
             Player current = (Player)this.PlayerList.SelectedItem;
-            Functions.CheckPlayer(current.link);
+            Functions.CheckPlayer(current.Link);
         }
 
         private void AddClicked(object sender, EventArgs e)
@@ -53,14 +53,18 @@ namespace ManiaToIntralism.Forms
 
             for (int i = 0; i < players.Length; i++)
             {
-                if (players[i][0].Equals(current.name) &&
-                    players[i][1].Equals(current.link))
+                if (players[i][0].Equals(current.Name) &&
+                    players[i][1].Equals(current.Link))
                 {
                     
                 }
                 else
                 {
-                    if (first) sb.Append("\n");
+                    if (first)
+                    {
+                        sb.Append("\n");
+                    }
+
                     sb.Append(players[i][0] + "," + players[i][1]);
                     first = true;
 

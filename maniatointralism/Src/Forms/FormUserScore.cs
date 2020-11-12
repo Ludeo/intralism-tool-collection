@@ -1,32 +1,38 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace ManiaToIntralism.Forms
 {
     public partial class FormUserScore : Form
     {
-        public FormUserScore(object[][] allScores)
+        private readonly DataTable table = new DataTable();
+        private readonly Type doubleType = Type.GetType("System.Double");
+        private readonly Type int32Type = Type.GetType("System.Int32");
+        
+        public FormUserScore(IEnumerable<IEnumerable<object>> allScores)
         {
             this.InitializeComponent();
-            DataTable table = new DataTable();
-            table.Columns.Add("Map Name");
-            table.Columns.Add("Score").DataType = Type.GetType("System.Double");
-            table.Columns.Add("Accuracy").DataType = Type.GetType("System.Double");
-            table.Columns.Add("Miss").DataType = Type.GetType("System.Int32");
-            table.Columns.Add("My Points").DataType = Type.GetType("System.Double");
-            table.Columns.Add("Max Points").DataType = Type.GetType("System.Double");
-            table.Columns.Add("Difference").DataType = Type.GetType("System.Double");
-            table.Columns.Add("Broken?");
+            this.table.Columns.Add("Map Name");
+            this.table.Columns.Add("Score").DataType = this.doubleType;
+            this.table.Columns.Add("Accuracy").DataType = this.doubleType;
+            this.table.Columns.Add("Miss").DataType = this.int32Type;
+            this.table.Columns.Add("My Points").DataType = this.doubleType;
+            this.table.Columns.Add("Max Points").DataType = this.doubleType;
+            this.table.Columns.Add("Difference").DataType = this.doubleType;
+            this.table.Columns.Add("Broken?");
 
-            for (int i = 0; i < allScores.Length; i++)
+            // Yet again dont call it just "t"
+            foreach (IEnumerable<object> score in allScores)
             {
-                table.Rows.Add(allScores[i]);
+                this.table.Rows.Add(score);
             }
-            
+
             DataGridView grid = new DataGridView();
             this.Controls.Add(grid);
-            grid.DataSource = table;
+            grid.DataSource = this.table;
             grid.AutoSize = true;
             grid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             grid.Anchor = AnchorStyles.Left;

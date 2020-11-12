@@ -1,5 +1,4 @@
-﻿using System;
-using System.Drawing;
+﻿using System.Drawing;
 using System.IO;
 using System.Net;
 using System.Windows.Forms;
@@ -41,9 +40,8 @@ namespace ManiaToIntralism.Forms
             WebClient webClient = new WebClient();
             Stream stream = webClient.OpenRead(pictureLink);
             Image image = Image.FromStream(stream);
-            Image newImage = (Image)(new Bitmap(image, new Size(this.pictureLbl.Width, this.pictureLbl.Height)));
+            Image newImage = new Bitmap(image, new Size(this.pictureLbl.Width, this.pictureLbl.Height));
             this.pictureLbl.Image = newImage;
         }
-            
     }
 }
