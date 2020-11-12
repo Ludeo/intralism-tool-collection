@@ -43,7 +43,7 @@ namespace ManiaToIntralism
         {
             this.Speed = 25;
             this.Lives = 50;
-            StringReader sr = new StringReader(path);
+            StringReader sr = new StringReader(File.ReadAllText(path));
             string line;
 
             while ((line = sr.ReadLine()) != null)
