@@ -1,3 +1,4 @@
 ﻿Try to write a function in Function.cs for loading and saving the config instead of doing that many times in other 
 functions
 
+rename window titles to have matching names (also naming the window of a checked player to the name of the player)
