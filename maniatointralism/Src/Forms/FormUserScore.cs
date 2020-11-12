@@ -27,7 +27,7 @@ namespace ManiaToIntralism.Forms
             // Yet again dont call it just "t"
             foreach (IEnumerable<object> score in allScores)
             {
-                this.table.Rows.Add(score);
+                this.table.Rows.Add((object[]) score);
             }
 
             DataGridView grid = new DataGridView();
