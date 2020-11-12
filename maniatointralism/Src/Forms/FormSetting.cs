@@ -24,13 +24,14 @@ namespace ManiaToIntralism.Forms
                 string firstValue = node.Attributes[0].Value;
                 string secondValue = node.Attributes[1].Value;
 
-                if (string.Equals(firstValue, "maniapath"))
+                switch (firstValue)
                 {
-                    this.maniaPathTxt.Text = secondValue;
-                }
-                else if (string.Equals(firstValue, "editorpath"))
-                {
-                    this.editorPathTxt.Text = secondValue;
+                    case "maniapath": 
+                        this.maniaPathTxt.Text = secondValue;
+                        break;
+                    case "editorpath": 
+                        this.editorPathTxt.Text = secondValue;
+                        break;
                 }
             }
         }
