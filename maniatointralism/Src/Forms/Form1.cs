@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -13,7 +15,8 @@ namespace ManiaToIntralism.Forms
 {
     public partial class Form1 : Form
     {
-        private ManiaMap map;
+        private ManiaMap maniaMap;
+        private IntralismMap intralismMap;
         private string editorPath;
         private string maniaConfigPath;
         private string editorConfigPath;
@@ -22,6 +25,7 @@ namespace ManiaToIntralism.Forms
         
         public Form1()
         {
+            this.config.Load("config.xml");
             this.InitializeComponent();
             CheckConfig();
             this.LoadConfig();
@@ -58,7 +62,7 @@ namespace ManiaToIntralism.Forms
             }
         }
         
-        private void ManiaClicked(object sender, EventArgs e)
+        private void ManiaMapClicked(object sender, EventArgs e)
         {
             this.LoadConfig();
             
@@ -86,11 +90,11 @@ namespace ManiaToIntralism.Forms
                     return;
                 }
 
-                this.map = temp;
+                this.maniaMap = temp;
             }
         }
 
-        private void EditorClicked(object sender, EventArgs e)
+        private void EditorFolderClicked(object sender, EventArgs e)
         {
             this.LoadConfig();
             
@@ -104,9 +108,9 @@ namespace ManiaToIntralism.Forms
             this.editorPath = editorDialog.FileName;
         }
 
-        private void ConvertClicked(object sender, EventArgs e)
+        private void ConvertToIntralismClicked(object sender, EventArgs e)
         {
-            if(this.map == null) {
+            if(this.maniaMap == null) {
                 MessageBox.Show(@"No mania map selected", @"Error", 
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -124,22 +128,22 @@ namespace ManiaToIntralism.Forms
                 speed = 25;
             }
 
-            this.map.Speed = speed;
+            this.maniaMap.Speed = speed;
 
             StringBuilder intraFile = new StringBuilder();
-            intraFile.Append("{\"configVersion\":2,\"name\":\"" + this.map.Artist + " - " + this.map.Title + " [" + this.map.Version
-                           + "]\",\"info\":\"Mania map convert: https://osu.ppy.sh/beatmapsets/" + this.map.BeatmapsetId
-                           + "/discussion/" + this.map.BeatmapId + " by " + this.map.Creator
+            intraFile.Append("{\"configVersion\":2,\"name\":\"" + this.maniaMap.Artist + " - " + this.maniaMap.Title + " [" + this.maniaMap.Version
+                           + "]\",\"info\":\"Mania map convert: https://osu.ppy.sh/beatmapsets/" + this.maniaMap.BeatmapsetId
+                           + "/discussion/" + this.maniaMap.BeatmapId + " by " + this.maniaMap.Creator
                            + "\",\"levelResources\":[{\"name\":\"bg1\",\"type\":\"Sprite\","
                            + "\"path\":\"background.png\"}],\"tags\":[\"OneHand\"],\"handCount\":1,"
-                           + "\"moreInfoURL\":\"\",\"speed\":" + this.map.Speed + ",\"lives\":" + this.map.Lives 
-                           + ",\"maxLives\":" + this.map.Lives + ",\"musicFile\":\"music.ogg\",\"musicTime\":" + this.map.Length
+                           + "\"moreInfoURL\":\"\",\"speed\":" + this.maniaMap.Speed + ",\"lives\":" + this.maniaMap.Lives 
+                           + ",\"maxLives\":" + this.maniaMap.Lives + ",\"musicFile\":\"music.ogg\",\"musicTime\":" + this.maniaMap.Length
                            + ",\"iconFile\":\"background.png\",\"environmentType\":1,\"unlockConditions\":[],"
                            + "\"hidden\":false,\"checkpoints\":[],\"events\":[{\"time\":0.0,"
-                           + "\"data\":[\"SetBGColor\",\"0,0,0,2\"]},{\"time\":0.0,\"data\":[\"SetSpeed\",\"" + this.map.Speed
+                           + "\"data\":[\"SetBGColor\",\"0,0,0,2\"]},{\"time\":0.0,\"data\":[\"SetSpeed\",\"" + this.maniaMap.Speed
                            + "\"]},{\"time\":0.0,\"data\":[\"ShowSprite\",\"bg1,0,True,0,0,0\"]}");
 
-            foreach (HitObject x in this.map.Arcs)
+            foreach (HitObject x in this.maniaMap.Arcs)
             {
                 double time = x.Timing / 1000;
                 intraFile.Append(",{\"time\":" + time + ",\"data\":[\"SpawnObj\",\"[" + x.Position + "],0\"]}");
@@ -147,7 +151,7 @@ namespace ManiaToIntralism.Forms
 
             intraFile.Append("]}");
             
-            string newFolder = this.editorPath + "\\" + this.map.Artist + " - " + this.map.Title;
+            string newFolder = this.editorPath + "\\" + this.maniaMap.Artist + " - " + this.maniaMap.Title;
             
             Random rd = new Random();
             while (Directory.Exists(newFolder))
@@ -157,12 +161,12 @@ namespace ManiaToIntralism.Forms
             
             Directory.CreateDirectory(newFolder);
 
-            File.Copy(this.map.Folder + "\\" + this.map.Background, newFolder + "\\background.png");
+            File.Copy(this.maniaMap.Folder + "\\" + this.maniaMap.Background, newFolder + "\\background.png");
             
             File.WriteAllText(newFolder + "\\config.txt", intraFile.ToString());
 
             Task.Run(async () =>
-                await this.ffmpeg.ConvertAsync(new MediaFile(this.map.Folder + "\\" + this.map.Audio),
+                await this.ffmpeg.ConvertAsync(new MediaFile(this.maniaMap.Folder + "\\" + this.maniaMap.Audio),
                                      new MediaFile(newFolder + "\\music.ogg"))
             );
             
@@ -206,5 +210,64 @@ namespace ManiaToIntralism.Forms
             Form playerList = new FormPlayerList();
             playerList.Show();
         }
+
+        private void IntralismMapClicked(object sender, EventArgs e)
+        {
+            this.LoadConfig();
+            
+            CommonOpenFileDialog intralismDialog = new CommonOpenFileDialog
+            {
+                InitialDirectory = this.editorConfigPath,
+                IsFolderPicker = true,
+            };
+            intralismDialog.ShowDialog();
+
+            string mapPath = intralismDialog.FileName;
+            
+
+
+            if (!File.Exists(mapPath + "\\config.txt") | string.IsNullOrEmpty(File.ReadAllText(mapPath + "\\config.txt")))
+            {
+                MessageBox.Show(
+                    $@"There is no map in this folder",
+                    @"Error", 
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+
+                return;
+            }
+
+            this.intralismMap = IntralismMap.FromJson(mapPath);
+        }
+
+        private void ManiaFolderClicked(object sender, EventArgs e)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        private void ConvertToManiaClicked(object sender, EventArgs e)
+        {
+            
+            //TODO
+            //Add previous mania map parts
+            //copy files into a new created osu folder
+            
+            StringBuilder sb = new StringBuilder();
+        
+            foreach (Event ev in this.intralismMap.Events.Where(i => i.Data[0].Contains("SpawnObj")))
+            {
+                string rawArcs = ev.Data[1].Split(",")[0].TrimStart('[').TrimEnd(']');
+                List<string> arcs = rawArcs.Split("-").ToList();
+                int time = (int)TimeSpan.FromSeconds(ev.Time).TotalMilliseconds;
+                
+                foreach (string arc in arcs)
+                {
+                    sb.AppendLine($"{(int)Enum.Parse(typeof(Position), arc)},192,{time},1,0,0:0:0:0:");
+                }
+            }
+            
+            Console.WriteLine(sb.ToString());
+        }
+
     }
 }

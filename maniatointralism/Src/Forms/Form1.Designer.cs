@@ -34,7 +34,7 @@ namespace ManiaToIntralism.Forms
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.maniaSelect = new System.Windows.Forms.Button();
             this.editorSelect = new System.Windows.Forms.Button();
-            this.Convert = new System.Windows.Forms.Button();
+            this.ConvertToIntralism = new System.Windows.Forms.Button();
             this.label = new System.Windows.Forms.Label();
             this.speedbox = new System.Windows.Forms.TextBox();
             this.maniaIntralismBox = new System.Windows.Forms.GroupBox();
@@ -45,11 +45,16 @@ namespace ManiaToIntralism.Forms
             this.checkButton = new System.Windows.Forms.Button();
             this.playerLinkLabel = new System.Windows.Forms.Label();
             this.playerLinkText = new System.Windows.Forms.TextBox();
+            this.intralismManiaBox = new System.Windows.Forms.GroupBox();
+            this.ConvertToMania = new System.Windows.Forms.Button();
+            this.maniaFolderSelect = new System.Windows.Forms.Button();
+            this.intralismSelect = new System.Windows.Forms.Button();
             this.maniaIntralismBox.SuspendLayout();
             this.scoreCheckerBox.SuspendLayout();
+            this.intralismManiaBox.SuspendLayout();
             this.SuspendLayout();
             // 
-            // maniaselect
+            // maniaSelect
             // 
             this.maniaSelect.Location = new System.Drawing.Point(6, 19);
             this.maniaSelect.Name = "maniaSelect";
@@ -58,9 +63,9 @@ namespace ManiaToIntralism.Forms
             this.maniaSelect.Text = "Mania Map";
             this.maniaSelect.UseMnemonic = false;
             this.maniaSelect.UseVisualStyleBackColor = true;
-            this.maniaSelect.Click += new System.EventHandler(this.ManiaClicked);
+            this.maniaSelect.Click += new System.EventHandler(this.ManiaMapClicked);
             // 
-            // editorselect
+            // editorSelect
             // 
             this.editorSelect.Location = new System.Drawing.Point(107, 19);
             this.editorSelect.Name = "editorSelect";
@@ -68,19 +73,19 @@ namespace ManiaToIntralism.Forms
             this.editorSelect.TabIndex = 1;
             this.editorSelect.Text = "Editor Folder";
             this.editorSelect.UseVisualStyleBackColor = true;
-            this.editorSelect.Click += new System.EventHandler(this.EditorClicked);
+            this.editorSelect.Click += new System.EventHandler(this.EditorFolderClicked);
             // 
-            // Convert
+            // ConvertToIntralism
             // 
-            this.Convert.Location = new System.Drawing.Point(107, 60);
-            this.Convert.Name = "Convert";
-            this.Convert.Size = new System.Drawing.Size(100, 26);
-            this.Convert.TabIndex = 2;
-            this.Convert.Text = "Convert";
-            this.Convert.UseVisualStyleBackColor = true;
-            this.Convert.Click += new System.EventHandler(this.ConvertClicked);
+            this.ConvertToIntralism.Location = new System.Drawing.Point(107, 60);
+            this.ConvertToIntralism.Name = "ConvertToIntralism";
+            this.ConvertToIntralism.Size = new System.Drawing.Size(100, 26);
+            this.ConvertToIntralism.TabIndex = 2;
+            this.ConvertToIntralism.Text = "Convert";
+            this.ConvertToIntralism.UseVisualStyleBackColor = true;
+            this.ConvertToIntralism.Click += new System.EventHandler(this.ConvertToIntralismClicked);
             // 
-            // lbl
+            // label
             // 
             this.label.Location = new System.Drawing.Point(6, 48);
             this.label.Name = "label";
@@ -99,7 +104,7 @@ namespace ManiaToIntralism.Forms
             // maniaIntralismBox
             // 
             this.maniaIntralismBox.Controls.Add(this.maniaSelect);
-            this.maniaIntralismBox.Controls.Add(this.Convert);
+            this.maniaIntralismBox.Controls.Add(this.ConvertToIntralism);
             this.maniaIntralismBox.Controls.Add(this.speedbox);
             this.maniaIntralismBox.Controls.Add(this.editorSelect);
             this.maniaIntralismBox.Controls.Add(this.label);
@@ -110,7 +115,7 @@ namespace ManiaToIntralism.Forms
             this.maniaIntralismBox.TabStop = false;
             this.maniaIntralismBox.Text = "Mania To Intralism Converter";
             // 
-            // settingbtn
+            // settingsButton
             // 
             this.settingsButton.Location = new System.Drawing.Point(534, 321);
             this.settingsButton.Name = "settingsButton";
@@ -134,7 +139,7 @@ namespace ManiaToIntralism.Forms
             this.scoreCheckerBox.TabStop = false;
             this.scoreCheckerBox.Text = "Score Checker";
             // 
-            // playerListBtn
+            // playerListButton
             // 
             this.playerListButton.Location = new System.Drawing.Point(191, 60);
             this.playerListButton.Name = "playerListButton";
@@ -144,7 +149,7 @@ namespace ManiaToIntralism.Forms
             this.playerListButton.UseVisualStyleBackColor = true;
             this.playerListButton.Click += new System.EventHandler(this.PlayerListClicked);
             // 
-            // lastCheckedBtn
+            // lastCheckedButton
             // 
             this.lastCheckedButton.Location = new System.Drawing.Point(91, 60);
             this.lastCheckedButton.Name = "lastCheckedButton";
@@ -154,7 +159,7 @@ namespace ManiaToIntralism.Forms
             this.lastCheckedButton.UseVisualStyleBackColor = true;
             this.lastCheckedButton.Click += new System.EventHandler(this.LastCheckedClicked);
             // 
-            // checkBtn
+            // checkButton
             // 
             this.checkButton.Location = new System.Drawing.Point(6, 60);
             this.checkButton.Name = "checkButton";
@@ -164,7 +169,7 @@ namespace ManiaToIntralism.Forms
             this.checkButton.UseVisualStyleBackColor = true;
             this.checkButton.Click += new System.EventHandler(this.CheckClicked);
             // 
-            // playerLinkLbl
+            // playerLinkLabel
             // 
             this.playerLinkLabel.Location = new System.Drawing.Point(6, 19);
             this.playerLinkLabel.Name = "playerLinkLabel";
@@ -172,31 +177,81 @@ namespace ManiaToIntralism.Forms
             this.playerLinkLabel.TabIndex = 1;
             this.playerLinkLabel.Text = "Player Link";
             // 
-            // playerLinkTxt
+            // playerLinkText
             // 
             this.playerLinkText.Location = new System.Drawing.Point(6, 34);
             this.playerLinkText.Name = "playerLinkText";
             this.playerLinkText.Size = new System.Drawing.Size(272, 20);
             this.playerLinkText.TabIndex = 0;
             // 
+            // intralismManiaBox
+            // 
+            this.intralismManiaBox.Controls.Add(this.ConvertToMania);
+            this.intralismManiaBox.Controls.Add(this.maniaFolderSelect);
+            this.intralismManiaBox.Controls.Add(this.intralismSelect);
+            this.intralismManiaBox.Location = new System.Drawing.Point(12, 114);
+            this.intralismManiaBox.Name = "intralismManiaBox";
+            this.intralismManiaBox.Size = new System.Drawing.Size(215, 93);
+            this.intralismManiaBox.TabIndex = 8;
+            this.intralismManiaBox.TabStop = false;
+            this.intralismManiaBox.Text = "Intralism To Mania Converter";
+            // 
+            // ConvertToMania
+            // 
+            this.ConvertToMania.Location = new System.Drawing.Point(6, 61);
+            this.ConvertToMania.Name = "ConvertToMania";
+            this.ConvertToMania.Size = new System.Drawing.Size(95, 26);
+            this.ConvertToMania.TabIndex = 2;
+            this.ConvertToMania.Text = "Convert";
+            this.ConvertToMania.UseVisualStyleBackColor = true;
+            this.ConvertToMania.Click += new System.EventHandler(this.ConvertToManiaClicked);
+            // 
+            // maniaFolderSelect
+            // 
+            this.maniaFolderSelect.Location = new System.Drawing.Point(107, 19);
+            this.maniaFolderSelect.Name = "maniaFolderSelect";
+            this.maniaFolderSelect.Size = new System.Drawing.Size(100, 25);
+            this.maniaFolderSelect.TabIndex = 1;
+            this.maniaFolderSelect.Text = "Mania Folder";
+            this.maniaFolderSelect.UseVisualStyleBackColor = true;
+            this.maniaFolderSelect.Click += new System.EventHandler(this.ManiaFolderClicked);
+            // 
+            // intralismSelect
+            // 
+            this.intralismSelect.Location = new System.Drawing.Point(6, 19);
+            this.intralismSelect.Name = "intralismSelect";
+            this.intralismSelect.Size = new System.Drawing.Size(95, 25);
+            this.intralismSelect.TabIndex = 0;
+            this.intralismSelect.Text = "Intralism Map";
+            this.intralismSelect.UseVisualStyleBackColor = true;
+            this.intralismSelect.Click += new System.EventHandler(this.IntralismMapClicked);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(642, 356);
+            this.Controls.Add(this.intralismManiaBox);
             this.Controls.Add(this.scoreCheckerBox);
             this.Controls.Add(this.settingsButton);
             this.Controls.Add(this.maniaIntralismBox);
             this.HelpButton = true;
-            this.Icon = ((System.Drawing.Icon) (resources.GetObject("$this.Icon")));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "Intralism Toolbox";
             this.maniaIntralismBox.ResumeLayout(false);
             this.maniaIntralismBox.PerformLayout();
             this.scoreCheckerBox.ResumeLayout(false);
             this.scoreCheckerBox.PerformLayout();
+            this.intralismManiaBox.ResumeLayout(false);
             this.ResumeLayout(false);
         }
+
+        private System.Windows.Forms.Button ConvertToIntralism;
+        private System.Windows.Forms.Button ConvertToMania;
+        private System.Windows.Forms.GroupBox intralismManiaBox;
+        private System.Windows.Forms.Button intralismSelect;
+        private System.Windows.Forms.Button maniaFolderSelect;
 
         private System.Windows.Forms.TextBox playerLinkText;
         private System.Windows.Forms.Button playerListButton;
@@ -211,7 +266,6 @@ namespace ManiaToIntralism.Forms
 
         private System.Windows.Forms.GroupBox maniaIntralismBox;
 
-        private System.Windows.Forms.Button Convert;
         private System.Windows.Forms.Label label;
         private System.Windows.Forms.TextBox speedbox;
 

@@ -10,6 +10,7 @@
         <PackageReference Include="FileHelpers" Version="3.4.1" />
         <PackageReference Include="HtmlAgilityPack" Version="1.11.25" />
         <PackageReference Include="NAudio" Version="1.10.0" />
+        <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
         <PackageReference Include="Windows7APICodePack-Shell" Version="1.1.0" />
         <PackageReference Include="xFFmpeg.NET" Version="3.4.0" />
     </ItemGroup>
