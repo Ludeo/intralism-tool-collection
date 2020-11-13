@@ -13,7 +13,7 @@ namespace ManiaToIntralism.Forms
             this.PlayerList.ScrollAlwaysVisible = true;
             
             CsvReader reader = new CsvReader();
-            string[][] players = reader.GetCsvContent("savedplayers.csv");
+            string[][] players = CsvReader.GetCsvContent("savedplayers.csv");
             
             for(int i = 0; i < players.Length; i++)
             {
@@ -46,7 +46,7 @@ namespace ManiaToIntralism.Forms
         {
             Player current = (Player)this.PlayerList.SelectedItem;
             CsvReader reader = new CsvReader();
-            string[][] players = reader.GetCsvContent("savedplayers.csv");
+            string[][] players = CsvReader.GetCsvContent("savedplayers.csv");
             
             StringBuilder sb = new StringBuilder();
             bool first = false;

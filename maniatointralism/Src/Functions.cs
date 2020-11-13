@@ -20,7 +20,7 @@ namespace ManiaToIntralism
             string line;
 
             CsvReader reader = new CsvReader();
-            string[][] mapData = reader.GetCsvContent("scores.csv");
+            string[][] mapData = CsvReader.GetCsvContent("scores.csv");
             object[][] allScores = FillAllScores(mapData);
 
             string globalRank = string.Empty;
