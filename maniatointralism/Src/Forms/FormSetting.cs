@@ -52,15 +52,9 @@ namespace ManiaToIntralism.Forms
             this.config.Save("config.xml");
         }
 
-        private void SelectManiaFolder(object sender, EventArgs e)
-        {
-            this.maniaPathTxt.Text = GetFolderName(this.maniaPathTxt.Text);
-        }
+        private void SelectManiaFolder(object sender, EventArgs e) => this.maniaPathTxt.Text = GetFolderName(this.maniaPathTxt.Text);
 
-        private void SelectEditorFolder(object sender, EventArgs e)
-        {
-            this.editorPathTxt.Text = GetFolderName(this.editorPathTxt.Text);
-        }
+        private void SelectEditorFolder(object sender, EventArgs e) => this.editorPathTxt.Text = GetFolderName(this.editorPathTxt.Text);
 
         private static string GetFolderName(string initialDirectory)
         {

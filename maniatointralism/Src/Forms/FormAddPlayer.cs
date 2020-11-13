@@ -23,7 +23,6 @@ namespace ManiaToIntralism.Forms
 
         private void AppendTextBoxContents()
         {
-            // idk what "t" supposed to represent, but variables should not just be named like that so i just guessed "player"
             foreach (string[] player in this.players)
             {
                 this.CombineString(player[0], player[1]);
@@ -31,14 +30,8 @@ namespace ManiaToIntralism.Forms
             this.CombineString(this.nameTextBox.Text, this.linkTextBox.Text);
         }
 
-        private void CombineString(string a, string b)
-        {
-            this.stringBuilder.AppendLine(a + "," + b);
-        }
+        private void CombineString(string a, string b) => this.stringBuilder.AppendLine(a + "," + b);
 
-        private void SaveContents()
-        {
-            File.WriteAllText(SavedPlayersCsvPath, this.stringBuilder.ToString());
-        }
+        private void SaveContents() => File.WriteAllText(SavedPlayersCsvPath, this.stringBuilder.ToString());
     }
 }
