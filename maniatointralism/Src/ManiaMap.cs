@@ -43,7 +43,7 @@ namespace ManiaToIntralism
         {
             this.Speed = 25;
             this.Lives = 50;
-            StringReader sr = new StringReader(path);
+            StringReader sr = new StringReader(File.ReadAllText(path));
             string line;
 
             while ((line = sr.ReadLine()) != null)
@@ -93,7 +93,7 @@ namespace ManiaToIntralism
                     while ((line = sr.ReadLine()) != null)
                     {
                         string[] cur = line.Split(",");
-                        this.rawNotes.Add(new HitObject((Position)int.Parse(cur[0]), double.Parse(cur[2])));
+                        this.rawNotes.Add(new HitObject(cur[0], double.Parse(cur[2])));
                     }
                 }
             }
@@ -107,22 +107,23 @@ namespace ManiaToIntralism
 
         private void ConvertTimings()
         {
-            HitObject lastNote = new HitObject(Position.Down, -100);
+            HitObject lastNote = new HitObject(Position.Down.ToString(), -100);
             List<HitObject> lastNotes = new List<HitObject> { lastNote };
 
-            foreach (HitObject x in this.rawNotes.Where(x => !Enum.IsDefined(typeof(Position), x.Position)))
+            foreach (HitObject x in this.rawNotes.Where(x => Position.TryParse(x.Position.ToString(), out Position a)))
             {
+
                 if (lastNote.Timing == x.Timing)
                 {
                     lastNotes.Add(x);
                 }
                 else
                 {
-                    string pos = lastNotes.Aggregate("", (current, y) => current + $"{y.Position}-");
+                    string pos = lastNotes.Aggregate("", (current, y) => (current + "-" + y.Position)).TrimStart('-');
 
                     if (lastNote.Timing != -100)
                     {
-                        this.Arcs.Add(new HitObject((Position)int.Parse(pos.Substring(0, pos.Length - 1)), lastNote.Timing));
+                        this.Arcs.Add(new HitObject(pos, lastNote.Timing));
                     }
 
                     lastNotes.Clear();
@@ -133,9 +134,9 @@ namespace ManiaToIntralism
 
             if (this.Arcs.Last().Timing != lastNote.Timing)
             {
-                string pos = lastNotes.Aggregate("", (current, y) => current + $"{y.Position}-");
+                string pos = lastNotes.Aggregate("", (current, y) => (current + "-" + y.Position)).TrimStart('-');
 
-                this.Arcs.Add(new HitObject((Position)int.Parse(pos.Substring(0, pos.Length - 1)), lastNote.Timing));
+                this.Arcs.Add(new HitObject(pos, lastNote.Timing));
             }
         }
     }

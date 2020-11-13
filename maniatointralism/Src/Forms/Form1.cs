@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
 using FFmpeg.NET;
@@ -16,7 +17,7 @@ namespace ManiaToIntralism.Forms
         private string editorPath;
         private string maniaConfigPath;
         private string editorConfigPath;
-        private readonly Engine ffmpeg = new Engine("FFmpeg.NET.dll");
+        private readonly Engine ffmpeg = new Engine("ffmpeg\\bin\\ffmpeg.exe");
         
         public Form1()
         {
@@ -60,6 +61,8 @@ namespace ManiaToIntralism.Forms
         
         private void ManiaClicked(object sender, EventArgs e)
         {
+            this.LoadConfig();
+            
             OpenFileDialog maniaDialog = new OpenFileDialog
             {
                 InitialDirectory = this.maniaConfigPath,
@@ -90,6 +93,8 @@ namespace ManiaToIntralism.Forms
 
         private void EditorClicked(object sender, EventArgs e)
         {
+            this.LoadConfig();
+            
             CommonOpenFileDialog editorDialog = new CommonOpenFileDialog
             {
                 InitialDirectory = this.editorConfigPath,
@@ -157,8 +162,10 @@ namespace ManiaToIntralism.Forms
             
             File.WriteAllText(newFolder + "\\config.txt", intraFile.ToString());
 
-            this.ffmpeg.ConvertAsync(new MediaFile(this.map.Folder + "\\" + this.map.Audio),
-                                      new MediaFile(newFolder + "\\music.ogg"));
+            Task.Run(async () =>
+                await this.ffmpeg.ConvertAsync(new MediaFile(this.map.Folder + "\\" + this.map.Audio),
+                                     new MediaFile(newFolder + "\\music.ogg"))
+            );
             
             MessageBox.Show(@"Successfully Converted", @"Success", 
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -167,7 +174,7 @@ namespace ManiaToIntralism.Forms
         private void OpenSetting(object sender, EventArgs e)
         {
             Form setting = new FormSetting();
-            setting.Show();
+            setting.ShowDialog();
         }
 
         private void CheckClicked(object sender, EventArgs e)

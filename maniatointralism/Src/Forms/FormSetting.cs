@@ -35,37 +35,26 @@ namespace ManiaToIntralism.Forms
                 }
             }
         }
-
-        // Why have the switch if you have 2 methods that you know exactly what game path you are saving?
-        private void SaveConfig(string path)
+        
+        private void SaveConfig(object sender, EventArgs e)
         {
+
             foreach (XmlNode node in this.config.DocumentElement)
             {
-                node.Attributes[1].Value = path ?? node.Attributes[1].Value;
+                node.Attributes[1].Value = node.Attributes[0].Value switch
+                {
+                    "maniapath"  => this.maniaPathTxt.Text,
+                    "editorpath" => this.editorPathTxt.Text,
+                    var _        => node.Attributes[1].Value,
+                };
             }
 
             this.config.Save("config.xml");
         }
 
-        private void SaveManiaPath(object sender, EventArgs e)
-        {
-            this.SaveConfig(this.maniaPathTxt.Text);
-        }
-        
-        private void SaveEditorPath(object sender, EventArgs e)
-        {
-            this.SaveConfig(this.editorPathTxt.Text);
-        }
+        private void SelectManiaFolder(object sender, EventArgs e) => this.maniaPathTxt.Text = GetFolderName(this.maniaPathTxt.Text);
 
-        private void SelectManiaFolder(object sender, EventArgs e)
-        {
-            this.maniaPathTxt.Text = GetFolderName(this.maniaPathTxt.Text);
-        }
-
-        private void SelectEditorFolder(object sender, EventArgs e)
-        {
-            this.editorPathTxt.Text = GetFolderName(this.editorPathTxt.Text);
-        }
+        private void SelectEditorFolder(object sender, EventArgs e) => this.editorPathTxt.Text = GetFolderName(this.editorPathTxt.Text);
 
         private static string GetFolderName(string initialDirectory)
         {
@@ -78,7 +67,5 @@ namespace ManiaToIntralism.Forms
             
             return folderDialog.FileName;
         }
-
-        private void SaveAllConfig() => throw new NotImplementedException();
     }
 }

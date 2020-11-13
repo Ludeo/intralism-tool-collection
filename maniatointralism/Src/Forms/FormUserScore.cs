@@ -23,11 +23,10 @@ namespace ManiaToIntralism.Forms
             this.table.Columns.Add("Max Points").DataType = this.doubleType;
             this.table.Columns.Add("Difference").DataType = this.doubleType;
             this.table.Columns.Add("Broken?");
-
-            // Yet again dont call it just "t"
+            
             foreach (IEnumerable<object> score in allScores)
             {
-                this.table.Rows.Add(score);
+                this.table.Rows.Add((object[]) score);
             }
 
             DataGridView grid = new DataGridView();
