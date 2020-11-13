@@ -17,6 +17,7 @@ namespace ManiaToIntralism.Forms
         private string editorPath;
         private string maniaConfigPath;
         private string editorConfigPath;
+        private readonly XmlDocument config = new XmlDocument();
         private readonly Engine ffmpeg = new Engine("ffmpeg\\bin\\ffmpeg.exe");
         
         public Form1()
@@ -40,20 +41,18 @@ namespace ManiaToIntralism.Forms
 
         private void LoadConfig()
         {
-            XmlDocument config = new XmlDocument();
-            config.Load("config.xml");
-
-            foreach (XmlNode node in config.DocumentElement)
+            foreach (XmlNode node in this.config.DocumentElement)
             {
-                string nodeAttributeValue = node.Attributes[1].Value;
+                string firstValue = node.Attributes[0].Value;
+                string secondValue = node.Attributes[1].Value;
 
-                switch (node.Attributes[0].Value)
+                switch (firstValue)
                 {
-                    case "maniapath":
-                        this.maniaConfigPath = nodeAttributeValue;
+                    case "maniapath": 
+                        this.maniaConfigPath = secondValue;
                         break;
-                    case "editorpath":
-                        this.editorConfigPath = nodeAttributeValue;
+                    case "editorpath": 
+                        this.editorConfigPath = secondValue;
                         break;
                 }
             }
@@ -207,6 +206,5 @@ namespace ManiaToIntralism.Forms
             Form playerList = new FormPlayerList();
             playerList.Show();
         }
-        
     }
 }

@@ -110,7 +110,7 @@ namespace ManiaToIntralism
             HitObject lastNote = new HitObject(Position.Down.ToString(), -100);
             List<HitObject> lastNotes = new List<HitObject> { lastNote };
 
-            foreach (HitObject x in this.rawNotes.Where(x => Position.TryParse(x.Position.ToString(), out Position a)))
+            foreach (HitObject x in this.rawNotes.Where(x => Enum.TryParse(x.Position.ToString(), out Position a)))
             {
 
                 if (lastNote.Timing == x.Timing)
@@ -119,11 +119,9 @@ namespace ManiaToIntralism
                 }
                 else
                 {
-                    string pos = lastNotes.Aggregate("", (current, y) => (current + "-" + y.Position)).TrimStart('-');
-
                     if (lastNote.Timing != -100)
                     {
-                        this.Arcs.Add(new HitObject(pos, lastNote.Timing));
+                        this.Arcs.Add(new HitObject(GetPosition(lastNotes), lastNote.Timing));
                     }
 
                     lastNotes.Clear();
@@ -134,10 +132,13 @@ namespace ManiaToIntralism
 
             if (this.Arcs.Last().Timing != lastNote.Timing)
             {
-                string pos = lastNotes.Aggregate("", (current, y) => (current + "-" + y.Position)).TrimStart('-');
-
-                this.Arcs.Add(new HitObject(pos, lastNote.Timing));
+                this.Arcs.Add(new HitObject(GetPosition(lastNotes), lastNote.Timing));
             }
+        }
+
+        private static string GetPosition(IEnumerable<HitObject> lastNotes)
+        {
+            return lastNotes.Aggregate("", (current, y) => current + "-" + y.Position).TrimStart('-');
         }
     }
 }

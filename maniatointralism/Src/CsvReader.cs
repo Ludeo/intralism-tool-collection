@@ -6,7 +6,7 @@ namespace ManiaToIntralism
 {
     public class CsvReader
     {
-        public string[][] GetCsvContent(string path)
+        public static string[][] GetCsvContent(string path)
         {
             if (File.Exists(path) && !string.IsNullOrWhiteSpace(File.ReadAllText(path)))
             {

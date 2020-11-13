@@ -16,10 +16,8 @@ namespace ManiaToIntralism
             this.Timing = timing;
         }
         
-        private static string ParseManiaNote(string s)
+        public static string ParseManiaNote(string s)
         {
-            Console.WriteLine(s);
-            
             string[] nums = s.Split("-");
             IEnumerable<Position> positions = nums.Select(e => (Position)Enum.Parse(typeof(Position), e));
 

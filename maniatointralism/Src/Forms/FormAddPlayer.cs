@@ -10,7 +10,7 @@ namespace ManiaToIntralism.Forms
         private const string SavedPlayersCsvPath = "savedplayers.csv";
 
         private readonly StringBuilder stringBuilder = new StringBuilder();
-        private readonly string[][] players = new CsvReader().GetCsvContent(SavedPlayersCsvPath);
+        private readonly string[][] players = CsvReader.GetCsvContent(SavedPlayersCsvPath);
         
         public FormAddPlayer() => this.InitializeComponent();
 
