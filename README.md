@@ -2,7 +2,7 @@
 Collection of tools for Intralism such as Score Checker, Map Converters and Storyboard Helper
 
 # Usage
-If you have c# installed, you can download the c# needed .rar file. If you don't have c# installed, you should download the no c# needed .rar file. Also, if you don't have a ffmpeg.exe file, you should download it as well because map conversion won't work otherwise. If you downloaded or if you have a ffmpeg.exe file, place it inside the ffmpeg/bin folder.
+If you have c# installed, you can download the c# needed .rar file. If you don't have c# installed, you should download the no c# needed .rar file. Also, if you don't have a ffmpeg.exe file, you should download it as well because otherwise the program won't run. If you downloaded or if you have a ffmpeg.exe file, place it inside the ffmpeg/bin folder.
 
 First of all, you should go into the settings and set the mania song folder path and the intralism editor folder path to make the map conversion easier.
 
