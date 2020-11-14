@@ -103,7 +103,11 @@ namespace ManiaToIntralism.Forms
                 InitialDirectory = this.maniaConfigPath,
                 Filter = @"osu! files (*.osu)|*.osu",
             };
-            maniaDialog.ShowDialog();
+
+            if (maniaDialog.ShowDialog() == DialogResult.Cancel)
+            {
+                return;
+            }
 
             if (maniaDialog.FileName != "")
             {
@@ -135,7 +139,11 @@ namespace ManiaToIntralism.Forms
                 InitialDirectory = this.editorConfigPath,
                 IsFolderPicker = true,
             };
-            editorDialog.ShowDialog();
+
+            if (editorDialog.ShowDialog() == CommonFileDialogResult.Cancel)
+            {
+                return;
+            }
 
             this.editorPath = editorDialog.FileName;
         }
@@ -251,7 +259,11 @@ namespace ManiaToIntralism.Forms
                 InitialDirectory = this.editorConfigPath,
                 IsFolderPicker = true,
             };
-            intralismDialog.ShowDialog();
+
+            if (intralismDialog.ShowDialog() == CommonFileDialogResult.Cancel)
+            {
+                return;
+            }
 
             this.intralismMapPath = intralismDialog.FileName;
 
@@ -279,7 +291,11 @@ namespace ManiaToIntralism.Forms
                 InitialDirectory = this.maniaConfigPath,
                 IsFolderPicker = true,
             };
-            maniaDialog.ShowDialog();
+
+            if (maniaDialog.ShowDialog() == CommonFileDialogResult.Cancel)
+            {
+                return;
+            }
 
             this.maniaPath = maniaDialog.FileName;
         }
@@ -355,8 +371,6 @@ namespace ManiaToIntralism.Forms
             
             MessageBox.Show(@"Successfully Converted", @"Success", 
                             MessageBoxButtons.OK, MessageBoxIcon.Information);
-            
-            Console.WriteLine(sb.ToString());
         }
 
     }
