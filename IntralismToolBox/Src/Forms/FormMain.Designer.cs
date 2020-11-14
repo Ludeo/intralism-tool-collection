@@ -35,7 +35,7 @@ namespace ManiaToIntralism.Forms
             this.maniaSelect = new System.Windows.Forms.Button();
             this.editorSelect = new System.Windows.Forms.Button();
             this.ConvertToIntralism = new System.Windows.Forms.Button();
-            this.label = new System.Windows.Forms.Label();
+            this.speedLabel = new System.Windows.Forms.Label();
             this.speedbox = new System.Windows.Forms.TextBox();
             this.maniaIntralismBox = new System.Windows.Forms.GroupBox();
             this.settingsButton = new System.Windows.Forms.Button();
@@ -46,6 +46,8 @@ namespace ManiaToIntralism.Forms
             this.playerLinkLabel = new System.Windows.Forms.Label();
             this.playerLinkText = new System.Windows.Forms.TextBox();
             this.intralismManiaBox = new System.Windows.Forms.GroupBox();
+            this.offsetLabel = new System.Windows.Forms.Label();
+            this.offsetBox = new System.Windows.Forms.TextBox();
             this.ConvertToMania = new System.Windows.Forms.Button();
             this.maniaFolderSelect = new System.Windows.Forms.Button();
             this.intralismSelect = new System.Windows.Forms.Button();
@@ -85,13 +87,13 @@ namespace ManiaToIntralism.Forms
             this.ConvertToIntralism.UseVisualStyleBackColor = true;
             this.ConvertToIntralism.Click += new System.EventHandler(this.ConvertToIntralismClicked);
             // 
-            // label
+            // speedLabel
             // 
-            this.label.Location = new System.Drawing.Point(6, 48);
-            this.label.Name = "label";
-            this.label.Size = new System.Drawing.Size(43, 15);
-            this.label.TabIndex = 3;
-            this.label.Text = "Speed";
+            this.speedLabel.Location = new System.Drawing.Point(6, 48);
+            this.speedLabel.Name = "speedLabel";
+            this.speedLabel.Size = new System.Drawing.Size(43, 15);
+            this.speedLabel.TabIndex = 3;
+            this.speedLabel.Text = "Speed";
             // 
             // speedbox
             // 
@@ -107,7 +109,7 @@ namespace ManiaToIntralism.Forms
             this.maniaIntralismBox.Controls.Add(this.ConvertToIntralism);
             this.maniaIntralismBox.Controls.Add(this.speedbox);
             this.maniaIntralismBox.Controls.Add(this.editorSelect);
-            this.maniaIntralismBox.Controls.Add(this.label);
+            this.maniaIntralismBox.Controls.Add(this.speedLabel);
             this.maniaIntralismBox.Location = new System.Drawing.Point(12, 12);
             this.maniaIntralismBox.Name = "maniaIntralismBox";
             this.maniaIntralismBox.Size = new System.Drawing.Size(215, 96);
@@ -186,6 +188,8 @@ namespace ManiaToIntralism.Forms
             // 
             // intralismManiaBox
             // 
+            this.intralismManiaBox.Controls.Add(this.offsetLabel);
+            this.intralismManiaBox.Controls.Add(this.offsetBox);
             this.intralismManiaBox.Controls.Add(this.ConvertToMania);
             this.intralismManiaBox.Controls.Add(this.maniaFolderSelect);
             this.intralismManiaBox.Controls.Add(this.intralismSelect);
@@ -196,11 +200,27 @@ namespace ManiaToIntralism.Forms
             this.intralismManiaBox.TabStop = false;
             this.intralismManiaBox.Text = "Intralism To Mania Converter";
             // 
+            // offsetLabel
+            // 
+            this.offsetLabel.Location = new System.Drawing.Point(6, 47);
+            this.offsetLabel.Name = "offsetLabel";
+            this.offsetLabel.Size = new System.Drawing.Size(50, 11);
+            this.offsetLabel.TabIndex = 4;
+            this.offsetLabel.Text = "Offset";
+            // 
+            // offsetBox
+            // 
+            this.offsetBox.Location = new System.Drawing.Point(6, 61);
+            this.offsetBox.Name = "offsetBox";
+            this.offsetBox.Size = new System.Drawing.Size(94, 20);
+            this.offsetBox.TabIndex = 3;
+            this.offsetBox.Text = "40";
+            // 
             // ConvertToMania
             // 
-            this.ConvertToMania.Location = new System.Drawing.Point(6, 61);
+            this.ConvertToMania.Location = new System.Drawing.Point(107, 57);
             this.ConvertToMania.Name = "ConvertToMania";
-            this.ConvertToMania.Size = new System.Drawing.Size(95, 26);
+            this.ConvertToMania.Size = new System.Drawing.Size(100, 26);
             this.ConvertToMania.TabIndex = 2;
             this.ConvertToMania.Text = "Convert";
             this.ConvertToMania.UseVisualStyleBackColor = true;
@@ -244,8 +264,13 @@ namespace ManiaToIntralism.Forms
             this.scoreCheckerBox.ResumeLayout(false);
             this.scoreCheckerBox.PerformLayout();
             this.intralismManiaBox.ResumeLayout(false);
+            this.intralismManiaBox.PerformLayout();
             this.ResumeLayout(false);
         }
+
+        private System.Windows.Forms.TextBox offsetBox;
+        private System.Windows.Forms.Label offsetLabel;
+        private System.Windows.Forms.Label speedLabel;
 
         private System.Windows.Forms.Button ConvertToIntralism;
         private System.Windows.Forms.Button ConvertToMania;
@@ -266,7 +291,6 @@ namespace ManiaToIntralism.Forms
 
         private System.Windows.Forms.GroupBox maniaIntralismBox;
 
-        private System.Windows.Forms.Label label;
         private System.Windows.Forms.TextBox speedbox;
 
         private System.Windows.Forms.Button editorSelect;

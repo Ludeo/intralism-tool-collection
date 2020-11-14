@@ -12,9 +12,10 @@ namespace ManiaToIntralism.Forms
         private readonly Type doubleType = Type.GetType("System.Double");
         private readonly Type int32Type = Type.GetType("System.Int32");
         
-        public FormUserScore(IEnumerable<IEnumerable<object>> allScores)
+        public FormUserScore(IEnumerable<IEnumerable<object>> allScores, string user)
         {
             this.InitializeComponent();
+            this.Text = user + "'s Scores";
             this.table.Columns.Add("Map Name");
             this.table.Columns.Add("Score").DataType = this.doubleType;
             this.table.Columns.Add("Accuracy").DataType = this.doubleType;

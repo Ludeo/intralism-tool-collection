@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Dynamic;
 using System.IO;
+using System.Runtime.CompilerServices;
 using System.Text.Json.Serialization;
 using Newtonsoft.Json;
 
 namespace ManiaToIntralism
 {
     
-    public partial class IntralismMap
+    public class IntralismMap
     {
         [JsonProperty("configVersion")]
         public long ConfigVersion { get; set; }

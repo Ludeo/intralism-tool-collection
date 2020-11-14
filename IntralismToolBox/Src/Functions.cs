@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Net;
+using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml;
 using HtmlAgilityPack;
@@ -29,6 +30,7 @@ namespace ManiaToIntralism
             string totalCountryRank = string.Empty;
             string country = string.Empty;
             string pictureLink = string.Empty;
+            string user = string.Empty;
 
             while ((line = sr.ReadLine()) != null)
             {
@@ -62,7 +64,7 @@ namespace ManiaToIntralism
                 }
                 else if (line.Contains("<title>"))
                 {
-                    string user = line;
+                    user = line;
                     int aNumber = user.IndexOf(">", StringComparison.Ordinal);
                     int bNumber = user.IndexOf("<", aNumber, StringComparison.Ordinal);
                     user = user[(aNumber + 13)..bNumber];
@@ -144,11 +146,12 @@ namespace ManiaToIntralism
                 hundredCount,
                 mapCount,
                 rankUpPoints,
-                pictureLink);
+                pictureLink,
+                user);
             
             profileForm.Show();
             
-            FormUserScore userScore = new FormUserScore(allScores);
+            FormUserScore userScore = new FormUserScore(allScores, user);
             userScore.Show();
             
             SaveLastChecked(link);
@@ -355,7 +358,7 @@ namespace ManiaToIntralism
             return Math.Round((beforePoints - currentPoints) * 10000) / 10000;
         }
 
-        public static void SaveLastChecked(string playerLink)
+        private static void SaveLastChecked(string playerLink)
         {
             XmlDocument config = new XmlDocument();
             config.Load("config.xml");
@@ -372,6 +375,22 @@ namespace ManiaToIntralism
             }
             
             config.Save("config.xml");
+        }
+
+        public static StringBuilder ConvertIntralismToMania(IntralismMap map, string artist, string title)
+        {
+            StringBuilder sb = new StringBuilder();
+            string maniaTemplate = File.ReadAllText("Resources\\ManiaMapTemplate.txt");
+            
+            maniaTemplate = maniaTemplate.Replace("replaceAudio", map.MusicFile);
+            maniaTemplate = maniaTemplate.Replace("replacePreview", (map.MusicTime / 2)+"");
+            maniaTemplate = maniaTemplate.Replace("replaceTitle", title);
+            maniaTemplate = maniaTemplate.Replace("replaceArtist", artist);
+            maniaTemplate = maniaTemplate.Replace("replaceBackground", map.IconFile);
+            sb.Append(maniaTemplate);
+            sb.AppendLine("");
+            
+            return sb;
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ManiaToIntralism", "ManiaToIntralism\ManiaToIntralism.csproj", "{3BB70642-0D0B-4A0E-B1AF-43025552A284}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntralismToolBox", "IntralismToolBox\IntralismToolBox.csproj", "{3BB70642-0D0B-4A0E-B1AF-43025552A284}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -31,6 +31,7 @@ namespace ManiaToIntralism.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormUserProfile));
             this.pictureLbl = new System.Windows.Forms.Label();
             this.Lbl1 = new System.Windows.Forms.Label();
             this.globalRankLbl = new System.Windows.Forms.Label();
@@ -290,6 +291,7 @@ namespace ManiaToIntralism.Forms
             this.Controls.Add(this.globalRankLbl);
             this.Controls.Add(this.Lbl1);
             this.Controls.Add(this.pictureLbl);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormUserProfile";
             this.Text = "FormUserProfile";
             this.ResumeLayout(false);

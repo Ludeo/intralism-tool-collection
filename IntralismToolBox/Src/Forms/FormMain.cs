@@ -18,10 +18,13 @@ namespace ManiaToIntralism.Forms
         private ManiaMap maniaMap;
         private IntralismMap intralismMap;
         private string editorPath;
+        private string maniaPath;
         private string maniaConfigPath;
         private string editorConfigPath;
+        private string intralismMapPath;
         private readonly XmlDocument config = new XmlDocument();
         private readonly Engine ffmpeg = new Engine("ffmpeg\\bin\\ffmpeg.exe");
+        private readonly Random rd = new Random();
         
         public Form1()
         {
@@ -153,10 +156,9 @@ namespace ManiaToIntralism.Forms
             
             string newFolder = this.editorPath + "\\" + this.maniaMap.Artist + " - " + this.maniaMap.Title;
             
-            Random rd = new Random();
             while (Directory.Exists(newFolder))
             {
-                newFolder += rd.Next(0, 9);
+                newFolder += this.rd.Next(0, 9);
             }
             
             Directory.CreateDirectory(newFolder);
@@ -222,14 +224,13 @@ namespace ManiaToIntralism.Forms
             };
             intralismDialog.ShowDialog();
 
-            string mapPath = intralismDialog.FileName;
-            
+            this.intralismMapPath = intralismDialog.FileName;
 
-
-            if (!File.Exists(mapPath + "\\config.txt") | string.IsNullOrEmpty(File.ReadAllText(mapPath + "\\config.txt")))
+            if (!File.Exists(this.intralismMapPath + "\\config.txt") | string.IsNullOrEmpty(File.ReadAllText(this.intralismMapPath 
+                                                                                                + "\\config.txt")))
             {
                 MessageBox.Show(
-                    $@"There is no map in this folder",
+                    @"There is no map in this folder",
                     @"Error", 
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
@@ -237,34 +238,94 @@ namespace ManiaToIntralism.Forms
                 return;
             }
 
-            this.intralismMap = IntralismMap.FromJson(mapPath);
+            this.intralismMap = IntralismMap.FromJson(this.intralismMapPath);
         }
 
         private void ManiaFolderClicked(object sender, EventArgs e)
         {
-            throw new System.NotImplementedException();
+            this.LoadConfig();
+            
+            CommonOpenFileDialog maniaDialog = new CommonOpenFileDialog
+            {
+                InitialDirectory = this.maniaConfigPath,
+                IsFolderPicker = true,
+            };
+            maniaDialog.ShowDialog();
+
+            this.maniaPath = maniaDialog.FileName;
         }
 
         private void ConvertToManiaClicked(object sender, EventArgs e)
         {
+
+            if(this.intralismMap == null) {
+                MessageBox.Show(@"No intralism map selected", @"Error", 
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (this.maniaPath == null)
+            {
+                MessageBox.Show(@"No mania path selected", @"Error", 
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            string artist = "Intralism";
+            string title = this.intralismMap.Name;
+            int offset;
+
+            if (!int.TryParse(this.offsetBox.Text, out offset))
+            {
+                offset = 40;
+            }
             
-            //TODO
-            //Add previous mania map parts
-            //copy files into a new created osu folder
-            
-            StringBuilder sb = new StringBuilder();
-        
+            if (this.intralismMap.Name.Contains("-"))
+            {
+                artist = this.intralismMap.Name.Substring(0, this.intralismMap.Name.IndexOf("-", StringComparison.Ordinal));
+                title = this.intralismMap.Name.Substring(this.intralismMap.Name.IndexOf("-", StringComparison.Ordinal), 
+                                                                this.intralismMap.Name.Length - this.intralismMap.Name.IndexOf("-", 
+                                                                    StringComparison.Ordinal)).TrimStart('-');
+            }
+
+            StringBuilder sb = Functions.ConvertIntralismToMania(this.intralismMap, artist, title);
+
             foreach (Event ev in this.intralismMap.Events.Where(i => i.Data[0].Contains("SpawnObj")))
             {
                 string rawArcs = ev.Data[1].Split(",")[0].TrimStart('[').TrimEnd(']');
                 List<string> arcs = rawArcs.Split("-").ToList();
-                int time = (int)TimeSpan.FromSeconds(ev.Time).TotalMilliseconds;
+                int time = (int)TimeSpan.FromSeconds(ev.Time).TotalMilliseconds - offset;
                 
                 foreach (string arc in arcs)
                 {
                     sb.AppendLine($"{(int)Enum.Parse(typeof(Position), arc)},192,{time},1,0,0:0:0:0:");
                 }
             }
+
+            if (!Directory.Exists(this.maniaPath + "\\intralismconverts\\"))
+            {
+                Directory.CreateDirectory(this.maniaPath + "\\intralismconverts\\");
+            }
+            
+            string newFolder = this.maniaPath + "\\intralismconverts\\" + artist + " - " + title;
+            
+            while (Directory.Exists(newFolder))
+            {
+                newFolder += this.rd.Next(0, 9);
+            }
+            
+            Directory.CreateDirectory(newFolder);
+
+            File.Copy(this.intralismMapPath + "\\" + this.intralismMap.IconFile, 
+                      newFolder + "\\" + this.intralismMap.IconFile);
+            
+            File.WriteAllText(newFolder + "\\" +  this.intralismMap.Name + ".osu", sb.ToString());
+
+            File.Copy(this.intralismMapPath + "\\" + this.intralismMap.MusicFile
+                    , newFolder + "\\" + this.intralismMap.MusicFile);
+            
+            MessageBox.Show(@"Successfully Converted", @"Success", 
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
             
             Console.WriteLine(sb.ToString());
         }

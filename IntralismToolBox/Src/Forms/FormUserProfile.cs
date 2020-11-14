@@ -22,9 +22,11 @@ namespace ManiaToIntralism.Forms
             int hundredPlays,
             int totalMaps,
             double pointsTillRankup,
-            string pictureLink)
+            string pictureLink,
+            string user)
         {
             this.InitializeComponent();
+            this.Text = user + "'s Profile";
             this.globalRankLbl.Text = globalRank + " / " + totalGlobalRank;
             this.countryNameLbl.Text = country + " Rank";
             this.countryRankLbl.Text = countryRank + " / " + totalCountryRank;

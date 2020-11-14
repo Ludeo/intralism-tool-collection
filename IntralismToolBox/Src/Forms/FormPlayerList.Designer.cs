@@ -31,6 +31,7 @@ namespace ManiaToIntralism.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPlayerList));
             this.PlayerList = new System.Windows.Forms.ListBox();
             this.checkBtn = new System.Windows.Forms.Button();
             this.addBtn = new System.Windows.Forms.Button();
@@ -84,8 +85,9 @@ namespace ManiaToIntralism.Forms
             this.Controls.Add(this.addBtn);
             this.Controls.Add(this.checkBtn);
             this.Controls.Add(this.PlayerList);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormPlayerList";
-            this.Text = "FormPlayerList";
+            this.Text = "Player List";
             this.ResumeLayout(false);
         }
 

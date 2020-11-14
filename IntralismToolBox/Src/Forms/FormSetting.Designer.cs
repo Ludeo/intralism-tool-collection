@@ -31,13 +31,14 @@ namespace ManiaToIntralism.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormSetting));
             this.maniapathbox = new System.Windows.Forms.GroupBox();
             this.selectManiaPathBtn = new System.Windows.Forms.Button();
             this.maniaPathTxt = new System.Windows.Forms.TextBox();
             this.editorpathbox = new System.Windows.Forms.GroupBox();
             this.selectEditorPathBtn = new System.Windows.Forms.Button();
-            this.saveBtn = new System.Windows.Forms.Button();
             this.editorPathTxt = new System.Windows.Forms.TextBox();
+            this.saveBtn = new System.Windows.Forms.Button();
             this.maniapathbox.SuspendLayout();
             this.editorpathbox.SuspendLayout();
             this.SuspendLayout();
@@ -91,16 +92,6 @@ namespace ManiaToIntralism.Forms
             this.selectEditorPathBtn.UseVisualStyleBackColor = true;
             this.selectEditorPathBtn.Click += new System.EventHandler(this.SelectEditorFolder);
             // 
-            // saveBtn
-            // 
-            this.saveBtn.Location = new System.Drawing.Point(17, 213);
-            this.saveBtn.Name = "saveBtn";
-            this.saveBtn.Size = new System.Drawing.Size(99, 24);
-            this.saveBtn.TabIndex = 1;
-            this.saveBtn.Text = "Save";
-            this.saveBtn.UseVisualStyleBackColor = true;
-            this.saveBtn.Click += new System.EventHandler(this.SaveConfig);
-            // 
             // editorPathTxt
             // 
             this.editorPathTxt.Location = new System.Drawing.Point(9, 18);
@@ -108,16 +99,27 @@ namespace ManiaToIntralism.Forms
             this.editorPathTxt.Size = new System.Drawing.Size(214, 20);
             this.editorPathTxt.TabIndex = 0;
             // 
+            // saveBtn
+            // 
+            this.saveBtn.Location = new System.Drawing.Point(85, 186);
+            this.saveBtn.Name = "saveBtn";
+            this.saveBtn.Size = new System.Drawing.Size(99, 24);
+            this.saveBtn.TabIndex = 1;
+            this.saveBtn.Text = "Save";
+            this.saveBtn.UseVisualStyleBackColor = true;
+            this.saveBtn.Click += new System.EventHandler(this.SaveConfig);
+            // 
             // FormSetting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(282, 249);
+            this.ClientSize = new System.Drawing.Size(274, 222);
             this.Controls.Add(this.editorpathbox);
             this.Controls.Add(this.saveBtn);
             this.Controls.Add(this.maniapathbox);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormSetting";
-            this.Text = "FormSetting";
+            this.Text = "Settings";
             this.Load += new System.EventHandler(this.FormSetting_Load);
             this.maniapathbox.ResumeLayout(false);
             this.maniapathbox.PerformLayout();
