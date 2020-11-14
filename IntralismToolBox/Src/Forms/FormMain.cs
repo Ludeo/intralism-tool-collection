@@ -376,7 +376,7 @@ namespace ManiaToIntralism.Forms
 
         private void MapEditorClicked(object sender, EventArgs e)
         {
-            Form editor = new FormMapEditor();
+            Form editor = new FormMapEditor(editorConfigPath);
             editor.ShowDialog();
         }
     }

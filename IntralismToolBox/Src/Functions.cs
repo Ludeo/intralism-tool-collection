@@ -403,8 +403,8 @@ namespace ManiaToIntralism
         /// </summary>
         /// <param name="initialDirectory">The directory to start the folder dialogue in</param>
         /// <returns>The Selected Path or "" if cancelled.</returns>
-        public static string OpenFolderAndGetName(string initialDirector)
-            => OpenFolder(initialDirector);
+        public static string OpenFolderAndGetName(string initialDirectory)
+            => OpenFolder(initialDirectory);
 
         /// <summary>
         /// Opens folder dialogue starting in the initial directory.
@@ -427,9 +427,9 @@ namespace ManiaToIntralism
                 return "";
             }
             
+            // Return the path and dispose
             string fileName = folderDialog.FileName;
             folderDialog.Dispose();
-            
             return fileName;
         }
         
