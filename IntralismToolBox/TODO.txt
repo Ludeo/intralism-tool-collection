@@ -8,6 +8,7 @@ Multiple Text Sections
 - One main
   - Color coded text for each kind of event to help differintiate (allow user to customize colors)
 - One for each kind of event (arcs, storyboard, zoom, speed)
+- Group Storyboard Events together based on ID (keyframe-inspired style for event editing?)
 
 One Window with tools on a bar or at the top
 - More streamlined than the tab format of FRUP's tool
