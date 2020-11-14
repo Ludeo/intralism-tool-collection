@@ -299,6 +299,8 @@ namespace ManiaToIntralism
 
         private static double GetRankUpPoints(string link, string globalRank, double points)
         {
+            if (globalRank.Equals("?")) return 0.01;
+            
             string playerId = link.Split("=")[1];
             int globalRankInt = int.Parse(globalRank);
             int n = ((globalRankInt - 1) / 100) + 1;

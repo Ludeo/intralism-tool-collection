@@ -1,1 +1,3 @@
 ﻿Try to write a function in Function.cs for loading and saving the config instead of doing that many times in other functions
+
+check a player by their rank and not by tiping in a link
