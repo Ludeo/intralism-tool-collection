@@ -28,9 +28,9 @@ namespace ManiaToIntralism.Forms
         
         public Form1()
         {
+            CheckConfig();
             this.config.Load("config.xml");
             this.InitializeComponent();
-            CheckConfig();
             this.LoadConfig();
         }
 
@@ -39,9 +39,38 @@ namespace ManiaToIntralism.Forms
             if (!File.Exists("config.xml"))
             {
                 XmlDocument config = new XmlDocument();
-                //TODO
-                //add maniapath
-                //add editorpath
+
+                XmlNode rootNode = config.CreateElement("config");
+                config.AppendChild(rootNode);
+                
+                XmlNode nodeMania = config.CreateNode(XmlNodeType.Element, "entry", null);
+                XmlAttribute maniaKey = config.CreateAttribute("key");
+                maniaKey.Value = "maniapath";
+                XmlAttribute maniaValue = config.CreateAttribute("value");
+                maniaValue.Value = $"C:\\Users\\{Environment.UserName}\\AppData\\Local\\osu!\\Songs";
+                nodeMania.Attributes.Append(maniaKey);
+                nodeMania.Attributes.Append(maniaValue);
+
+                XmlNode nodeEditor = config.CreateNode(XmlNodeType.Element, "entry", null);
+                XmlAttribute editorKey = config.CreateAttribute("key");
+                editorKey.Value = "editorpath";
+                XmlAttribute editorValue = config.CreateAttribute("value");
+                editorValue.Value = "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Intralism\\Editor";
+                nodeEditor.Attributes.Append(editorKey);
+                nodeEditor.Attributes.Append(editorValue);
+
+                XmlNode nodeLastPlayer = config.CreateNode(XmlNodeType.Element, "entry", null);
+                XmlAttribute lastPlayerKey = config.CreateAttribute("key");
+                lastPlayerKey.Value = "lastchecked";
+                XmlAttribute lastPlayerValue = config.CreateAttribute("value");
+                lastPlayerValue.Value = "https://intralism.khb-soft.ru/?player=76561198143629166";
+                nodeLastPlayer.Attributes.Append(lastPlayerKey);
+                nodeLastPlayer.Attributes.Append(lastPlayerValue);
+
+                rootNode.AppendChild(nodeMania);
+                rootNode.AppendChild(nodeEditor);
+                rootNode.AppendChild(nodeLastPlayer);
+
                 config.Save("config.xml");
             }
         }
