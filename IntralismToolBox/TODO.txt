@@ -4,6 +4,7 @@ check a player by their rank and not by tiping in a link
 
 
 Config Editor
+
 Multiple Text Sections
 - One main
   - Color coded text for each kind of event to help differintiate (allow user to customize colors)
@@ -12,3 +13,6 @@ Multiple Text Sections
 
 One Window with tools on a bar or at the top
 - More streamlined than the tab format of FRUP's tool
+
+Drag'n'Drop images to automatically add resources
+- Or at least find an easier way to add image resources
