@@ -32,6 +32,9 @@
       <Compile Update="Src\Forms\FormAddPlayer.cs">
         <SubType>Form</SubType>
       </Compile>
+      <Compile Update="Src\Forms\FormMapEditor.cs">
+        <SubType>Form</SubType>
+      </Compile>
     </ItemGroup>
 
     <ItemGroup>

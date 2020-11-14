@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.Design;
 using System.Xml;
 using FFmpeg.NET;
 using ManiaToIntralism.Enums;
@@ -373,5 +374,10 @@ namespace ManiaToIntralism.Forms
                             MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
+        private void MapEditorClicked(object sender, EventArgs e)
+        {
+            Form editor = new FormMapEditor();
+            editor.ShowDialog();
+        }
     }
 }

@@ -51,6 +51,7 @@ namespace ManiaToIntralism.Forms
             this.ConvertToMania = new System.Windows.Forms.Button();
             this.maniaFolderSelect = new System.Windows.Forms.Button();
             this.intralismSelect = new System.Windows.Forms.Button();
+            this.launchMapEditor = new System.Windows.Forms.Button();
             this.maniaIntralismBox.SuspendLayout();
             this.scoreCheckerBox.SuspendLayout();
             this.intralismManiaBox.SuspendLayout();
@@ -246,17 +247,28 @@ namespace ManiaToIntralism.Forms
             this.intralismSelect.UseVisualStyleBackColor = true;
             this.intralismSelect.Click += new System.EventHandler(this.IntralismMapClicked);
             // 
+            // launchMapEditor
+            // 
+            this.launchMapEditor.Location = new System.Drawing.Point(315, 149);
+            this.launchMapEditor.Name = "launchMapEditor";
+            this.launchMapEditor.Size = new System.Drawing.Size(112, 23);
+            this.launchMapEditor.TabIndex = 9;
+            this.launchMapEditor.Text = "Map Config Editor";
+            this.launchMapEditor.UseVisualStyleBackColor = true;
+            this.launchMapEditor.Click += new System.EventHandler(this.MapEditorClicked);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(642, 356);
+            this.Controls.Add(this.launchMapEditor);
             this.Controls.Add(this.intralismManiaBox);
             this.Controls.Add(this.scoreCheckerBox);
             this.Controls.Add(this.settingsButton);
             this.Controls.Add(this.maniaIntralismBox);
             this.HelpButton = true;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Icon = ((System.Drawing.Icon) (resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "Intralism Toolbox";
             this.maniaIntralismBox.ResumeLayout(false);
@@ -267,6 +279,8 @@ namespace ManiaToIntralism.Forms
             this.intralismManiaBox.PerformLayout();
             this.ResumeLayout(false);
         }
+
+        private System.Windows.Forms.Button launchMapEditor;
 
         private System.Windows.Forms.TextBox offsetBox;
         private System.Windows.Forms.Label offsetLabel;
