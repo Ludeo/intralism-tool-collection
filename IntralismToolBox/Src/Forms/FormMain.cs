@@ -373,5 +373,13 @@ namespace ManiaToIntralism.Forms
                             MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
+        private void TestButtonClicked(object sender, EventArgs e)
+        {
+            IntralismMap testMap = IntralismMap.FromJson(this.editorConfigPath + "\\seiyrubluedragon");
+
+            testMap.TurnToBetterInformation();
+            Console.WriteLine(testMap.BetterEvents[0].Type);
+
+        }
     }
 }

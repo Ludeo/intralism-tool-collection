@@ -51,6 +51,7 @@ namespace ManiaToIntralism.Forms
             this.ConvertToMania = new System.Windows.Forms.Button();
             this.maniaFolderSelect = new System.Windows.Forms.Button();
             this.intralismSelect = new System.Windows.Forms.Button();
+            this.testButton = new System.Windows.Forms.Button();
             this.maniaIntralismBox.SuspendLayout();
             this.scoreCheckerBox.SuspendLayout();
             this.intralismManiaBox.SuspendLayout();
@@ -246,11 +247,22 @@ namespace ManiaToIntralism.Forms
             this.intralismSelect.UseVisualStyleBackColor = true;
             this.intralismSelect.Click += new System.EventHandler(this.IntralismMapClicked);
             // 
+            // testButton
+            // 
+            this.testButton.Location = new System.Drawing.Point(332, 188);
+            this.testButton.Name = "testButton";
+            this.testButton.Size = new System.Drawing.Size(75, 23);
+            this.testButton.TabIndex = 9;
+            this.testButton.Text = "Test";
+            this.testButton.UseVisualStyleBackColor = true;
+            this.testButton.Click += new System.EventHandler(this.TestButtonClicked);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(642, 356);
+            this.Controls.Add(this.testButton);
             this.Controls.Add(this.intralismManiaBox);
             this.Controls.Add(this.scoreCheckerBox);
             this.Controls.Add(this.settingsButton);
@@ -267,6 +279,8 @@ namespace ManiaToIntralism.Forms
             this.intralismManiaBox.PerformLayout();
             this.ResumeLayout(false);
         }
+
+        private System.Windows.Forms.Button testButton;
 
         private System.Windows.Forms.TextBox offsetBox;
         private System.Windows.Forms.Label offsetLabel;
