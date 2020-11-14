@@ -2,8 +2,9 @@
 Collection of tools for Intralism such as Score Checker, Map Converters and Storyboard Helper
 
 # Usage
-If you downloaded the version without FFMPEG, make sure that you have the ffmpeg.exe file in the ffmpeg/bin folder, otherwise map convertions won't work.
-First of all, you should go into the settings and set the mania song folder path and the intralism editor folder path to make the map converting easier.
+If you have c# installed, you can download the c# needed .rar file. If you don't have c# installed, you should download the no c# needed .rar file. Also, if you don't have a ffmpeg.exe file, you should download it as well because map conversion won't work otherwise. If you downloaded or if you have a ffmpeg.exe file, place it inside the ffmpeg/bin folder.
+
+First of all, you should go into the settings and set the mania song folder path and the intralism editor folder path to make the map conversion easier.
 
 If you want to convert a Mania map to a Intralism map, you have to select the .osu file for the difficulty you want to convert and you have to select the Intralism editor folder which will be the place where the map gets saved. Then you can select the speed that you want for the map and hit the convert button. 
 
