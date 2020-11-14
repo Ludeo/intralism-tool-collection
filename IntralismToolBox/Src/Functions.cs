@@ -3,9 +3,12 @@ using System.IO;
 using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Windows.Forms;
 using System.Xml;
 using HtmlAgilityPack;
 using ManiaToIntralism.Forms;
+using Microsoft.WindowsAPICodePack.Dialogs;
+using HtmlDocument = HtmlAgilityPack.HtmlDocument;
 
 namespace ManiaToIntralism
 {
@@ -394,5 +397,49 @@ namespace ManiaToIntralism
             
             return sb;
         }
+        
+        /// <summary>
+        /// Opens Folder Dialogue and returns the selected path or "" if cancelled.
+        /// </summary>
+        /// <param name="initialDirectory">The directory to start the folder dialogue in</param>
+        /// <returns>The Selected Path or "" if cancelled.</returns>
+        public static string OpenFolderAndGetName(string initialDirector)
+            => OpenFolder(initialDirector);
+
+        /// <summary>
+        /// Opens folder dialogue starting in the initial directory.
+        /// </summary>
+        /// <param name="initialDirectory"></param>
+        /// <returns></returns>
+        private static string OpenFolder(string initialDirectory)
+        {
+            CommonOpenFileDialog folderDialog = new CommonOpenFileDialog
+            {
+                InitialDirectory = initialDirectory,
+                IsFolderPicker = true,
+                RestoreDirectory = true,
+            };
+
+            // If the user cancelled, return ""
+            if (folderDialog.ShowDialog() != CommonFileDialogResult.Ok)
+            {
+                folderDialog.Dispose();
+                return "";
+            }
+            
+            string fileName = folderDialog.FileName;
+            folderDialog.Dispose();
+            
+            return fileName;
+        }
+        
+        /// <summary>
+        /// Useful for telling the user when they're being a dumbass
+        /// </summary>
+        /// <param name="message">The error message, provide information that can be useful for the user.
+        /// (i.e. WHY they got this message and how they can fix it)</param>
+        /// <param name="title">The Title of the error box.</param>
+        public static void DisplayErrorMessage(string message, string title = "You Dignus!")
+            => MessageBox.Show(message, title);
     }
 }
