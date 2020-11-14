@@ -97,69 +97,36 @@ namespace ManiaToIntralism.Forms
         private void ManiaMapClicked(object sender, EventArgs e)
         {
             this.LoadConfig();
-            
-            OpenFileDialog maniaDialog = new OpenFileDialog
-            {
-                InitialDirectory = this.maniaConfigPath,
-                Filter = @"osu! files (*.osu)|*.osu",
-            };
 
-            if (maniaDialog.ShowDialog() == DialogResult.Cancel)
+            string mapPath = Functions.OpenFileAndGetName(this.maniaConfigPath);
+            ManiaMap temp = new ManiaMap(mapPath);
+
+            if (temp.Mode != Mode.Mania)
             {
+                DisplayErrorMessage("This map is a {temp.Mode} map. Please select a mania map", "Error");
                 return;
             }
 
-            if (maniaDialog.FileName != "")
-            {
-                string maniaMap = maniaDialog.FileName;
-
-                ManiaMap temp = new ManiaMap(maniaMap);
-
-                if (temp.Mode != Mode.Mania)
-                {
-                    MessageBox.Show(
-                        $@"This map is a {temp.Mode} map. Please select a mania map",
-                        @"Error", 
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
-
-                    return;
-                }
-
-                this.maniaMap = temp;
-            }
+            this.maniaMap = temp;
         }
 
         private void EditorFolderClicked(object sender, EventArgs e)
         {
             this.LoadConfig();
-            
-            CommonOpenFileDialog editorDialog = new CommonOpenFileDialog
-            {
-                InitialDirectory = this.editorConfigPath,
-                IsFolderPicker = true,
-            };
 
-            if (editorDialog.ShowDialog() == CommonFileDialogResult.Cancel)
-            {
-                return;
-            }
-
-            this.editorPath = editorDialog.FileName;
+            this.editorPath = OpenFolderAndGetName(this.editorConfigPath);
         }
 
         private void ConvertToIntralismClicked(object sender, EventArgs e)
         {
             if(this.maniaMap == null) {
-                MessageBox.Show(@"No mania map selected", @"Error", 
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                DisplayErrorMessage("No mania map selected", "Error");
                 return;
             }
 
             if (this.editorPath == null)
             {
-                MessageBox.Show(@"No editor path selected", @"Error", 
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                DisplayErrorMessage("No editor path selected", "Error");
                 return;
             }
 
@@ -253,29 +220,13 @@ namespace ManiaToIntralism.Forms
         private void IntralismMapClicked(object sender, EventArgs e)
         {
             this.LoadConfig();
-            
-            CommonOpenFileDialog intralismDialog = new CommonOpenFileDialog
+
+            this.intralismMapPath = OpenFolderAndGetName(this.editorConfigPath);
+            string configPath = intralismMapPath + @"\config.txt";
+
+            if (!File.Exists(configPath) | string.IsNullOrEmpty(File.ReadAllText(configPath)))
             {
-                InitialDirectory = this.editorConfigPath,
-                IsFolderPicker = true,
-            };
-
-            if (intralismDialog.ShowDialog() == CommonFileDialogResult.Cancel)
-            {
-                return;
-            }
-
-            this.intralismMapPath = intralismDialog.FileName;
-
-            if (!File.Exists(this.intralismMapPath + "\\config.txt") | string.IsNullOrEmpty(File.ReadAllText(this.intralismMapPath 
-                                                                                                + "\\config.txt")))
-            {
-                MessageBox.Show(
-                    @"There is no map in this folder",
-                    @"Error", 
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-
+                DisplayErrorMessage("There is no map in this folder", @"Error");
                 return;
             }
 
@@ -285,34 +236,22 @@ namespace ManiaToIntralism.Forms
         private void ManiaFolderClicked(object sender, EventArgs e)
         {
             this.LoadConfig();
-            
-            CommonOpenFileDialog maniaDialog = new CommonOpenFileDialog
-            {
-                InitialDirectory = this.maniaConfigPath,
-                IsFolderPicker = true,
-            };
 
-            if (maniaDialog.ShowDialog() == CommonFileDialogResult.Cancel)
-            {
-                return;
-            }
-
-            this.maniaPath = maniaDialog.FileName;
+            this.maniaPath = OpenFolderAndGetName(this.maniaConfigPath);
         }
 
         private void ConvertToManiaClicked(object sender, EventArgs e)
         {
 
-            if(this.intralismMap == null) {
-                MessageBox.Show(@"No intralism map selected", @"Error", 
-                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+            if (this.intralismMap == null)
+            {
+                DisplayErrorMessage("No intralism map selected", "Error");
                 return;
             }
 
             if (this.maniaPath == null)
             {
-                MessageBox.Show(@"No mania path selected", @"Error", 
-                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                DisplayErrorMessage("No mania path selected", "Error");
                 return;
             }
 
