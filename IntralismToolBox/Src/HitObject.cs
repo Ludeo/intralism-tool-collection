@@ -5,6 +5,9 @@ using ManiaToIntralism.Enums;
 
 namespace ManiaToIntralism
 {
+    /// <summary>
+    /// object of an intralism arc
+    /// </summary>
     public readonly struct HitObject
     {
         public string Position { get; }
@@ -16,6 +19,9 @@ namespace ManiaToIntralism
             this.Timing = timing;
         }
         
+        /// <summary>
+        /// validates that it is a correct arc 
+        /// </summary>
         public static string ParseManiaNote(string s)
         {
             string[] nums = s.Split("-");

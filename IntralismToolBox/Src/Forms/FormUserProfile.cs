@@ -5,6 +5,9 @@ using System.Windows.Forms;
 
 namespace ManiaToIntralism.Forms
 {
+    /// <summary>
+    /// Form that will display the general profile information of a player with the given values
+    /// </summary>
     public partial class FormUserProfile : Form
     {
         public FormUserProfile(
@@ -26,6 +29,7 @@ namespace ManiaToIntralism.Forms
             string user)
         {
             this.InitializeComponent();
+            // changes the value of labels to the information that was given when the object was created
             this.Text = user + "'s Profile";
             this.globalRankLbl.Text = globalRank + " / " + totalGlobalRank;
             this.countryNameLbl.Text = country + " Rank";
@@ -39,9 +43,11 @@ namespace ManiaToIntralism.Forms
             this.hundredLbl.Text = hundredPlays.ToString();
             this.totalMapsLbl.Text = totalMaps.ToString();
             this.pointsRankupLbl.Text = pointsTillRankup.ToString();
+            // creates a webclient to open the pictureLink and saves it in an image object
             WebClient webClient = new WebClient();
             Stream stream = webClient.OpenRead(pictureLink);
             Image image = Image.FromStream(stream);
+            // resizes the image to the height and with of the label of the picture
             Image newImage = new Bitmap(image, new Size(this.pictureLbl.Width, this.pictureLbl.Height));
             this.pictureLbl.Image = newImage;
         }

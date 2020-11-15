@@ -2,6 +2,9 @@
 
 namespace ManiaToIntralism
 {
+    /// <summary>
+    /// object of an intralism player that contains the name and the link
+    /// </summary>
     public class Player
     {
         [JsonPropertyName("name")]
