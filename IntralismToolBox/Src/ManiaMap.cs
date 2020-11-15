@@ -150,7 +150,7 @@ namespace ManiaToIntralism
         /// </example>
         private static string GetPosition(IEnumerable<HitObject> lastNotes)
         {
-            return lastNotes.Aggregate("", (current, y) => current + "-" + y.Position).TrimStart('-');
+            return lastNotes.Aggregate(string.Empty, (current, y) => current + "-" + y.Position).TrimStart('-');
         }
     }
 }

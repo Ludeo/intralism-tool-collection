@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 
 namespace ManiaToIntralism
 {
- 
+
     /// <summary>
     /// object of an intralism map that gets its values through reading a json file <see cref="FromJson"/>
     /// </summary>
@@ -66,7 +66,7 @@ namespace ManiaToIntralism
 
         [JsonProperty("events")]
         public List<Event> Events { get; set; }
-        
+
         // this is not part of the json itself and should get converted back to events before writing it to a config.txt file
         [Newtonsoft.Json.JsonIgnore]
         public List<BetterEvent> BetterEvents { get; set; } = new List<BetterEvent>();
@@ -84,7 +84,7 @@ namespace ManiaToIntralism
         {
             // clears the list of betterevents to prevent double entries
             this.BetterEvents.Clear();
-            
+
             // adds every event from the list Events to the list BetterEvents after parsing the events to better events
             foreach (Event ev in this.Events)
             {
@@ -103,10 +103,12 @@ namespace ManiaToIntralism
             // adds every betterevent from the betterevent list to the list of events after parsing betterevents to events
             foreach (BetterEvent ev in this.BetterEvents)
             {
-                List<string> data = new List<string>();
-                data.Add(ev.Type);
-                data.Add(ev.EventInformation);
-                
+                List<string> data = new List<string>
+                {
+                    ev.Type,
+                    ev.EventInformation,
+                };
+
                 this.Events.Add(new Event(ev.Time, data));
             }
         }
@@ -150,25 +152,23 @@ namespace ManiaToIntralism
         [JsonProperty("path")]
         public string Path { get; set; }
     }
-    
+
     public partial class BetterEvent
     {
         [JsonProperty("time")]
         public double Time { get; set; }
-        
+
         [JsonProperty("type")]
         public string Type { get; set; }
 
         [JsonProperty("eventinformation")]
         public string EventInformation { get; set; }
 
-        public BetterEvent(double time, List<string> data)
+        public BetterEvent(double time, IReadOnlyList<string> data)
         {
             this.Time = time;
             this.Type = Enum.Parse(typeof(EventType), data[0]).ToString();
             this.EventInformation = data[1];
         }
     }
-    
 }
-

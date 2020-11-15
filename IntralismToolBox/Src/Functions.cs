@@ -18,7 +18,7 @@ namespace ManiaToIntralism
         {
             WebClient wc = new WebClient();
             string profileInfo = wc.DownloadString(link);
-            profileInfo = Regex.Replace(profileInfo, @"^\s*$[\r\n]*", "", RegexOptions.Multiline);
+            profileInfo = Regex.Replace(profileInfo, @"^\s*$[\r\n]*", string.Empty, RegexOptions.Multiline);
 
             StringReader sr = new StringReader(profileInfo);
             string line;
@@ -70,7 +70,7 @@ namespace ManiaToIntralism
                     user = line;
                     int aNumber = user.IndexOf(">", StringComparison.Ordinal);
                     int bNumber = user.IndexOf("<", aNumber, StringComparison.Ordinal);
-                    user = user[(aNumber + 13)..bNumber];
+                    user = user[(aNumber + 13) ..bNumber];
                 }
                 else if (line.Contains("strong>Global Rank"))
                 {
@@ -83,11 +83,11 @@ namespace ManiaToIntralism
 
                     int aNumber = globalRank.IndexOf("\">", StringComparison.Ordinal);
                     int bNumber = globalRank.IndexOf("</span", aNumber, StringComparison.Ordinal);
-                    globalRank = globalRank[(aNumber + 2)..bNumber];
+                    globalRank = globalRank[(aNumber + 2) ..bNumber];
 
                     totalGlobalRank = line;
                     aNumber = totalGlobalRank.IndexOf("</span>", StringComparison.Ordinal);
-                    totalGlobalRank = totalGlobalRank[(aNumber + 10)..(line.Length - 4)];
+                    totalGlobalRank = totalGlobalRank[(aNumber + 10) .. (line.Length - 4)];
                 }
                 else if (line.Contains("Country Rank"))
                 {
@@ -100,25 +100,25 @@ namespace ManiaToIntralism
 
                     int aNumber = countryRank.IndexOf("\">", StringComparison.Ordinal);
                     int bNumber = countryRank.IndexOf("</span", aNumber, StringComparison.Ordinal);
-                    countryRank = countryRank[(aNumber + 2)..bNumber];
+                    countryRank = countryRank[(aNumber + 2) ..bNumber];
 
                     totalCountryRank = line;
                     aNumber = totalCountryRank.IndexOf("</span", StringComparison.Ordinal);
-                    totalCountryRank = totalCountryRank[(aNumber + 10)..(line.Length - 4)];
+                    totalCountryRank = totalCountryRank[(aNumber + 10) .. (line.Length - 4)];
                 }
                 else if (line.Contains(">#"))
                 {
                     country = sr.ReadLine();
                     int aNumber = country.IndexOf("title=\"", StringComparison.Ordinal);
                     int bNumber = country.IndexOf("><span", aNumber, StringComparison.Ordinal);
-                    country = country[(aNumber + 7)..(bNumber - 3)];
+                    country = country[(aNumber + 7) .. (bNumber - 3)];
                 }
                 else if (line.Contains("og:image"))
                 {
                     pictureLink = line;
                     int aNumber = pictureLink.IndexOf("content", StringComparison.Ordinal);
                     int bNumber = pictureLink.IndexOf(">", StringComparison.Ordinal);
-                    pictureLink = pictureLink[(aNumber + 9)..(bNumber - 3)];
+                    pictureLink = pictureLink[(aNumber + 9) .. (bNumber - 3)];
                 }
             }
 
@@ -205,16 +205,16 @@ namespace ManiaToIntralism
                 string value = inputValues[i];
                 int aNumber = value.IndexOf(">", StringComparison.Ordinal);
                 int bNumber = value.IndexOf("<", aNumber, StringComparison.Ordinal);
-                value = value[(aNumber + 1)..bNumber];
+                value = value[(aNumber + 1) ..bNumber];
 
                 if (i != 1)
                 {
-                    outputValues[i] = value.Replace(" ", "");
+                    outputValues[i] = value.Replace(" ", string.Empty);
                 }
                 else
                 {
-                    value = value.Replace("\\n+", "");
-                    outputValues[i] = value.Replace("%", "");
+                    value = value.Replace("\\n+", string.Empty);
+                    outputValues[i] = value.Replace("%", string.Empty);
                 }
             }
 
@@ -255,7 +255,6 @@ namespace ManiaToIntralism
                     }
 
                     rankedPoints += actPoints;
-
                 }
                 else
                 {
@@ -302,7 +301,10 @@ namespace ManiaToIntralism
 
         private static double GetRankUpPoints(string link, string globalRank, double points)
         {
-            if (globalRank.Equals("?")) return 0.01;
+            if (globalRank.Equals("?"))
+            {
+                return 0.01;
+            }
             
             string playerId = link.Split("=")[1];
             int globalRankInt = int.Parse(globalRank);
@@ -323,7 +325,6 @@ namespace ManiaToIntralism
             if (globalRankInt % 100 == 1)
             {
                 before = nodes[^1];
-
             }
             else
             {
@@ -346,14 +347,13 @@ namespace ManiaToIntralism
             {
                 before = nodes[^1];
                 currentPoints = points;
-
             }
             else
             {
-                currentPoints = double.Parse(current.SelectNodes("td")[3].InnerText.Replace(" ", ""));
+                currentPoints = double.Parse(current.SelectNodes("td")[3].InnerText.Replace(" ", string.Empty));
             }
 
-            double beforePoints = double.Parse(before.SelectNodes("td")[3].InnerText.Replace(" ", ""));
+            double beforePoints = double.Parse(before.SelectNodes("td")[3].InnerText.Replace(" ", string.Empty));
 
             if (globalRankInt == 1)
             {
@@ -388,12 +388,12 @@ namespace ManiaToIntralism
             string maniaTemplate = File.ReadAllText("Resources\\ManiaMapTemplate.txt");
             
             maniaTemplate = maniaTemplate.Replace("replaceAudio", map.MusicFile);
-            maniaTemplate = maniaTemplate.Replace("replacePreview", (map.MusicTime / 2)+"");
+            maniaTemplate = maniaTemplate.Replace("replacePreview", (map.MusicTime / 2) + string.Empty);
             maniaTemplate = maniaTemplate.Replace("replaceTitle", title);
             maniaTemplate = maniaTemplate.Replace("replaceArtist", artist);
             maniaTemplate = maniaTemplate.Replace("replaceBackground", map.IconFile);
             sb.Append(maniaTemplate);
-            sb.AppendLine("");
+            sb.AppendLine(string.Empty);
             
             return sb;
         }
@@ -410,7 +410,7 @@ namespace ManiaToIntralism
             if (fileDialog.ShowDialog() != DialogResult.OK)
             {
                 fileDialog.Dispose();
-                return "";
+                return string.Empty;
             }
 
             // Return the path and dispose
@@ -422,7 +422,7 @@ namespace ManiaToIntralism
         /// <summary>
         /// Opens Folder Dialogue and returns the selected path or "" if cancelled.
         /// </summary>
-        /// <param name="initialDirectory">The directory to start the folder dialogue in</param>
+        /// <param name="initialDirectory">The directory to start the folder dialogue in.</param>
         /// <returns>The Selected Path or "" if cancelled.</returns>
         public static string OpenFolderAndGetName(string initialDirectory)
         {
@@ -433,11 +433,11 @@ namespace ManiaToIntralism
                 RestoreDirectory = true,
             };
 
-            // If the user cancelled, return ""
+            // If the user cancelled, return string.Empty
             if (folderDialog.ShowDialog() != CommonFileDialogResult.Ok)
             {
                 folderDialog.Dispose();
-                return "";
+                return string.Empty;
             }
             
             // Return the path and dispose
@@ -450,7 +450,7 @@ namespace ManiaToIntralism
         /// Useful for telling the user when they're being a dumbass
         /// </summary>
         /// <param name="message">The error message, provide information that can be useful for the user.
-        /// (i.e. WHY they got this message and how they can fix it)</param>
+        /// (i.e. WHY they got this message and how they can fix it).</param>
         /// <param name="title">The Title of the error box.</param>
         public static void DisplayErrorMessage(string message, string title = "You Dignus!")
             => MessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
