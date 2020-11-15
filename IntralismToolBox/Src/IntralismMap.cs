@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.Tracing;
-using System.Dynamic;
 using System.IO;
 using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text.Json.Serialization;
 using ManiaToIntralism.Enums;
 using Newtonsoft.Json;
 
@@ -68,6 +64,7 @@ namespace ManiaToIntralism
         [JsonProperty("events")]
         public List<Event> Events { get; set; }
         
+        [Newtonsoft.Json.JsonIgnore]
         public List<BetterEvent> BetterEvents { get; set; } = new List<BetterEvent>();
 
         public static IntralismMap FromJson(string path)
@@ -75,14 +72,38 @@ namespace ManiaToIntralism
             return JsonConvert.DeserializeObject<IntralismMap>(File.ReadAllText((path + "\\config.txt")));
         }
 
-        public void TurnToBetterInformation()
+        public void EventsToBetterEvents()
         {
-            List<Event> oldEvents = this.Events;
-
-            foreach (Event ev in oldEvents)
+            this.BetterEvents.Clear();
+            
+            foreach (Event ev in this.Events)
             {
                 this.BetterEvents.Add(new BetterEvent(ev.Time, ev.Data));
             }
+        }
+
+        public void BetterEventsToEvents()
+        {
+            this.Events.Clear();
+
+            foreach (BetterEvent ev in this.BetterEvents)
+            {
+                List<string> data = new List<string>();
+                data.Add(ev.Type);
+                data.Add(ev.EventInformation);
+                
+                this.Events.Add(new Event(ev.Time, data));
+            }
+        }
+
+        public void SortBetterEvents()
+        {
+            this.BetterEvents = this.BetterEvents.OrderBy(x => x.Type).ToList();
+        }
+
+        public void SortEvents()
+        {
+            this.Events = this.Events.OrderBy(x => x.Data[0]).ToList();
         }
     }
 
@@ -93,6 +114,12 @@ namespace ManiaToIntralism
 
         [JsonProperty("data")]
         public List<string> Data { get; set; }
+
+        public Event(double time, List<string> data)
+        {
+            this.Time = time;
+            this.Data = data;
+        }
     }
 
     public partial class LevelResource
@@ -109,16 +136,19 @@ namespace ManiaToIntralism
     
     public partial class BetterEvent
     {
+        [JsonProperty("time")]
         public double Time { get; set; }
         
-        public EventType Type { get; set; }
+        [JsonProperty("type")]
+        public string Type { get; set; }
 
+        [JsonProperty("eventinformation")]
         public string EventInformation { get; set; }
 
         public BetterEvent(double time, List<string> data)
         {
             this.Time = time;
-            this.Type = (EventType)Enum.Parse(typeof(EventType), data[0]);
+            this.Type = Enum.Parse(typeof(EventType), data[0]).ToString();
             this.EventInformation = data[1];
         }
     }

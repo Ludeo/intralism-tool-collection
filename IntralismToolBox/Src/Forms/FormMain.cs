@@ -8,8 +8,9 @@ using System.Windows.Forms;
 using System.Xml;
 using FFmpeg.NET;
 using ManiaToIntralism.Enums;
-using Microsoft.WindowsAPICodePack.Dialogs;
+using Newtonsoft.Json;
 using static ManiaToIntralism.Functions;
+using Formatting = Newtonsoft.Json.Formatting;
 
 namespace ManiaToIntralism.Forms
 {
@@ -98,7 +99,7 @@ namespace ManiaToIntralism.Forms
         {
             this.LoadConfig();
 
-            string mapPath = Functions.OpenFileAndGetName(this.maniaConfigPath);
+            string mapPath = OpenFileAndGetName(this.maniaConfigPath);
             ManiaMap temp = new ManiaMap(mapPath);
 
             if (temp.Mode != Mode.Mania)
@@ -316,9 +317,14 @@ namespace ManiaToIntralism.Forms
         {
             IntralismMap testMap = IntralismMap.FromJson(this.editorConfigPath + "\\seiyrubluedragon");
 
-            testMap.TurnToBetterInformation();
-            Console.WriteLine(testMap.BetterEvents[0].Type);
+            //testMap.EventsToBetterEvents();
+            testMap.SortEvents();
 
+            foreach (Event ev in testMap.Events.Where(x => x.Data[0] != "SpawnObj"))
+            {
+                Console.WriteLine(JsonConvert.SerializeObject(ev, Formatting.Indented));
+            }
+            
         }
     }
 }
