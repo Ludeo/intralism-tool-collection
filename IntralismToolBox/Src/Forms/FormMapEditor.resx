@@ -120,4 +120,7 @@
   <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>135, 17</value>
   </metadata>
+  <data name="richTextBox3.Text" xml:space="preserve">
+    <value>Need to figure out a time-friendly format for storyboard editing. Where multiple storyboard "events" can be batched at one time but read out here as if it's a single event for a single entity rather than 30</value>
+  </data>
 </root>
