@@ -40,6 +40,7 @@ namespace ManiaToIntralism.Forms
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.undoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.redoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.eventConfig = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
             this.defaultConfig = new System.Windows.Forms.Panel();
@@ -56,7 +57,6 @@ namespace ManiaToIntralism.Forms
             this.richTextBox6 = new System.Windows.Forms.RichTextBox();
             this.resizeNS = new System.Windows.Forms.Panel();
             this.resizeWE = new System.Windows.Forms.Panel();
-            this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.eventConfig.SuspendLayout();
             this.defaultConfig.SuspendLayout();
@@ -120,15 +120,22 @@ namespace ManiaToIntralism.Forms
             // 
             this.undoToolStripMenuItem.Name = "undoToolStripMenuItem";
             this.undoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys) ((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
-            this.undoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.undoToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
             this.undoToolStripMenuItem.Text = "Undo";
             // 
             // redoToolStripMenuItem
             // 
             this.redoToolStripMenuItem.Name = "redoToolStripMenuItem";
             this.redoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys) ((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Y)));
-            this.redoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.redoToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
             this.redoToolStripMenuItem.Text = "Redo";
+            // 
+            // settingsToolStripMenuItem
+            // 
+            this.settingsToolStripMenuItem.Enabled = false;
+            this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
+            this.settingsToolStripMenuItem.Text = "Settings";
             // 
             // eventConfig
             // 
@@ -321,20 +328,13 @@ namespace ManiaToIntralism.Forms
             this.resizeWE.Anchor = ((System.Windows.Forms.AnchorStyles) (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Right)));
             this.resizeWE.AutoSize = true;
             this.resizeWE.Cursor = System.Windows.Forms.Cursors.SizeWE;
-            this.resizeWE.Location = new System.Drawing.Point(821, 22);
+            this.resizeWE.Location = new System.Drawing.Point(823, 22);
             this.resizeWE.Name = "resizeWE";
-            this.resizeWE.Size = new System.Drawing.Size(16, 507);
+            this.resizeWE.Size = new System.Drawing.Size(13, 739);
             this.resizeWE.TabIndex = 6;
             this.resizeWE.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FormMouseDown);
             this.resizeWE.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ResizeWestAndEast);
             this.resizeWE.MouseUp += new System.Windows.Forms.MouseEventHandler(this.FormMouseUp);
-            // 
-            // settingsToolStripMenuItem
-            // 
-            this.settingsToolStripMenuItem.Enabled = false;
-            this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
-            this.settingsToolStripMenuItem.Text = "Settings";
             // 
             // FormMapEditor
             // 
