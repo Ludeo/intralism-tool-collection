@@ -2,7 +2,7 @@
 
 namespace ManiaToIntralism.Forms
 {
-    partial class FormUserScore
+    partial class UserScoreForm
     {
         /// <summary>
         /// Required designer variable.
@@ -31,7 +31,7 @@ namespace ManiaToIntralism.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormUserScore));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserScoreForm));
             this.SuspendLayout();
             // 
             // FormUserScore
@@ -40,7 +40,7 @@ namespace ManiaToIntralism.Forms
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "FormUserScore";
+            this.Name = "UserScoreForm";
             this.Text = "FormUserScore";
             this.ResumeLayout(false);
         }

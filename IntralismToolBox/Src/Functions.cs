@@ -23,7 +23,6 @@ namespace ManiaToIntralism
             StringReader sr = new StringReader(profileInfo);
             string line;
 
-            CsvReader reader = new CsvReader();
             string[][] mapData = CsvReader.GetCsvContent("scores.csv");
             object[][] allScores = FillAllScores(mapData);
 
@@ -134,7 +133,7 @@ namespace ManiaToIntralism
             int hundredCount = (int)recalcResult[6];
             int mapCount = allScores.Length;
 
-            FormUserProfile profileForm = new FormUserProfile(
+            UserProfileForm profileUserProfileForm = new UserProfileForm(
                 globalRank,
                 totalGlobalRank,
                 country,
@@ -151,12 +150,12 @@ namespace ManiaToIntralism
                 rankUpPoints,
                 pictureLink,
                 user);
-            
-            profileForm.Show();
-            
-            FormUserScore userScore = new FormUserScore(allScores, user);
+
+            profileUserProfileForm.Show();
+
+            UserScoreForm userScore = new UserScoreForm(allScores, user);
             userScore.Show();
-            
+
             SaveLastChecked(link);
         }
 
@@ -282,7 +281,7 @@ namespace ManiaToIntralism
 
             double avgAccExact = totalAcc / (mapCount - notPlayed);
             double avgAcc = Math.Round(avgAccExact * 10000) / 10000;
-            
+
             double avgMiss = (double)totalMiss / mapCount;
             avgMiss = Math.Round(avgMiss * 100) / 100;
 
@@ -305,7 +304,7 @@ namespace ManiaToIntralism
             {
                 return 0.01;
             }
-            
+
             string playerId = link.Split("=")[1];
             int globalRankInt = int.Parse(globalRank);
             int n = ((globalRankInt - 1) / 100) + 1;
@@ -378,7 +377,7 @@ namespace ManiaToIntralism
                         break;
                 }
             }
-            
+
             config.Save("config.xml");
         }
 
@@ -386,7 +385,7 @@ namespace ManiaToIntralism
         {
             StringBuilder sb = new StringBuilder();
             string maniaTemplate = File.ReadAllText("Resources\\ManiaMapTemplate.txt");
-            
+
             maniaTemplate = maniaTemplate.Replace("replaceAudio", map.MusicFile);
             maniaTemplate = maniaTemplate.Replace("replacePreview", (map.MusicTime / 2) + string.Empty);
             maniaTemplate = maniaTemplate.Replace("replaceTitle", title);
@@ -394,7 +393,7 @@ namespace ManiaToIntralism
             maniaTemplate = maniaTemplate.Replace("replaceBackground", map.IconFile);
             sb.Append(maniaTemplate);
             sb.AppendLine(string.Empty);
-            
+
             return sb;
         }
 
@@ -439,13 +438,13 @@ namespace ManiaToIntralism
                 folderDialog.Dispose();
                 return string.Empty;
             }
-            
+
             // Return the path and dispose
             string folderName = folderDialog.FileName;
             folderDialog.Dispose();
             return folderName;
         }
-        
+
         /// <summary>
         /// Useful for telling the user when they're being a dumbass
         /// </summary>

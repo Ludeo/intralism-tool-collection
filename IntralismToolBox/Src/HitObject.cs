@@ -5,21 +5,18 @@ using ManiaToIntralism.Enums;
 
 namespace ManiaToIntralism
 {
-    /// <summary>
-    /// object of an intralism arc
-    /// </summary>
     public readonly struct HitObject
     {
-        public string Position { get; }
-        
-        public double Timing   { get; }
-
         public HitObject(string maniaNote, double timing)
         {
             this.Position = ParseManiaNote(maniaNote);
             this.Timing = timing;
         }
-        
+
+        public string Position { get; }
+
+        public double Timing   { get; }
+
         private static string ParseManiaNote(string s)
         {
             string[] nums = s.Split("-");

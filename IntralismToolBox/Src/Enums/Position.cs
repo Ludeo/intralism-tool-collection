@@ -2,9 +2,6 @@
 
 namespace ManiaToIntralism.Enums
 {
-    /// <summary>
-    /// enum of the arc positions in intralism
-    /// </summary>
     [Flags]
     public enum Position
     {

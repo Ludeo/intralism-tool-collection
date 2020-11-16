@@ -1,9 +1,5 @@
 ﻿namespace ManiaToIntralism.Enums
 {
-    /// <summary>
-    /// Enum of all different Event types, that exist in Intralism
-    /// </summary>
-    
     public enum EventType
     {
         SpawnObj,

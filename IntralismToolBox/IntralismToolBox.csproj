@@ -23,16 +23,16 @@
       <Compile Update="FormSetting.cs">
         <SubType>Form</SubType>
       </Compile>
-      <Compile Update="Src\Forms\FormUserScore.cs">
+      <Compile Update="Src\Forms\UserScoreForm.cs">
         <SubType>Form</SubType>
       </Compile>
-      <Compile Update="Src\Forms\FormUserProfile.cs">
+      <Compile Update="Src\Forms\UserProfileForm.cs">
         <SubType>Form</SubType>
       </Compile>
-      <Compile Update="Src\Forms\FormPlayerList.cs">
+      <Compile Update="Src\Forms\PlayerListForm.cs">
         <SubType>Form</SubType>
       </Compile>
-      <Compile Update="Src\Forms\FormAddPlayer.cs">
+      <Compile Update="Src\Forms\AddPlayerForm.cs">
         <SubType>Form</SubType>
       </Compile>
     </ItemGroup>
@@ -50,6 +50,12 @@
       <None Update="config.xml">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Reference Include="IntralismManiaConverter, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+        <HintPath>..\..\..\Downloads\IntralismManiaConverter.dll</HintPath>
+      </Reference>
     </ItemGroup>
 
 </Project>

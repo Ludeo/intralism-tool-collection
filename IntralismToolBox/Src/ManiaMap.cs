@@ -7,9 +7,6 @@ using NAudio.Wave;
 
 namespace ManiaToIntralism
 {
-    /// <summary>
-    /// object of an mania map that gets its value from a file path that belongs to a mania map
-    /// </summary>
     public class ManiaMap
     {
         public string Audio { get; }
@@ -48,8 +45,7 @@ namespace ManiaToIntralism
             this.Lives = 50;
             StringReader sr = new StringReader(File.ReadAllText(path));
             string line;
-
-            // reading through the file line by line and sets the variable to the values of the map
+            
             while ((line = sr.ReadLine()) != null)
             {
                 string lineValue = line.Substring(line.IndexOf(":", StringComparison.Ordinal) + 1).Trim();
@@ -103,14 +99,12 @@ namespace ManiaToIntralism
             }
 
             this.ConvertTimings();
-            
+
             this.Folder = path.Substring(0, path.LastIndexOf("\\", StringComparison.Ordinal));
-            // reads through the mp3 file to get the song length
             Mp3FileReader reader = new Mp3FileReader(Path.Combine(this.Folder, this.Audio));
             this.Length = (int)reader.TotalTime.TotalMilliseconds;
         }
 
-        // converts mania timings to intralism timings
         private void ConvertTimings()
         {
             HitObject lastNote = new HitObject(Position.Down.ToString(), -100);
@@ -141,13 +135,7 @@ namespace ManiaToIntralism
                 this.Arcs.Add(new HitObject(GetPosition(lastNotes), lastNote.Timing));
             }
         }
-        
-        /// <summary>
-        /// returns the arc in the correct format in one string
-        /// </summary>
-        /// <example>
-        /// Up,Down,Right -> Up-Down-Right
-        /// </example>
+
         private static string GetPosition(IEnumerable<HitObject> lastNotes)
         {
             return lastNotes.Aggregate(string.Empty, (current, y) => current + "-" + y.Position).TrimStart('-');

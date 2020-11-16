@@ -7,10 +7,6 @@ using Newtonsoft.Json;
 
 namespace ManiaToIntralism
 {
-
-    /// <summary>
-    /// object of an intralism map that gets its values through reading a json file <see cref="FromJson"/>
-    /// </summary>
     public class IntralismMap
     {
         [JsonProperty("configVersion")]
@@ -67,40 +63,28 @@ namespace ManiaToIntralism
         [JsonProperty("events")]
         public List<Event> Events { get; set; }
 
-        // this is not part of the json itself and should get converted back to events before writing it to a config.txt file
         [Newtonsoft.Json.JsonIgnore]
         public List<BetterEvent> BetterEvents { get; set; } = new List<BetterEvent>();
 
-        // reads a json file and creates a intralism map object with the values
         public static IntralismMap FromJson(string path)
         {
             return JsonConvert.DeserializeObject<IntralismMap>(File.ReadAllText((path + "\\config.txt")));
         }
 
-        /// <summary>
-        /// converts all the events to better events
-        /// </summary>
         public void EventsToBetterEvents()
         {
-            // clears the list of betterevents to prevent double entries
             this.BetterEvents.Clear();
 
-            // adds every event from the list Events to the list BetterEvents after parsing the events to better events
             foreach (Event ev in this.Events)
             {
                 this.BetterEvents.Add(new BetterEvent(ev.Time, ev.Data));
             }
         }
 
-        /// <summary>
-        /// converts all better events to events
-        /// </summary>
         public void BetterEventsToEvents()
         {
-            // clears the list of events to prevent double entries
             this.Events.Clear();
 
-            // adds every betterevent from the betterevent list to the list of events after parsing betterevents to events
             foreach (BetterEvent ev in this.BetterEvents)
             {
                 List<string> data = new List<string>
@@ -113,13 +97,11 @@ namespace ManiaToIntralism
             }
         }
 
-        // sorts the list of better events by their event type
         public void SortBetterEvents()
         {
             this.BetterEvents = this.BetterEvents.OrderBy(x => x.Type).ToList();
         }
 
-        // sorts the list of events by their event type
         public void SortEvents()
         {
             this.Events = this.Events.OrderBy(x => x.Data[0]).ToList();
