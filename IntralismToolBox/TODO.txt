@@ -2,6 +2,9 @@
 
 check a player by their rank and not by tiping in a link
 
+integrate an auto update feature (for example with Windows.Squirrel) so the user can auto update the program
+
+add a audio file to ogg converter (maybe also a youtube converter with youtube-dl to make getting songs for a new map easier)
 
 Config Editor
 
