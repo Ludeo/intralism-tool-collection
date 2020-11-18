@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
+using IntralismScoreChecker;
 
 namespace ManiaToIntralism.Forms
 {
@@ -11,7 +12,7 @@ namespace ManiaToIntralism.Forms
         private readonly Type doubleType = Type.GetType("System.Double");
         private readonly Type int32Type = Type.GetType("System.Int32");
 
-        public UserScoreForm(IEnumerable<IEnumerable<object>> allScores, string user)
+        public UserScoreForm(List<MapScore> allScores, string user)
         {
             this.InitializeComponent();
             this.Text = user + "'s Scores";
@@ -22,11 +23,19 @@ namespace ManiaToIntralism.Forms
             this.table.Columns.Add("My Points").DataType = this.doubleType;
             this.table.Columns.Add("Max Points").DataType = this.doubleType;
             this.table.Columns.Add("Difference").DataType = this.doubleType;
-            this.table.Columns.Add("Broken?");
+            this.table.Columns.Add("Broken?").DataType = typeof(BrokenType);
 
-            foreach (IEnumerable<object> score in allScores)
+            foreach (MapScore score in allScores)
             {
-                this.table.Rows.Add((object[]) score);
+                this.table.Rows.Add(
+                    score.MapName,
+                    score.Score,
+                    score.Accuracy,
+                    score.Miss,
+                    score.Points,
+                    score.MaximumPoints,
+                    score.Difference,
+                    score.BrokenStatus);
             }
 
             DataGridView grid = new DataGridView();

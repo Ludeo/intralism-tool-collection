@@ -1,16 +1,20 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
         <OutputType>WinExe</OutputType>
-        <TargetFramework>netcoreapp3.0</TargetFramework>
+        <TargetFramework>net5.0-windows</TargetFramework>
         <UseWindowsForms>true</UseWindowsForms>
         <RootNamespace>ManiaToIntralism</RootNamespace>
+        <LangVersion>8</LangVersion>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="HtmlAgilityPack" Version="1.11.25" />
+        <PackageReference Include="HtmlAgilityPack" Version="1.11.28" />
+        <PackageReference Include="IntralismManiaConverter" Version="1.1.2" />
+        <PackageReference Include="IntralismScoreChecker" Version="1.0.1" />
         <PackageReference Include="NAudio" Version="1.10.0" />
         <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+        <PackageReference Include="OsuParsers" Version="1.6.5" />
         <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
           <PrivateAssets>all</PrivateAssets>
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -41,9 +45,6 @@
       <None Update="scores.csv">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
-      <None Update="Resources\ManiaMapTemplate.txt">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </None>
       <None Update="savedplayers.csv">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
@@ -53,9 +54,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Reference Include="IntralismManiaConverter, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-        <HintPath>..\..\..\Downloads\IntralismManiaConverter.dll</HintPath>
-      </Reference>
+      <Folder Include="Src\Enums" />
     </ItemGroup>
 
 </Project>

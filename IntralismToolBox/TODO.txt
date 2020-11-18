@@ -8,6 +8,8 @@ add a audio file to ogg converter (maybe also a youtube converter with youtube-d
 
 add a map creator, that lets you select the icon and music file (and additional stuff like speed) to easier create maps
 
+add a intralism map speed changer
+
 Config Editor
 
 Multiple Text Sections

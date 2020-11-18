@@ -8,11 +8,11 @@ namespace ManiaToIntralism.Forms
     public partial class UserProfileForm : Form
     {
         public UserProfileForm(
-            string globalRank,
-            string totalGlobalRank,
+            int globalRank,
+            int totalGlobalRank,
             string country,
-            string countryRank,
-            string totalCountryRank,
+            int countryRank,
+            int totalCountryRank,
             double avgMiss,
             double avgAcc,
             double points,
