@@ -1,5 +1,8 @@
-﻿using System.Windows.Forms;
-using System.Xml;
+﻿using System;
+using System.Configuration;
+using System.IO;
+using System.Text;
+using System.Windows.Forms;
 using IntralismToolBox.Forms;
 
 namespace IntralismToolBox
@@ -111,22 +114,46 @@ namespace IntralismToolBox
         public static void DisplayErrorMessage(string message, string title = "You Dignus!") =>
             MessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
 
+        /// <summary>
+        ///     Loads the config.xml file.
+        /// </summary>
+        /// <returns> A Configuration object with the data of the config.xml file. </returns>
+        public static Configuration LoadConfig()
+        {
+            CheckConfig();
+            ExeConfigurationFileMap configMap = new ();
+            configMap.ExeConfigFilename = @"config.xml";
+            Configuration config = ConfigurationManager.OpenMappedExeConfiguration(configMap, ConfigurationUserLevel.None);
+
+            return config;
+        }
+
         private static void SaveLastChecked(string playerLink)
         {
-            XmlDocument config = new ();
-            config.Load("config.xml");
-            string lastChecked = playerLink;
+            Configuration config = LoadConfig();
+            config.AppSettings.Settings["lastchecked"].Value = playerLink;
 
-            foreach (XmlNode node in config.DocumentElement)
+            config.Save();
+        }
+
+        private static void CheckConfig()
+        {
+            if (!File.Exists("config.xml"))
             {
-                node.Attributes[1].Value = node.Attributes[0].Value switch
-                {
-                    "lastchecked" => lastChecked,
-                    var _             => node.Attributes[1].Value,
-                };
-            }
+                StringBuilder sb = new ();
+                sb.AppendLine("<?xml version=\"1.0\" encoding=\"utf-8\"?>");
+                sb.AppendLine("<configuration xmlns=\"http://schemas.microsoft.com/.NetConfiguration/v2.0\"></configuration>");
+                File.WriteAllText(@"config.xml", sb.ToString());
 
-            config.Save("config.xml");
+                ExeConfigurationFileMap configMap = new ();
+                configMap.ExeConfigFilename = @"config.xml";
+                Configuration config = ConfigurationManager.OpenMappedExeConfiguration(configMap, ConfigurationUserLevel.None);
+
+                config.AppSettings.Settings.Add("maniapath", $"C:\\Users\\{Environment.UserName}\\AppData\\Local\\osu!\\Songs");
+                config.AppSettings.Settings.Add("editorpath", "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Intralism\\Editor");
+                config.AppSettings.Settings.Add("lastchecked", "https://intralism.khb-soft.ru/?player=76561198143629166");
+                config.Save();
+            }
         }
     }
 }

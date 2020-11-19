@@ -1,6 +1,6 @@
 ﻿using System;
+using System.Configuration;
 using System.Windows.Forms;
-using System.Xml;
 
 namespace IntralismToolBox.Forms
 {
@@ -9,53 +9,28 @@ namespace IntralismToolBox.Forms
     /// </summary>
     public partial class SettingsForm : Form
     {
-        private readonly XmlDocument config = new ();
-
         /// <summary>
         ///     Initializes a new instance of the <see cref="SettingsForm"/> class.
         /// </summary>
         public SettingsForm() => this.InitializeComponent();
 
-        private void FormSetting_Load(object sender, EventArgs e)
-        {
-            this.config.Load("config.xml");
-            this.LoadConfig();
-        }
+        private void FormSetting_Load(object sender, EventArgs e) => this.LoadConfig();
 
         private void LoadConfig()
         {
-            foreach (XmlNode node in this.config.DocumentElement)
-            {
-                string firstValue = node.Attributes[0].Value;
-                string secondValue = node.Attributes[1].Value;
+            Configuration config = Functions.LoadConfig();
 
-                switch (firstValue)
-                {
-                    case "maniapath":
-                        this.ManiaPathTextBox.Text = secondValue;
-
-                        break;
-                    case "editorpath":
-                        this.EditorPathTextBox.Text = secondValue;
-
-                        break;
-                }
-            }
+            this.ManiaPathTextBox.Text = config.AppSettings.Settings["maniapath"].Value;
+            this.EditorPathTextBox.Text = config.AppSettings.Settings["editorpath"].Value;
         }
 
         private void SaveConfig(object sender, EventArgs e)
         {
-            foreach (XmlNode node in this.config.DocumentElement)
-            {
-                node.Attributes[1].Value = node.Attributes[0].Value switch
-                {
-                    "maniapath"  => this.ManiaPathTextBox.Text,
-                    "editorpath" => this.EditorPathTextBox.Text,
-                    var _        => node.Attributes[1].Value,
-                };
-            }
+            Configuration config = Functions.LoadConfig();
 
-            this.config.Save("config.xml");
+            config.AppSettings.Settings["maniapath"].Value = this.ManiaPathTextBox.Text;
+            config.AppSettings.Settings["editorpath"].Value = this.EditorPathTextBox.Text;
+            config.Save();
         }
 
         private void SelectManiaFolder(object sender, EventArgs e) =>

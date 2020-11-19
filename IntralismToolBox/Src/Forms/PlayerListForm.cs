@@ -55,23 +55,16 @@ namespace IntralismToolBox.Forms
             Player current = (Player)this.PlayerListListBox.SelectedItem;
             string[][] players = CsvReader.GetCsvContent(SavedPlayersCsv);
             StringBuilder sb = new ();
-            bool first = false;
 
-            foreach (string[] t in players)
+            foreach (string[] player in players)
             {
-                if (t[0].Equals(current.Name) &&
-                    t[1].Equals(current.Link))
+                if (player[0].Equals(current.Name) &&
+                    player[1].Equals(current.Link))
                 {
                 }
                 else
                 {
-                    if (first)
-                    {
-                        sb.Append(Environment.NewLine);
-                    }
-
-                    sb.Append(t[0] + "," + t[1]);
-                    first = true;
+                    sb.AppendLine(player[0] + "," + player[1]);
                 }
             }
 

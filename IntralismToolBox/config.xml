@@ -1,6 +1,8 @@
-<?xml version="1.0"?>
-<config>
-  <entry key="maniapath" value="D:\Users\lucas\AppData\Local\osu!\Songs" />
-  <entry key="editorpath" value="C:\Program Files (x86)\Steam\steamapps\common\Intralism\Editor" />
-  <entry key="lastchecked" value="https://intralism.khb-soft.ru/?player=76561198143629166" />
-</config>
+<?xml version="1.0" encoding="utf-8"?>
+<configuration xmlns="http://schemas.microsoft.com/.NetConfiguration/v2.0">
+  <appSettings>
+    <add key="maniapath" value="C:\Users\lucas\AppData\Local\osu!\Songs" />
+    <add key="editorpath" value="C:\Program Files (x86)\Steam\steamapps\common\Intralism\Editor" />
+    <add key="lastchecked" value="https://intralism.khb-soft.ru/?player=76561198143629166" />
+  </appSettings>
+</configuration>

@@ -2,7 +2,6 @@
 using System.Configuration;
 using System.IO;
 using System.Windows.Forms;
-using System.Xml;
 using IntralismManiaConverter;
 using IntralismManiaConverter.Intralism;
 using IntralismManiaConverter.Mania;
@@ -30,78 +29,17 @@ namespace IntralismToolBox.Forms
         /// </summary>
         public MainForm()
         {
-            this.CheckConfig();
+            Functions.LoadConfig();
             this.InitializeComponent();
-            this.LoadConfig();
-        }
-
-        private void CheckConfig()
-        {
-            if (!File.Exists("config.xml"))
-            {
-                XmlDocument newConfig = new ();
-
-                XmlNode rootNode = newConfig.CreateElement("config");
-                newConfig.AppendChild(rootNode);
-
-                XmlNode nodeMania = newConfig.CreateNode(XmlNodeType.Element, "entry", null);
-                XmlAttribute maniaKey = newConfig.CreateAttribute("key");
-                maniaKey.Value = "maniapath";
-                XmlAttribute maniaValue = newConfig.CreateAttribute("value");
-                maniaValue.Value = $"C:\\Users\\{Environment.UserName}\\AppData\\Local\\osu!\\Songs";
-                nodeMania.Attributes.Append(maniaKey);
-                nodeMania.Attributes.Append(maniaValue);
-
-                XmlNode nodeEditor = newConfig.CreateNode(XmlNodeType.Element, "entry", null);
-                XmlAttribute editorKey = newConfig.CreateAttribute("key");
-                editorKey.Value = "editorpath";
-                XmlAttribute editorValue = newConfig.CreateAttribute("value");
-                editorValue.Value = "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Intralism\\Editor";
-                nodeEditor.Attributes.Append(editorKey);
-                nodeEditor.Attributes.Append(editorValue);
-
-                XmlNode nodeLastPlayer = newConfig.CreateNode(XmlNodeType.Element, "entry", null);
-                XmlAttribute lastPlayerKey = newConfig.CreateAttribute("key");
-                lastPlayerKey.Value = "lastchecked";
-                XmlAttribute lastPlayerValue = newConfig.CreateAttribute("value");
-                lastPlayerValue.Value = "https://intralism.khb-soft.ru/?player=76561198143629166";
-                nodeLastPlayer.Attributes.Append(lastPlayerKey);
-                nodeLastPlayer.Attributes.Append(lastPlayerValue);
-
-                rootNode.AppendChild(nodeMania);
-                rootNode.AppendChild(nodeEditor);
-                rootNode.AppendChild(nodeLastPlayer);
-
-                newConfig.Save("config.xml");
-            }
         }
 
         private void LoadConfig()
         {
-            XmlDocument newConfig = new ();
-            newConfig.Load("config.xml");
+            Configuration config = Functions.LoadConfig();
 
-            foreach (XmlNode node in newConfig.DocumentElement)
-            {
-                string firstValue = node.Attributes[0].Value;
-                string secondValue = node.Attributes[1].Value;
-
-                switch (firstValue)
-                {
-                    case "maniapath":
-                        this.maniaConfigPath = secondValue;
-
-                        break;
-                    case "editorpath":
-                        this.editorConfigPath = secondValue;
-
-                        break;
-                    case "lastchecked":
-                        this.lastCheckedLink = secondValue;
-
-                        break;
-                }
-            }
+            this.maniaConfigPath = config.AppSettings.Settings["maniapath"].Value;
+            this.editorConfigPath = config.AppSettings.Settings["editorpath"].Value;
+            this.lastCheckedLink = config.AppSettings.Settings["lastchecked"].Value;
         }
 
         private void ManiaMapClicked(object sender, EventArgs e)
@@ -294,21 +232,15 @@ namespace IntralismToolBox.Forms
 
         private void TestButtonClicked(object sender, EventArgs e)
         {
-            //IntralismMap testMap = IntralismMap.FromJson(this.editorConfigPath + "\\seiyrubluedragon");
+            // IntralismMap testMap = IntralismMap.FromJson(this.editorConfigPath + "\\seiyrubluedragon");
 
             // testMap.EventsToBetterEvents();
-            //testMap.SortEvents();
+            // testMap.SortEvents();
 
-            //foreach (Event ev in testMap.Events.Where(x => x.Data[0] != "SpawnObj"))
-            //{
-            //Console.WriteLine(JsonConvert.SerializeObject(ev, Formatting.Indented));
-            //}
-
-            ExeConfigurationFileMap configMap = new ();
-            configMap.ExeConfigFilename = @"testconfig.xml";
-            Configuration config = ConfigurationManager.OpenMappedExeConfiguration(configMap, ConfigurationUserLevel.None);
-
-            config.AppSettings.Settings["editorpath"].Value = "new value";
+            // foreach (Event ev in testMap.Events.Where(x => x.Data[0] != "SpawnObj"))
+            // {
+            // Console.WriteLine(JsonConvert.SerializeObject(ev, Formatting.Indented));
+            // }
         }
     }
 }

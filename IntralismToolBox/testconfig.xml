@@ -1,7 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<configuration xmlns="http://schemas.microsoft.com/.NetConfiguration/v2.0">
-    <appSettings>
-        <add key="maniapath" value="Test" />
-        <add key="editorpath" value="Test again" />
-    </appSettings>
-</configuration>
