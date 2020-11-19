@@ -4,7 +4,7 @@ using System.Text;
 using System.Windows.Forms;
 using IntralismScoreChecker;
 
-namespace ManiaToIntralism.Forms
+namespace IntralismToolBox.Forms
 {
     public partial class PlayerListForm : Form
     {
@@ -48,23 +48,23 @@ namespace ManiaToIntralism.Forms
         {
             Player current = (Player)this.PlayerListListBox.SelectedItem;
             string[][] players = CsvReader.GetCsvContent(SavedPlayersCsv);
-            StringBuilder sb = new StringBuilder();
+            StringBuilder sb = new ();
             bool first = false;
 
-            for (int i = 0; i < players.Length; i++)
+            foreach (string[] t in players)
             {
-                if (players[i][0].Equals(current.Name) &&
-                    players[i][1].Equals(current.Link))
+                if (t[0].Equals(current.Name) &&
+                    t[1].Equals(current.Link))
                 {
                 }
                 else
                 {
                     if (first)
                     {
-                        sb.Append("\n");
+                        sb.Append(Environment.NewLine);
                     }
 
-                    sb.Append(players[i][0] + "," + players[i][1]);
+                    sb.Append(t[0] + "," + t[1]);
                     first = true;
                 }
             }

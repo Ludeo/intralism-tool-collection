@@ -3,7 +3,7 @@ using System.IO;
 using System.Net;
 using System.Windows.Forms;
 
-namespace ManiaToIntralism.Forms
+namespace IntralismToolBox.Forms
 {
     public partial class UserProfileForm : Form
     {
@@ -26,12 +26,12 @@ namespace ManiaToIntralism.Forms
             string user)
         {
             this.InitializeComponent();
-            this.Text = user + "'s Profile";
-            this.GlobalRankLabel.Text = globalRank + " / " + totalGlobalRank;
-            this.CountryNameLabel.Text = country + " Rank";
-            this.CountryRankLabel.Text = countryRank + " / " + totalCountryRank;
+            this.Text = user + @"'s Profile";
+            this.GlobalRankLabel.Text = globalRank + @" / " + totalGlobalRank;
+            this.CountryNameLabel.Text = country + @" Rank";
+            this.CountryRankLabel.Text = countryRank + @" / " + totalCountryRank;
             this.AverageMissLabel.Text = avgMiss.ToString();
-            this.AverageAccuracyLabel.Text = avgAcc + "%";
+            this.AverageAccuracyLabel.Text = avgAcc + @"%";
             this.PointsLabel.Text = points.ToString();
             this.RealPointsLabel.Text = realPoints.ToString();
             this.MaximumPointsLabel.Text = maxPoints.ToString();
@@ -40,7 +40,7 @@ namespace ManiaToIntralism.Forms
             this.TotalMapsLabel.Text = totalMaps.ToString();
             this.RankUpPointsLabel.Text = pointsTillRankup.ToString();
 
-            WebClient webClient = new WebClient();
+            WebClient webClient = new ();
             Stream stream = webClient.OpenRead(pictureLink);
             Image image = Image.FromStream(stream);
             Image newImage = new Bitmap(image, new Size(this.PlayerPictureLabel.Width, this.PlayerPictureLabel.Height));

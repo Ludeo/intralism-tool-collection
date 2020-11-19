@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace ManiaToIntralism.Forms
+namespace IntralismToolBox.Forms
 {
     partial class MainForm
     {

@@ -4,22 +4,22 @@ using System.Data;
 using System.Windows.Forms;
 using IntralismScoreChecker;
 
-namespace ManiaToIntralism.Forms
+namespace IntralismToolBox.Forms
 {
     public partial class UserScoreForm : Form
     {
-        private readonly DataTable table = new DataTable();
         private readonly Type doubleType = Type.GetType("System.Double");
         private readonly Type int32Type = Type.GetType("System.Int32");
+        private readonly DataTable table = new ();
 
-        public UserScoreForm(List<MapScore> allScores, string user)
+        public UserScoreForm(IEnumerable<MapScore> allScores, string user)
         {
             this.InitializeComponent();
-            this.Text = user + "'s Scores";
+            this.Text = user + @"'s Scores";
             this.table.Columns.Add("Map Name");
-            this.table.Columns.Add("Score").DataType = this.doubleType;
+            this.table.Columns.Add("Score").DataType = this.doubleType!;
             this.table.Columns.Add("Accuracy").DataType = this.doubleType;
-            this.table.Columns.Add("Miss").DataType = this.int32Type;
+            this.table.Columns.Add("Miss").DataType = this.int32Type!;
             this.table.Columns.Add("My Points").DataType = this.doubleType;
             this.table.Columns.Add("Max Points").DataType = this.doubleType;
             this.table.Columns.Add("Difference").DataType = this.doubleType;
@@ -38,7 +38,7 @@ namespace ManiaToIntralism.Forms
                     score.BrokenStatus);
             }
 
-            DataGridView grid = new DataGridView();
+            DataGridView grid = new　();
             this.Controls.Add(grid);
             grid.DataSource = this.table;
             grid.AutoSize = true;

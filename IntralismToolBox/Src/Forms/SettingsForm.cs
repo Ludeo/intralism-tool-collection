@@ -2,11 +2,11 @@
 using System.Windows.Forms;
 using System.Xml;
 
-namespace ManiaToIntralism.Forms
+namespace IntralismToolBox.Forms
 {
     public partial class SettingsForm : Form
     {
-        private readonly XmlDocument config = new XmlDocument();
+        private readonly XmlDocument config = new ();
 
         public SettingsForm() => this.InitializeComponent();
 
@@ -27,9 +27,11 @@ namespace ManiaToIntralism.Forms
                 {
                     case "maniapath":
                         this.ManiaPathTextBox.Text = secondValue;
+
                         break;
                     case "editorpath":
                         this.EditorPathTextBox.Text = secondValue;
+
                         break;
                 }
             }

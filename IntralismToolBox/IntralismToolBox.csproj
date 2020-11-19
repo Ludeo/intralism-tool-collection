@@ -4,22 +4,17 @@
         <OutputType>WinExe</OutputType>
         <TargetFramework>net5.0-windows</TargetFramework>
         <UseWindowsForms>true</UseWindowsForms>
-        <RootNamespace>ManiaToIntralism</RootNamespace>
+        <RootNamespace>IntralismToolBox</RootNamespace>
         <NoWarn>SA1633, SA1129, SA1106, SA1107, SA1009, SA1200</NoWarn>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="HtmlAgilityPack" Version="1.11.28" />
         <PackageReference Include="IntralismManiaConverter" Version="1.1.2" />
         <PackageReference Include="IntralismScoreChecker" Version="1.0.1" />
-        <PackageReference Include="NAudio" Version="1.10.0" />
-        <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
-        <PackageReference Include="OsuParsers" Version="1.6.5" />
         <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
           <PrivateAssets>all</PrivateAssets>
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-        <PackageReference Include="xFFmpeg.NET" Version="3.4.0" />
     </ItemGroup>
 
     <ItemGroup>

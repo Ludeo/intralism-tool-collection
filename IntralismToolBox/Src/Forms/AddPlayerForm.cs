@@ -4,15 +4,15 @@ using System.Text;
 using System.Windows.Forms;
 using IntralismScoreChecker;
 
-namespace ManiaToIntralism.Forms
+namespace IntralismToolBox.Forms
 {
     public partial class AddPlayerForm : Form
     {
         private const string SavedPlayersCsvPath = "savedplayers.csv";
 
-        private readonly StringBuilder stringBuilder = new StringBuilder();
-
         private readonly string[][] players = CsvReader.GetCsvContent(SavedPlayersCsvPath);
+
+        private readonly StringBuilder stringBuilder = new ();
 
         public AddPlayerForm() => this.InitializeComponent();
 

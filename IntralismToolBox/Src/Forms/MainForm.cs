@@ -6,20 +6,20 @@ using IntralismManiaConverter;
 using IntralismManiaConverter.Intralism;
 using IntralismManiaConverter.Mania;
 using OsuParsers.Enums;
-using static ManiaToIntralism.Functions;
+using static IntralismToolBox.Functions;
 
-namespace ManiaToIntralism.Forms
+namespace IntralismToolBox.Forms
 {
     public partial class MainForm : Form
     {
-        private readonly Random rd = new Random();
-        private string maniaConfigPath;
+        private readonly Random rd = new ();
         private string editorConfigPath;
         private string editorPath;
-        private string maniaPath;
         private string intralismMapPath;
-        private string maniaMapPath;
         private string lastCheckedLink;
+        private string maniaConfigPath;
+        private string maniaMapPath;
+        private string maniaPath;
 
         public MainForm()
         {
@@ -32,7 +32,7 @@ namespace ManiaToIntralism.Forms
         {
             if (!File.Exists("config.xml"))
             {
-                XmlDocument newConfig = new XmlDocument();
+                XmlDocument newConfig = new ();
 
                 XmlNode rootNode = newConfig.CreateElement("config");
                 newConfig.AppendChild(rootNode);
@@ -71,7 +71,7 @@ namespace ManiaToIntralism.Forms
 
         private void LoadConfig()
         {
-            XmlDocument newConfig = new XmlDocument();
+            XmlDocument newConfig = new ();
             newConfig.Load("config.xml");
 
             foreach (XmlNode node in newConfig.DocumentElement)
@@ -83,12 +83,15 @@ namespace ManiaToIntralism.Forms
                 {
                     case "maniapath":
                         this.maniaConfigPath = secondValue;
+
                         break;
                     case "editorpath":
                         this.editorConfigPath = secondValue;
+
                         break;
                     case "lastchecked":
                         this.lastCheckedLink = secondValue;
+
                         break;
                 }
             }
@@ -105,19 +108,21 @@ namespace ManiaToIntralism.Forms
                 return;
             }
 
-            ManiaBeatMap temp = new ManiaBeatMap(mapPath);
+            ManiaBeatMap temp = new (mapPath);
 
             if (temp.GeneralSection.Mode != Ruleset.Mania)
             {
                 DisplayErrorMessage($"This map is a {temp.GeneralSection.Mode} map. Please select a mania map", "Error");
+
                 return;
             }
 
-            if (temp.DifficultySection.CircleSize != 4)
+            if (Math.Abs(temp.DifficultySection.CircleSize - 4) > float.Epsilon)
             {
                 DisplayErrorMessage(
                     $"This mania map is a {temp.DifficultySection.CircleSize} key map. Please select a mania map with 4 keys",
                     "Error");
+
                 return;
             }
 
@@ -136,12 +141,14 @@ namespace ManiaToIntralism.Forms
             if (string.IsNullOrEmpty(this.maniaMapPath))
             {
                 DisplayErrorMessage("No mania map selected", "Error");
+
                 return;
             }
 
             if (string.IsNullOrEmpty(this.editorPath))
             {
                 DisplayErrorMessage("No editor path selected", "Error");
+
                 return;
             }
 
@@ -151,8 +158,7 @@ namespace ManiaToIntralism.Forms
             }
 
             // TODO add speed attribute to Converter.ConvertManiaToIntralism(pathToBeatmapFile, outputFolder, speed)
-
-            ManiaBeatMap temp = new ManiaBeatMap(this.maniaMapPath);
+            ManiaBeatMap temp = new (this.maniaMapPath);
 
             string newFolder = this.editorPath + "\\" + temp.MetadataSection.Artist + " - " + temp.MetadataSection.Title;
 
@@ -225,16 +231,18 @@ namespace ManiaToIntralism.Forms
             if (string.IsNullOrEmpty(this.intralismMapPath))
             {
                 DisplayErrorMessage("No intralism map selected", "Error");
+
                 return;
             }
 
             if (string.IsNullOrEmpty(this.maniaPath))
             {
                 DisplayErrorMessage("No mania path selected", "Error");
+
                 return;
             }
 
-            IntralismBeatMap temp = new IntralismBeatMap(this.intralismMapPath);
+            IntralismBeatMap temp = new (this.intralismMapPath);
 
             string artist = "Intralism";
             string title = temp.Name;
@@ -245,10 +253,10 @@ namespace ManiaToIntralism.Forms
             }
 
             // TODO add offset attribute to Converter.ConvertIntralismToMania(pathToBeatmapFile, outputFolder, offset)
-
             if (temp.Name.Contains("-"))
             {
                 artist = temp.Name.Substring(0, temp.Name.IndexOf("-", StringComparison.Ordinal));
+
                 title = temp.Name.Substring(
                     temp.Name.IndexOf("-", StringComparison.Ordinal),
                     temp.Name.Length - temp.Name.IndexOf("-", StringComparison.Ordinal)).TrimStart('-');
@@ -278,7 +286,7 @@ namespace ManiaToIntralism.Forms
         }
 
         /// <summary>
-        /// just a button action event to try stuff out so you can just ignore this, it will be removed later
+        ///     just a button action event to try stuff out so you can just ignore this, it will be removed later.
         /// </summary>
         private void TestButtonClicked(object sender, EventArgs e)
         {
@@ -289,7 +297,7 @@ namespace ManiaToIntralism.Forms
 
             //foreach (Event ev in testMap.Events.Where(x => x.Data[0] != "SpawnObj"))
             //{
-                //Console.WriteLine(JsonConvert.SerializeObject(ev, Formatting.Indented));
+            //Console.WriteLine(JsonConvert.SerializeObject(ev, Formatting.Indented));
             //}
         }
     }
