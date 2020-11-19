@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Xml;
-using Microsoft.WindowsAPICodePack.Dialogs;
 
 namespace ManiaToIntralism.Forms
 {
@@ -10,18 +9,6 @@ namespace ManiaToIntralism.Forms
         private readonly XmlDocument config = new XmlDocument();
 
         public SettingsForm() => this.InitializeComponent();
-
-        private static string GetFolderName(string initialDirectory)
-        {
-            CommonOpenFileDialog folderDialog = new CommonOpenFileDialog
-            {
-                InitialDirectory = initialDirectory,
-                IsFolderPicker = true,
-            };
-            folderDialog.ShowDialog();
-
-            return folderDialog.FileName;
-        }
 
         private void FormSetting_Load(object sender, EventArgs e)
         {
@@ -63,8 +50,10 @@ namespace ManiaToIntralism.Forms
             this.config.Save("config.xml");
         }
 
-        private void SelectManiaFolder(object sender, EventArgs e) => this.ManiaPathTextBox.Text = GetFolderName(this.ManiaPathTextBox.Text);
+        private void SelectManiaFolder(object sender, EventArgs e) =>
+            this.ManiaPathTextBox.Text = Functions.OpenFolderAndGetName(this.ManiaPathTextBox.Text);
 
-        private void SelectEditorFolder(object sender, EventArgs e) => this.EditorPathTextBox.Text = GetFolderName(this.EditorPathTextBox.Text);
+        private void SelectEditorFolder(object sender, EventArgs e) =>
+            this.EditorPathTextBox.Text = Functions.OpenFolderAndGetName(this.EditorPathTextBox.Text);
     }
 }

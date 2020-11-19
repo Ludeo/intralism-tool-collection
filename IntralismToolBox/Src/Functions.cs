@@ -7,7 +7,6 @@ using System.Xml;
 using HtmlAgilityPack;
 using IntralismScoreChecker;
 using ManiaToIntralism.Forms;
-using Microsoft.WindowsAPICodePack.Dialogs;
 
 namespace ManiaToIntralism
 {
@@ -90,22 +89,18 @@ namespace ManiaToIntralism
         /// <returns>The Selected Path or "" if cancelled.</returns>
         public static string OpenFolderAndGetName(string initialDirectory)
         {
-            CommonOpenFileDialog folderDialog = new CommonOpenFileDialog
-            {
-                InitialDirectory = initialDirectory,
-                IsFolderPicker = true,
-                RestoreDirectory = true,
-            };
+            FolderBrowserDialog folderDialog = new ();
+            folderDialog.SelectedPath = initialDirectory;
 
             // If the user cancelled, return string.Empty
-            if (folderDialog.ShowDialog() != CommonFileDialogResult.Ok)
+            if (folderDialog.ShowDialog() != DialogResult.OK)
             {
                 folderDialog.Dispose();
                 return string.Empty;
             }
 
             // Return the path and dispose
-            string folderName = folderDialog.FileName;
+            string folderName = folderDialog.SelectedPath;
             folderDialog.Dispose();
             return folderName;
         }

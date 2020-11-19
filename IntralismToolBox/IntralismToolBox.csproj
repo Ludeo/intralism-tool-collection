@@ -5,7 +5,7 @@
         <TargetFramework>net5.0-windows</TargetFramework>
         <UseWindowsForms>true</UseWindowsForms>
         <RootNamespace>ManiaToIntralism</RootNamespace>
-        <LangVersion>8</LangVersion>
+        <NoWarn>SA1633, SA1129, SA1106, SA1107, SA1009, SA1200</NoWarn>
     </PropertyGroup>
 
     <ItemGroup>
@@ -19,26 +19,7 @@
           <PrivateAssets>all</PrivateAssets>
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-        <PackageReference Include="Windows7APICodePack-Shell" Version="1.1.0" />
         <PackageReference Include="xFFmpeg.NET" Version="3.4.0" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Compile Update="FormSetting.cs">
-        <SubType>Form</SubType>
-      </Compile>
-      <Compile Update="Src\Forms\UserScoreForm.cs">
-        <SubType>Form</SubType>
-      </Compile>
-      <Compile Update="Src\Forms\UserProfileForm.cs">
-        <SubType>Form</SubType>
-      </Compile>
-      <Compile Update="Src\Forms\PlayerListForm.cs">
-        <SubType>Form</SubType>
-      </Compile>
-      <Compile Update="Src\Forms\AddPlayerForm.cs">
-        <SubType>Form</SubType>
-      </Compile>
     </ItemGroup>
 
     <ItemGroup>
@@ -51,10 +32,6 @@
       <None Update="config.xml">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Src\Enums" />
     </ItemGroup>
 
 </Project>
