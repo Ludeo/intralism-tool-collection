@@ -6,6 +6,9 @@ using IntralismScoreChecker;
 
 namespace IntralismToolBox.Forms
 {
+    /// <summary>
+    ///     Form that gets shown when <see cref="PlayerListForm.AddPlayerButton"/> was pressed.
+    /// </summary>
     public partial class AddPlayerForm : Form
     {
         private const string SavedPlayersCsvPath = "savedplayers.csv";
@@ -14,6 +17,9 @@ namespace IntralismToolBox.Forms
 
         private readonly StringBuilder stringBuilder = new ();
 
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="AddPlayerForm"/> class.
+        /// </summary>
         public AddPlayerForm() => this.InitializeComponent();
 
         private void AddClicked(object sender, EventArgs e)

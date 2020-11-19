@@ -6,12 +6,21 @@ using IntralismScoreChecker;
 
 namespace IntralismToolBox.Forms
 {
+    /// <summary>
+    ///     Form that gets shown when <see cref="MainForm.CheckPlayerButton"/>, <see cref="MainForm.LastCheckedPlayerButton"/> or
+    ///     <see cref="PlayerListForm.CheckPlayerButton"/> was pressed.
+    /// </summary>
     public partial class UserScoreForm : Form
     {
         private readonly Type doubleType = Type.GetType("System.Double");
         private readonly Type int32Type = Type.GetType("System.Int32");
         private readonly DataTable table = new ();
 
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="UserScoreForm"/> class.
+        /// </summary>
+        /// <param name="allScores"> IEnumerable of <see cref="IntralismScoreChecker.MapScore"/> with the scores of a intralism player. </param>
+        /// <param name="user"> Name of the intralism player. </param>
         public UserScoreForm(IEnumerable<MapScore> allScores, string user)
         {
             this.InitializeComponent();

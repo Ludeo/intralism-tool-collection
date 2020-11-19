@@ -4,10 +4,16 @@ using System.Xml;
 
 namespace IntralismToolBox.Forms
 {
+    /// <summary>
+    ///     Form that gets shown when <see cref="MainForm.SettingsButton"/> was pressed.
+    /// </summary>
     public partial class SettingsForm : Form
     {
         private readonly XmlDocument config = new ();
 
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="SettingsForm"/> class.
+        /// </summary>
         public SettingsForm() => this.InitializeComponent();
 
         private void FormSetting_Load(object sender, EventArgs e)

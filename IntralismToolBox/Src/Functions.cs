@@ -4,8 +4,16 @@ using IntralismToolBox.Forms;
 
 namespace IntralismToolBox
 {
+    /// <summary>
+    ///     Class that contains helper functions.
+    /// </summary>
     public static class Functions
     {
+        /// <summary>
+        ///     Function that creates a new instance of <see cref="IntralismScoreChecker.Player"/> and opens a <see cref="UserProfileForm"/>
+        ///     and a <see cref="UserScoreForm"/> with the details of the player.
+        /// </summary>
+        /// <param name="link"> Link to the intralism player. </param>
         public static void CheckPlayer(string link)
         {
             IntralismScoreChecker.Player newPlayer = new　(link);
@@ -36,6 +44,12 @@ namespace IntralismToolBox
             SaveLastChecked(link);
         }
 
+        /// <summary>
+        ///     Opens a file dialog.
+        /// </summary>
+        /// <param name="initialDirectory"> Directory that get opens when the file dialog shows up. </param>
+        /// <param name="filter"> Filter for the selected files. </param>
+        /// <returns> The name of the selected file. </returns>
         public static string OpenFileAndGetName(string initialDirectory, string filter = "")
         {
             OpenFileDialog fileDialog = new ()
@@ -105,13 +119,11 @@ namespace IntralismToolBox
 
             foreach (XmlNode node in config.DocumentElement)
             {
-                switch (node.Attributes[0].Value)
+                node.Attributes[1].Value = node.Attributes[0].Value switch
                 {
-                    case "lastchecked":
-                        node.Attributes[1].Value = lastChecked;
-
-                        break;
-                }
+                    "lastchecked" => lastChecked,
+                    var _             => node.Attributes[1].Value,
+                };
             }
 
             config.Save("config.xml");

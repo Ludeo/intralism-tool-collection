@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using System.IO;
 using System.Windows.Forms;
 using System.Xml;
@@ -10,6 +11,9 @@ using static IntralismToolBox.Functions;
 
 namespace IntralismToolBox.Forms
 {
+    /// <summary>
+    ///     Form that gets shown when the program was started.
+    /// </summary>
     public partial class MainForm : Form
     {
         private readonly Random rd = new ();
@@ -21,6 +25,9 @@ namespace IntralismToolBox.Forms
         private string maniaMapPath;
         private string maniaPath;
 
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="MainForm"/> class.
+        /// </summary>
         public MainForm()
         {
             this.CheckConfig();
@@ -285,9 +292,6 @@ namespace IntralismToolBox.Forms
                 MessageBoxIcon.Information);
         }
 
-        /// <summary>
-        ///     just a button action event to try stuff out so you can just ignore this, it will be removed later.
-        /// </summary>
         private void TestButtonClicked(object sender, EventArgs e)
         {
             //IntralismMap testMap = IntralismMap.FromJson(this.editorConfigPath + "\\seiyrubluedragon");
@@ -299,6 +303,12 @@ namespace IntralismToolBox.Forms
             //{
             //Console.WriteLine(JsonConvert.SerializeObject(ev, Formatting.Indented));
             //}
+
+            ExeConfigurationFileMap configMap = new ();
+            configMap.ExeConfigFilename = @"testconfig.xml";
+            Configuration config = ConfigurationManager.OpenMappedExeConfiguration(configMap, ConfigurationUserLevel.None);
+
+            config.AppSettings.Settings["editorpath"].Value = "new value";
         }
     }
 }

@@ -6,10 +6,16 @@ using IntralismScoreChecker;
 
 namespace IntralismToolBox.Forms
 {
+    /// <summary>
+    ///     Form that gets shown when <see cref="MainForm.PlayerListButton"/> was pressed.
+    /// </summary>
     public partial class PlayerListForm : Form
     {
         private const string SavedPlayersCsv = "savedplayers.csv";
 
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="PlayerListForm"/> class.
+        /// </summary>
         public PlayerListForm()
         {
             this.InitializeComponent();
@@ -17,9 +23,9 @@ namespace IntralismToolBox.Forms
 
             string[][] players = CsvReader.GetCsvContent(SavedPlayersCsv);
 
-            for (int i = 0; i < players.Length; i++)
+            foreach (string[] player in players)
             {
-                this.PlayerListListBox.Items.Add(new Player(players[i][0], players[i][1]));
+                this.PlayerListListBox.Items.Add(new Player(player[0], player[1]));
             }
 
             if (players.Length >= 1)
