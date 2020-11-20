@@ -42,9 +42,18 @@ namespace IntralismToolBox.ColorSchemes
         public Color ListBoxForegroundColor { get; set; } = Color.White;
 
         /// <inheritdoc/>
-        public Color DataGridBackgroundColor { get; set; } = Color.FromArgb(47, 49, 52);
+        public Color DataGridBackgroundColor { get; set; } = Color.FromArgb(41, 41, 41);
 
         /// <inheritdoc/>
         public Color DataGridForegroundColor { get; set; } = Color.White;
+
+        /// <inheritdoc/>
+        public Color DataGridGridColor { get; set; } = Color.White;
+
+        /// <inheritdoc/>
+        public Color DataGridCellBackgroundColor { get; set; } = Color.FromArgb(47, 49, 52);
+
+        /// <inheritdoc/>
+        public bool DataGridEnableHeadersVisualStyles { get; set; } = false;
     }
 }

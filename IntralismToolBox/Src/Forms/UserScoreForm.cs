@@ -26,7 +26,6 @@ namespace IntralismToolBox.Forms
         public UserScoreForm(IEnumerable<MapScore> allScores, string user)
         {
             this.InitializeComponent();
-            this.ReloadTheme();
 
             this.Text = user + @"'s Scores";
             this.table.Columns.Add("Map Name");
@@ -51,14 +50,8 @@ namespace IntralismToolBox.Forms
                     score.BrokenStatus);
             }
 
-            DataGridView grid = new　();
-            this.Controls.Add(grid);
-            grid.DataSource = this.table;
-            grid.AutoSize = true;
-            grid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            grid.Anchor = AnchorStyles.Left;
-            grid.ScrollBars = ScrollBars.Vertical;
-            grid.Dock = DockStyle.Fill;
+            this.ScoreDataGridView.DataSource = this.table;
+            this.ReloadTheme();
         }
 
         /// <summary>

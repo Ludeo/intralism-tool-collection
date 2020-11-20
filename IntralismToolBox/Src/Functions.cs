@@ -175,13 +175,14 @@ namespace IntralismToolBox
                     case DataGridView dataGridView:
                         dataGridView.BackgroundColor = scheme.DataGridBackgroundColor;
                         dataGridView.ForeColor = scheme.DataGridForegroundColor;
-                        dataGridView.GridColor = Color.Black;
+                        dataGridView.GridColor = scheme.DataGridGridColor;
 
-                        foreach (DataGridViewRow row in dataGridView.Rows)
-                        {
-                            row.DefaultCellStyle.BackColor = Color.Black;
-                            row.DefaultCellStyle.ForeColor = Color.White;
-                        }
+                        dataGridView.DefaultCellStyle.BackColor = scheme.DataGridCellBackgroundColor;
+                        dataGridView.EnableHeadersVisualStyles = scheme.DataGridEnableHeadersVisualStyles;
+                        dataGridView.RowHeadersDefaultCellStyle.BackColor = scheme.DataGridBackgroundColor;
+                        dataGridView.RowHeadersDefaultCellStyle.ForeColor = scheme.DataGridForegroundColor;
+                        dataGridView.ColumnHeadersDefaultCellStyle.BackColor = scheme.DataGridBackgroundColor;
+                        dataGridView.ColumnHeadersDefaultCellStyle.ForeColor = scheme.DataGridForegroundColor;
 
                         break;
                 }

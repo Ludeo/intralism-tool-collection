@@ -46,5 +46,14 @@ namespace IntralismToolBox.ColorSchemes
 
         /// <inheritdoc/>
         public Color DataGridForegroundColor { get; set; } = Color.Black;
+
+        /// <inheritdoc/>
+        public Color DataGridGridColor { get; set; } = Color.Black;
+
+        /// <inheritdoc/>
+        public Color DataGridCellBackgroundColor { get; set; } = Color.White;
+
+        /// <inheritdoc/>
+        public bool DataGridEnableHeadersVisualStyles { get; set; } = true;
     }
 }
