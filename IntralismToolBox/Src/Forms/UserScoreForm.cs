@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Windows.Forms;
 using IntralismScoreChecker;
+using IntralismToolBox.ColorSchemes;
 
 namespace IntralismToolBox.Forms
 {
@@ -24,6 +26,8 @@ namespace IntralismToolBox.Forms
         public UserScoreForm(IEnumerable<MapScore> allScores, string user)
         {
             this.InitializeComponent();
+            this.ReloadTheme();
+
             this.Text = user + @"'s Scores";
             this.table.Columns.Add("Map Name");
             this.table.Columns.Add("Score").DataType = this.doubleType!;
@@ -55,6 +59,26 @@ namespace IntralismToolBox.Forms
             grid.Anchor = AnchorStyles.Left;
             grid.ScrollBars = ScrollBars.Vertical;
             grid.Dock = DockStyle.Fill;
+        }
+
+        /// <summary>
+        ///     Reloads the color theme of the form. It's public so <see cref="SettingsForm"/> can call it.
+        /// </summary>
+        public void ReloadTheme()
+        {
+            Configuration config = Functions.LoadConfig();
+
+            switch (config.AppSettings.Settings["darkmode"].Value)
+            {
+                case "true":
+                    Functions.ChangeTheme(new DarkColorScheme(), this);
+
+                    break;
+                case "false":
+                    Functions.ChangeTheme(new LightColorScheme(), this);
+
+                    break;
+            }
         }
     }
 }

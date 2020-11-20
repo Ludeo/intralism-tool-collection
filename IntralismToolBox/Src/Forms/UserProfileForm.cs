@@ -1,7 +1,9 @@
-﻿using System.Drawing;
+﻿using System.Configuration;
+using System.Drawing;
 using System.IO;
 using System.Net;
 using System.Windows.Forms;
+using IntralismToolBox.ColorSchemes;
 
 namespace IntralismToolBox.Forms
 {
@@ -50,6 +52,8 @@ namespace IntralismToolBox.Forms
             string user)
         {
             this.InitializeComponent();
+            this.ReloadTheme();
+
             this.Text = user + @"'s Profile";
             this.GlobalRankLabel.Text = globalRank + @" / " + totalGlobalRank;
             this.CountryNameLabel.Text = country + @" Rank";
@@ -69,6 +73,26 @@ namespace IntralismToolBox.Forms
             Image image = Image.FromStream(stream!);
             Image newImage = new Bitmap(image, new Size(this.PlayerPictureLabel.Width, this.PlayerPictureLabel.Height));
             this.PlayerPictureLabel.Image = newImage;
+        }
+
+        /// <summary>
+        ///     Reloads the color theme of the form. It's public so <see cref="SettingsForm"/> can call it.
+        /// </summary>
+        public void ReloadTheme()
+        {
+            Configuration config = Functions.LoadConfig();
+
+            switch (config.AppSettings.Settings["darkmode"].Value)
+            {
+                case "true":
+                    Functions.ChangeTheme(new DarkColorScheme(), this);
+
+                    break;
+                case "false":
+                    Functions.ChangeTheme(new LightColorScheme(), this);
+
+                    break;
+            }
         }
     }
 }

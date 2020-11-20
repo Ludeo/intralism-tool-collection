@@ -4,5 +4,6 @@
     <add key="maniapath" value="C:\Users\lucas\AppData\Local\osu!\Songs" />
     <add key="editorpath" value="C:\Program Files (x86)\Steam\steamapps\common\Intralism\Editor" />
     <add key="lastchecked" value="https://intralism.khb-soft.ru/?player=76561198143629166" />
+    <add key="darkmode" value="false" />
   </appSettings>
 </configuration>

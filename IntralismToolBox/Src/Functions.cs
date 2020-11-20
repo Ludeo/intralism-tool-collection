@@ -1,9 +1,14 @@
 ﻿using System;
+using System.Collections;
 using System.Configuration;
+using System.Drawing;
 using System.IO;
+using System.Media;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using IntralismToolBox.Forms;
+using IntralismToolBox.Interfaces;
 
 namespace IntralismToolBox
 {
@@ -128,6 +133,61 @@ namespace IntralismToolBox
             return config;
         }
 
+        /// <summary>
+        ///     Changes the color of windows.forms components.
+        /// </summary>
+        /// <param name="scheme"> <see cref="IColorScheme"/> that contains the colors of the windows.forms components. </param>
+        /// <param name="form"> The windows.forms class where colors should be changed. </param>
+        public static void ChangeTheme(IColorScheme scheme, Form form)
+        {
+            form.BackColor = scheme.FormBackgroundColor;
+            form.ForeColor = scheme.FormForegroundColor;
+
+            ChangeTheme(scheme, form.Controls);
+        }
+
+        private static void ChangeTheme(IColorScheme scheme, IEnumerable container)
+        {
+            foreach (Control component in container)
+            {
+                switch (component)
+                {
+                    case Button button:
+                        button.BackColor = scheme.ButtonBackgroundColor;
+                        button.FlatAppearance.BorderColor = scheme.ButtonBorderColor;
+
+                        break;
+                    case TextBox textBox:
+                        textBox.BackColor = scheme.TextBoxBackgroundColor;
+                        textBox.ForeColor = scheme.TextBoxForegroundColor;
+
+                        break;
+                    case GroupBox groupBox:
+                        ChangeTheme(scheme, groupBox.Controls);
+                        groupBox.ForeColor = scheme.GroupBoxForegroundColor;
+
+                        break;
+                    case ListBox listBox:
+                        listBox.BackColor = scheme.ListBoxBackgroundColor;
+                        listBox.ForeColor = scheme.ListBoxForegroundColor;
+
+                        break;
+                    case DataGridView dataGridView:
+                        dataGridView.BackgroundColor = scheme.DataGridBackgroundColor;
+                        dataGridView.ForeColor = scheme.DataGridForegroundColor;
+                        dataGridView.GridColor = Color.Black;
+
+                        foreach (DataGridViewRow row in dataGridView.Rows)
+                        {
+                            row.DefaultCellStyle.BackColor = Color.Black;
+                            row.DefaultCellStyle.ForeColor = Color.White;
+                        }
+
+                        break;
+                }
+            }
+        }
+
         private static void SaveLastChecked(string playerLink)
         {
             Configuration config = LoadConfig();
@@ -152,7 +212,52 @@ namespace IntralismToolBox
                 config.AppSettings.Settings.Add("maniapath", $"C:\\Users\\{Environment.UserName}\\AppData\\Local\\osu!\\Songs");
                 config.AppSettings.Settings.Add("editorpath", "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Intralism\\Editor");
                 config.AppSettings.Settings.Add("lastchecked", "https://intralism.khb-soft.ru/?player=76561198143629166");
+                config.AppSettings.Settings.Add("darkmode", "true");
                 config.Save();
+            }
+        }
+
+        /// <summary>
+        ///     Just a troll.
+        /// </summary>
+        /// <param name="form"> e e e e e e e e e e e e e e. </param>
+        /// <returns> yes. </returns>
+        public static async Task Cancer(MainForm form)
+        {
+            Random rd = new ();
+
+            while (true)
+            {
+                SystemSounds.Beep.Play();
+                form.BackColor = Color.FromArgb(rd.Next(255), rd.Next(255), rd.Next(255));
+                form.ForeColor = Color.FromArgb(rd.Next(255), rd.Next(255), rd.Next(255));
+
+                foreach (Control c in form.Controls)
+                {
+                    switch (c)
+                    {
+                        case Button:
+                            c.BackColor = Color.FromArgb(rd.Next(255), rd.Next(255), rd.Next(255));
+                            c.ForeColor = Color.FromArgb(rd.Next(255), rd.Next(255), rd.Next(255));
+
+                            break;
+                        case GroupBox:
+                        {
+                            foreach (Control cd in c.Controls)
+                            {
+                                if (cd is Button)
+                                {
+                                    cd.BackColor = Color.FromArgb(rd.Next(255), rd.Next(255), rd.Next(255));
+                                    cd.ForeColor = Color.FromArgb(rd.Next(255), rd.Next(255), rd.Next(255));
+                                }
+                            }
+
+                            break;
+                        }
+                    }
+                }
+
+                await Task.Delay(100);
             }
         }
     }

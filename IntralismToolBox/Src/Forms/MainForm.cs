@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Configuration;
+using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
 using IntralismManiaConverter;
 using IntralismManiaConverter.Intralism;
 using IntralismManiaConverter.Mania;
+using IntralismToolBox.ColorSchemes;
 using OsuParsers.Enums;
 using static IntralismToolBox.Functions;
 
@@ -31,6 +33,27 @@ namespace IntralismToolBox.Forms
         {
             Functions.LoadConfig();
             this.InitializeComponent();
+            this.ReloadTheme();
+        }
+
+        /// <summary>
+        ///     Reloads the color theme of the form. It's public so <see cref="SettingsForm"/> can call it.
+        /// </summary>
+        public void ReloadTheme()
+        {
+            Configuration config = Functions.LoadConfig();
+
+            switch (config.AppSettings.Settings["darkmode"].Value)
+            {
+                case "true":
+                    ChangeTheme(new DarkColorScheme(), this);
+
+                    break;
+                case "false":
+                    ChangeTheme(new LightColorScheme(), this);
+
+                    break;
+            }
         }
 
         private void LoadConfig()
@@ -230,6 +253,13 @@ namespace IntralismToolBox.Forms
                 MessageBoxIcon.Information);
         }
 
+        private void ReportBugButtonClicked(object sender, EventArgs e) =>
+            Process.Start(
+                new ProcessStartInfo("cmd", $"/c start https://github.com/Ludeo/intralism-tool-collection/issues")
+                {
+                    CreateNoWindow = true,
+                });
+
         private void TestButtonClicked(object sender, EventArgs e)
         {
             // IntralismMap testMap = IntralismMap.FromJson(this.editorConfigPath + "\\seiyrubluedragon");
@@ -241,6 +271,9 @@ namespace IntralismToolBox.Forms
             // {
             // Console.WriteLine(JsonConvert.SerializeObject(ev, Formatting.Indented));
             // }
+
+            Cancer(this).Start();
+            this.TestButtonClicked(sender, e);
         }
     }
 }

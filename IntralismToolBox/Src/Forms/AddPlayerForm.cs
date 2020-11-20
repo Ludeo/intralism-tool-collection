@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Configuration;
 using System.IO;
 using System.Text;
 using System.Windows.Forms;
 using IntralismScoreChecker;
+using IntralismToolBox.ColorSchemes;
 
 namespace IntralismToolBox.Forms
 {
@@ -20,7 +22,31 @@ namespace IntralismToolBox.Forms
         /// <summary>
         ///     Initializes a new instance of the <see cref="AddPlayerForm"/> class.
         /// </summary>
-        public AddPlayerForm() => this.InitializeComponent();
+        public AddPlayerForm()
+        {
+            this.InitializeComponent();
+            this.ReloadTheme();
+        }
+
+        /// <summary>
+        ///     Reloads the color theme of the form. It's public so <see cref="SettingsForm"/> can call it.
+        /// </summary>
+        public void ReloadTheme()
+        {
+            Configuration config = Functions.LoadConfig();
+
+            switch (config.AppSettings.Settings["darkmode"].Value)
+            {
+                case "true":
+                    Functions.ChangeTheme(new DarkColorScheme(), this);
+
+                    break;
+                case "false":
+                    Functions.ChangeTheme(new LightColorScheme(), this);
+
+                    break;
+            }
+        }
 
         private void AddClicked(object sender, EventArgs e)
         {

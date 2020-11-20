@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Configuration;
 using System.IO;
 using System.Text;
 using System.Windows.Forms;
 using IntralismScoreChecker;
+using IntralismToolBox.ColorSchemes;
 
 namespace IntralismToolBox.Forms
 {
@@ -19,6 +21,8 @@ namespace IntralismToolBox.Forms
         public PlayerListForm()
         {
             this.InitializeComponent();
+            this.ReloadTheme();
+
             this.PlayerListListBox.ScrollAlwaysVisible = true;
 
             string[][] players = CsvReader.GetCsvContent(SavedPlayersCsv);
@@ -31,6 +35,26 @@ namespace IntralismToolBox.Forms
             if (players.Length >= 1)
             {
                 this.PlayerListListBox.SelectedIndex = 0;
+            }
+        }
+
+        /// <summary>
+        ///     Reloads the color theme of the form. It's public so <see cref="SettingsForm"/> can call it.
+        /// </summary>
+        public void ReloadTheme()
+        {
+            Configuration config = Functions.LoadConfig();
+
+            switch (config.AppSettings.Settings["darkmode"].Value)
+            {
+                case "true":
+                    Functions.ChangeTheme(new DarkColorScheme(), this);
+
+                    break;
+                case "false":
+                    Functions.ChangeTheme(new LightColorScheme(), this);
+
+                    break;
             }
         }
 

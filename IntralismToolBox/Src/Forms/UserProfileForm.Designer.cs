@@ -57,7 +57,7 @@ namespace IntralismToolBox.Forms
             this.RankUpPointsLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // pictureLbl
+            // PlayerPictureLabel
             // 
             this.PlayerPictureLabel.BackColor = System.Drawing.SystemColors.Desktop;
             this.PlayerPictureLabel.Location = new System.Drawing.Point(16, 17);
@@ -65,7 +65,7 @@ namespace IntralismToolBox.Forms
             this.PlayerPictureLabel.Size = new System.Drawing.Size(100, 100);
             this.PlayerPictureLabel.TabIndex = 0;
             // 
-            // Lbl1
+            // TextLabel1
             // 
             this.TextLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TextLabel1.Location = new System.Drawing.Point(120, 52);
@@ -74,7 +74,7 @@ namespace IntralismToolBox.Forms
             this.TextLabel1.TabIndex = 1;
             this.TextLabel1.Text = "Global Rank";
             // 
-            // globalRankLbl
+            // GlobalRankLabel
             // 
             this.GlobalRankLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GlobalRankLabel.Location = new System.Drawing.Point(120, 66);
@@ -83,7 +83,7 @@ namespace IntralismToolBox.Forms
             this.GlobalRankLabel.TabIndex = 2;
             this.GlobalRankLabel.Text = "6 / 51126";
             // 
-            // countryNameLbl
+            // CountryNameLabel
             // 
             this.CountryNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CountryNameLabel.Location = new System.Drawing.Point(204, 52);
@@ -92,7 +92,7 @@ namespace IntralismToolBox.Forms
             this.CountryNameLabel.TabIndex = 3;
             this.CountryNameLabel.Text = "Germany Rank";
             // 
-            // countryRankLbl
+            // CountryRankLabel
             // 
             this.CountryRankLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CountryRankLabel.Location = new System.Drawing.Point(204, 66);
@@ -101,7 +101,7 @@ namespace IntralismToolBox.Forms
             this.CountryRankLabel.TabIndex = 4;
             this.CountryRankLabel.Text = "2 / 1536";
             // 
-            // Lbl2
+            // TextLabel2
             // 
             this.TextLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TextLabel2.Location = new System.Drawing.Point(301, 52);
@@ -110,7 +110,7 @@ namespace IntralismToolBox.Forms
             this.TextLabel2.TabIndex = 5;
             this.TextLabel2.Text = "AVG Misses";
             // 
-            // avgMissLbl
+            // AverageMissLabel
             // 
             this.AverageMissLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AverageMissLabel.Location = new System.Drawing.Point(301, 66);
@@ -119,7 +119,7 @@ namespace IntralismToolBox.Forms
             this.AverageMissLabel.TabIndex = 6;
             this.AverageMissLabel.Text = "0,0";
             // 
-            // Lbl3
+            // TextLabel3
             // 
             this.TextLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TextLabel3.Location = new System.Drawing.Point(382, 52);
@@ -128,7 +128,7 @@ namespace IntralismToolBox.Forms
             this.TextLabel3.TabIndex = 7;
             this.TextLabel3.Text = "AVG Accuracy";
             // 
-            // avgAccuracyLbl
+            // AverageAccuracyLabel
             // 
             this.AverageAccuracyLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AverageAccuracyLabel.Location = new System.Drawing.Point(382, 66);
@@ -137,7 +137,7 @@ namespace IntralismToolBox.Forms
             this.AverageAccuracyLabel.TabIndex = 8;
             this.AverageAccuracyLabel.Text = "99.8916%";
             // 
-            // Lbl4
+            // TextLabel4
             // 
             this.TextLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TextLabel4.Location = new System.Drawing.Point(479, 52);
@@ -146,7 +146,7 @@ namespace IntralismToolBox.Forms
             this.TextLabel4.TabIndex = 9;
             this.TextLabel4.Text = "Points";
             // 
-            // pointsLbl
+            // PointsLabel
             // 
             this.PointsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PointsLabel.Location = new System.Drawing.Point(479, 66);
@@ -155,7 +155,7 @@ namespace IntralismToolBox.Forms
             this.PointsLabel.TabIndex = 10;
             this.PointsLabel.Text = "3323.5";
             // 
-            // Lbl5
+            // TextLabel5
             // 
             this.TextLabel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TextLabel5.Location = new System.Drawing.Point(16, 129);
@@ -164,7 +164,7 @@ namespace IntralismToolBox.Forms
             this.TextLabel5.TabIndex = 11;
             this.TextLabel5.Text = "Real Points";
             // 
-            // realPointsLbl
+            // RealPointsLabel
             // 
             this.RealPointsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RealPointsLabel.Location = new System.Drawing.Point(16, 143);
@@ -173,7 +173,7 @@ namespace IntralismToolBox.Forms
             this.RealPointsLabel.TabIndex = 12;
             this.RealPointsLabel.Text = "3324.27";
             // 
-            // Lbl6
+            // TextLabel6
             // 
             this.TextLabel6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TextLabel6.Location = new System.Drawing.Point(98, 129);
@@ -182,7 +182,7 @@ namespace IntralismToolBox.Forms
             this.TextLabel6.TabIndex = 13;
             this.TextLabel6.Text = "Max Points";
             // 
-            // maxPointsLbl
+            // MaximumPointsLabel
             // 
             this.MaximumPointsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MaximumPointsLabel.Location = new System.Drawing.Point(98, 143);
@@ -191,7 +191,7 @@ namespace IntralismToolBox.Forms
             this.MaximumPointsLabel.TabIndex = 14;
             this.MaximumPointsLabel.Text = "3331.36";
             // 
-            // Lbl7
+            // TextLabel7
             // 
             this.TextLabel7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TextLabel7.Location = new System.Drawing.Point(179, 129);
@@ -200,7 +200,7 @@ namespace IntralismToolBox.Forms
             this.TextLabel7.TabIndex = 15;
             this.TextLabel7.Text = "Difference";
             // 
-            // differenceLbl
+            // PointDifferenceLabel
             // 
             this.PointDifferenceLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PointDifferenceLabel.Location = new System.Drawing.Point(179, 143);
@@ -209,7 +209,7 @@ namespace IntralismToolBox.Forms
             this.PointDifferenceLabel.TabIndex = 16;
             this.PointDifferenceLabel.Text = "7.86";
             // 
-            // Lbl8
+            // TextLabel8
             // 
             this.TextLabel8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TextLabel8.Location = new System.Drawing.Point(256, 129);
@@ -218,7 +218,7 @@ namespace IntralismToolBox.Forms
             this.TextLabel8.TabIndex = 17;
             this.TextLabel8.Text = "100% Plays";
             // 
-            // hundredLbl
+            // HundredCountLabel
             // 
             this.HundredCountLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.HundredCountLabel.Location = new System.Drawing.Point(256, 143);
@@ -227,7 +227,7 @@ namespace IntralismToolBox.Forms
             this.HundredCountLabel.TabIndex = 18;
             this.HundredCountLabel.Text = "176";
             // 
-            // Lbl9
+            // TextLabel9
             // 
             this.TextLabel9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TextLabel9.Location = new System.Drawing.Point(340, 129);
@@ -236,7 +236,7 @@ namespace IntralismToolBox.Forms
             this.TextLabel9.TabIndex = 19;
             this.TextLabel9.Text = "Total Maps";
             // 
-            // totalMapsLbl
+            // TotalMapsLabel
             // 
             this.TotalMapsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TotalMapsLabel.Location = new System.Drawing.Point(340, 143);
@@ -245,7 +245,7 @@ namespace IntralismToolBox.Forms
             this.TotalMapsLabel.TabIndex = 20;
             this.TotalMapsLabel.Text = "251";
             // 
-            // Lbl10
+            // TextLabel10
             // 
             this.TextLabel10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TextLabel10.Location = new System.Drawing.Point(422, 129);
@@ -254,7 +254,7 @@ namespace IntralismToolBox.Forms
             this.TextLabel10.TabIndex = 21;
             this.TextLabel10.Text = "Points till rankup";
             // 
-            // pointsRankupLbl
+            // RankUpPointsLabel
             // 
             this.RankUpPointsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RankUpPointsLabel.Location = new System.Drawing.Point(422, 143);
@@ -263,7 +263,7 @@ namespace IntralismToolBox.Forms
             this.RankUpPointsLabel.TabIndex = 22;
             this.RankUpPointsLabel.Text = "2.84";
             // 
-            // FormUserProfile
+            // UserProfileForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -291,6 +291,7 @@ namespace IntralismToolBox.Forms
             this.Controls.Add(this.GlobalRankLabel);
             this.Controls.Add(this.TextLabel1);
             this.Controls.Add(this.PlayerPictureLabel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "UserProfileForm";
             this.Text = "FormUserProfile";
