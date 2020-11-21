@@ -8,7 +8,8 @@ namespace IntralismToolBox.WindowsFormsComponents
     /// <summary>
     ///     Class that represents a customized CheckBox, that looks like a toggle button.
     /// </summary>
-    [ToolboxItem("ToggleButton")]
+    [ToolboxItem("System.Windows.Forms.Design.AutoSizeToolboxItem")]
+    [DesignerCategory("System.Windows.Forms")]
     public class ToggleCheckBox : CheckBox
     {
         /// <summary>

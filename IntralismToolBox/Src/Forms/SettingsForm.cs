@@ -27,6 +27,7 @@ namespace IntralismToolBox.Forms
 
             this.ManiaPathTextBox.Text = config.AppSettings.Settings["maniapath"].Value;
             this.EditorPathTextBox.Text = config.AppSettings.Settings["editorpath"].Value;
+            this.AudioPathTextBox.Text = config.AppSettings.Settings["audiopath"].Value;
 
             this.DarkModeToggleButton.Checked = config.AppSettings.Settings["darkmode"].Value switch
             {
@@ -42,6 +43,7 @@ namespace IntralismToolBox.Forms
 
             config.AppSettings.Settings["maniapath"].Value = this.ManiaPathTextBox.Text;
             config.AppSettings.Settings["editorpath"].Value = this.EditorPathTextBox.Text;
+            config.AppSettings.Settings["audiopath"].Value = this.AudioPathTextBox.Text;
             config.AppSettings.Settings["darkmode"].Value = this.DarkModeToggleButton.Checked.ToString().ToLower();
             config.Save();
 
@@ -83,6 +85,9 @@ namespace IntralismToolBox.Forms
 
         private void SelectEditorFolder(object sender, EventArgs e) =>
             this.EditorPathTextBox.Text = Functions.OpenFolderAndGetName(this.EditorPathTextBox.Text);
+
+        private void SelectAudioPathClicked(object sender, EventArgs e) =>
+            this.AudioPathTextBox.Text = Functions.OpenFolderAndGetName(this.AudioPathTextBox.Text);
 
         private void ReloadTheme()
         {

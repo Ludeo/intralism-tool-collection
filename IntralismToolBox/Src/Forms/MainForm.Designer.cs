@@ -55,9 +55,14 @@ namespace IntralismToolBox.Forms
             this.SelectIntralismMapButton = new System.Windows.Forms.Button();
             this.testButton = new System.Windows.Forms.Button();
             this.ReportBugButton = new System.Windows.Forms.Button();
+            this.AudioConverterGroupBox = new System.Windows.Forms.GroupBox();
+            this.ConvertAudioButton = new System.Windows.Forms.Button();
+            this.SelectAudioOutputButton = new System.Windows.Forms.Button();
+            this.SelectAudioButton = new System.Windows.Forms.Button();
             this.ManiaToIntralismGroupBox.SuspendLayout();
             this.ScoreCheckerGroupBox.SuspendLayout();
             this.IntralismToManiaGroupBox.SuspendLayout();
+            this.AudioConverterGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // SelectManiaMapButton
@@ -265,7 +270,7 @@ namespace IntralismToolBox.Forms
             // testButton
             // 
             this.testButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.testButton.Location = new System.Drawing.Point(332, 188);
+            this.testButton.Location = new System.Drawing.Point(343, 281);
             this.testButton.Name = "testButton";
             this.testButton.Size = new System.Drawing.Size(75, 23);
             this.testButton.TabIndex = 9;
@@ -284,11 +289,57 @@ namespace IntralismToolBox.Forms
             this.ReportBugButton.UseVisualStyleBackColor = true;
             this.ReportBugButton.Click += new System.EventHandler(this.ReportBugButtonClicked);
             // 
+            // AudioConverterGroupBox
+            // 
+            this.AudioConverterGroupBox.Controls.Add(this.ConvertAudioButton);
+            this.AudioConverterGroupBox.Controls.Add(this.SelectAudioOutputButton);
+            this.AudioConverterGroupBox.Controls.Add(this.SelectAudioButton);
+            this.AudioConverterGroupBox.Location = new System.Drawing.Point(12, 213);
+            this.AudioConverterGroupBox.Name = "AudioConverterGroupBox";
+            this.AudioConverterGroupBox.Size = new System.Drawing.Size(215, 83);
+            this.AudioConverterGroupBox.TabIndex = 11;
+            this.AudioConverterGroupBox.TabStop = false;
+            this.AudioConverterGroupBox.Text = "To .ogg Converter";
+            // 
+            // ConvertAudioButton
+            // 
+            this.ConvertAudioButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ConvertAudioButton.Location = new System.Drawing.Point(6, 50);
+            this.ConvertAudioButton.Name = "ConvertAudioButton";
+            this.ConvertAudioButton.Size = new System.Drawing.Size(94, 25);
+            this.ConvertAudioButton.TabIndex = 2;
+            this.ConvertAudioButton.Text = "Convert";
+            this.ConvertAudioButton.UseVisualStyleBackColor = true;
+            this.ConvertAudioButton.Click += new System.EventHandler(this.ConvertAudioClicked);
+            // 
+            // SelectAudioOutputButton
+            // 
+            this.SelectAudioOutputButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SelectAudioOutputButton.Location = new System.Drawing.Point(107, 19);
+            this.SelectAudioOutputButton.Name = "SelectAudioOutputButton";
+            this.SelectAudioOutputButton.Size = new System.Drawing.Size(100, 25);
+            this.SelectAudioOutputButton.TabIndex = 1;
+            this.SelectAudioOutputButton.Text = "Select Output";
+            this.SelectAudioOutputButton.UseVisualStyleBackColor = true;
+            this.SelectAudioOutputButton.Click += new System.EventHandler(this.SelectAudioOutputClicked);
+            // 
+            // SelectAudioButton
+            // 
+            this.SelectAudioButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SelectAudioButton.Location = new System.Drawing.Point(6, 19);
+            this.SelectAudioButton.Name = "SelectAudioButton";
+            this.SelectAudioButton.Size = new System.Drawing.Size(94, 25);
+            this.SelectAudioButton.TabIndex = 0;
+            this.SelectAudioButton.Text = "Select Audio";
+            this.SelectAudioButton.UseVisualStyleBackColor = true;
+            this.SelectAudioButton.Click += new System.EventHandler(this.SelectAudioClicked);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(642, 356);
+            this.Controls.Add(this.AudioConverterGroupBox);
             this.Controls.Add(this.ReportBugButton);
             this.Controls.Add(this.testButton);
             this.Controls.Add(this.IntralismToManiaGroupBox);
@@ -306,8 +357,16 @@ namespace IntralismToolBox.Forms
             this.ScoreCheckerGroupBox.PerformLayout();
             this.IntralismToManiaGroupBox.ResumeLayout(false);
             this.IntralismToManiaGroupBox.PerformLayout();
+            this.AudioConverterGroupBox.ResumeLayout(false);
             this.ResumeLayout(false);
         }
+
+        private System.Windows.Forms.Button ConvertAudioButton;
+
+        private System.Windows.Forms.Button SelectAudioButton;
+        private System.Windows.Forms.Button SelectAudioOutputButton;
+
+        private System.Windows.Forms.GroupBox AudioConverterGroupBox;
 
         private System.Windows.Forms.Button ReportBugButton;
 

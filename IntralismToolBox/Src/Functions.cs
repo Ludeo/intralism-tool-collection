@@ -212,6 +212,7 @@ namespace IntralismToolBox
 
                 config.AppSettings.Settings.Add("maniapath", $"C:\\Users\\{Environment.UserName}\\AppData\\Local\\osu!\\Songs");
                 config.AppSettings.Settings.Add("editorpath", "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Intralism\\Editor");
+                config.AppSettings.Settings.Add("audiopath", $"C:\\Users\\{Environment.UserName}\\Desktop");
                 config.AppSettings.Settings.Add("lastchecked", "https://intralism.khb-soft.ru/?player=76561198143629166");
                 config.AppSettings.Settings.Add("darkmode", "true");
                 config.Save();

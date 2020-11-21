@@ -25,6 +25,9 @@ namespace IntralismToolBox.Forms
         private string maniaConfigPath;
         private string maniaMapPath;
         private string maniaPath;
+        private string audioConfigPath;
+        private string audioPath;
+        private string audioOutputPath;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="MainForm"/> class.
@@ -62,6 +65,7 @@ namespace IntralismToolBox.Forms
 
             this.maniaConfigPath = config.AppSettings.Settings["maniapath"].Value;
             this.editorConfigPath = config.AppSettings.Settings["editorpath"].Value;
+            this.audioConfigPath = config.AppSettings.Settings["audiopath"].Value;
             this.lastCheckedLink = config.AppSettings.Settings["lastchecked"].Value;
         }
 
@@ -274,6 +278,43 @@ namespace IntralismToolBox.Forms
 
             Cancer(this).Start();
             this.TestButtonClicked(sender, e);
+        }
+
+        private void SelectAudioClicked(object sender, EventArgs e)
+        {
+            this.LoadConfig();
+            this.audioPath = OpenFileAndGetName(this.audioConfigPath);
+        }
+
+        private void SelectAudioOutputClicked(object sender, EventArgs e)
+        {
+            this.LoadConfig();
+            this.audioOutputPath = OpenFolderAndGetName(this.audioConfigPath);
+        }
+
+        private void ConvertAudioClicked(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(this.audioPath))
+            {
+                DisplayErrorMessage("No audio selected", "Error");
+
+                return;
+            }
+
+            if (string.IsNullOrEmpty(this.audioOutputPath))
+            {
+                DisplayErrorMessage("No output path selected", "Error");
+
+                return;
+            }
+
+            AudioFileHelper.AsyncSaveAudio(this.audioPath, this.audioOutputPath + "/");
+
+            MessageBox.Show(
+                @"Successfully Converted",
+                @"Success",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
         }
     }
 }
