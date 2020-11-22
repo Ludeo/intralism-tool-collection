@@ -196,7 +196,7 @@ namespace IntralismToolBox.Forms
                 }
                 else
                 {
-                    DisplayErrorMessage("The entered profile link is not valid.", "Error");
+                    CheckPlayerWithSearch(playerLink);
                 }
             }
         }

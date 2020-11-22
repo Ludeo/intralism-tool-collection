@@ -24,7 +24,7 @@ namespace IntralismToolBox
         /// <param name="link"> Link to the intralism player. </param>
         public static void CheckPlayer(string link)
         {
-            IntralismScoreChecker.Player newPlayer = new　(link);
+            IntralismScoreChecker.Player newPlayer = new　(link, true);
             DisplayPlayer(newPlayer);
         }
 
@@ -36,6 +36,17 @@ namespace IntralismToolBox
         public static void CheckPlayerByRank(int rank)
         {
             IntralismScoreChecker.Player newPlayer = new (rank);
+            DisplayPlayer(newPlayer);
+        }
+
+        /// <summary>
+        ///     Function that creates a new instance of <see cref="IntralismScoreChecker.Player"/> and opens a <see cref="UserProfileForm"/>
+        ///     and a <see cref="UserScoreForm"/> with the details of the player.
+        /// </summary>
+        /// <param name="searchInput"> Searches for a intralism player and displays the first player that was found. </param>
+        public static void CheckPlayerWithSearch(string searchInput)
+        {
+            IntralismScoreChecker.Player newPlayer = new　(searchInput, false);
             DisplayPlayer(newPlayer);
         }
 

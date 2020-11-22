@@ -42,6 +42,7 @@ namespace IntralismToolBox.Forms
             this.ManiaToIntralismGroupBox = new System.Windows.Forms.GroupBox();
             this.SettingsButton = new System.Windows.Forms.Button();
             this.ScoreCheckerGroupBox = new System.Windows.Forms.GroupBox();
+            this.CheckRankCheckBox = new System.Windows.Forms.CheckBox();
             this.PlayerListButton = new System.Windows.Forms.Button();
             this.LastCheckedPlayerButton = new System.Windows.Forms.Button();
             this.CheckPlayerButton = new System.Windows.Forms.Button();
@@ -67,7 +68,6 @@ namespace IntralismToolBox.Forms
             this.SpeedCheckBox = new System.Windows.Forms.CheckBox();
             this.ChangeSpeedButton = new System.Windows.Forms.Button();
             this.SelectConfigButton = new System.Windows.Forms.Button();
-            this.CheckRankCheckBox = new System.Windows.Forms.CheckBox();
             this.ManiaToIntralismGroupBox.SuspendLayout();
             this.ScoreCheckerGroupBox.SuspendLayout();
             this.IntralismToManiaGroupBox.SuspendLayout();
@@ -166,6 +166,17 @@ namespace IntralismToolBox.Forms
             this.ScoreCheckerGroupBox.TabStop = false;
             this.ScoreCheckerGroupBox.Text = "Score Checker";
             // 
+            // CheckRankCheckBox
+            // 
+            this.CheckRankCheckBox.CheckAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.CheckRankCheckBox.Location = new System.Drawing.Point(248, 36);
+            this.CheckRankCheckBox.Name = "CheckRankCheckBox";
+            this.CheckRankCheckBox.Size = new System.Drawing.Size(56, 50);
+            this.CheckRankCheckBox.TabIndex = 5;
+            this.CheckRankCheckBox.Text = "Check by Rank";
+            this.CheckRankCheckBox.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.CheckRankCheckBox.UseVisualStyleBackColor = true;
+            // 
             // PlayerListButton
             // 
             this.PlayerListButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -203,9 +214,9 @@ namespace IntralismToolBox.Forms
             // 
             this.PlayerLinkLabel.Location = new System.Drawing.Point(6, 19);
             this.PlayerLinkLabel.Name = "PlayerLinkLabel";
-            this.PlayerLinkLabel.Size = new System.Drawing.Size(79, 12);
+            this.PlayerLinkLabel.Size = new System.Drawing.Size(120, 12);
             this.PlayerLinkLabel.TabIndex = 1;
-            this.PlayerLinkLabel.Text = "Player Link";
+            this.PlayerLinkLabel.Text = "Player Link | Search for";
             // 
             // PlayerLinkTextBox
             // 
@@ -425,17 +436,6 @@ namespace IntralismToolBox.Forms
             this.SelectConfigButton.Text = "Select Config";
             this.SelectConfigButton.UseVisualStyleBackColor = true;
             this.SelectConfigButton.Click += new System.EventHandler(this.SelectSpeedChangerConfigClicked);
-            // 
-            // CheckRankCheckBox
-            // 
-            this.CheckRankCheckBox.CheckAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.CheckRankCheckBox.Location = new System.Drawing.Point(248, 36);
-            this.CheckRankCheckBox.Name = "CheckRankCheckBox";
-            this.CheckRankCheckBox.Size = new System.Drawing.Size(56, 50);
-            this.CheckRankCheckBox.TabIndex = 5;
-            this.CheckRankCheckBox.Text = "Check by Rank";
-            this.CheckRankCheckBox.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.CheckRankCheckBox.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
