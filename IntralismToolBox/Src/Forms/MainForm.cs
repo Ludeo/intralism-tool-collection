@@ -381,7 +381,17 @@ namespace IntralismToolBox.Forms
                     return;
                 }
 
-                Console.WriteLine(speed);
+                foreach (Event ev in map.Events)
+                {
+                    if (ev.Data[0].Equals("SetSpeed"))
+                    {
+                        int newSpeed = int.Parse(ev.Data[1]!) + speed;
+                        ev.Data[1] = newSpeed.ToString();
+                    }
+                }
+
+                double newBaseSpeed = map.Speed + speed;
+                map.Speed = newBaseSpeed;
             }
             else
             {
@@ -392,8 +402,24 @@ namespace IntralismToolBox.Forms
                     return;
                 }
 
-                Console.WriteLine(speed);
+                foreach (Event ev in map.Events)
+                {
+                    if (ev.Data[0].Equals("SetSpeed"))
+                    {
+                        ev.Data[1] = speed.ToString();
+                    }
+                }
+
+                map.Speed = speed;
             }
+
+            map.SaveToFile(this.speedChangerPath);
+
+            MessageBox.Show(
+                @"Speed successfully changed.",
+                @"Success",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
         }
     }
 }
