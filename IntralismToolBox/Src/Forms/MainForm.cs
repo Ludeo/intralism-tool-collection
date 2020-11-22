@@ -176,7 +176,29 @@ namespace IntralismToolBox.Forms
         private void CheckClicked(object sender, EventArgs e)
         {
             string playerLink = this.PlayerLinkTextBox.Text;
-            CheckPlayer(playerLink);
+
+            if (this.CheckRankCheckBox.Checked)
+            {
+                if (int.TryParse(playerLink, out int rank))
+                {
+                    CheckPlayerByRank(rank);
+                }
+                else
+                {
+                    DisplayErrorMessage("The entered rank is not valid.", "Error");
+                }
+            }
+            else
+            {
+                if (playerLink.StartsWith("https://intralism.khb-soft.ru/?player="))
+                {
+                    CheckPlayer(playerLink);
+                }
+                else
+                {
+                    DisplayErrorMessage("The entered profile link is not valid.", "Error");
+                }
+            }
         }
 
         private void LastCheckedClicked(object sender, EventArgs e)

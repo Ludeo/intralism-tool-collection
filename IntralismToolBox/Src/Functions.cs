@@ -25,31 +25,18 @@ namespace IntralismToolBox
         public static void CheckPlayer(string link)
         {
             IntralismScoreChecker.Player newPlayer = new　(link);
+            DisplayPlayer(newPlayer);
+        }
 
-            UserProfileForm profileUserProfileForm = new　(
-                newPlayer.GlobalRank,
-                newPlayer.TotalGlobalRank,
-                newPlayer.Country,
-                newPlayer.CountryRank,
-                newPlayer.TotalCountryRank,
-                newPlayer.AverageMisses,
-                newPlayer.AverageAccuracy,
-                newPlayer.Points,
-                newPlayer.RealPoints,
-                newPlayer.MaximumPoints,
-                newPlayer.Difference,
-                newPlayer.HundredPlays,
-                newPlayer.TotalMaps,
-                newPlayer.RankUpPoints,
-                newPlayer.PictureLink,
-                newPlayer.Name);
-
-            profileUserProfileForm.Show();
-
-            UserScoreForm userScore = new　(newPlayer.Scores, newPlayer.Name);
-            userScore.Show();
-
-            SaveLastChecked(link);
+        /// <summary>
+        ///     Function that creates a new instance of <see cref="IntralismScoreChecker.Player"/> and opens a <see cref="UserProfileForm"/>
+        ///     and a <see cref="UserScoreForm"/> with the details of the player.
+        /// </summary>
+        /// <param name="rank"> Global Rank of the intralism player. </param>
+        public static void CheckPlayerByRank(int rank)
+        {
+            IntralismScoreChecker.Player newPlayer = new (rank);
+            DisplayPlayer(newPlayer);
         }
 
         /// <summary>
@@ -143,6 +130,34 @@ namespace IntralismToolBox
             form.ForeColor = scheme.FormForegroundColor;
 
             ChangeTheme(scheme, form.Controls);
+        }
+
+        private static void DisplayPlayer(IntralismScoreChecker.Player player)
+        {
+            UserProfileForm profileUserProfileForm = new　(
+                player.GlobalRank,
+                player.TotalGlobalRank,
+                player.Country,
+                player.CountryRank,
+                player.TotalCountryRank,
+                player.AverageMisses,
+                player.AverageAccuracy,
+                player.Points,
+                player.RealPoints,
+                player.MaximumPoints,
+                player.Difference,
+                player.HundredPlays,
+                player.TotalMaps,
+                player.RankUpPoints,
+                player.PictureLink,
+                player.Name);
+
+            profileUserProfileForm.Show();
+
+            UserScoreForm userScore = new　(player.Scores, player.Name);
+            userScore.Show();
+
+            SaveLastChecked(player.Link);
         }
 
         private static void ChangeTheme(IColorScheme scheme, IEnumerable container)

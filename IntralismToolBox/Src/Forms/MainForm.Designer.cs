@@ -67,6 +67,7 @@ namespace IntralismToolBox.Forms
             this.SpeedCheckBox = new System.Windows.Forms.CheckBox();
             this.ChangeSpeedButton = new System.Windows.Forms.Button();
             this.SelectConfigButton = new System.Windows.Forms.Button();
+            this.CheckRankCheckBox = new System.Windows.Forms.CheckBox();
             this.ManiaToIntralismGroupBox.SuspendLayout();
             this.ScoreCheckerGroupBox.SuspendLayout();
             this.IntralismToManiaGroupBox.SuspendLayout();
@@ -152,6 +153,7 @@ namespace IntralismToolBox.Forms
             // 
             // ScoreCheckerGroupBox
             // 
+            this.ScoreCheckerGroupBox.Controls.Add(this.CheckRankCheckBox);
             this.ScoreCheckerGroupBox.Controls.Add(this.PlayerListButton);
             this.ScoreCheckerGroupBox.Controls.Add(this.LastCheckedPlayerButton);
             this.ScoreCheckerGroupBox.Controls.Add(this.CheckPlayerButton);
@@ -167,9 +169,9 @@ namespace IntralismToolBox.Forms
             // PlayerListButton
             // 
             this.PlayerListButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.PlayerListButton.Location = new System.Drawing.Point(207, 60);
+            this.PlayerListButton.Location = new System.Drawing.Point(165, 60);
             this.PlayerListButton.Name = "PlayerListButton";
-            this.PlayerListButton.Size = new System.Drawing.Size(97, 26);
+            this.PlayerListButton.Size = new System.Drawing.Size(77, 26);
             this.PlayerListButton.TabIndex = 4;
             this.PlayerListButton.Text = "Player List";
             this.PlayerListButton.UseVisualStyleBackColor = true;
@@ -178,7 +180,7 @@ namespace IntralismToolBox.Forms
             // LastCheckedPlayerButton
             // 
             this.LastCheckedPlayerButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.LastCheckedPlayerButton.Location = new System.Drawing.Point(106, 60);
+            this.LastCheckedPlayerButton.Location = new System.Drawing.Point(65, 60);
             this.LastCheckedPlayerButton.Name = "LastCheckedPlayerButton";
             this.LastCheckedPlayerButton.Size = new System.Drawing.Size(94, 26);
             this.LastCheckedPlayerButton.TabIndex = 3;
@@ -191,7 +193,7 @@ namespace IntralismToolBox.Forms
             this.CheckPlayerButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CheckPlayerButton.Location = new System.Drawing.Point(6, 60);
             this.CheckPlayerButton.Name = "CheckPlayerButton";
-            this.CheckPlayerButton.Size = new System.Drawing.Size(94, 26);
+            this.CheckPlayerButton.Size = new System.Drawing.Size(53, 26);
             this.CheckPlayerButton.TabIndex = 2;
             this.CheckPlayerButton.Text = "Check";
             this.CheckPlayerButton.UseVisualStyleBackColor = true;
@@ -209,7 +211,7 @@ namespace IntralismToolBox.Forms
             // 
             this.PlayerLinkTextBox.Location = new System.Drawing.Point(6, 34);
             this.PlayerLinkTextBox.Name = "PlayerLinkTextBox";
-            this.PlayerLinkTextBox.Size = new System.Drawing.Size(298, 20);
+            this.PlayerLinkTextBox.Size = new System.Drawing.Size(236, 20);
             this.PlayerLinkTextBox.TabIndex = 0;
             // 
             // IntralismToManiaGroupBox
@@ -352,9 +354,9 @@ namespace IntralismToolBox.Forms
             this.SpeedChangerGroupBox.Controls.Add(this.SpeedCheckBox);
             this.SpeedChangerGroupBox.Controls.Add(this.ChangeSpeedButton);
             this.SpeedChangerGroupBox.Controls.Add(this.SelectConfigButton);
-            this.SpeedChangerGroupBox.Location = new System.Drawing.Point(239, 114);
+            this.SpeedChangerGroupBox.Location = new System.Drawing.Point(233, 114);
             this.SpeedChangerGroupBox.Name = "SpeedChangerGroupBox";
-            this.SpeedChangerGroupBox.Size = new System.Drawing.Size(304, 93);
+            this.SpeedChangerGroupBox.Size = new System.Drawing.Size(310, 93);
             this.SpeedChangerGroupBox.TabIndex = 12;
             this.SpeedChangerGroupBox.TabStop = false;
             this.SpeedChangerGroupBox.Text = "Speed Changer";
@@ -424,6 +426,17 @@ namespace IntralismToolBox.Forms
             this.SelectConfigButton.UseVisualStyleBackColor = true;
             this.SelectConfigButton.Click += new System.EventHandler(this.SelectSpeedChangerConfigClicked);
             // 
+            // CheckRankCheckBox
+            // 
+            this.CheckRankCheckBox.CheckAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.CheckRankCheckBox.Location = new System.Drawing.Point(248, 36);
+            this.CheckRankCheckBox.Name = "CheckRankCheckBox";
+            this.CheckRankCheckBox.Size = new System.Drawing.Size(56, 50);
+            this.CheckRankCheckBox.TabIndex = 5;
+            this.CheckRankCheckBox.Text = "Check by Rank";
+            this.CheckRankCheckBox.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.CheckRankCheckBox.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -453,6 +466,8 @@ namespace IntralismToolBox.Forms
             this.SpeedChangerGroupBox.PerformLayout();
             this.ResumeLayout(false);
         }
+
+        private System.Windows.Forms.CheckBox CheckRankCheckBox;
 
         private System.Windows.Forms.Label EachSpeedLabel;
         private System.Windows.Forms.TextBox EachSpeedTextBox;

@@ -14,7 +14,7 @@
 
     <ItemGroup>
         <PackageReference Include="IntralismManiaConverter" Version="1.2.3" />
-        <PackageReference Include="IntralismScoreChecker" Version="1.0.1" />
+        <PackageReference Include="IntralismScoreChecker" Version="1.0.2" />
         <PackageReference Include="Octokit" Version="0.48.0" />
         <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
           <PrivateAssets>all</PrivateAssets>
