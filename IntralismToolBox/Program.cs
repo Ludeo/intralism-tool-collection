@@ -4,6 +4,9 @@ using IntralismToolBox.Forms;
 
 namespace IntralismToolBox
 {
+    /// <summary>
+    ///     Class that runs when the application is launched.
+    /// </summary>
     internal static class Program
     {
         /// <summary>

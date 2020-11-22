@@ -1,6 +1,6 @@
 ﻿check a player by their rank and not by tiping in a link
 
-integrate an auto update feature (for example with Windows.Squirrel) so the user can auto update the program
+optimize update notification (to maybe download it + installer ?)
 
 (maybe a youtube converter with youtube-dl to make getting songs for a new map easier)
 

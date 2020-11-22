@@ -76,6 +76,11 @@ namespace IntralismToolBox.Forms
                     case UserScoreForm userScoreForm:
                         userScoreForm.ReloadTheme();
                         break;
+
+                    case UpdateForm updateForm:
+                        updateForm.ReloadTheme();
+
+                        break;
                 }
             }
         }

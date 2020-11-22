@@ -8,9 +8,14 @@
         <NoWarn>SA1633, SA1129, SA1106, SA1107, SA1009, SA1200</NoWarn>
     </PropertyGroup>
 
+    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+      <DocumentationFile>bin\Debug\IntralismToolBox.xml</DocumentationFile>
+    </PropertyGroup>
+
     <ItemGroup>
         <PackageReference Include="IntralismManiaConverter" Version="1.2.3" />
         <PackageReference Include="IntralismScoreChecker" Version="1.0.1" />
+        <PackageReference Include="Octokit" Version="0.48.0" />
         <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
           <PrivateAssets>all</PrivateAssets>
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -33,6 +38,12 @@
       <Reference Include="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
         <HintPath>..\..\..\..\..\Windows\Microsoft.NET\assembly\GAC_MSIL\System.Windows.Forms\v4.0_4.0.0.0__b77a5c561934e089\System.Windows.Forms.dll</HintPath>
       </Reference>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="Src\Forms\UpdateForm.cs">
+        <SubType>Form</SubType>
+      </Compile>
     </ItemGroup>
 
 </Project>

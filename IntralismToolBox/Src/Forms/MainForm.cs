@@ -2,11 +2,13 @@
 using System.Configuration;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 using IntralismManiaConverter;
 using IntralismManiaConverter.Intralism;
 using IntralismManiaConverter.Mania;
 using IntralismToolBox.ColorSchemes;
+using Octokit;
 using OsuParsers.Enums;
 using static IntralismToolBox.Functions;
 
@@ -17,6 +19,7 @@ namespace IntralismToolBox.Forms
     /// </summary>
     public partial class MainForm : Form
     {
+        private const string CurrentVersion = "v1.2";
         private readonly Random rd = new ();
         private string editorConfigPath;
         private string editorPath;
@@ -28,6 +31,7 @@ namespace IntralismToolBox.Forms
         private string audioConfigPath;
         private string audioPath;
         private string audioOutputPath;
+        private string speedChangerPath;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="MainForm"/> class.
@@ -37,6 +41,7 @@ namespace IntralismToolBox.Forms
             Functions.LoadConfig();
             this.InitializeComponent();
             this.ReloadTheme();
+            CheckForUpdate();
         }
 
         /// <summary>
@@ -56,6 +61,18 @@ namespace IntralismToolBox.Forms
                     ChangeTheme(new LightColorScheme(), this);
 
                     break;
+            }
+        }
+
+        private static void CheckForUpdate()
+        {
+            GitHubClient client = new (new ProductHeaderValue("intralism-tool-collection"));
+            Release release = client.Repository.Release.GetLatest("Ludeo", "intralism-tool-collection").Result;
+
+            if (!release.TagName.Equals(CurrentVersion))
+            {
+                UpdateForm updateForm = new (release);
+                updateForm.ShowDialog();
             }
         }
 
@@ -275,7 +292,6 @@ namespace IntralismToolBox.Forms
             // {
             // Console.WriteLine(JsonConvert.SerializeObject(ev, Formatting.Indented));
             // }
-
             Cancer(this).Start();
             this.TestButtonClicked(sender, e);
         }
@@ -315,6 +331,69 @@ namespace IntralismToolBox.Forms
                 @"Success",
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Information);
+        }
+
+        private void SelectSpeedChangerConfigClicked(object sender, EventArgs e)
+        {
+            this.LoadConfig();
+
+            this.speedChangerPath = OpenFileAndGetName(this.editorConfigPath);
+        }
+
+        private void SpeedCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (this.SpeedCheckBox.Checked)
+            {
+                this.EachSpeedTextBox.Enabled = true;
+                this.AllSpeedTextBox.Enabled = false;
+            }
+            else
+            {
+                this.EachSpeedTextBox.Enabled = false;
+                this.AllSpeedTextBox.Enabled = true;
+            }
+        }
+
+        private void ChangeSpeedClicked(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(this.speedChangerPath))
+            {
+                DisplayErrorMessage("No config file selected.", "Error");
+
+                return;
+            }
+
+            IntralismBeatMap map = new (this.speedChangerPath);
+
+            if (!map.Events!.Any(x => x.Data[0].Contains("SpawnObj")))
+            {
+                DisplayErrorMessage("Can't change speed on this map.", "Error");
+
+                return;
+            }
+
+            if (this.SpeedCheckBox.Checked)
+            {
+                if (string.IsNullOrEmpty(this.EachSpeedTextBox.Text) || !int.TryParse(this.EachSpeedTextBox.Text, out int speed))
+                {
+                    DisplayErrorMessage("No speed selected.", "Error");
+
+                    return;
+                }
+
+                Console.WriteLine(speed);
+            }
+            else
+            {
+                if (string.IsNullOrEmpty(this.AllSpeedTextBox.Text) || !int.TryParse(this.AllSpeedTextBox.Text, out int speed))
+                {
+                    DisplayErrorMessage("No speed selected.", "Error");
+
+                    return;
+                }
+
+                Console.WriteLine(speed);
+            }
         }
     }
 }

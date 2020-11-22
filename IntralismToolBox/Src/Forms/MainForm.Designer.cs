@@ -59,10 +59,19 @@ namespace IntralismToolBox.Forms
             this.ConvertAudioButton = new System.Windows.Forms.Button();
             this.SelectAudioOutputButton = new System.Windows.Forms.Button();
             this.SelectAudioButton = new System.Windows.Forms.Button();
+            this.SpeedChangerGroupBox = new System.Windows.Forms.GroupBox();
+            this.EachSpeedTextBox = new System.Windows.Forms.TextBox();
+            this.EachSpeedLabel = new System.Windows.Forms.Label();
+            this.AllSpeedTextBox = new System.Windows.Forms.TextBox();
+            this.AllSpeedLabel = new System.Windows.Forms.Label();
+            this.SpeedCheckBox = new System.Windows.Forms.CheckBox();
+            this.ChangeSpeedButton = new System.Windows.Forms.Button();
+            this.SelectConfigButton = new System.Windows.Forms.Button();
             this.ManiaToIntralismGroupBox.SuspendLayout();
             this.ScoreCheckerGroupBox.SuspendLayout();
             this.IntralismToManiaGroupBox.SuspendLayout();
             this.AudioConverterGroupBox.SuspendLayout();
+            this.SpeedChangerGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // SelectManiaMapButton
@@ -150,7 +159,7 @@ namespace IntralismToolBox.Forms
             this.ScoreCheckerGroupBox.Controls.Add(this.PlayerLinkTextBox);
             this.ScoreCheckerGroupBox.Location = new System.Drawing.Point(233, 12);
             this.ScoreCheckerGroupBox.Name = "ScoreCheckerGroupBox";
-            this.ScoreCheckerGroupBox.Size = new System.Drawing.Size(284, 96);
+            this.ScoreCheckerGroupBox.Size = new System.Drawing.Size(310, 96);
             this.ScoreCheckerGroupBox.TabIndex = 7;
             this.ScoreCheckerGroupBox.TabStop = false;
             this.ScoreCheckerGroupBox.Text = "Score Checker";
@@ -158,9 +167,9 @@ namespace IntralismToolBox.Forms
             // PlayerListButton
             // 
             this.PlayerListButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.PlayerListButton.Location = new System.Drawing.Point(191, 60);
+            this.PlayerListButton.Location = new System.Drawing.Point(207, 60);
             this.PlayerListButton.Name = "PlayerListButton";
-            this.PlayerListButton.Size = new System.Drawing.Size(87, 26);
+            this.PlayerListButton.Size = new System.Drawing.Size(97, 26);
             this.PlayerListButton.TabIndex = 4;
             this.PlayerListButton.Text = "Player List";
             this.PlayerListButton.UseVisualStyleBackColor = true;
@@ -169,7 +178,7 @@ namespace IntralismToolBox.Forms
             // LastCheckedPlayerButton
             // 
             this.LastCheckedPlayerButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.LastCheckedPlayerButton.Location = new System.Drawing.Point(91, 60);
+            this.LastCheckedPlayerButton.Location = new System.Drawing.Point(106, 60);
             this.LastCheckedPlayerButton.Name = "LastCheckedPlayerButton";
             this.LastCheckedPlayerButton.Size = new System.Drawing.Size(94, 26);
             this.LastCheckedPlayerButton.TabIndex = 3;
@@ -182,7 +191,7 @@ namespace IntralismToolBox.Forms
             this.CheckPlayerButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CheckPlayerButton.Location = new System.Drawing.Point(6, 60);
             this.CheckPlayerButton.Name = "CheckPlayerButton";
-            this.CheckPlayerButton.Size = new System.Drawing.Size(79, 26);
+            this.CheckPlayerButton.Size = new System.Drawing.Size(94, 26);
             this.CheckPlayerButton.TabIndex = 2;
             this.CheckPlayerButton.Text = "Check";
             this.CheckPlayerButton.UseVisualStyleBackColor = true;
@@ -200,7 +209,7 @@ namespace IntralismToolBox.Forms
             // 
             this.PlayerLinkTextBox.Location = new System.Drawing.Point(6, 34);
             this.PlayerLinkTextBox.Name = "PlayerLinkTextBox";
-            this.PlayerLinkTextBox.Size = new System.Drawing.Size(272, 20);
+            this.PlayerLinkTextBox.Size = new System.Drawing.Size(298, 20);
             this.PlayerLinkTextBox.TabIndex = 0;
             // 
             // IntralismToManiaGroupBox
@@ -334,11 +343,93 @@ namespace IntralismToolBox.Forms
             this.SelectAudioButton.UseVisualStyleBackColor = true;
             this.SelectAudioButton.Click += new System.EventHandler(this.SelectAudioClicked);
             // 
+            // SpeedChangerGroupBox
+            // 
+            this.SpeedChangerGroupBox.Controls.Add(this.EachSpeedTextBox);
+            this.SpeedChangerGroupBox.Controls.Add(this.EachSpeedLabel);
+            this.SpeedChangerGroupBox.Controls.Add(this.AllSpeedTextBox);
+            this.SpeedChangerGroupBox.Controls.Add(this.AllSpeedLabel);
+            this.SpeedChangerGroupBox.Controls.Add(this.SpeedCheckBox);
+            this.SpeedChangerGroupBox.Controls.Add(this.ChangeSpeedButton);
+            this.SpeedChangerGroupBox.Controls.Add(this.SelectConfigButton);
+            this.SpeedChangerGroupBox.Location = new System.Drawing.Point(239, 114);
+            this.SpeedChangerGroupBox.Name = "SpeedChangerGroupBox";
+            this.SpeedChangerGroupBox.Size = new System.Drawing.Size(304, 93);
+            this.SpeedChangerGroupBox.TabIndex = 12;
+            this.SpeedChangerGroupBox.TabStop = false;
+            this.SpeedChangerGroupBox.Text = "Speed Changer";
+            // 
+            // EachSpeedTextBox
+            // 
+            this.EachSpeedTextBox.Enabled = false;
+            this.EachSpeedTextBox.Location = new System.Drawing.Point(100, 63);
+            this.EachSpeedTextBox.Name = "EachSpeedTextBox";
+            this.EachSpeedTextBox.Size = new System.Drawing.Size(119, 20);
+            this.EachSpeedTextBox.TabIndex = 7;
+            // 
+            // EachSpeedLabel
+            // 
+            this.EachSpeedLabel.Location = new System.Drawing.Point(100, 47);
+            this.EachSpeedLabel.Name = "EachSpeedLabel";
+            this.EachSpeedLabel.Size = new System.Drawing.Size(119, 14);
+            this.EachSpeedLabel.TabIndex = 6;
+            this.EachSpeedLabel.Text = "Change each speed by";
+            // 
+            // AllSpeedTextBox
+            // 
+            this.AllSpeedTextBox.Location = new System.Drawing.Point(100, 26);
+            this.AllSpeedTextBox.Name = "AllSpeedTextBox";
+            this.AllSpeedTextBox.Size = new System.Drawing.Size(119, 20);
+            this.AllSpeedTextBox.TabIndex = 5;
+            // 
+            // AllSpeedLabel
+            // 
+            this.AllSpeedLabel.Location = new System.Drawing.Point(100, 11);
+            this.AllSpeedLabel.Name = "AllSpeedLabel";
+            this.AllSpeedLabel.Size = new System.Drawing.Size(119, 16);
+            this.AllSpeedLabel.TabIndex = 4;
+            this.AllSpeedLabel.Text = "Change every speed to";
+            // 
+            // SpeedCheckBox
+            // 
+            this.SpeedCheckBox.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.SpeedCheckBox.Location = new System.Drawing.Point(225, 16);
+            this.SpeedCheckBox.Name = "SpeedCheckBox";
+            this.SpeedCheckBox.Size = new System.Drawing.Size(73, 71);
+            this.SpeedCheckBox.TabIndex = 3;
+            this.SpeedCheckBox.Text = "Change speed differently by a value";
+            this.SpeedCheckBox.UseVisualStyleBackColor = true;
+            this.SpeedCheckBox.CheckedChanged += new System.EventHandler(this.SpeedCheckBox_CheckedChanged);
+            // 
+            // ChangeSpeedButton
+            // 
+            this.ChangeSpeedButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ChangeSpeedButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ChangeSpeedButton.Location = new System.Drawing.Point(6, 57);
+            this.ChangeSpeedButton.Name = "ChangeSpeedButton";
+            this.ChangeSpeedButton.Size = new System.Drawing.Size(88, 26);
+            this.ChangeSpeedButton.TabIndex = 1;
+            this.ChangeSpeedButton.Text = "Change Speed";
+            this.ChangeSpeedButton.UseVisualStyleBackColor = true;
+            this.ChangeSpeedButton.Click += new System.EventHandler(this.ChangeSpeedClicked);
+            // 
+            // SelectConfigButton
+            // 
+            this.SelectConfigButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SelectConfigButton.Location = new System.Drawing.Point(6, 19);
+            this.SelectConfigButton.Name = "SelectConfigButton";
+            this.SelectConfigButton.Size = new System.Drawing.Size(88, 25);
+            this.SelectConfigButton.TabIndex = 0;
+            this.SelectConfigButton.Text = "Select Config";
+            this.SelectConfigButton.UseVisualStyleBackColor = true;
+            this.SelectConfigButton.Click += new System.EventHandler(this.SelectSpeedChangerConfigClicked);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(642, 356);
+            this.Controls.Add(this.SpeedChangerGroupBox);
             this.Controls.Add(this.AudioConverterGroupBox);
             this.Controls.Add(this.ReportBugButton);
             this.Controls.Add(this.testButton);
@@ -358,8 +449,23 @@ namespace IntralismToolBox.Forms
             this.IntralismToManiaGroupBox.ResumeLayout(false);
             this.IntralismToManiaGroupBox.PerformLayout();
             this.AudioConverterGroupBox.ResumeLayout(false);
+            this.SpeedChangerGroupBox.ResumeLayout(false);
+            this.SpeedChangerGroupBox.PerformLayout();
             this.ResumeLayout(false);
         }
+
+        private System.Windows.Forms.Label EachSpeedLabel;
+        private System.Windows.Forms.TextBox EachSpeedTextBox;
+
+        private System.Windows.Forms.Label AllSpeedLabel;
+        private System.Windows.Forms.CheckBox SpeedCheckBox;
+        private System.Windows.Forms.TextBox AllSpeedTextBox;
+
+        private System.Windows.Forms.Button ChangeSpeedButton;
+
+        private System.Windows.Forms.Button SelectConfigButton;
+
+        private System.Windows.Forms.GroupBox SpeedChangerGroupBox;
 
         private System.Windows.Forms.Button ConvertAudioButton;
 

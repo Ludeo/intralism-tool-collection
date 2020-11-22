@@ -126,8 +126,7 @@ namespace IntralismToolBox
         public static Configuration LoadConfig()
         {
             CheckConfig();
-            ExeConfigurationFileMap configMap = new ();
-            configMap.ExeConfigFilename = @"config.xml";
+            ExeConfigurationFileMap configMap = new () { ExeConfigFilename = @"config.xml" };
             Configuration config = ConfigurationManager.OpenMappedExeConfiguration(configMap, ConfigurationUserLevel.None);
 
             return config;
@@ -206,8 +205,7 @@ namespace IntralismToolBox
                 sb.AppendLine("<configuration xmlns=\"http://schemas.microsoft.com/.NetConfiguration/v2.0\"></configuration>");
                 File.WriteAllText(@"config.xml", sb.ToString());
 
-                ExeConfigurationFileMap configMap = new ();
-                configMap.ExeConfigFilename = @"config.xml";
+                ExeConfigurationFileMap configMap = new () { ExeConfigFilename = @"config.xml" };
                 Configuration config = ConfigurationManager.OpenMappedExeConfiguration(configMap, ConfigurationUserLevel.None);
 
                 config.AppSettings.Settings.Add("maniapath", $"C:\\Users\\{Environment.UserName}\\AppData\\Local\\osu!\\Songs");
