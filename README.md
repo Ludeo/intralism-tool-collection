@@ -2,12 +2,12 @@
 Collection of tools for Intralism.
 
 # Features
-- Intralism Score Checker
-- Map Converters
-  - Intralism -> Mania
-  - Mania -> Intralism
-- Intralism Speed Changer
-- Any music file to .ogg Converter
+- [Intralism Score Checker](#intralism-score-checker)
+- [Map Converters](#map-converting)
+  - [Intralism -> Mania]()
+  - [Mania -> Intralism]()
+- [Intralism Speed Changer](#intralism-speed-changer)
+- [Any music file to .ogg Converter](#.ogg-converter)
 
 # Installation
 Go to [Releases](https://github.com/Ludeo/intralism-tool-collection/releases/latest) and downloaded the latest version. You can decide between the two .rar files c# needed and no c# needed. If you have .net 5.0 installed you can just downloaded the c# needed .rar file. If you don't have .net 5.0 you can either download the no c# needed .rar file or you can download .net 5.0 from [here](https://dotnet.microsoft.com/download/dotnet/5.0).
