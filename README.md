@@ -4,8 +4,8 @@ Collection of tools for Intralism.
 # Features
 - [Intralism Score Checker](#intralism-score-checker)
 - [Map Converters](#map-converting)
-  - [Intralism -> Mania]()
-  - [Mania -> Intralism]()
+  - [Intralism -> Mania](#intralism---mania)
+  - [Mania -> Intralism](#mania---intralism)
 - [Intralism Speed Changer](#intralism-speed-changer)
 - [Any music file to .ogg Converter](#.ogg-converter)
 
