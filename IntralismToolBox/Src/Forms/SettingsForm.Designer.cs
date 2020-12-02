@@ -176,6 +176,7 @@ namespace IntralismToolBox.Forms
             this.Controls.Add(this.SaveSettingsButton);
             this.Controls.Add(this.ManiaPathGroupBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SettingsForm";
             this.Text = "Settings";

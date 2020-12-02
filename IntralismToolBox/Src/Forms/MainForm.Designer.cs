@@ -42,6 +42,7 @@ namespace IntralismToolBox.Forms
             this.ManiaToIntralismGroupBox = new System.Windows.Forms.GroupBox();
             this.SettingsButton = new System.Windows.Forms.Button();
             this.ScoreCheckerGroupBox = new System.Windows.Forms.GroupBox();
+            this.StatisticsButton = new System.Windows.Forms.Button();
             this.CheckRankCheckBox = new System.Windows.Forms.CheckBox();
             this.PlayerListButton = new System.Windows.Forms.Button();
             this.LastCheckedPlayerButton = new System.Windows.Forms.Button();
@@ -119,7 +120,6 @@ namespace IntralismToolBox.Forms
             // 
             // SpeedTextBox
             // 
-            this.SpeedTextBox.Enabled = false;
             this.SpeedTextBox.Location = new System.Drawing.Point(6, 64);
             this.SpeedTextBox.Name = "SpeedTextBox";
             this.SpeedTextBox.Size = new System.Drawing.Size(95, 20);
@@ -143,7 +143,7 @@ namespace IntralismToolBox.Forms
             // SettingsButton
             // 
             this.SettingsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SettingsButton.Location = new System.Drawing.Point(534, 321);
+            this.SettingsButton.Location = new System.Drawing.Point(486, 321);
             this.SettingsButton.Name = "SettingsButton";
             this.SettingsButton.Size = new System.Drawing.Size(96, 23);
             this.SettingsButton.TabIndex = 6;
@@ -153,6 +153,7 @@ namespace IntralismToolBox.Forms
             // 
             // ScoreCheckerGroupBox
             // 
+            this.ScoreCheckerGroupBox.Controls.Add(this.StatisticsButton);
             this.ScoreCheckerGroupBox.Controls.Add(this.CheckRankCheckBox);
             this.ScoreCheckerGroupBox.Controls.Add(this.PlayerListButton);
             this.ScoreCheckerGroupBox.Controls.Add(this.LastCheckedPlayerButton);
@@ -161,20 +162,29 @@ namespace IntralismToolBox.Forms
             this.ScoreCheckerGroupBox.Controls.Add(this.PlayerLinkTextBox);
             this.ScoreCheckerGroupBox.Location = new System.Drawing.Point(233, 12);
             this.ScoreCheckerGroupBox.Name = "ScoreCheckerGroupBox";
-            this.ScoreCheckerGroupBox.Size = new System.Drawing.Size(310, 96);
+            this.ScoreCheckerGroupBox.Size = new System.Drawing.Size(349, 96);
             this.ScoreCheckerGroupBox.TabIndex = 7;
             this.ScoreCheckerGroupBox.TabStop = false;
             this.ScoreCheckerGroupBox.Text = "Score Checker";
             // 
+            // StatisticsButton
+            // 
+            this.StatisticsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.StatisticsButton.Location = new System.Drawing.Point(248, 60);
+            this.StatisticsButton.Name = "StatisticsButton";
+            this.StatisticsButton.Size = new System.Drawing.Size(94, 26);
+            this.StatisticsButton.TabIndex = 6;
+            this.StatisticsButton.Text = "Statistics";
+            this.StatisticsButton.UseVisualStyleBackColor = true;
+            this.StatisticsButton.Click += new System.EventHandler(this.StatisticsClicked);
+            // 
             // CheckRankCheckBox
             // 
-            this.CheckRankCheckBox.CheckAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.CheckRankCheckBox.Location = new System.Drawing.Point(248, 36);
+            this.CheckRankCheckBox.Location = new System.Drawing.Point(248, 31);
             this.CheckRankCheckBox.Name = "CheckRankCheckBox";
-            this.CheckRankCheckBox.Size = new System.Drawing.Size(56, 50);
+            this.CheckRankCheckBox.Size = new System.Drawing.Size(100, 26);
             this.CheckRankCheckBox.TabIndex = 5;
             this.CheckRankCheckBox.Text = "Check by Rank";
-            this.CheckRankCheckBox.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.CheckRankCheckBox.UseVisualStyleBackColor = true;
             // 
             // PlayerListButton
@@ -249,7 +259,6 @@ namespace IntralismToolBox.Forms
             // 
             // OffsetTextBox
             // 
-            this.OffsetTextBox.Enabled = false;
             this.OffsetTextBox.Location = new System.Drawing.Point(6, 61);
             this.OffsetTextBox.Name = "OffsetTextBox";
             this.OffsetTextBox.Size = new System.Drawing.Size(94, 20);
@@ -298,6 +307,7 @@ namespace IntralismToolBox.Forms
             this.testButton.TabIndex = 9;
             this.testButton.Text = "Test";
             this.testButton.UseVisualStyleBackColor = true;
+            this.testButton.Visible = false;
             this.testButton.Click += new System.EventHandler(this.TestButtonClicked);
             // 
             // ReportBugButton
@@ -367,7 +377,7 @@ namespace IntralismToolBox.Forms
             this.SpeedChangerGroupBox.Controls.Add(this.SelectConfigButton);
             this.SpeedChangerGroupBox.Location = new System.Drawing.Point(233, 114);
             this.SpeedChangerGroupBox.Name = "SpeedChangerGroupBox";
-            this.SpeedChangerGroupBox.Size = new System.Drawing.Size(310, 93);
+            this.SpeedChangerGroupBox.Size = new System.Drawing.Size(349, 93);
             this.SpeedChangerGroupBox.TabIndex = 12;
             this.SpeedChangerGroupBox.TabStop = false;
             this.SpeedChangerGroupBox.Text = "Speed Changer";
@@ -405,10 +415,10 @@ namespace IntralismToolBox.Forms
             // 
             // SpeedCheckBox
             // 
-            this.SpeedCheckBox.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.SpeedCheckBox.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.SpeedCheckBox.Location = new System.Drawing.Point(225, 16);
             this.SpeedCheckBox.Name = "SpeedCheckBox";
-            this.SpeedCheckBox.Size = new System.Drawing.Size(73, 71);
+            this.SpeedCheckBox.Size = new System.Drawing.Size(117, 71);
             this.SpeedCheckBox.TabIndex = 3;
             this.SpeedCheckBox.Text = "Change speed differently by a value";
             this.SpeedCheckBox.UseVisualStyleBackColor = true;
@@ -441,7 +451,7 @@ namespace IntralismToolBox.Forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(642, 356);
+            this.ClientSize = new System.Drawing.Size(593, 356);
             this.Controls.Add(this.SpeedChangerGroupBox);
             this.Controls.Add(this.AudioConverterGroupBox);
             this.Controls.Add(this.ReportBugButton);
@@ -451,8 +461,8 @@ namespace IntralismToolBox.Forms
             this.Controls.Add(this.SettingsButton);
             this.Controls.Add(this.ManiaToIntralismGroupBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.HelpButton = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "MainForm";
             this.Text = "Intralism Toolbox";
             this.ManiaToIntralismGroupBox.ResumeLayout(false);
@@ -466,6 +476,8 @@ namespace IntralismToolBox.Forms
             this.SpeedChangerGroupBox.PerformLayout();
             this.ResumeLayout(false);
         }
+
+        private System.Windows.Forms.Button StatisticsButton;
 
         private System.Windows.Forms.CheckBox CheckRankCheckBox;
 

@@ -54,6 +54,12 @@ namespace IntralismToolBox.ColorSchemes
         public Color DataGridCellBackgroundColor { get; set; } = Color.White;
 
         /// <inheritdoc/>
+        public Color GraphLineColor { get; set; } = Color.Aqua;
+
+        /// <inheritdoc/>
+        public Color GraphMarkerColor { get; set; } = Color.Red;
+
+        /// <inheritdoc/>
         public bool DataGridEnableHeadersVisualStyles { get; set; } = true;
     }
 }

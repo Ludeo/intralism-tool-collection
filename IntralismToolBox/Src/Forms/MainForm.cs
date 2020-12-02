@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Diagnostics;
 using System.IO;
@@ -8,6 +9,7 @@ using IntralismManiaConverter;
 using IntralismManiaConverter.Intralism;
 using IntralismManiaConverter.Mania;
 using IntralismToolBox.ColorSchemes;
+using Newtonsoft.Json;
 using Octokit;
 using OsuParsers.Enums;
 using static IntralismToolBox.Functions;
@@ -19,7 +21,7 @@ namespace IntralismToolBox.Forms
     /// </summary>
     public partial class MainForm : Form
     {
-        private const string CurrentVersion = "v1.2";
+        private const string CurrentVersion = "v1.3";
         private readonly Random rd = new ();
         private string editorConfigPath;
         private string editorPath;
@@ -72,7 +74,7 @@ namespace IntralismToolBox.Forms
             if (!release.TagName.Equals(CurrentVersion))
             {
                 UpdateForm updateForm = new (release);
-                updateForm.ShowDialog();
+                updateForm.Show();
             }
         }
 
@@ -146,7 +148,6 @@ namespace IntralismToolBox.Forms
                 speed = 25;
             }
 
-            // TODO add speed attribute to Converter.ConvertManiaToIntralism(pathToBeatmapFile, outputFolder, speed)
             ManiaBeatMap temp = new (this.maniaMapPath);
 
             string newFolder = this.editorPath + "\\" + temp.MetadataSection.Artist + " - " + temp.MetadataSection.Title;
@@ -158,7 +159,7 @@ namespace IntralismToolBox.Forms
 
             Directory.CreateDirectory(newFolder);
 
-            await Converter.AsyncConvertManiaToIntralism(this.maniaMapPath, newFolder);
+            await Converter.AsyncConvertManiaToIntralism(this.maniaMapPath, newFolder, speed);
 
             MessageBox.Show(
                 @"Successfully Converted",
@@ -263,7 +264,6 @@ namespace IntralismToolBox.Forms
                 offset = 40;
             }
 
-            // TODO add offset attribute to Converter.ConvertIntralismToMania(pathToBeatmapFile, outputFolder, offset)
             if (temp.Name.Contains("-"))
             {
                 artist = temp.Name.Substring(0, temp.Name.IndexOf("-", StringComparison.Ordinal));
@@ -287,7 +287,7 @@ namespace IntralismToolBox.Forms
 
             Directory.CreateDirectory(newFolder);
 
-            await Converter.AsyncConvertIntralismToMania(this.intralismMapPath, newFolder);
+            await Converter.AsyncConvertIntralismToMania(this.intralismMapPath, newFolder, offset);
 
             MessageBox.Show(
                 @"Successfully Converted",
@@ -314,8 +314,10 @@ namespace IntralismToolBox.Forms
             // {
             // Console.WriteLine(JsonConvert.SerializeObject(ev, Formatting.Indented));
             // }
-            Cancer(this).Start();
-            this.TestButtonClicked(sender, e);
+            List<IntralismScoreChecker.Player> players = JsonConvert.DeserializeObject<List<IntralismScoreChecker.Player>>(File.ReadAllText("old_playerdatabase.json"));
+            string uncompressedFile = JsonConvert.SerializeObject(players);
+            byte[] compressedFile = Compressor.Zip(uncompressedFile);
+            File.WriteAllBytes("playerdatabase.json", compressedFile!);
         }
 
         private void SelectAudioClicked(object sender, EventArgs e)
@@ -442,6 +444,19 @@ namespace IntralismToolBox.Forms
                 @"Success",
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Information);
+        }
+
+        private void StatisticsClicked(object sender, EventArgs e)
+        {
+            if (!File.Exists("playerdatabase.json"))
+            {
+                DisplayErrorMessage("No player got checked yet.", "Error");
+
+                return;
+            }
+
+            StatisticsPlayerListForm statisticsPlayerListForm = new ();
+            statisticsPlayerListForm.Show();
         }
     }
 }

@@ -74,6 +74,8 @@ namespace IntralismToolBox.Forms
             this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.UpdateButton);
             this.Controls.Add(this.ReleaseNotesTextBox);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
             this.Name = "UpdateForm";
             this.Text = "New release available";
             this.ResumeLayout(false);

@@ -44,6 +44,7 @@ namespace IntralismToolBox.Forms
             this.ScoreDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ScoreDataGridView.Location = new System.Drawing.Point(0, 0);
             this.ScoreDataGridView.Name = "ScoreDataGridView";
+            this.ScoreDataGridView.ReadOnly = true;
             this.ScoreDataGridView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.ScoreDataGridView.Size = new System.Drawing.Size(800, 450);
             this.ScoreDataGridView.TabIndex = 0;

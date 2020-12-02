@@ -83,7 +83,17 @@ namespace IntralismToolBox.Interfaces
         public Color DataGridCellBackgroundColor { get; set; }
 
         /// <summary>
-        ///     Gets or sets if headers visual styles of the DataGrid should be enabled.
+        ///     Gets or sets the color of the line from the graph.
+        /// </summary>
+        public Color GraphLineColor { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the marker color fo the graph.
+        /// </summary>
+        public Color GraphMarkerColor { get; set; }
+
+        /// <summary>
+        ///     Gets or sets a value indicating whether the headers visual styles of the DataGrid should be enabled.
         /// </summary>
         public bool DataGridEnableHeadersVisualStyles { get; set; }
     }

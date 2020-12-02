@@ -4,9 +4,6 @@
 
 add a map creator, that lets you select the icon and music file (and additional stuff like speed) to easier create maps
 
-add user statistics in some kind of database -> show a graph of the global and country rank, let the user select a date of the check -> display score 
-table
-
 add slider velocity for converting -> base speed = 1 | base speed + 1 = 1.1 (or something like that)
 
 Config Editor

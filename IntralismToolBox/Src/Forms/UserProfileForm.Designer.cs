@@ -293,6 +293,7 @@ namespace IntralismToolBox.Forms
             this.Controls.Add(this.PlayerPictureLabel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "UserProfileForm";
             this.Text = "FormUserProfile";
             this.ResumeLayout(false);

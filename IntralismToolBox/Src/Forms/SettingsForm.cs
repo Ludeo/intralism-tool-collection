@@ -33,7 +33,7 @@ namespace IntralismToolBox.Forms
             {
                 "true"  => true,
                 "false" => false,
-                var _       => this.DarkModeToggleButton.Checked,
+                var _   => this.DarkModeToggleButton.Checked,
             };
         }
 
@@ -79,6 +79,16 @@ namespace IntralismToolBox.Forms
 
                     case UpdateForm updateForm:
                         updateForm.ReloadTheme();
+
+                        break;
+
+                    case StatisticsPlayerListForm statisticsPlayerListForm:
+                        statisticsPlayerListForm.ReloadTheme();
+
+                        break;
+
+                    case StatisticsForm statisticsForm:
+                        statisticsForm.ReloadTheme();
 
                         break;
                 }

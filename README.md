@@ -10,7 +10,7 @@ Collection of tools for Intralism.
 - [Any music file to .ogg Converter](#.ogg-converter)
 
 # Installation
-Go to [Releases](https://github.com/Ludeo/intralism-tool-collection/releases/latest) and downloaded the latest version. You can decide between the two .rar files c# needed and no c# needed. If you have .net 5.0 installed you can just downloaded the c# needed .rar file. If you don't have .net 5.0 you can either download the no c# needed .rar file or you can download .net 5.0 from [here](https://dotnet.microsoft.com/download/dotnet/5.0).
+Go to [Releases](https://github.com/Ludeo/intralism-tool-collection/releases/latest) and downloaded the latest version. If you don't have .net 5.0 installed you can download it from [here](https://dotnet.microsoft.com/download/dotnet/5.0).
 
 # Usage
 First of all, you should go into the settings and set the mania song folder path and the intralism editor folder path to make the map conversion easier.
@@ -29,6 +29,9 @@ Enter the name of the player into the textbox and click the check button (Note: 
 
 ### Check with the global rank
 Enter the global rank of the player into the textbox and select the checkbox titled "Check By Rank". Then click the check button
+
+### User Statistics
+If you click the Statistics button you can select a player that you have checked before and get information from the time you checked the player with different graphs and also a table with the scores from each check.
 
 ## Map Converting
 You can decide between converting from intralism to mania or converting from mania to intralism.

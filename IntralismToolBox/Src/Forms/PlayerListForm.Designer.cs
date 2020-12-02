@@ -49,6 +49,7 @@ namespace IntralismToolBox.Forms
             // 
             // CheckPlayerButton
             // 
+            this.CheckPlayerButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CheckPlayerButton.Location = new System.Drawing.Point(12, 353);
             this.CheckPlayerButton.Name = "CheckPlayerButton";
             this.CheckPlayerButton.Size = new System.Drawing.Size(156, 25);
@@ -56,10 +57,10 @@ namespace IntralismToolBox.Forms
             this.CheckPlayerButton.Text = "Check";
             this.CheckPlayerButton.UseVisualStyleBackColor = true;
             this.CheckPlayerButton.Click += new System.EventHandler(this.CheckClicked);
-            this.CheckPlayerButton.FlatStyle = FlatStyle.Flat;
             // 
             // AddPlayerButton
             // 
+            this.AddPlayerButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.AddPlayerButton.Location = new System.Drawing.Point(12, 384);
             this.AddPlayerButton.Name = "AddPlayerButton";
             this.AddPlayerButton.Size = new System.Drawing.Size(76, 23);
@@ -67,10 +68,10 @@ namespace IntralismToolBox.Forms
             this.AddPlayerButton.Text = "Add";
             this.AddPlayerButton.UseVisualStyleBackColor = true;
             this.AddPlayerButton.Click += new System.EventHandler(this.AddClicked);
-            this.AddPlayerButton.FlatStyle = FlatStyle.Flat;
             // 
             // RemovePlayerButton
             // 
+            this.RemovePlayerButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.RemovePlayerButton.Location = new System.Drawing.Point(93, 384);
             this.RemovePlayerButton.Name = "RemovePlayerButton";
             this.RemovePlayerButton.Size = new System.Drawing.Size(75, 23);
@@ -78,7 +79,6 @@ namespace IntralismToolBox.Forms
             this.RemovePlayerButton.Text = "Remove";
             this.RemovePlayerButton.UseVisualStyleBackColor = true;
             this.RemovePlayerButton.Click += new System.EventHandler(this.RemoveClicked);
-            this.RemovePlayerButton.FlatStyle = FlatStyle.Flat;
             // 
             // PlayerListForm
             // 
@@ -91,6 +91,7 @@ namespace IntralismToolBox.Forms
             this.Controls.Add(this.PlayerListListBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "PlayerListForm";
             this.Text = "Player List";
             this.ResumeLayout(false);

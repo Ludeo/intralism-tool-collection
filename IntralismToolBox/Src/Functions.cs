@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Configuration;
-using System.Drawing;
 using System.IO;
-using System.Media;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 using IntralismToolBox.Forms;
 using IntralismToolBox.Interfaces;
+using Newtonsoft.Json;
 
 namespace IntralismToolBox
 {
@@ -169,6 +169,7 @@ namespace IntralismToolBox
             userScore.Show();
 
             SaveLastChecked(player.Link);
+            AddPlayerToDatabase(player);
         }
 
         private static void ChangeTheme(IColorScheme scheme, IEnumerable container)
@@ -210,6 +211,17 @@ namespace IntralismToolBox
                         dataGridView.ColumnHeadersDefaultCellStyle.ForeColor = scheme.DataGridForegroundColor;
 
                         break;
+                    case Chart chart:
+                        chart.BackColor = scheme.ButtonBackgroundColor;
+                        chart.ChartAreas[0].BackColor = scheme.ButtonBackgroundColor;
+                        chart.Series[0].Color = scheme.GraphLineColor;
+
+                        foreach (DataPoint dataPoint in chart.Series[0].Points)
+                        {
+                            dataPoint.MarkerColor = scheme.GraphMarkerColor;
+                        }
+
+                        break;
                 }
             }
         }
@@ -243,48 +255,31 @@ namespace IntralismToolBox
             }
         }
 
-        /// <summary>
-        ///     Just a troll.
-        /// </summary>
-        /// <param name="form"> e e e e e e e e e e e e e e. </param>
-        /// <returns> yes. </returns>
-        public static async Task Cancer(MainForm form)
+        private static void AddPlayerToDatabase(IntralismScoreChecker.Player player)
         {
-            Random rd = new ();
-
-            while (true)
+            List<IntralismScoreChecker.Player> playerList = new ();
+            if (!File.Exists("playerdatabase.json"))
             {
-                SystemSounds.Beep.Play();
-                form.BackColor = Color.FromArgb(rd.Next(255), rd.Next(255), rd.Next(255));
-                form.ForeColor = Color.FromArgb(rd.Next(255), rd.Next(255), rd.Next(255));
+                playerList.Add(player);
+                string uncompressedFile2 = JsonConvert.SerializeObject(playerList);
+                byte[] compressedFile2 = Compressor.Zip(uncompressedFile2);
+                File.WriteAllBytes("playerdatabase.json", compressedFile2!);
 
-                foreach (Control c in form.Controls)
-                {
-                    switch (c)
-                    {
-                        case Button:
-                            c.BackColor = Color.FromArgb(rd.Next(255), rd.Next(255), rd.Next(255));
-                            c.ForeColor = Color.FromArgb(rd.Next(255), rd.Next(255), rd.Next(255));
-
-                            break;
-                        case GroupBox:
-                        {
-                            foreach (Control cd in c.Controls)
-                            {
-                                if (cd is Button)
-                                {
-                                    cd.BackColor = Color.FromArgb(rd.Next(255), rd.Next(255), rd.Next(255));
-                                    cd.ForeColor = Color.FromArgb(rd.Next(255), rd.Next(255), rd.Next(255));
-                                }
-                            }
-
-                            break;
-                        }
-                    }
-                }
-
-                await Task.Delay(100);
+                return;
             }
+
+            byte[] compressedFile = File.ReadAllBytes("playerdatabase.json");
+            string uncompressedFile = Compressor.Unzip(compressedFile);
+
+            if (!string.IsNullOrEmpty(uncompressedFile))
+            {
+                playerList = JsonConvert.DeserializeObject<List<IntralismScoreChecker.Player>>(uncompressedFile);
+            }
+
+            playerList.Add(player);
+            uncompressedFile = JsonConvert.SerializeObject(playerList);
+            compressedFile = Compressor.Zip(uncompressedFile);
+            File.WriteAllBytes("playerdatabase.json", compressedFile!);
         }
     }
 }

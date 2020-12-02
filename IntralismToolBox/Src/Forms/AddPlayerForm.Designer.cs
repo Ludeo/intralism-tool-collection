@@ -72,6 +72,7 @@ namespace IntralismToolBox.Forms
             // 
             // AddPlayerButton
             // 
+            this.AddPlayerButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.AddPlayerButton.Location = new System.Drawing.Point(12, 51);
             this.AddPlayerButton.Name = "AddPlayerButton";
             this.AddPlayerButton.Size = new System.Drawing.Size(296, 23);
@@ -79,7 +80,6 @@ namespace IntralismToolBox.Forms
             this.AddPlayerButton.Text = "Add";
             this.AddPlayerButton.UseVisualStyleBackColor = true;
             this.AddPlayerButton.Click += new System.EventHandler(this.AddClicked);
-            this.AddPlayerButton.FlatStyle = FlatStyle.Flat;
             // 
             // AddPlayerForm
             // 
@@ -93,6 +93,7 @@ namespace IntralismToolBox.Forms
             this.Controls.Add(this.PlayerNameLabel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "AddPlayerForm";
             this.Text = "Add Player";
             this.ResumeLayout(false);
