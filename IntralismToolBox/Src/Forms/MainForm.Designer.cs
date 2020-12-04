@@ -69,6 +69,7 @@ namespace IntralismToolBox.Forms
             this.SpeedCheckBox = new System.Windows.Forms.CheckBox();
             this.ChangeSpeedButton = new System.Windows.Forms.Button();
             this.SelectConfigButton = new System.Windows.Forms.Button();
+            this.MapEditorButton = new System.Windows.Forms.Button();
             this.ManiaToIntralismGroupBox.SuspendLayout();
             this.ScoreCheckerGroupBox.SuspendLayout();
             this.IntralismToManiaGroupBox.SuspendLayout();
@@ -307,7 +308,6 @@ namespace IntralismToolBox.Forms
             this.testButton.TabIndex = 9;
             this.testButton.Text = "Test";
             this.testButton.UseVisualStyleBackColor = true;
-            this.testButton.Visible = false;
             this.testButton.Click += new System.EventHandler(this.TestButtonClicked);
             // 
             // ReportBugButton
@@ -447,11 +447,23 @@ namespace IntralismToolBox.Forms
             this.SelectConfigButton.UseVisualStyleBackColor = true;
             this.SelectConfigButton.Click += new System.EventHandler(this.SelectSpeedChangerConfigClicked);
             // 
+            // MapEditorButton
+            // 
+            this.MapEditorButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.MapEditorButton.Location = new System.Drawing.Point(239, 232);
+            this.MapEditorButton.Name = "MapEditorButton";
+            this.MapEditorButton.Size = new System.Drawing.Size(120, 23);
+            this.MapEditorButton.TabIndex = 13;
+            this.MapEditorButton.Text = "Map Editor";
+            this.MapEditorButton.UseVisualStyleBackColor = true;
+            this.MapEditorButton.Click += new System.EventHandler(this.MapEditorClicked);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(593, 356);
+            this.Controls.Add(this.MapEditorButton);
             this.Controls.Add(this.SpeedChangerGroupBox);
             this.Controls.Add(this.AudioConverterGroupBox);
             this.Controls.Add(this.ReportBugButton);
@@ -476,6 +488,8 @@ namespace IntralismToolBox.Forms
             this.SpeedChangerGroupBox.PerformLayout();
             this.ResumeLayout(false);
         }
+
+        private System.Windows.Forms.Button MapEditorButton;
 
         private System.Windows.Forms.Button StatisticsButton;
 

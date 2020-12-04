@@ -458,5 +458,11 @@ namespace IntralismToolBox.Forms
             StatisticsPlayerListForm statisticsPlayerListForm = new ();
             statisticsPlayerListForm.Show();
         }
+
+        private void MapEditorClicked(object sender, EventArgs e)
+        {
+            Form editor = new MapEditorForm(this.editorConfigPath);
+            editor.ShowDialog();
+        }
     }
 }
