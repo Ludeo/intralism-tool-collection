@@ -1,4 +1,6 @@
-﻿optimize update notification (to maybe download it + installer ?)
+﻿change standard value for mania maps to OD:8 and HP:8
+
+optimize update notification (to maybe download it + installer ?)
 
 (maybe a youtube converter with youtube-dl to make getting songs for a new map easier)
 
