@@ -13,7 +13,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="IntralismManiaConverter" Version="1.3.0" />
+        <PackageReference Include="IntralismManiaConverter" Version="1.3.2" />
         <PackageReference Include="IntralismScoreChecker" Version="1.0.7" />
         <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
         <PackageReference Include="Octokit" Version="0.48.0" />

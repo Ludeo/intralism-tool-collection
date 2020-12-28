@@ -21,7 +21,7 @@ namespace IntralismToolBox.Forms
     /// </summary>
     public partial class MainForm : Form
     {
-        private const string CurrentVersion = "v1.3";
+        private const string CurrentVersion = "v1.3.1";
         private readonly Random rd = new ();
         private string editorConfigPath;
         private string editorPath;

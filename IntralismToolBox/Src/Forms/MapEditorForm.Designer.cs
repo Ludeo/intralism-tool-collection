@@ -45,16 +45,16 @@ namespace IntralismToolBox.Forms
             this.label6 = new System.Windows.Forms.Label();
             this.defaultConfig = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.richTextBox4 = new System.Windows.Forms.RichTextBox();
+            this.DefaultViewTextBox = new System.Windows.Forms.RichTextBox();
             this.splitConfigs = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.richTextBox3 = new System.Windows.Forms.RichTextBox();
-            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.richTextBox6 = new System.Windows.Forms.RichTextBox();
+            this.StoryBoardTextBox = new System.Windows.Forms.RichTextBox();
+            this.ArcSpawnTextBox = new System.Windows.Forms.RichTextBox();
+            this.ZoomEventTextBox = new System.Windows.Forms.RichTextBox();
+            this.SpeedEventTextBox = new System.Windows.Forms.RichTextBox();
             this.resizeNS = new System.Windows.Forms.Panel();
             this.resizeWE = new System.Windows.Forms.Panel();
             this.menuStrip1.SuspendLayout();
@@ -168,7 +168,7 @@ namespace IntralismToolBox.Forms
             this.defaultConfig.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (19)))), ((int) (((byte) (7)))), ((int) (((byte) (37)))));
             this.defaultConfig.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.defaultConfig.Controls.Add(this.label1);
-            this.defaultConfig.Controls.Add(this.richTextBox4);
+            this.defaultConfig.Controls.Add(this.DefaultViewTextBox);
             this.defaultConfig.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.defaultConfig.Location = new System.Drawing.Point(832, 24);
             this.defaultConfig.Name = "defaultConfig";
@@ -187,17 +187,18 @@ namespace IntralismToolBox.Forms
             this.label1.Text = "Default View";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // richTextBox4
+            // DefaultViewTextBox
             // 
-            this.richTextBox4.Anchor = ((System.Windows.Forms.AnchorStyles) ((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.richTextBox4.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (14)))), ((int) (((byte) (5)))), ((int) (((byte) (27)))));
-            this.richTextBox4.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
-            this.richTextBox4.ForeColor = System.Drawing.Color.Gainsboro;
-            this.richTextBox4.Location = new System.Drawing.Point(5, 30);
-            this.richTextBox4.Name = "richTextBox4";
-            this.richTextBox4.Size = new System.Drawing.Size(339, 458);
-            this.richTextBox4.TabIndex = 17;
-            this.richTextBox4.Text = "This will show the config or parts of the config in the default Intralism JSON fo" + "rmat. Will be formatted to be nicer looking obviously.";
+            this.DefaultViewTextBox.Anchor = ((System.Windows.Forms.AnchorStyles) ((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.DefaultViewTextBox.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (14)))), ((int) (((byte) (5)))), ((int) (((byte) (27)))));
+            this.DefaultViewTextBox.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.DefaultViewTextBox.ForeColor = System.Drawing.Color.Gainsboro;
+            this.DefaultViewTextBox.Location = new System.Drawing.Point(5, 30);
+            this.DefaultViewTextBox.Name = "DefaultViewTextBox";
+            this.DefaultViewTextBox.Size = new System.Drawing.Size(339, 458);
+            this.DefaultViewTextBox.TabIndex = 17;
+            this.DefaultViewTextBox.Text = "This will show the config or parts of the config in the default Intralism JSON fo" + "rmat. Will be formatted to be nicer looking obviously.";
+            this.DefaultViewTextBox.TextChanged += new System.EventHandler(this.DefaultViewTextBoxTextChanged);
             // 
             // splitConfigs
             // 
@@ -209,10 +210,10 @@ namespace IntralismToolBox.Forms
             this.splitConfigs.Controls.Add(this.label4);
             this.splitConfigs.Controls.Add(this.label3);
             this.splitConfigs.Controls.Add(this.label2);
-            this.splitConfigs.Controls.Add(this.richTextBox3);
-            this.splitConfigs.Controls.Add(this.richTextBox2);
-            this.splitConfigs.Controls.Add(this.richTextBox1);
-            this.splitConfigs.Controls.Add(this.richTextBox6);
+            this.splitConfigs.Controls.Add(this.StoryBoardTextBox);
+            this.splitConfigs.Controls.Add(this.ArcSpawnTextBox);
+            this.splitConfigs.Controls.Add(this.ZoomEventTextBox);
+            this.splitConfigs.Controls.Add(this.SpeedEventTextBox);
             this.splitConfigs.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.splitConfigs.Location = new System.Drawing.Point(0, 24);
             this.splitConfigs.Name = "splitConfigs";
@@ -263,52 +264,56 @@ namespace IntralismToolBox.Forms
             this.label2.Text = "Arc Spawns";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // richTextBox3
+            // StoryBoardTextBox
             // 
-            this.richTextBox3.Anchor = ((System.Windows.Forms.AnchorStyles) ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.richTextBox3.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (14)))), ((int) (((byte) (5)))), ((int) (((byte) (27)))));
-            this.richTextBox3.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
-            this.richTextBox3.ForeColor = System.Drawing.Color.Gainsboro;
-            this.richTextBox3.Location = new System.Drawing.Point(422, 30);
-            this.richTextBox3.Name = "richTextBox3";
-            this.richTextBox3.Size = new System.Drawing.Size(394, 215);
-            this.richTextBox3.TabIndex = 20;
-            this.richTextBox3.Text = resources.GetString("richTextBox3.Text");
+            this.StoryBoardTextBox.Anchor = ((System.Windows.Forms.AnchorStyles) ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.StoryBoardTextBox.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (14)))), ((int) (((byte) (5)))), ((int) (((byte) (27)))));
+            this.StoryBoardTextBox.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.StoryBoardTextBox.ForeColor = System.Drawing.Color.Gainsboro;
+            this.StoryBoardTextBox.Location = new System.Drawing.Point(422, 30);
+            this.StoryBoardTextBox.Name = "StoryBoardTextBox";
+            this.StoryBoardTextBox.Size = new System.Drawing.Size(394, 215);
+            this.StoryBoardTextBox.TabIndex = 20;
+            this.StoryBoardTextBox.Text = resources.GetString("StoryBoardTextBox.Text");
+            this.StoryBoardTextBox.TextChanged += new System.EventHandler(this.StoryBoardEventTextBoxTextChanged);
             // 
-            // richTextBox2
+            // ArcSpawnTextBox
             // 
-            this.richTextBox2.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (14)))), ((int) (((byte) (5)))), ((int) (((byte) (27)))));
-            this.richTextBox2.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
-            this.richTextBox2.ForeColor = System.Drawing.Color.Gainsboro;
-            this.richTextBox2.Location = new System.Drawing.Point(5, 30);
-            this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.Size = new System.Drawing.Size(394, 215);
-            this.richTextBox2.TabIndex = 19;
-            this.richTextBox2.Text = "These text boxes do not resize yet. Rich Text Boxes do not seem to have auto-sizi" + "ng functions, so we will need to make our own resizing.";
+            this.ArcSpawnTextBox.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (14)))), ((int) (((byte) (5)))), ((int) (((byte) (27)))));
+            this.ArcSpawnTextBox.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.ArcSpawnTextBox.ForeColor = System.Drawing.Color.Gainsboro;
+            this.ArcSpawnTextBox.Location = new System.Drawing.Point(5, 30);
+            this.ArcSpawnTextBox.Name = "ArcSpawnTextBox";
+            this.ArcSpawnTextBox.Size = new System.Drawing.Size(394, 215);
+            this.ArcSpawnTextBox.TabIndex = 19;
+            this.ArcSpawnTextBox.Text = "These text boxes do not resize yet. Rich Text Boxes do not seem to have auto-sizi" + "ng functions, so we will need to make our own resizing.";
+            this.ArcSpawnTextBox.TextChanged += new System.EventHandler(this.ArcSpawnTextBoxTextChanged);
             // 
-            // richTextBox1
+            // ZoomEventTextBox
             // 
-            this.richTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles) ((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.richTextBox1.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (14)))), ((int) (((byte) (5)))), ((int) (((byte) (27)))));
-            this.richTextBox1.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
-            this.richTextBox1.ForeColor = System.Drawing.Color.Gainsboro;
-            this.richTextBox1.Location = new System.Drawing.Point(422, 273);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(394, 215);
-            this.richTextBox1.TabIndex = 18;
-            this.richTextBox1.Text = "Perhaps events are listed in a friendlier format here and if the user clicks on t" + "hem they can expand to see the full details (Default View/Context-Sensitive Tool" + "box)";
+            this.ZoomEventTextBox.Anchor = ((System.Windows.Forms.AnchorStyles) ((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.ZoomEventTextBox.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (14)))), ((int) (((byte) (5)))), ((int) (((byte) (27)))));
+            this.ZoomEventTextBox.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.ZoomEventTextBox.ForeColor = System.Drawing.Color.Gainsboro;
+            this.ZoomEventTextBox.Location = new System.Drawing.Point(422, 273);
+            this.ZoomEventTextBox.Name = "ZoomEventTextBox";
+            this.ZoomEventTextBox.Size = new System.Drawing.Size(394, 215);
+            this.ZoomEventTextBox.TabIndex = 18;
+            this.ZoomEventTextBox.Text = "Perhaps events are listed in a friendlier format here and if the user clicks on t" + "hem they can expand to see the full details (Default View/Context-Sensitive Tool" + "box)";
+            this.ZoomEventTextBox.TextChanged += new System.EventHandler(this.ZoomEventTextBoxTextChanged);
             // 
-            // richTextBox6
+            // SpeedEventTextBox
             // 
-            this.richTextBox6.Anchor = ((System.Windows.Forms.AnchorStyles) ((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.richTextBox6.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (14)))), ((int) (((byte) (5)))), ((int) (((byte) (27)))));
-            this.richTextBox6.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
-            this.richTextBox6.ForeColor = System.Drawing.Color.Gainsboro;
-            this.richTextBox6.Location = new System.Drawing.Point(5, 273);
-            this.richTextBox6.Name = "richTextBox6";
-            this.richTextBox6.Size = new System.Drawing.Size(394, 215);
-            this.richTextBox6.TabIndex = 17;
-            this.richTextBox6.Text = "Option to enable/disable specific boxes would be very nice, especially if a user " + "only wants to work on storyboard or only wants to work on zooms.";
+            this.SpeedEventTextBox.Anchor = ((System.Windows.Forms.AnchorStyles) ((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.SpeedEventTextBox.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (14)))), ((int) (((byte) (5)))), ((int) (((byte) (27)))));
+            this.SpeedEventTextBox.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.SpeedEventTextBox.ForeColor = System.Drawing.Color.Gainsboro;
+            this.SpeedEventTextBox.Location = new System.Drawing.Point(5, 273);
+            this.SpeedEventTextBox.Name = "SpeedEventTextBox";
+            this.SpeedEventTextBox.Size = new System.Drawing.Size(394, 215);
+            this.SpeedEventTextBox.TabIndex = 17;
+            this.SpeedEventTextBox.Text = "Option to enable/disable specific boxes would be very nice, especially if a user " + "only wants to work on storyboard or only wants to work on zooms.";
+            this.SpeedEventTextBox.TextChanged += new System.EventHandler(this.SpeedEventTextBoxTextChanged);
             // 
             // resizeNS
             // 
@@ -336,7 +341,7 @@ namespace IntralismToolBox.Forms
             this.resizeWE.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ResizeWestAndEast);
             this.resizeWE.MouseUp += new System.Windows.Forms.MouseEventHandler(this.FormMouseUp);
             // 
-            // FormMapEditor
+            // MapEditorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -350,7 +355,7 @@ namespace IntralismToolBox.Forms
             this.Controls.Add(this.menuStrip1);
             this.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.MainMenuStrip = this.menuStrip1;
-            this.Name = "FormMapEditor";
+            this.Name = "MapEditorForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormMapEditor";
             this.menuStrip1.ResumeLayout(false);
@@ -375,11 +380,11 @@ namespace IntralismToolBox.Forms
         private System.Windows.Forms.Label label1;
 
         private System.Windows.Forms.Panel defaultConfig;
-        private System.Windows.Forms.RichTextBox richTextBox4;
-        private System.Windows.Forms.RichTextBox richTextBox6;
-        private System.Windows.Forms.RichTextBox richTextBox1;
-        private System.Windows.Forms.RichTextBox richTextBox2;
-        private System.Windows.Forms.RichTextBox richTextBox3;
+        private System.Windows.Forms.RichTextBox DefaultViewTextBox;
+        private System.Windows.Forms.RichTextBox SpeedEventTextBox;
+        private System.Windows.Forms.RichTextBox ZoomEventTextBox;
+        private System.Windows.Forms.RichTextBox ArcSpawnTextBox;
+        private System.Windows.Forms.RichTextBox StoryBoardTextBox;
 
         private System.Windows.Forms.Panel resizeWE;
 

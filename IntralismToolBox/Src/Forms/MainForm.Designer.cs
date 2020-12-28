@@ -308,6 +308,7 @@ namespace IntralismToolBox.Forms
             this.testButton.TabIndex = 9;
             this.testButton.Text = "Test";
             this.testButton.UseVisualStyleBackColor = true;
+            this.testButton.Visible = false;
             this.testButton.Click += new System.EventHandler(this.TestButtonClicked);
             // 
             // ReportBugButton
@@ -456,6 +457,7 @@ namespace IntralismToolBox.Forms
             this.MapEditorButton.TabIndex = 13;
             this.MapEditorButton.Text = "Map Editor";
             this.MapEditorButton.UseVisualStyleBackColor = true;
+            this.MapEditorButton.Visible = false;
             this.MapEditorButton.Click += new System.EventHandler(this.MapEditorClicked);
             // 
             // MainForm
