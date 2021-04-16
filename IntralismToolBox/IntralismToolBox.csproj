@@ -6,51 +6,26 @@
         <UseWindowsForms>true</UseWindowsForms>
         <RootNamespace>IntralismToolBox</RootNamespace>
         <NoWarn>SA1633, SA1129, SA1106, SA1107, SA1009, SA1200</NoWarn>
-    </PropertyGroup>
-
-    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
-      <DocumentationFile>bin\Debug\IntralismToolBox.xml</DocumentationFile>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
     </PropertyGroup>
 
     <ItemGroup>
         <PackageReference Include="IntralismManiaConverter" Version="1.3.2" />
         <PackageReference Include="IntralismScoreChecker" Version="1.0.7" />
         <PackageReference Include="Maikebing.System.Windows.Forms.DataVisualization" Version="5.0.1" />
-        <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
-        <PackageReference Include="Octokit" Version="0.48.0" />
-        <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
-          <PrivateAssets>all</PrivateAssets>
-          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-        </PackageReference>
-        <PackageReference Include="System.Data.OleDb" Version="5.0.0" />
-        <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
+        <PackageReference Include="Octokit" Version="0.50.0" />
     </ItemGroup>
 
     <ItemGroup>
+      <None Update="config.xml">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
       <None Update="scores.csv">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
       <None Update="savedplayers.csv">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
-      <None Update="config.xml">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </None>
-    </ItemGroup>
-
-    <ItemGroup>
-      <Compile Update="Src\Forms\UpdateForm.cs">
-        <SubType>Form</SubType>
-      </Compile>
-      <Compile Update="Src\Forms\StatisticsPlayerListForm.cs">
-        <SubType>Form</SubType>
-      </Compile>
-      <Compile Update="Src\Forms\StatisticsForm.cs">
-        <SubType>Form</SubType>
-      </Compile>
-      <Compile Update="Src\Forms\MapEditorForm.cs">
-        <SubType>Form</SubType>
-      </Compile>
     </ItemGroup>
 
 </Project>
