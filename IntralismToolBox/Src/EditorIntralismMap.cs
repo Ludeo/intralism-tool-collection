@@ -35,7 +35,7 @@ namespace IntralismToolBox
 
             this.UncategorizedEvents = this.Events!.ToList();
 
-            foreach (Event entry in this.Events)
+            foreach (Event entry in this.UncategorizedEvents)
             {
                 if (entry.IsEventOfType(EventType.SpawnObj))
                 {
