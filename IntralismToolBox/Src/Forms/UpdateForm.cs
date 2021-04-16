@@ -27,6 +27,17 @@ namespace IntralismToolBox.Forms
             this.DisplayReleaseNotes();
         }
 
+        private void CancelButtonClicked(object sender, EventArgs e) => this.Close();
+
+        private void DisplayReleaseNotes()
+        {
+            StringBuilder sb = new();
+            sb.AppendLine(this.release.TagName + " is now available!");
+            sb.AppendLine(string.Empty);
+            sb.AppendLine(this.release.Name);
+            this.ReleaseNotesTextBox.Text = sb.ToString();
+        }
+
         /// <summary>
         ///     Reloads the color theme of the form. It's public so <see cref="SettingsForm"/> can call it.
         /// </summary>
@@ -47,22 +58,10 @@ namespace IntralismToolBox.Forms
             }
         }
 
-        private void DisplayReleaseNotes()
-        {
-            StringBuilder sb = new ();
-            sb.AppendLine(this.release.TagName + " is now available!");
-            sb.AppendLine(string.Empty);
-            sb.AppendLine(this.release.Name);
-            this.ReleaseNotesTextBox.Text = sb.ToString();
-        }
-
-        private void CancelButtonClicked(object sender, EventArgs e) => this.Close();
-
         private void UpdateClicked(object sender, EventArgs e) =>
-            Process.Start(
-                    new ProcessStartInfo("cmd", $"/c start https://github.com/Ludeo/intralism-tool-collection/releases/latest")
-                    {
-                        CreateNoWindow = true,
-                    });
+            Process.Start(new ProcessStartInfo("cmd", "/c start https://github.com/Ludeo/intralism-tool-collection/releases/latest")
+            {
+                CreateNoWindow = true,
+            });
     }
 }

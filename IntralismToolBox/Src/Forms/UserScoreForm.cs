@@ -16,7 +16,7 @@ namespace IntralismToolBox.Forms
     {
         private readonly Type doubleType = Type.GetType("System.Double");
         private readonly Type int32Type = Type.GetType("System.Int32");
-        private readonly DataTable table = new ();
+        private readonly DataTable table = new();
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="UserScoreForm"/> class.
@@ -39,15 +39,14 @@ namespace IntralismToolBox.Forms
 
             foreach (MapScore score in allScores)
             {
-                this.table.Rows.Add(
-                    score.MapName,
-                    score.Score,
-                    score.Accuracy,
-                    score.Miss,
-                    score.Points,
-                    score.MaximumPoints,
-                    score.Difference,
-                    score.BrokenStatus);
+                this.table.Rows.Add(score.MapName,
+                                    score.Score,
+                                    score.Accuracy,
+                                    score.Miss,
+                                    score.Points,
+                                    score.MaximumPoints,
+                                    score.Difference,
+                                    score.BrokenStatus);
             }
 
             this.ScoreDataGridView.DataSource = this.table;

@@ -17,7 +17,7 @@ namespace IntralismToolBox.Forms
 
         private readonly string[][] players = CsvReader.GetCsvContent(SavedPlayersCsvPath);
 
-        private readonly StringBuilder stringBuilder = new ();
+        private readonly StringBuilder stringBuilder = new();
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="AddPlayerForm"/> class.
@@ -26,26 +26,6 @@ namespace IntralismToolBox.Forms
         {
             this.InitializeComponent();
             this.ReloadTheme();
-        }
-
-        /// <summary>
-        ///     Reloads the color theme of the form. It's public so <see cref="SettingsForm"/> can call it.
-        /// </summary>
-        public void ReloadTheme()
-        {
-            Configuration config = Functions.LoadConfig();
-
-            switch (config.AppSettings.Settings["darkmode"].Value)
-            {
-                case "true":
-                    Functions.ChangeTheme(new DarkColorScheme(), this);
-
-                    break;
-                case "false":
-                    Functions.ChangeTheme(new LightColorScheme(), this);
-
-                    break;
-            }
         }
 
         private void AddClicked(object sender, EventArgs e)
@@ -66,6 +46,26 @@ namespace IntralismToolBox.Forms
         }
 
         private void CombineString(string a, string b) => this.stringBuilder.AppendLine(a + "," + b);
+
+        /// <summary>
+        ///     Reloads the color theme of the form. It's public so <see cref="SettingsForm"/> can call it.
+        /// </summary>
+        public void ReloadTheme()
+        {
+            Configuration config = Functions.LoadConfig();
+
+            switch (config.AppSettings.Settings["darkmode"].Value)
+            {
+                case "true":
+                    Functions.ChangeTheme(new DarkColorScheme(), this);
+
+                    break;
+                case "false":
+                    Functions.ChangeTheme(new LightColorScheme(), this);
+
+                    break;
+            }
+        }
 
         private void SaveContents() => File.WriteAllText(SavedPlayersCsvPath, this.stringBuilder.ToString());
     }

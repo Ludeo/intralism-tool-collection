@@ -14,7 +14,7 @@ namespace IntralismToolBox.Forms
     /// </summary>
     public partial class StatisticsPlayerListForm : Form
     {
-        private List<IntralismScoreChecker.Player> playerList = new ();
+        private List<IntralismScoreChecker.Player> playerList = new();
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="StatisticsPlayerListForm"/> class.
@@ -31,6 +31,29 @@ namespace IntralismToolBox.Forms
             {
                 this.PlayerListListBox.SelectedIndex = 0;
             }
+        }
+
+        private void LoadPlayers()
+        {
+            byte[] compressedFile = File.ReadAllBytes("playerdatabase.json");
+            string uncompressedFile = Compressor.Unzip(compressedFile);
+            this.playerList = JsonConvert.DeserializeObject<List<IntralismScoreChecker.Player>>(uncompressedFile!);
+
+            foreach (string itemName in this.playerList?
+                                            .Select(player => player.Name + " (" + player.Id + ")")
+                                            .Where(itemName => this.PlayerListListBox.FindString(itemName) == -1))
+            {
+                this.PlayerListListBox.Items.Add(itemName!);
+            }
+        }
+
+        /// <summary>
+        ///     Function that will reload the <see cref="PlayerListListBox"/>.
+        /// </summary>
+        public void ReloadData()
+        {
+            this.PlayerListListBox.Items.Clear();
+            this.LoadPlayers();
         }
 
         /// <summary>
@@ -53,32 +76,9 @@ namespace IntralismToolBox.Forms
             }
         }
 
-        /// <summary>
-        ///     Function that will reload the <see cref="PlayerListListBox"/>.
-        /// </summary>
-        public void ReloadData()
-        {
-            this.PlayerListListBox.Items.Clear();
-            this.LoadPlayers();
-        }
-
-        private void LoadPlayers()
-        {
-            byte[] compressedFile = File.ReadAllBytes("playerdatabase.json");
-            string uncompressedFile = Compressor.Unzip(compressedFile);
-            this.playerList = JsonConvert.DeserializeObject<List<IntralismScoreChecker.Player>>(uncompressedFile!);
-
-            foreach (string itemName in this.playerList?
-                                        .Select(player => player.Name + " (" + player.Id + ")")
-                                        .Where(itemName => this.PlayerListListBox.FindString(itemName) == -1))
-            {
-                this.PlayerListListBox.Items.Add(itemName!);
-            }
-        }
-
         private void ShowStatisticsClicked(object sender, EventArgs e)
         {
-            StatisticsForm statisticsForm = new (this.PlayerListListBox.SelectedItem.ToString(), this.playerList);
+            StatisticsForm statisticsForm = new(this.PlayerListListBox.SelectedItem.ToString(), this.playerList);
             statisticsForm.Show();
         }
     }

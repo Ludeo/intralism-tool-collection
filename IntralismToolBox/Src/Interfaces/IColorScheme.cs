@@ -10,27 +10,27 @@ namespace IntralismToolBox.Interfaces
         /// <summary>
         ///     Gets or sets the background color of a Button.
         /// </summary>
-        public Color ButtonBackgroundColor   { get; set; }
+        public Color ButtonBackgroundColor { get; set; }
 
         /// <summary>
         ///     Gets or sets the foreground color of a Button.
         /// </summary>
-        public Color ButtonForegroundColor   { get; set; }
+        public Color ButtonForegroundColor { get; set; }
 
         /// <summary>
         ///     Gets or sets the border color of a Button.
         /// </summary>
-        public Color ButtonBorderColor       { get; set; }
+        public Color ButtonBorderColor { get; set; }
 
         /// <summary>
         ///     Gets or sets the background color of a TextBox.
         /// </summary>
-        public Color TextBoxBackgroundColor  { get; set; }
+        public Color TextBoxBackgroundColor { get; set; }
 
         /// <summary>
         ///     Gets or sets the foreground color of a TextBox.
         /// </summary>
-        public Color TextBoxForegroundColor  { get; set; }
+        public Color TextBoxForegroundColor { get; set; }
 
         /// <summary>
         ///     Gets or sets the background color of a Form.
@@ -55,12 +55,12 @@ namespace IntralismToolBox.Interfaces
         /// <summary>
         ///     Gets or sets the background color of a ListBox.
         /// </summary>
-        public Color ListBoxBackgroundColor  { get; set; }
+        public Color ListBoxBackgroundColor { get; set; }
 
         /// <summary>
         ///     Gets or sets the foreground color of a ListBox.
         /// </summary>
-        public Color ListBoxForegroundColor  { get; set; }
+        public Color ListBoxForegroundColor { get; set; }
 
         /// <summary>
         ///     Gets or sets the background color of a DataGrid.

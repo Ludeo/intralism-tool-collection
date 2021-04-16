@@ -27,7 +27,7 @@ namespace IntralismToolBox.WindowsFormsComponents
             this.OnPaintBackground(e);
             e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
 
-            GraphicsPath path = new ();
+            GraphicsPath path = new();
 
             int d = this.Padding.All;
             int r = this.Height - (2 * d);

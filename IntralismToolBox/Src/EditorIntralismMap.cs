@@ -50,8 +50,8 @@ namespace IntralismToolBox
                     this.Speeds.Add(entry);
                 }
                 else if (!entry.IsEventOfType(EventType.SpawnObj)
-                         && !entry.IsEventOfType(EventType.SetSpeed)
-                         && !entry.IsEventOfType(EventType.SetPlayerDistance))
+                      && !entry.IsEventOfType(EventType.SetSpeed)
+                      && !entry.IsEventOfType(EventType.SetPlayerDistance))
                 {
                     this.StoryBoard.Add(entry);
                 }
@@ -69,33 +69,34 @@ namespace IntralismToolBox
         /// <summary>
         ///     Gets or sets the List of ArcSpawn Events.
         /// </summary>
-        [JsonIgnore] public List<Event> ArcSpawns { get; set; } = new ();
+        [JsonIgnore] public List<Event> ArcSpawns { get; set; } = new();
 
         /// <summary>
         ///     Gets or sets the List of Zoom Events.
         /// </summary>
-        [JsonIgnore] public List<Event> Zooms { get; set; } = new ();
+        [JsonIgnore] public List<Event> Zooms { get; set; } = new();
 
         /// <summary>
         ///     Gets or sets the List of Speed Events.
         /// </summary>
-        [JsonIgnore] public List<Event> Speeds { get; set; } = new ();
+        [JsonIgnore] public List<Event> Speeds { get; set; } = new();
 
         /// <summary>
         ///     Gets or sets the List of StoryBoard Events.
         /// </summary>
-        [JsonIgnore] public  List<Event> StoryBoard { get; set; } = new ();
+        [JsonIgnore] public List<Event> StoryBoard { get; set; } = new();
 
         [JsonIgnore] private List<Event> UncategorizedEvents { get; }
 
         /// <summary>
         ///     Function that fills up UncategorizedEvents with all the other Lists.
         /// </summary>
-        public void BuildEvents() => this.Events = this.UncategorizedEvents!
-                                                   .Concat(this.ArcSpawns!)
-                                                   .Concat(this.Zooms!)
-                                                   .Concat(this.Speeds!)
-                                                   .Concat(this.StoryBoard!)
-                                                   .ToList();
+        public void BuildEvents() =>
+            this.Events = this.UncategorizedEvents!
+                          .Concat(this.ArcSpawns!)
+                          .Concat(this.Zooms!)
+                          .Concat(this.Speeds!)
+                          .Concat(this.StoryBoard!)
+                          .ToList();
     }
 }

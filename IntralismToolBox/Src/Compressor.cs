@@ -9,26 +9,15 @@ namespace IntralismToolBox
     /// </summary>
     public static class Compressor
     {
-        /// <summary>
-        ///     Compresses a string to bytes.
-        /// </summary>
-        /// <param name="str"> The input string that should be compressed. </param>
-        /// <returns> The compressed bytes. </returns>
-        public static byte[] Zip(string str)
+        private static void CopyTo(Stream src, Stream dest)
         {
-            byte[] bytes = Encoding.UTF8.GetBytes(str!);
+            byte[] bytes = new byte[4096];
 
-            using (MemoryStream msi = new (bytes))
+            int cnt;
+
+            while ((cnt = src.Read(bytes, 0, bytes.Length)) != 0)
             {
-                using (MemoryStream mso = new ())
-                {
-                    using (GZipStream gs = new (mso, CompressionMode.Compress))
-                    {
-                        CopyTo(msi, gs);
-                    }
-
-                    return mso.ToArray();
-                }
+                dest.Write(bytes, 0, cnt);
             }
         }
 
@@ -39,11 +28,11 @@ namespace IntralismToolBox
         /// <returns> The uncompressed string. </returns>
         public static string Unzip(byte[] bytes)
         {
-            using (MemoryStream msi = new (bytes!))
+            using (MemoryStream msi = new(bytes!))
             {
-                using (MemoryStream mso = new ())
+                using (MemoryStream mso = new())
                 {
-                    using (GZipStream gs = new (msi, CompressionMode.Decompress))
+                    using (GZipStream gs = new(msi, CompressionMode.Decompress))
                     {
                         CopyTo(gs, mso);
                     }
@@ -53,15 +42,26 @@ namespace IntralismToolBox
             }
         }
 
-        private static void CopyTo(Stream src, Stream dest)
+        /// <summary>
+        ///     Compresses a string to bytes.
+        /// </summary>
+        /// <param name="str"> The input string that should be compressed. </param>
+        /// <returns> The compressed bytes. </returns>
+        public static byte[] Zip(string str)
         {
-            byte[] bytes = new byte[4096];
+            byte[] bytes = Encoding.UTF8.GetBytes(str!);
 
-            int cnt;
-
-            while ((cnt = src.Read(bytes, 0, bytes.Length)) != 0)
+            using (MemoryStream msi = new(bytes))
             {
-                dest.Write(bytes, 0, cnt);
+                using (MemoryStream mso = new())
+                {
+                    using (GZipStream gs = new(mso, CompressionMode.Compress))
+                    {
+                        CopyTo(msi, gs);
+                    }
+
+                    return mso.ToArray();
+                }
             }
         }
     }

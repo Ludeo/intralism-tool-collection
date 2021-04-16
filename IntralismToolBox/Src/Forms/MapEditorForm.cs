@@ -18,12 +18,12 @@ namespace IntralismToolBox.Forms
     public partial class MapEditorForm : Form
     {
         private readonly string editorDirectory;
-        private string workingDirectory;
 
         private Point lastMouseDownLocation;
-        private bool mouseIsDown;
 
         private EditorIntralismMap loadedMap;
+        private bool mouseIsDown;
+        private string workingDirectory;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="MapEditorForm"/> class.
@@ -37,6 +37,91 @@ namespace IntralismToolBox.Forms
 
         private string ConfigPath => this.workingDirectory + @"\config.txt";
 
+        private void ArcSpawnTextBoxTextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                this.loadedMap.ArcSpawns = JsonConvert.DeserializeObject<List<Event>>(this.ArcSpawnTextBox.Text!);
+                this.loadedMap.BuildEvents();
+                this.DefaultViewTextBox.Text = JsonSerializer.Serialize(this.loadedMap, new JsonSerializerOptions { WriteIndented = true });
+            }
+            catch
+            {
+                // ignored
+            }
+        }
+
+        private void DefaultViewTextBoxTextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                IntralismBeatMap intralismBeatMap = JsonSerializer.Deserialize<IntralismBeatMap>(this.DefaultViewTextBox.Text!);
+
+                this.loadedMap = new EditorIntralismMap(intralismBeatMap);
+                this.UpdateTextBox();
+            }
+            catch
+            {
+                // ignored
+            }
+        }
+
+        private void FormMouseDown(object sender, MouseEventArgs e)
+        {
+            this.lastMouseDownLocation = e.Location;
+            this.mouseIsDown = true;
+        }
+
+        private void FormMouseUp(object sender, MouseEventArgs e) => this.mouseIsDown = false;
+
+        private string OpenMap(string folderToCheck)
+        {
+            // If the user cancelled, return ""
+            // If there's a config.txt, return the folder
+            if (folderToCheck == string.Empty
+             || File.Exists(folderToCheck + @"\config.txt"))
+            {
+                try
+                {
+                    IntralismBeatMap testMap = new(folderToCheck + @"\config.txt");
+
+                    if (testMap.ConfigVersion == 3)
+                    {
+                        if (testMap.Events!.Any(x => x.IsEventOfType(EventType.SpawnObj)))
+                        {
+                            return folderToCheck;
+                        }
+
+                        if (MessageBox.Show(@"This map might be encoded, you still want to continue?",
+                                            @"Config v3",
+                                            MessageBoxButtons.YesNo,
+                                            MessageBoxIcon.Information)
+                         == DialogResult.Yes)
+                        {
+                            return folderToCheck;
+                        }
+
+                        Functions.DisplayErrorMessage("Please select a map folder with a config.txt!");
+
+                        return this.OpenMap(Functions.OpenFolderAndGetName(this.editorDirectory));
+                    }
+                }
+                catch
+                {
+                    Functions.DisplayErrorMessage("Please select a map folder with a config.txt!");
+
+                    return this.OpenMap(Functions.OpenFolderAndGetName(this.editorDirectory));
+                }
+
+                return folderToCheck;
+            }
+
+            // Otherwise retry the folder dialog
+            Functions.DisplayErrorMessage("Please select a map folder with a config.txt!");
+
+            return this.OpenMap(Functions.OpenFolderAndGetName(this.editorDirectory));
+        }
+
         private void OpenMapFolder(object sender, EventArgs e)
         {
             this.workingDirectory = this.OpenMap(Functions.OpenFolderAndGetName(this.editorDirectory));
@@ -47,69 +132,6 @@ namespace IntralismToolBox.Forms
 
                 this.UpdateTextBox();
             }
-        }
-
-        private void FormMouseDown(object sender, MouseEventArgs e)
-        {
-            this.lastMouseDownLocation = e.Location;
-            this.mouseIsDown = true;
-        }
-
-        private void FormMouseUp(object sender, MouseEventArgs e)
-            => this.mouseIsDown = false;
-
-        private string OpenMap(string folderToCheck)
-        {
-            // If the user cancelled, return ""
-            // If there's a config.txt, return the folder
-            if (folderToCheck == string.Empty || File.Exists(folderToCheck + @"\config.txt"))
-            {
-                try
-                {
-                    IntralismBeatMap testMap = new (folderToCheck + @"\config.txt");
-
-                    if (testMap.ConfigVersion == 3)
-                    {
-                        if (testMap.Events!.Any(x => x.IsEventOfType(EventType.SpawnObj)))
-                        {
-                            return folderToCheck;
-                        }
-
-                        if (MessageBox.Show(
-                            @"This map might be encoded, you still want to continue?",
-                            @"Config v3",
-                            MessageBoxButtons.YesNo,
-                            MessageBoxIcon.Information) == DialogResult.Yes)
-                        {
-                            return folderToCheck;
-                        }
-
-                        Functions.DisplayErrorMessage("Please select a map folder with a config.txt!");
-                        return this.OpenMap(Functions.OpenFolderAndGetName(this.editorDirectory));
-                    }
-                }
-                catch
-                {
-                    Functions.DisplayErrorMessage("Please select a map folder with a config.txt!");
-                    return this.OpenMap(Functions.OpenFolderAndGetName(this.editorDirectory));
-                }
-
-                return folderToCheck;
-            }
-
-            // Otherwise retry the folder dialog
-            Functions.DisplayErrorMessage("Please select a map folder with a config.txt!");
-            return this.OpenMap(Functions.OpenFolderAndGetName(this.editorDirectory));
-        }
-
-        private void ResizeWestAndEast(object sender, MouseEventArgs e)
-        {
-            if (!this.mouseIsDown)
-            {
-                return;
-            }
-
-            this.ResizePanels(e.X, this.lastMouseDownLocation.Y);
         }
 
         private void ResizeNorthAndSouth(object sender, MouseEventArgs e)
@@ -156,30 +178,14 @@ namespace IntralismToolBox.Forms
             this.eventConfig.Size = eventConfigSize;
         }
 
-        private void ArcSpawnTextBoxTextChanged(object sender, EventArgs e)
+        private void ResizeWestAndEast(object sender, MouseEventArgs e)
         {
-            try
+            if (!this.mouseIsDown)
             {
-                this.loadedMap.ArcSpawns = JsonConvert.DeserializeObject<List<Event>>(this.ArcSpawnTextBox.Text!);
-                this.loadedMap.BuildEvents();
-                this.DefaultViewTextBox.Text = JsonSerializer.Serialize(this.loadedMap, new JsonSerializerOptions { WriteIndented = true });
+                return;
             }
-            catch
-            {
-            }
-        }
 
-        private void ZoomEventTextBoxTextChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                this.loadedMap.Zooms = JsonConvert.DeserializeObject<List<Event>>(this.ZoomEventTextBox.Text!);
-                this.loadedMap.BuildEvents();
-                this.DefaultViewTextBox.Text = JsonSerializer.Serialize(this.loadedMap, new JsonSerializerOptions { WriteIndented = true });
-            }
-            catch
-            {
-            }
+            this.ResizePanels(e.X, this.lastMouseDownLocation.Y);
         }
 
         private void SpeedEventTextBoxTextChanged(object sender, EventArgs e)
@@ -192,6 +198,7 @@ namespace IntralismToolBox.Forms
             }
             catch
             {
+                // ignored
             }
         }
 
@@ -205,20 +212,7 @@ namespace IntralismToolBox.Forms
             }
             catch
             {
-            }
-        }
-
-        private void DefaultViewTextBoxTextChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                IntralismBeatMap intralismBeatMap =
-                    JsonSerializer.Deserialize<IntralismBeatMap>(this.DefaultViewTextBox.Text!);
-                this.loadedMap = new EditorIntralismMap(intralismBeatMap);
-                this.UpdateTextBox();
-            }
-            catch
-            {
+                // ignored
             }
         }
 
@@ -229,6 +223,20 @@ namespace IntralismToolBox.Forms
             this.SpeedEventTextBox.Text = JsonConvert.SerializeObject(this.loadedMap.Speeds, Formatting.Indented);
             this.StoryBoardTextBox.Text = JsonConvert.SerializeObject(this.loadedMap.StoryBoard, Formatting.Indented);
             this.DefaultViewTextBox.Text = JsonSerializer.Serialize(this.loadedMap, new JsonSerializerOptions { WriteIndented = true });
+        }
+
+        private void ZoomEventTextBoxTextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                this.loadedMap.Zooms = JsonConvert.DeserializeObject<List<Event>>(this.ZoomEventTextBox.Text!);
+                this.loadedMap.BuildEvents();
+                this.DefaultViewTextBox.Text = JsonSerializer.Serialize(this.loadedMap, new JsonSerializerOptions { WriteIndented = true });
+            }
+            catch
+            {
+                // ignored
+            }
         }
     }
 }

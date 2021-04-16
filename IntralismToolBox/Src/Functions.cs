@@ -17,117 +17,32 @@ namespace IntralismToolBox
     /// </summary>
     public static class Functions
     {
-        /// <summary>
-        ///     Function that creates a new instance of <see cref="IntralismScoreChecker.Player"/> and opens a <see cref="UserProfileForm"/>
-        ///     and a <see cref="UserScoreForm"/> with the details of the player.
-        /// </summary>
-        /// <param name="link"> Link to the intralism player. </param>
-        public static void CheckPlayer(string link)
+        private static void AddPlayerToDatabase(IntralismScoreChecker.Player player)
         {
-            IntralismScoreChecker.Player newPlayer = new　(link, true);
-            DisplayPlayer(newPlayer);
-        }
+            List<IntralismScoreChecker.Player> playerList = new();
 
-        /// <summary>
-        ///     Function that creates a new instance of <see cref="IntralismScoreChecker.Player"/> and opens a <see cref="UserProfileForm"/>
-        ///     and a <see cref="UserScoreForm"/> with the details of the player.
-        /// </summary>
-        /// <param name="rank"> Global Rank of the intralism player. </param>
-        public static void CheckPlayerByRank(int rank)
-        {
-            IntralismScoreChecker.Player newPlayer = new (rank);
-            DisplayPlayer(newPlayer);
-        }
-
-        /// <summary>
-        ///     Function that creates a new instance of <see cref="IntralismScoreChecker.Player"/> and opens a <see cref="UserProfileForm"/>
-        ///     and a <see cref="UserScoreForm"/> with the details of the player.
-        /// </summary>
-        /// <param name="searchInput"> Searches for a intralism player and displays the first player that was found. </param>
-        public static void CheckPlayerWithSearch(string searchInput)
-        {
-            IntralismScoreChecker.Player newPlayer = new　(searchInput, false);
-            DisplayPlayer(newPlayer);
-        }
-
-        /// <summary>
-        ///     Opens a file dialog.
-        /// </summary>
-        /// <param name="initialDirectory"> Directory that get opens when the file dialog shows up. </param>
-        /// <param name="filter"> Filter for the selected files. </param>
-        /// <returns> The name of the selected file. </returns>
-        public static string OpenFileAndGetName(string initialDirectory, string filter = "")
-        {
-            OpenFileDialog fileDialog = new ()
+            if (!File.Exists("playerdatabase.json"))
             {
-                InitialDirectory = initialDirectory,
-                Filter = filter,
-            };
+                playerList.Add(player);
+                string uncompressedFile2 = JsonConvert.SerializeObject(playerList);
+                byte[] compressedFile2 = Compressor.Zip(uncompressedFile2);
+                File.WriteAllBytes("playerdatabase.json", compressedFile2!);
 
-            // If the user cancelled, return string.Empty
-            if (fileDialog.ShowDialog() != DialogResult.OK)
-            {
-                fileDialog.Dispose();
-
-                return string.Empty;
+                return;
             }
 
-            // Return the path and dispose
-            string fileName = fileDialog.FileName;
-            fileDialog.Dispose();
+            byte[] compressedFile = File.ReadAllBytes("playerdatabase.json");
+            string uncompressedFile = Compressor.Unzip(compressedFile);
 
-            return fileName;
-        }
-
-        /// <summary>
-        ///     Opens Folder Dialogue and returns the selected path or "" if cancelled.
-        /// </summary>
-        /// <param name="initialDirectory">The directory to start the folder dialogue in.</param>
-        /// <returns>The Selected Path or "" if cancelled.</returns>
-        public static string OpenFolderAndGetName(string initialDirectory)
-        {
-            FolderBrowserDialog folderDialog = new ()
+            if (!string.IsNullOrEmpty(uncompressedFile))
             {
-                SelectedPath = initialDirectory,
-            };
-
-            // If the user cancelled, return string.Empty
-            if (folderDialog.ShowDialog() != DialogResult.OK)
-            {
-                folderDialog.Dispose();
-
-                return string.Empty;
+                playerList = JsonConvert.DeserializeObject<List<IntralismScoreChecker.Player>>(uncompressedFile);
             }
 
-            // Return the path and dispose
-            string folderName = folderDialog.SelectedPath;
-            folderDialog.Dispose();
-
-            return folderName;
-        }
-
-        /// <summary>
-        ///     Useful for telling the user when they're being a dumbass.
-        /// </summary>
-        /// <param name="message">
-        ///     The error message, provide information that can be useful for the user.
-        ///     (i.e. WHY they got this message and how they can fix it).
-        /// </param>
-        /// <param name="title">The Title of the error box.</param>
-        public static void DisplayErrorMessage(string message, string title = "You Dignus!") =>
-            MessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-        /// <summary>
-        ///     Loads the config.xml file.
-        /// </summary>
-        /// <returns> A Configuration object with the data of the config.xml file. </returns>
-        public static Configuration LoadConfig()
-        {
-            CheckConfig();
-            ExeConfigurationFileMap configMap = new () { ExeConfigFilename = @"config.xml" };
-            Configuration config = ConfigurationManager.OpenMappedExeConfiguration(configMap, ConfigurationUserLevel.None);
-
-            return config;
+            playerList.Add(player);
+            uncompressedFile = JsonConvert.SerializeObject(playerList);
+            compressedFile = Compressor.Zip(uncompressedFile);
+            File.WriteAllBytes("playerdatabase.json", compressedFile!);
         }
 
         /// <summary>
@@ -141,35 +56,6 @@ namespace IntralismToolBox
             form.ForeColor = scheme.FormForegroundColor;
 
             ChangeTheme(scheme, form.Controls);
-        }
-
-        private static void DisplayPlayer(IntralismScoreChecker.Player player)
-        {
-            UserProfileForm profileUserProfileForm = new　(
-                player.GlobalRank,
-                player.TotalGlobalRank,
-                player.Country,
-                player.CountryRank,
-                player.TotalCountryRank,
-                player.AverageMisses,
-                player.AverageAccuracy,
-                player.Points,
-                player.RealPoints,
-                player.MaximumPoints,
-                player.Difference,
-                player.HundredPlays,
-                player.TotalMaps,
-                player.RankUpPoints,
-                player.PictureLink,
-                player.Name);
-
-            profileUserProfileForm.Show();
-
-            UserScoreForm userScore = new　(player.Scores, player.Name);
-            userScore.Show();
-
-            SaveLastChecked(player.Link);
-            AddPlayerToDatabase(player);
         }
 
         private static void ChangeTheme(IColorScheme scheme, IEnumerable container)
@@ -226,24 +112,16 @@ namespace IntralismToolBox
             }
         }
 
-        private static void SaveLastChecked(string playerLink)
-        {
-            Configuration config = LoadConfig();
-            config.AppSettings.Settings["lastchecked"].Value = playerLink;
-
-            config.Save();
-        }
-
         private static void CheckConfig()
         {
             if (!File.Exists("config.xml"))
             {
-                StringBuilder sb = new ();
+                StringBuilder sb = new();
                 sb.AppendLine("<?xml version=\"1.0\" encoding=\"utf-8\"?>");
                 sb.AppendLine("<configuration xmlns=\"http://schemas.microsoft.com/.NetConfiguration/v2.0\"></configuration>");
                 File.WriteAllText(@"config.xml", sb.ToString());
 
-                ExeConfigurationFileMap configMap = new () { ExeConfigFilename = @"config.xml" };
+                ExeConfigurationFileMap configMap = new() { ExeConfigFilename = @"config.xml" };
                 Configuration config = ConfigurationManager.OpenMappedExeConfiguration(configMap, ConfigurationUserLevel.None);
 
                 config.AppSettings.Settings.Add("maniapath", $"C:\\Users\\{Environment.UserName}\\AppData\\Local\\osu!\\Songs");
@@ -255,31 +133,153 @@ namespace IntralismToolBox
             }
         }
 
-        private static void AddPlayerToDatabase(IntralismScoreChecker.Player player)
+        /// <summary>
+        ///     Function that creates a new instance of <see cref="IntralismScoreChecker.Player"/> and opens a <see cref="UserProfileForm"/>
+        ///     and a <see cref="UserScoreForm"/> with the details of the player.
+        /// </summary>
+        /// <param name="link"> Link to the intralism player. </param>
+        public static void CheckPlayer(string link)
         {
-            List<IntralismScoreChecker.Player> playerList = new ();
-            if (!File.Exists("playerdatabase.json"))
-            {
-                playerList.Add(player);
-                string uncompressedFile2 = JsonConvert.SerializeObject(playerList);
-                byte[] compressedFile2 = Compressor.Zip(uncompressedFile2);
-                File.WriteAllBytes("playerdatabase.json", compressedFile2!);
+            IntralismScoreChecker.Player newPlayer = new(link, true);
+            DisplayPlayer(newPlayer);
+        }
 
-                return;
+        /// <summary>
+        ///     Function that creates a new instance of <see cref="IntralismScoreChecker.Player"/> and opens a <see cref="UserProfileForm"/>
+        ///     and a <see cref="UserScoreForm"/> with the details of the player.
+        /// </summary>
+        /// <param name="rank"> Global Rank of the intralism player. </param>
+        public static void CheckPlayerByRank(int rank)
+        {
+            IntralismScoreChecker.Player newPlayer = new(rank);
+            DisplayPlayer(newPlayer);
+        }
+
+        /// <summary>
+        ///     Function that creates a new instance of <see cref="IntralismScoreChecker.Player"/> and opens a <see cref="UserProfileForm"/>
+        ///     and a <see cref="UserScoreForm"/> with the details of the player.
+        /// </summary>
+        /// <param name="searchInput"> Searches for a intralism player and displays the first player that was found. </param>
+        public static void CheckPlayerWithSearch(string searchInput)
+        {
+            IntralismScoreChecker.Player newPlayer = new(searchInput, false);
+            DisplayPlayer(newPlayer);
+        }
+
+        /// <summary>
+        ///     Useful for telling the user when they're being a dumbass.
+        /// </summary>
+        /// <param name="message">
+        ///     The error message, provide information that can be useful for the user.
+        ///     (i.e. WHY they got this message and how they can fix it).
+        /// </param>
+        /// <param name="title">The Title of the error box.</param>
+        public static void DisplayErrorMessage(string message, string title = "You Dignus!") =>
+            MessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+        private static void DisplayPlayer(IntralismScoreChecker.Player player)
+        {
+            UserProfileForm profileUserProfileForm = new(player.GlobalRank,
+                                                         player.TotalGlobalRank,
+                                                         player.Country,
+                                                         player.CountryRank,
+                                                         player.TotalCountryRank,
+                                                         player.AverageMisses,
+                                                         player.AverageAccuracy,
+                                                         player.Points,
+                                                         player.RealPoints,
+                                                         player.MaximumPoints,
+                                                         player.Difference,
+                                                         player.HundredPlays,
+                                                         player.TotalMaps,
+                                                         player.RankUpPoints,
+                                                         player.PictureLink,
+                                                         player.Name);
+
+            profileUserProfileForm.Show();
+
+            UserScoreForm userScore = new(player.Scores, player.Name);
+            userScore.Show();
+
+            SaveLastChecked(player.Link);
+            AddPlayerToDatabase(player);
+        }
+
+        /// <summary>
+        ///     Loads the config.xml file.
+        /// </summary>
+        /// <returns> A Configuration object with the data of the config.xml file. </returns>
+        public static Configuration LoadConfig()
+        {
+            CheckConfig();
+            ExeConfigurationFileMap configMap = new() { ExeConfigFilename = @"config.xml" };
+            Configuration config = ConfigurationManager.OpenMappedExeConfiguration(configMap, ConfigurationUserLevel.None);
+
+            return config;
+        }
+
+        /// <summary>
+        ///     Opens a file dialog.
+        /// </summary>
+        /// <param name="initialDirectory"> Directory that get opens when the file dialog shows up. </param>
+        /// <param name="filter"> Filter for the selected files. </param>
+        /// <returns> The name of the selected file. </returns>
+        public static string OpenFileAndGetName(string initialDirectory, string filter = "")
+        {
+            OpenFileDialog fileDialog = new()
+            {
+                InitialDirectory = initialDirectory,
+                Filter = filter,
+            };
+
+            // If the user cancelled, return string.Empty
+            if (fileDialog.ShowDialog() != DialogResult.OK)
+            {
+                fileDialog.Dispose();
+
+                return string.Empty;
             }
 
-            byte[] compressedFile = File.ReadAllBytes("playerdatabase.json");
-            string uncompressedFile = Compressor.Unzip(compressedFile);
+            // Return the path and dispose
+            string fileName = fileDialog.FileName;
+            fileDialog.Dispose();
 
-            if (!string.IsNullOrEmpty(uncompressedFile))
+            return fileName;
+        }
+
+        /// <summary>
+        ///     Opens Folder Dialogue and returns the selected path or "" if cancelled.
+        /// </summary>
+        /// <param name="initialDirectory">The directory to start the folder dialogue in.</param>
+        /// <returns>The Selected Path or "" if cancelled.</returns>
+        public static string OpenFolderAndGetName(string initialDirectory)
+        {
+            FolderBrowserDialog folderDialog = new()
             {
-                playerList = JsonConvert.DeserializeObject<List<IntralismScoreChecker.Player>>(uncompressedFile);
+                SelectedPath = initialDirectory,
+            };
+
+            // If the user cancelled, return string.Empty
+            if (folderDialog.ShowDialog() != DialogResult.OK)
+            {
+                folderDialog.Dispose();
+
+                return string.Empty;
             }
 
-            playerList.Add(player);
-            uncompressedFile = JsonConvert.SerializeObject(playerList);
-            compressedFile = Compressor.Zip(uncompressedFile);
-            File.WriteAllBytes("playerdatabase.json", compressedFile!);
+            // Return the path and dispose
+            string folderName = folderDialog.SelectedPath;
+            folderDialog.Dispose();
+
+            return folderName;
+        }
+
+        private static void SaveLastChecked(string playerLink)
+        {
+            Configuration config = LoadConfig();
+            config.AppSettings.Settings["lastchecked"].Value = playerLink;
+
+            config.Save();
         }
     }
 }

@@ -33,8 +33,25 @@ namespace IntralismToolBox.Forms
             {
                 "true"  => true,
                 "false" => false,
-                var _   => this.DarkModeToggleButton.Checked,
+                _   => this.DarkModeToggleButton.Checked,
             };
+        }
+
+        private void ReloadTheme()
+        {
+            Configuration config = Functions.LoadConfig();
+
+            switch (config.AppSettings.Settings["darkmode"].Value)
+            {
+                case "true":
+                    Functions.ChangeTheme(new DarkColorScheme(), this);
+
+                    break;
+                case "false":
+                    Functions.ChangeTheme(new LightColorScheme(), this);
+
+                    break;
+            }
         }
 
         private void SaveConfig(object sender, EventArgs e)
@@ -55,26 +72,32 @@ namespace IntralismToolBox.Forms
                 {
                     case MainForm mainForm:
                         mainForm.ReloadTheme();
+
                         break;
 
                     case AddPlayerForm addPlayerForm:
                         addPlayerForm.ReloadTheme();
+
                         break;
 
                     case PlayerListForm playerListForm:
                         playerListForm.ReloadTheme();
+
                         break;
 
                     case SettingsForm settingsForm:
                         settingsForm.ReloadTheme();
+
                         break;
 
                     case UserProfileForm userProfileForm:
                         userProfileForm.ReloadTheme();
+
                         break;
 
                     case UserScoreForm userScoreForm:
                         userScoreForm.ReloadTheme();
+
                         break;
 
                     case UpdateForm updateForm:
@@ -95,30 +118,13 @@ namespace IntralismToolBox.Forms
             }
         }
 
-        private void SelectManiaFolder(object sender, EventArgs e) =>
-            this.ManiaPathTextBox.Text = Functions.OpenFolderAndGetName(this.ManiaPathTextBox.Text);
+        private void SelectAudioPathClicked(object sender, EventArgs e) =>
+            this.AudioPathTextBox.Text = Functions.OpenFolderAndGetName(this.AudioPathTextBox.Text);
 
         private void SelectEditorFolder(object sender, EventArgs e) =>
             this.EditorPathTextBox.Text = Functions.OpenFolderAndGetName(this.EditorPathTextBox.Text);
 
-        private void SelectAudioPathClicked(object sender, EventArgs e) =>
-            this.AudioPathTextBox.Text = Functions.OpenFolderAndGetName(this.AudioPathTextBox.Text);
-
-        private void ReloadTheme()
-        {
-            Configuration config = Functions.LoadConfig();
-
-            switch (config.AppSettings.Settings["darkmode"].Value)
-            {
-                case "true":
-                    Functions.ChangeTheme(new DarkColorScheme(), this);
-
-                    break;
-                case "false":
-                    Functions.ChangeTheme(new LightColorScheme(), this);
-
-                    break;
-            }
-        }
+        private void SelectManiaFolder(object sender, EventArgs e) =>
+            this.ManiaPathTextBox.Text = Functions.OpenFolderAndGetName(this.ManiaPathTextBox.Text);
     }
 }

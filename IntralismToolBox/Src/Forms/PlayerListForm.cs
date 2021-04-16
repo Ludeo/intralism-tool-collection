@@ -38,6 +38,22 @@ namespace IntralismToolBox.Forms
             }
         }
 
+        private void AddClicked(object sender, EventArgs e)
+        {
+            Form addPlayerForm = new AddPlayerForm();
+            addPlayerForm.ShowDialog();
+
+            Form newPlayerListForm = new PlayerListForm();
+            newPlayerListForm.Show();
+            this.Close();
+        }
+
+        private void CheckClicked(object sender, EventArgs e)
+        {
+            Player current = (Player)this.PlayerListListBox.SelectedItem;
+            Functions.CheckPlayer(current.Link);
+        }
+
         /// <summary>
         ///     Reloads the color theme of the form. It's public so <see cref="SettingsForm"/> can call it.
         /// </summary>
@@ -58,34 +74,16 @@ namespace IntralismToolBox.Forms
             }
         }
 
-        private void CheckClicked(object sender, EventArgs e)
-        {
-            Player current = (Player)this.PlayerListListBox.SelectedItem;
-            Functions.CheckPlayer(current.Link);
-        }
-
-        private void AddClicked(object sender, EventArgs e)
-        {
-            Form addPlayerForm = new AddPlayerForm();
-            addPlayerForm.ShowDialog();
-
-            Form newPlayerListForm = new PlayerListForm();
-            newPlayerListForm.Show();
-            this.Close();
-        }
-
         private void RemoveClicked(object sender, EventArgs e)
         {
             Player current = (Player)this.PlayerListListBox.SelectedItem;
             string[][] players = CsvReader.GetCsvContent(SavedPlayersCsv);
-            StringBuilder sb = new ();
+            StringBuilder sb = new();
 
             foreach (string[] player in players)
             {
-                if (player[0].Equals(current.Name) &&
-                    player[1].Equals(current.Link))
-                {
-                }
+                if (player[0].Equals(current.Name)
+                 && player[1].Equals(current.Link)) {}
                 else
                 {
                     sb.AppendLine(player[0] + "," + player[1]);
