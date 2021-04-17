@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Diagnostics;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -69,7 +70,7 @@ namespace IntralismToolBox.Forms
             if (this.SpeedCheckBox.Checked)
             {
                 if (string.IsNullOrEmpty(this.EachSpeedTextBox.Text)
-                 || !int.TryParse(this.EachSpeedTextBox.Text, out int speed))
+                 || !int.TryParse(this.EachSpeedTextBox.Text, NumberStyles.Integer, CultureInfo.InvariantCulture, out int speed))
                 {
                     DisplayErrorMessage("No speed selected.", "Error");
 
@@ -80,7 +81,7 @@ namespace IntralismToolBox.Forms
                 {
                     if (ev.Data[0].Equals("SetSpeed"))
                     {
-                        int newSpeed = int.Parse(ev.Data[1]!) + speed;
+                        int newSpeed = int.Parse(ev.Data[1]!, NumberStyles.Integer, CultureInfo.InvariantCulture) + speed;
                         ev.Data[1] = newSpeed.ToString();
                     }
                 }
@@ -91,7 +92,7 @@ namespace IntralismToolBox.Forms
             else
             {
                 if (string.IsNullOrEmpty(this.AllSpeedTextBox.Text)
-                 || !int.TryParse(this.AllSpeedTextBox.Text, out int speed))
+                 || !int.TryParse(this.AllSpeedTextBox.Text, NumberStyles.Integer, CultureInfo.InvariantCulture, out int speed))
                 {
                     DisplayErrorMessage("No speed selected.", "Error");
 
@@ -123,7 +124,7 @@ namespace IntralismToolBox.Forms
 
             if (this.CheckRankCheckBox.Checked)
             {
-                if (int.TryParse(playerLink, out int rank))
+                if (int.TryParse(playerLink, NumberStyles.Integer, CultureInfo.InvariantCulture, out int rank))
                 {
                     CheckPlayerByRank(rank);
                 }
@@ -205,7 +206,7 @@ namespace IntralismToolBox.Forms
                 return;
             }
 
-            if (!int.TryParse(this.SpeedTextBox.Text, out int speed))
+            if (!int.TryParse(this.SpeedTextBox.Text, NumberStyles.Integer, CultureInfo.InvariantCulture, out int speed))
             {
                 speed = 25;
             }
@@ -250,7 +251,7 @@ namespace IntralismToolBox.Forms
             string artist = "Intralism";
             string title = temp.Name;
 
-            if (!int.TryParse(this.OffsetTextBox.Text, out int offset))
+            if (!int.TryParse(this.OffsetTextBox.Text, NumberStyles.Integer, CultureInfo.InvariantCulture, out int offset))
             {
                 offset = 40;
             }
