@@ -48,7 +48,6 @@ namespace IntralismToolBox
         /// <summary>
         ///     Changes the color of windows.forms components.
         /// </summary>
-        /// <param name="scheme"> <see cref="IColorScheme"/> that contains the colors of the windows.forms components. </param>
         /// <param name="form"> The windows.forms class where colors should be changed. </param>
         public static void ChangeTheme<TColorScheme>(Form form)
             where TColorScheme : struct, IColorScheme

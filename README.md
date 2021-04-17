@@ -1,4 +1,3 @@
-[![HitCount](http://hits.dwyl.com/Ludeo/intralism-tool-collection.svg)](http://hits.dwyl.com/Ludeo/intralism-tool-collection)
 # Intralism Tool Collection
 Collection of tools for Intralism.
 
