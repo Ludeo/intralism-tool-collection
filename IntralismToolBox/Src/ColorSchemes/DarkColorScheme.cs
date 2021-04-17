@@ -6,13 +6,13 @@ namespace IntralismToolBox.ColorSchemes
     /// <summary>
     ///     Class that represents the dark mode theme.
     /// </summary>
-    public class DarkColorScheme : IColorScheme
+    public struct DarkColorScheme : IColorScheme
     {
         /// <inheritdoc/>
-        public Color ButtonBackgroundColor { get; set; } = Color.FromArgb(41, 41, 41);
+        public Color ButtonBackgroundColor => Color.FromArgb(41, 41, 41);
 
         /// <inheritdoc/>
-        public Color ButtonForegroundColor { get; set; } = Color.White;
+        public Color ButtonForegroundColor => Color.White;
 
         /// <inheritdoc/>
         public Color ButtonBorderColor { get; set; }
@@ -24,42 +24,42 @@ namespace IntralismToolBox.ColorSchemes
         public Color TextBoxForegroundColor { get; set; }
 
         /// <inheritdoc/>
-        public Color FormBackgroundColor { get; set; } = Color.FromArgb(47, 49, 52);
+        public Color FormBackgroundColor => Color.FromArgb(47, 49, 52);
 
         /// <inheritdoc/>
-        public Color FormForegroundColor { get; set; } = Color.White;
+        public Color FormForegroundColor => Color.White;
 
         /// <inheritdoc/>
         public Color GroupBoxBackgroundColor { get; set; }
 
         /// <inheritdoc/>
-        public Color GroupBoxForegroundColor { get; set; } = Color.White;
+        public Color GroupBoxForegroundColor => Color.White;
 
         /// <inheritdoc/>
-        public Color ListBoxBackgroundColor { get; set; } = Color.FromArgb(47, 49, 52);
+        public Color ListBoxBackgroundColor => Color.FromArgb(47, 49, 52);
 
         /// <inheritdoc/>
-        public Color ListBoxForegroundColor { get; set; } = Color.White;
+        public Color ListBoxForegroundColor => Color.White;
 
         /// <inheritdoc/>
-        public Color DataGridBackgroundColor { get; set; } = Color.FromArgb(41, 41, 41);
+        public Color DataGridBackgroundColor => Color.FromArgb(41, 41, 41);
 
         /// <inheritdoc/>
-        public Color DataGridForegroundColor { get; set; } = Color.White;
+        public Color DataGridForegroundColor => Color.White;
 
         /// <inheritdoc/>
-        public Color DataGridGridColor { get; set; } = Color.White;
+        public Color DataGridGridColor => Color.White;
 
         /// <inheritdoc/>
-        public Color DataGridCellBackgroundColor { get; set; } = Color.FromArgb(47, 49, 52);
+        public Color DataGridCellBackgroundColor => Color.FromArgb(47, 49, 52);
 
         /// <inheritdoc/>
-        public Color GraphLineColor { get; set; } = Color.Aqua;
+        public Color GraphLineColor => Color.Aqua;
 
         /// <inheritdoc/>
-        public Color GraphMarkerColor { get; set; } = Color.Red;
+        public Color GraphMarkerColor => Color.Red;
 
         /// <inheritdoc/>
-        public bool DataGridEnableHeadersVisualStyles { get; set; } = false;
+        public bool DataGridEnableHeadersVisualStyles => false;
     }
 }

@@ -64,11 +64,11 @@ namespace IntralismToolBox.Forms
             switch (config.AppSettings.Settings["darkmode"].Value)
             {
                 case "true":
-                    Functions.ChangeTheme(new DarkColorScheme(), this);
+                    Functions.ChangeTheme<DarkColorScheme>(this);
 
                     break;
                 case "false":
-                    Functions.ChangeTheme(new LightColorScheme(), this);
+                    Functions.ChangeTheme<LightColorScheme>(this);
 
                     break;
             }
