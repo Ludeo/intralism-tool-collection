@@ -32,11 +32,11 @@ namespace IntralismToolBox
 
             using MemoryStream mso = new();
 
-            using GZipStream gs = new(msi, CompressionMode.Decompress);
-            
-            CopyTo(gs, mso);
-            
-
+            using (GZipStream gs = new(msi, CompressionMode.Decompress))
+            {
+                CopyTo(gs, mso);
+            }
+                    
             return Encoding.UTF8.GetString(mso.ToArray());
         }
 
@@ -53,10 +53,10 @@ namespace IntralismToolBox
 
             using MemoryStream mso = new();
 
-            using GZipStream gs = new(mso, CompressionMode.Compress);
-            
-            CopyTo(msi, gs);
-            
+            using (GZipStream gs = new(mso, CompressionMode.Compress))
+            {
+                CopyTo(msi, gs);
+            }
 
             return mso.ToArray();
         }
