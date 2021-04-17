@@ -258,10 +258,10 @@ namespace IntralismToolBox.Forms
 
             if (temp.Name.Contains("-"))
             {
-                artist = temp.Name.Substring(0, temp.Name.IndexOf("-", StringComparison.Ordinal));
+                artist = temp.Name.Substring(0, temp.Name.IndexOf("-", StringComparison.InvariantCulture));
 
-                title = temp.Name.Substring(temp.Name.IndexOf("-", StringComparison.Ordinal),
-                                            temp.Name.Length - temp.Name.IndexOf("-", StringComparison.Ordinal)).TrimStart('-');
+                title = temp.Name.Substring(temp.Name.IndexOf("-", StringComparison.InvariantCulture),
+                                            temp.Name.Length - temp.Name.IndexOf("-", StringComparison.InvariantCulture)).TrimStart('-');
             }
 
             if (!Directory.Exists(this.maniaPath + "\\intralismconverts\\"))
@@ -475,7 +475,7 @@ namespace IntralismToolBox.Forms
 
         private void UpdateCsvClicked(object sender, EventArgs e)
         {
-            WebClient client = new ();
+            WebClient client = new();
             string scoreCsvRaw = client.DownloadString("https://pastebin.com/raw/2cFCax2g");
             File.WriteAllText("scores.csv", scoreCsvRaw);
         }
