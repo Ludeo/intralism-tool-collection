@@ -10,91 +10,91 @@ namespace IntralismToolBox.Interfaces
         /// <summary>
         ///     Gets or sets the background color of a Button.
         /// </summary>
-        public Color ButtonBackgroundColor { get; set; }
+        public Color ButtonBackgroundColor { get; }
 
         /// <summary>
         ///     Gets or sets the foreground color of a Button.
         /// </summary>
-        public Color ButtonForegroundColor { get; set; }
+        public Color ButtonForegroundColor { get; }
 
         /// <summary>
         ///     Gets or sets the border color of a Button.
         /// </summary>
-        public Color ButtonBorderColor { get; set; }
+        public Color ButtonBorderColor { get; }
 
         /// <summary>
         ///     Gets or sets the background color of a TextBox.
         /// </summary>
-        public Color TextBoxBackgroundColor { get; set; }
+        public Color TextBoxBackgroundColor { get; }
 
         /// <summary>
         ///     Gets or sets the foreground color of a TextBox.
         /// </summary>
-        public Color TextBoxForegroundColor { get; set; }
+        public Color TextBoxForegroundColor { get; }
 
         /// <summary>
         ///     Gets or sets the background color of a Form.
         /// </summary>
-        public Color FormBackgroundColor { get; set; }
+        public Color FormBackgroundColor { get; }
 
         /// <summary>
         ///     Gets or sets the foreground color of a Form.
         /// </summary>
-        public Color FormForegroundColor { get; set; }
+        public Color FormForegroundColor { get; }
 
         /// <summary>
         ///     Gets or sets the background color of a GroupBox.
         /// </summary>
-        public Color GroupBoxBackgroundColor { get; set; }
+        public Color GroupBoxBackgroundColor { get; }
 
         /// <summary>
         ///     Gets or sets the foreground color of a GroupBox.
         /// </summary>
-        public Color GroupBoxForegroundColor { get; set; }
+        public Color GroupBoxForegroundColor { get; }
 
         /// <summary>
         ///     Gets or sets the background color of a ListBox.
         /// </summary>
-        public Color ListBoxBackgroundColor { get; set; }
+        public Color ListBoxBackgroundColor { get; }
 
         /// <summary>
         ///     Gets or sets the foreground color of a ListBox.
         /// </summary>
-        public Color ListBoxForegroundColor { get; set; }
+        public Color ListBoxForegroundColor { get; }
 
         /// <summary>
         ///     Gets or sets the background color of a DataGrid.
         /// </summary>
-        public Color DataGridBackgroundColor { get; set; }
+        public Color DataGridBackgroundColor { get; }
 
         /// <summary>
         ///     Gets or sets the foreground color of a DataGrid.
         /// </summary>
-        public Color DataGridForegroundColor { get; set; }
+        public Color DataGridForegroundColor { get; }
 
         /// <summary>
         ///     Gets or sets the color of the grid from the DataGrid.
         /// </summary>
-        public Color DataGridGridColor { get; set; }
+        public Color DataGridGridColor { get; }
 
         /// <summary>
         ///     Gets or sets the color of the cell from the DataGrid.
         /// </summary>
-        public Color DataGridCellBackgroundColor { get; set; }
+        public Color DataGridCellBackgroundColor { get; }
 
         /// <summary>
         ///     Gets or sets the color of the line from the graph.
         /// </summary>
-        public Color GraphLineColor { get; set; }
+        public Color GraphLineColor { get; }
 
         /// <summary>
         ///     Gets or sets the marker color fo the graph.
         /// </summary>
-        public Color GraphMarkerColor { get; set; }
+        public Color GraphMarkerColor { get; }
 
         /// <summary>
         ///     Gets or sets a value indicating whether the headers visual styles of the DataGrid should be enabled.
         /// </summary>
-        public bool DataGridEnableHeadersVisualStyles { get; set; }
+        public bool DataGridEnableHeadersVisualStyles { get; }
     }
 }
