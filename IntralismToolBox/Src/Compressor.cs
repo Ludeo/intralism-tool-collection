@@ -28,18 +28,16 @@ namespace IntralismToolBox
         /// <returns> The uncompressed string. </returns>
         public static string Unzip(byte[] bytes)
         {
-            using (MemoryStream msi = new(bytes!))
-            {
-                using (MemoryStream mso = new())
-                {
-                    using (GZipStream gs = new(msi, CompressionMode.Decompress))
-                    {
-                        CopyTo(gs, mso);
-                    }
+            using MemoryStream msi = new(bytes!);
 
-                    return Encoding.UTF8.GetString(mso.ToArray());
-                }
-            }
+            using MemoryStream mso = new();
+
+            using GZipStream gs = new(msi, CompressionMode.Decompress);
+            
+            CopyTo(gs, mso);
+            
+
+            return Encoding.UTF8.GetString(mso.ToArray());
         }
 
         /// <summary>
@@ -51,18 +49,16 @@ namespace IntralismToolBox
         {
             byte[] bytes = Encoding.UTF8.GetBytes(str!);
 
-            using (MemoryStream msi = new(bytes))
-            {
-                using (MemoryStream mso = new())
-                {
-                    using (GZipStream gs = new(mso, CompressionMode.Compress))
-                    {
-                        CopyTo(msi, gs);
-                    }
+            using MemoryStream msi = new(bytes);
 
-                    return mso.ToArray();
-                }
-            }
+            using MemoryStream mso = new();
+
+            using GZipStream gs = new(mso, CompressionMode.Compress);
+            
+            CopyTo(msi, gs);
+            
+
+            return mso.ToArray();
         }
     }
 }

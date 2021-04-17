@@ -70,6 +70,7 @@ namespace IntralismToolBox.Forms
             this.ChangeSpeedButton = new System.Windows.Forms.Button();
             this.SelectConfigButton = new System.Windows.Forms.Button();
             this.MapEditorButton = new System.Windows.Forms.Button();
+            this.updateCsvButton = new System.Windows.Forms.Button();
             this.ManiaToIntralismGroupBox.SuspendLayout();
             this.ScoreCheckerGroupBox.SuspendLayout();
             this.IntralismToManiaGroupBox.SuspendLayout();
@@ -460,11 +461,23 @@ namespace IntralismToolBox.Forms
             this.MapEditorButton.Visible = false;
             this.MapEditorButton.Click += new System.EventHandler(this.MapEditorClicked);
             // 
+            // updateCsvButton
+            // 
+            this.updateCsvButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.updateCsvButton.Location = new System.Drawing.Point(368, 321);
+            this.updateCsvButton.Name = "updateCsvButton";
+            this.updateCsvButton.Size = new System.Drawing.Size(107, 23);
+            this.updateCsvButton.TabIndex = 14;
+            this.updateCsvButton.Text = "Update Score CSV";
+            this.updateCsvButton.UseVisualStyleBackColor = true;
+            this.updateCsvButton.Click += new System.EventHandler(this.UpdateCsvClicked);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(593, 356);
+            this.Controls.Add(this.updateCsvButton);
             this.Controls.Add(this.MapEditorButton);
             this.Controls.Add(this.SpeedChangerGroupBox);
             this.Controls.Add(this.AudioConverterGroupBox);
@@ -490,6 +503,8 @@ namespace IntralismToolBox.Forms
             this.SpeedChangerGroupBox.PerformLayout();
             this.ResumeLayout(false);
         }
+
+        private System.Windows.Forms.Button updateCsvButton;
 
         private System.Windows.Forms.Button MapEditorButton;
 

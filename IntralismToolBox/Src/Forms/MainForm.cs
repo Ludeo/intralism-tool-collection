@@ -4,6 +4,7 @@ using System.Configuration;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Windows.Forms;
 using IntralismManiaConverter;
 using IntralismManiaConverter.Intralism;
@@ -44,6 +45,7 @@ namespace IntralismToolBox.Forms
             this.InitializeComponent();
             this.ReloadTheme();
             CheckForUpdate();
+            this.CheckScoreCsvExist();
         }
 
         private void ChangeSpeedClicked(object sender, EventArgs e)
@@ -152,6 +154,14 @@ namespace IntralismToolBox.Forms
             {
                 UpdateForm updateForm = new(release);
                 updateForm.Show();
+            }
+        }
+
+        private void CheckScoreCsvExist()
+        {
+            if (!File.Exists("scores.csv"))
+            {
+                this.UpdateCsvClicked(this, new EventArgs());
             }
         }
 
@@ -460,6 +470,13 @@ namespace IntralismToolBox.Forms
             string uncompressedFile = JsonConvert.SerializeObject(players);
             byte[] compressedFile = Compressor.Zip(uncompressedFile);
             File.WriteAllBytes("playerdatabase.json", compressedFile!);
+        }
+
+        private void UpdateCsvClicked(object sender, EventArgs e)
+        {
+            WebClient client = new ();
+            string scoreCsvRaw = client.DownloadString("https://pastebin.com/raw/2cFCax2g");
+            File.WriteAllText("scores.csv", scoreCsvRaw);
         }
     }
 }
