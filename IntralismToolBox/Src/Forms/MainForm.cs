@@ -479,5 +479,11 @@ namespace IntralismToolBox.Forms
             string scoreCsvRaw = client.DownloadString("https://pastebin.com/raw/2cFCax2g");
             File.WriteAllText("scores.csv", scoreCsvRaw);
         }
+
+        private void StoryboardAssistantClicked(object sender, EventArgs e)
+        {
+            StoryboardAssistantForm storyboardAssistantForm = new();
+            storyboardAssistantForm.Show();
+        }
     }
 }

@@ -71,6 +71,7 @@ namespace IntralismToolBox.Forms
             this.SelectConfigButton = new System.Windows.Forms.Button();
             this.MapEditorButton = new System.Windows.Forms.Button();
             this.updateCsvButton = new System.Windows.Forms.Button();
+            this.StoryboardAssistantButton = new System.Windows.Forms.Button();
             this.ManiaToIntralismGroupBox.SuspendLayout();
             this.ScoreCheckerGroupBox.SuspendLayout();
             this.IntralismToManiaGroupBox.SuspendLayout();
@@ -303,7 +304,7 @@ namespace IntralismToolBox.Forms
             // testButton
             // 
             this.testButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.testButton.Location = new System.Drawing.Point(343, 281);
+            this.testButton.Location = new System.Drawing.Point(547, 252);
             this.testButton.Name = "testButton";
             this.testButton.Size = new System.Drawing.Size(75, 23);
             this.testButton.TabIndex = 9;
@@ -452,7 +453,7 @@ namespace IntralismToolBox.Forms
             // MapEditorButton
             // 
             this.MapEditorButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.MapEditorButton.Location = new System.Drawing.Point(239, 232);
+            this.MapEditorButton.Location = new System.Drawing.Point(502, 281);
             this.MapEditorButton.Name = "MapEditorButton";
             this.MapEditorButton.Size = new System.Drawing.Size(120, 23);
             this.MapEditorButton.TabIndex = 13;
@@ -472,11 +473,23 @@ namespace IntralismToolBox.Forms
             this.updateCsvButton.UseVisualStyleBackColor = true;
             this.updateCsvButton.Click += new System.EventHandler(this.UpdateCsvClicked);
             // 
+            // StoryboardAssistantButton
+            // 
+            this.StoryboardAssistantButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.StoryboardAssistantButton.Location = new System.Drawing.Point(233, 218);
+            this.StoryboardAssistantButton.Name = "StoryboardAssistantButton";
+            this.StoryboardAssistantButton.Size = new System.Drawing.Size(126, 23);
+            this.StoryboardAssistantButton.TabIndex = 15;
+            this.StoryboardAssistantButton.Text = "Storyboard Assistant";
+            this.StoryboardAssistantButton.UseVisualStyleBackColor = true;
+            this.StoryboardAssistantButton.Click += new System.EventHandler(this.StoryboardAssistantClicked);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(593, 356);
+            this.Controls.Add(this.StoryboardAssistantButton);
             this.Controls.Add(this.updateCsvButton);
             this.Controls.Add(this.MapEditorButton);
             this.Controls.Add(this.SpeedChangerGroupBox);
@@ -492,6 +505,7 @@ namespace IntralismToolBox.Forms
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.Text = "Intralism Toolbox";
+            this.Click += new System.EventHandler(this.StoryboardAssistantClicked);
             this.ManiaToIntralismGroupBox.ResumeLayout(false);
             this.ManiaToIntralismGroupBox.PerformLayout();
             this.ScoreCheckerGroupBox.ResumeLayout(false);
@@ -503,6 +517,8 @@ namespace IntralismToolBox.Forms
             this.SpeedChangerGroupBox.PerformLayout();
             this.ResumeLayout(false);
         }
+
+        private System.Windows.Forms.Button StoryboardAssistantButton;
 
         private System.Windows.Forms.Button updateCsvButton;
 
