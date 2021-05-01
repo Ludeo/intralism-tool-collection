@@ -505,7 +505,6 @@ namespace IntralismToolBox.Forms
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.Text = "Intralism Toolbox";
-            this.Click += new System.EventHandler(this.StoryboardAssistantClicked);
             this.ManiaToIntralismGroupBox.ResumeLayout(false);
             this.ManiaToIntralismGroupBox.PerformLayout();
             this.ScoreCheckerGroupBox.ResumeLayout(false);
