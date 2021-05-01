@@ -23,7 +23,7 @@ namespace IntralismToolBox.Forms
     /// </summary>
     public partial class MainForm : Form
     {
-        private const string CurrentVersion = "v1.4.1";
+        private const string CurrentVersion = "v1.4.2";
         private readonly Random rd = new();
         private string audioConfigPath;
         private string audioOutputPath;
