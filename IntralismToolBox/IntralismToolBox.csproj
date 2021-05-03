@@ -29,10 +29,4 @@
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
     </ItemGroup>
-
-    <ItemGroup>
-      <Compile Update="Src\ThemedForm.cs">
-        <SubType>Form</SubType>
-      </Compile>
-    </ItemGroup>
 </Project>
