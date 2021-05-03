@@ -10,7 +10,6 @@ using System.Windows.Forms;
 using IntralismManiaConverter;
 using IntralismManiaConverter.Intralism;
 using IntralismManiaConverter.Mania;
-using IntralismToolBox.ColorSchemes;
 using Newtonsoft.Json;
 using Octokit;
 using OsuParsers.Enums;
@@ -19,9 +18,9 @@ using static IntralismToolBox.Functions;
 namespace IntralismToolBox.Forms
 {
     /// <summary>
-    ///     Form that gets shown when the program was started.
+    ///     <see cref="ThemedForm"/> that gets shown when the program was started.
     /// </summary>
-    public partial class MainForm : Form
+    public partial class MainForm : ThemedForm
     {
         private const string CurrentVersion = "v1.4.2";
         private readonly Random rd = new();
@@ -69,8 +68,8 @@ namespace IntralismToolBox.Forms
 
             if (this.SpeedCheckBox.Checked)
             {
-                if (string.IsNullOrEmpty(this.EachSpeedTextBox.Text)
-                 || !int.TryParse(this.EachSpeedTextBox.Text, NumberStyles.Integer, CultureInfo.InvariantCulture, out int speed))
+                if (string.IsNullOrEmpty(this.EachSpeedTextBox.Text) ||
+                    !int.TryParse(this.EachSpeedTextBox.Text, NumberStyles.Integer, CultureInfo.InvariantCulture, out int speed))
                 {
                     DisplayErrorMessage("No speed selected.", "Error");
 
@@ -91,8 +90,8 @@ namespace IntralismToolBox.Forms
             }
             else
             {
-                if (string.IsNullOrEmpty(this.AllSpeedTextBox.Text)
-                 || !int.TryParse(this.AllSpeedTextBox.Text, NumberStyles.Integer, CultureInfo.InvariantCulture, out int speed))
+                if (string.IsNullOrEmpty(this.AllSpeedTextBox.Text) ||
+                    !int.TryParse(this.AllSpeedTextBox.Text, NumberStyles.Integer, CultureInfo.InvariantCulture, out int speed))
                 {
                     DisplayErrorMessage("No speed selected.", "Error");
 
@@ -258,7 +257,7 @@ namespace IntralismToolBox.Forms
 
             if (temp.Name.Contains("-"))
             {
-                artist = temp.Name.Substring(0, temp.Name.IndexOf("-", StringComparison.InvariantCulture));
+                artist = temp.Name[..temp.Name.IndexOf("-", StringComparison.InvariantCulture)];
 
                 title = temp.Name.Substring(temp.Name.IndexOf("-", StringComparison.InvariantCulture),
                                             temp.Name.Length - temp.Name.IndexOf("-", StringComparison.InvariantCulture)).TrimStart('-');
@@ -366,40 +365,20 @@ namespace IntralismToolBox.Forms
 
         private void MapEditorClicked(object sender, EventArgs e)
         {
-            Form editor = new MapEditorForm(this.editorConfigPath);
+            MapEditorForm editor = new(this.editorConfigPath);
             editor.ShowDialog();
         }
 
         private void OpenSetting(object sender, EventArgs e)
         {
-            Form setting = new SettingsForm();
+            SettingsForm setting = new();
             setting.ShowDialog();
         }
 
         private void PlayerListClicked(object sender, EventArgs e)
         {
-            Form playerList = new PlayerListForm();
+            PlayerListForm playerList = new();
             playerList.Show();
-        }
-
-        /// <summary>
-        ///     Reloads the color theme of the form. It's public so <see cref="SettingsForm"/> can call it.
-        /// </summary>
-        public void ReloadTheme()
-        {
-            Configuration config = Functions.LoadConfig();
-
-            switch (config.AppSettings.Settings["darkmode"].Value)
-            {
-                case "true":
-                    ChangeTheme<DarkColorScheme>(this);
-
-                    break;
-                case "false":
-                    ChangeTheme<LightColorScheme>(this);
-
-                    break;
-            }
         }
 
         private void ReportBugButtonClicked(object sender, EventArgs e) =>
@@ -423,7 +402,6 @@ namespace IntralismToolBox.Forms
         private void SelectSpeedChangerConfigClicked(object sender, EventArgs e)
         {
             this.LoadConfig();
-
             this.speedChangerPath = OpenFileAndGetName(this.editorConfigPath);
         }
 

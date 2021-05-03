@@ -3,41 +3,50 @@ using System.Windows.Forms;
 
 namespace IntralismToolBox.Forms.StoryboardForms.GeometryFigures
 {
-    public partial class GeometryForm : Form
+    /// <summary>
+    ///     <see cref="ThemedForm"/> that gets shown when <see cref="StoryboardAssistantForm.geometricFiguresButton"/> was pressed.
+    /// </summary>
+    public partial class GeometryForm : ThemedForm
     {
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="GeometryForm"/> class.
+        /// </summary>
         public GeometryForm()
         {
             this.InitializeComponent();
-            ToolTip tp1 = new ();
-            tp1.SetToolTip(this.Btn_Help, "That's something like buffer to contain figures only \n" +
+            this.ReloadTheme();
+            ToolTip helpButtonToolTip = new();
+            helpButtonToolTip.SetToolTip(this.helpButton, "That's something like buffer to contain figures only \n" +
                                           " so if you mess up with the figures you will not mess up all the text in the Mainform");
         }
 
-        private void Btn_Cube_Click(object sender, EventArgs e)
+        private void CubeButtonClicked(object sender, EventArgs e)
         {
-            CubeForm cubeForm = new ();
+            CubeForm cubeForm = new();
+            
             if (cubeForm.ShowDialog() == DialogResult.OK)
             {
-                string result = this.Txt_Result.Text;
-                double sideL = (double)cubeForm.UpDn_SideLength.Value;
+                string result = this.resultTextBox.Text;
+                double sideL = (double)cubeForm.sideLengthUpDown.Value;
                 double sidePos = sideL / 2;
-                double time = (double)cubeForm.UpDn_TimeStart.Value;
-                string sunName = cubeForm.Txt_ObjName.Text + "S";
+                double time = (double)cubeForm.timeStartUpDown.Value;
+                string sunName = cubeForm.objectNameTextBox.Text + "S";
                 
                 // spawning satellite
-                result += $"{{\"time\":{time},\"data\":[\"AddEnvironmentObject\",\"1,{cubeForm.Txt_ObjName.Text}\"]}},";
-                result += $"{{\"time\":{time + 0.001},\"data\":[\"SetSatelliteSensitivity\",\"{cubeForm.Txt_ObjName.Text},0\"]}},";
-                result += $"{{\"time\":{time + 0.001},\"data\":[\"SetSatelliteRadius\",\"{cubeForm.Txt_ObjName.Text},0\"]}},";
-                result += $"{{\"time\":{time + 0.001},\"data\":[\"SetSatelliteRotationSpeed\",\"{cubeForm.Txt_ObjName.Text},0\"]}},";
+                result += $"{{\"time\":{time},\"data\":[\"AddEnvironmentObject\",\"1,{cubeForm.objectNameTextBox.Text}\"]}},";
+                result += $"{{\"time\":{time + 0.001},\"data\":[\"SetSatelliteSensitivity\",\"{cubeForm.objectNameTextBox.Text},0\"]}},";
+                result += $"{{\"time\":{time + 0.001},\"data\":[\"SetSatelliteRadius\",\"{cubeForm.objectNameTextBox.Text},0\"]}},";
+                result += $"{{\"time\":{time + 0.001},\"data\":[\"SetSatelliteRotationSpeed\",\"{cubeForm.objectNameTextBox.Text},0\"]}},";
+                
                 // spawning suns
-                for (int i = (int)cubeForm.UpDn_FirstNum.Value; i < 12 + cubeForm.UpDn_FirstNum.Value; i++)
+                for (int i = (int)cubeForm.firstNumberUpDown.Value; i < 12 + cubeForm.firstNumberUpDown.Value; i++)
                 {
                     result += $"{{\"time\":{time},\"data\":[\"AddEnvironmentObject\",\"0,{sunName + i}\"]}},";
-                    result += $"{{\"time\":{time + 0.0002},\"data\":[\"SetParent\",\"{sunName + i},{cubeForm.Txt_ObjName.Text}\"]}},";
-                    result += $"{{\"time\":{time + 0.002},\"data\":[\"SetSunMaxSize\",\"{sunName + i},{sideL},{cubeForm.UpDn_SideWidth.Value}," +
-                              $"{cubeForm.UpDn_SideWidth.Value}\"]}},";
-                    result += $"{{\"time\":{time + 0.002},\"data\":[\"SetSunMinSize\",\"{sunName + i},{sideL},{cubeForm.UpDn_SideWidth.Value}," +
-                              $"{cubeForm.UpDn_SideWidth.Value}\"]}},";
+                    result += $"{{\"time\":{time + 0.0002},\"data\":[\"SetParent\",\"{sunName + i},{cubeForm.objectNameTextBox.Text}\"]}},";
+                    result += $"{{\"time\":{time + 0.002},\"data\":[\"SetSunMaxSize\",\"{sunName + i},{sideL},{cubeForm.sideWidthUpDown.Value}," +
+                              $"{cubeForm.sideWidthUpDown.Value}\"]}},";
+                    result += $"{{\"time\":{time + 0.002},\"data\":[\"SetSunMinSize\",\"{sunName + i},{sideL},{cubeForm.sideWidthUpDown.Value}," +
+                              $"{cubeForm.sideWidthUpDown.Value}\"]}},";
                 }                                                                                             
                                                                                                               
                 // building a cube                                                                       
@@ -53,6 +62,7 @@ namespace IntralismToolBox.Forms.StoryboardForms.GeometryFigures
                 result += $"{{\"time\":{time + 0.003},\"data\":[\"SetPosition\",\"{sunName + "9"},0,{sidePos},{-sidePos}\"]}},";
                 result += $"{{\"time\":{time + 0.003},\"data\":[\"SetPosition\",\"{sunName + "10"},0,{-sidePos},{sidePos}\"]}},";
                 result += $"{{\"time\":{time + 0.003},\"data\":[\"SetPosition\",\"{sunName + "11"},0,{-sidePos},{-sidePos}\"]}},";
+                
                 // rotating parts                                                   
                 result += $"{{\"time\":{time + 0.003},\"data\":[\"SetRotation\",\"{sunName + "0"},0,90,0\"]}},";
                 result += $"{{\"time\":{time + 0.003},\"data\":[\"SetRotation\",\"{sunName + "1"},0,90,0\"]}},";
@@ -62,8 +72,9 @@ namespace IntralismToolBox.Forms.StoryboardForms.GeometryFigures
                 result += $"{{\"time\":{time + 0.003},\"data\":[\"SetRotation\",\"{sunName + "5"},0,90,0\"]}},";
                 result += $"{{\"time\":{time + 0.003},\"data\":[\"SetRotation\",\"{sunName + "6"},0,0,90\"]}},";
                 result += $"{{\"time\":{time + 0.003},\"data\":[\"SetRotation\",\"{sunName + "7"},0,0,90\"]}},";
+                
                 // done
-                this.Txt_Result.Text += result;
+                this.resultTextBox.Text += result;
             }
         }
     }

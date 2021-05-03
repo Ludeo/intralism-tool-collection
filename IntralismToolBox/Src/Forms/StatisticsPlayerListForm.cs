@@ -1,18 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.IO;
 using System.Linq;
-using System.Windows.Forms;
-using IntralismToolBox.ColorSchemes;
 using Newtonsoft.Json;
 
 namespace IntralismToolBox.Forms
 {
     /// <summary>
-    ///     Form that gets shown when <see cref="MainForm.StatisticsButton"/> was pressed.
+    ///     <see cref="ThemedForm"/> that gets shown when <see cref="MainForm.StatisticsButton"/> was pressed.
     /// </summary>
-    public partial class StatisticsPlayerListForm : Form
+    public partial class StatisticsPlayerListForm : ThemedForm
     {
         private List<IntralismScoreChecker.Player> playerList = new();
 
@@ -54,26 +51,6 @@ namespace IntralismToolBox.Forms
         {
             this.PlayerListListBox.Items.Clear();
             this.LoadPlayers();
-        }
-
-        /// <summary>
-        ///     Reloads the color theme of the form. It's public so <see cref="SettingsForm"/> can call it.
-        /// </summary>
-        public void ReloadTheme()
-        {
-            Configuration config = Functions.LoadConfig();
-
-            switch (config.AppSettings.Settings["darkmode"].Value)
-            {
-                case "true":
-                    Functions.ChangeTheme<DarkColorScheme>(this);
-
-                    break;
-                case "false":
-                    Functions.ChangeTheme<LightColorScheme>(this);
-
-                    break;
-            }
         }
 
         private void ShowStatisticsClicked(object sender, EventArgs e)

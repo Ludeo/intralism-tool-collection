@@ -82,9 +82,10 @@ namespace IntralismToolBox.Forms
             // SelectManiaMapButton
             // 
             this.SelectManiaMapButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SelectManiaMapButton.Location = new System.Drawing.Point(6, 19);
+            this.SelectManiaMapButton.Location = new System.Drawing.Point(7, 22);
+            this.SelectManiaMapButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.SelectManiaMapButton.Name = "SelectManiaMapButton";
-            this.SelectManiaMapButton.Size = new System.Drawing.Size(95, 26);
+            this.SelectManiaMapButton.Size = new System.Drawing.Size(111, 30);
             this.SelectManiaMapButton.TabIndex = 0;
             this.SelectManiaMapButton.Text = "Mania Map";
             this.SelectManiaMapButton.UseMnemonic = false;
@@ -94,9 +95,10 @@ namespace IntralismToolBox.Forms
             // SelectEditorFolderButton
             // 
             this.SelectEditorFolderButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SelectEditorFolderButton.Location = new System.Drawing.Point(107, 19);
+            this.SelectEditorFolderButton.Location = new System.Drawing.Point(125, 22);
+            this.SelectEditorFolderButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.SelectEditorFolderButton.Name = "SelectEditorFolderButton";
-            this.SelectEditorFolderButton.Size = new System.Drawing.Size(100, 26);
+            this.SelectEditorFolderButton.Size = new System.Drawing.Size(117, 30);
             this.SelectEditorFolderButton.TabIndex = 1;
             this.SelectEditorFolderButton.Text = "Editor Folder";
             this.SelectEditorFolderButton.UseVisualStyleBackColor = true;
@@ -105,9 +107,10 @@ namespace IntralismToolBox.Forms
             // ConvertToIntralismButton
             // 
             this.ConvertToIntralismButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ConvertToIntralismButton.Location = new System.Drawing.Point(107, 60);
+            this.ConvertToIntralismButton.Location = new System.Drawing.Point(125, 69);
+            this.ConvertToIntralismButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.ConvertToIntralismButton.Name = "ConvertToIntralismButton";
-            this.ConvertToIntralismButton.Size = new System.Drawing.Size(100, 26);
+            this.ConvertToIntralismButton.Size = new System.Drawing.Size(117, 30);
             this.ConvertToIntralismButton.TabIndex = 2;
             this.ConvertToIntralismButton.Text = "Convert";
             this.ConvertToIntralismButton.UseVisualStyleBackColor = true;
@@ -115,17 +118,19 @@ namespace IntralismToolBox.Forms
             // 
             // SpeedLabel
             // 
-            this.SpeedLabel.Location = new System.Drawing.Point(6, 48);
+            this.SpeedLabel.Location = new System.Drawing.Point(7, 55);
+            this.SpeedLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.SpeedLabel.Name = "SpeedLabel";
-            this.SpeedLabel.Size = new System.Drawing.Size(43, 15);
+            this.SpeedLabel.Size = new System.Drawing.Size(50, 17);
             this.SpeedLabel.TabIndex = 3;
             this.SpeedLabel.Text = "Speed";
             // 
             // SpeedTextBox
             // 
-            this.SpeedTextBox.Location = new System.Drawing.Point(6, 64);
+            this.SpeedTextBox.Location = new System.Drawing.Point(7, 74);
+            this.SpeedTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.SpeedTextBox.Name = "SpeedTextBox";
-            this.SpeedTextBox.Size = new System.Drawing.Size(95, 20);
+            this.SpeedTextBox.Size = new System.Drawing.Size(110, 23);
             this.SpeedTextBox.TabIndex = 4;
             this.SpeedTextBox.Text = "25";
             // 
@@ -136,9 +141,11 @@ namespace IntralismToolBox.Forms
             this.ManiaToIntralismGroupBox.Controls.Add(this.SpeedTextBox);
             this.ManiaToIntralismGroupBox.Controls.Add(this.SelectEditorFolderButton);
             this.ManiaToIntralismGroupBox.Controls.Add(this.SpeedLabel);
-            this.ManiaToIntralismGroupBox.Location = new System.Drawing.Point(12, 12);
+            this.ManiaToIntralismGroupBox.Location = new System.Drawing.Point(14, 14);
+            this.ManiaToIntralismGroupBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.ManiaToIntralismGroupBox.Name = "ManiaToIntralismGroupBox";
-            this.ManiaToIntralismGroupBox.Size = new System.Drawing.Size(215, 96);
+            this.ManiaToIntralismGroupBox.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.ManiaToIntralismGroupBox.Size = new System.Drawing.Size(251, 111);
             this.ManiaToIntralismGroupBox.TabIndex = 5;
             this.ManiaToIntralismGroupBox.TabStop = false;
             this.ManiaToIntralismGroupBox.Text = "Mania To Intralism Converter";
@@ -146,9 +153,10 @@ namespace IntralismToolBox.Forms
             // SettingsButton
             // 
             this.SettingsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SettingsButton.Location = new System.Drawing.Point(486, 321);
+            this.SettingsButton.Location = new System.Drawing.Point(567, 370);
+            this.SettingsButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.SettingsButton.Name = "SettingsButton";
-            this.SettingsButton.Size = new System.Drawing.Size(96, 23);
+            this.SettingsButton.Size = new System.Drawing.Size(112, 30);
             this.SettingsButton.TabIndex = 6;
             this.SettingsButton.Text = "Settings";
             this.SettingsButton.UseVisualStyleBackColor = true;
@@ -163,9 +171,11 @@ namespace IntralismToolBox.Forms
             this.ScoreCheckerGroupBox.Controls.Add(this.CheckPlayerButton);
             this.ScoreCheckerGroupBox.Controls.Add(this.PlayerLinkLabel);
             this.ScoreCheckerGroupBox.Controls.Add(this.PlayerLinkTextBox);
-            this.ScoreCheckerGroupBox.Location = new System.Drawing.Point(233, 12);
+            this.ScoreCheckerGroupBox.Location = new System.Drawing.Point(272, 14);
+            this.ScoreCheckerGroupBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.ScoreCheckerGroupBox.Name = "ScoreCheckerGroupBox";
-            this.ScoreCheckerGroupBox.Size = new System.Drawing.Size(349, 96);
+            this.ScoreCheckerGroupBox.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.ScoreCheckerGroupBox.Size = new System.Drawing.Size(407, 111);
             this.ScoreCheckerGroupBox.TabIndex = 7;
             this.ScoreCheckerGroupBox.TabStop = false;
             this.ScoreCheckerGroupBox.Text = "Score Checker";
@@ -173,9 +183,10 @@ namespace IntralismToolBox.Forms
             // StatisticsButton
             // 
             this.StatisticsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.StatisticsButton.Location = new System.Drawing.Point(248, 60);
+            this.StatisticsButton.Location = new System.Drawing.Point(289, 69);
+            this.StatisticsButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.StatisticsButton.Name = "StatisticsButton";
-            this.StatisticsButton.Size = new System.Drawing.Size(94, 26);
+            this.StatisticsButton.Size = new System.Drawing.Size(110, 30);
             this.StatisticsButton.TabIndex = 6;
             this.StatisticsButton.Text = "Statistics";
             this.StatisticsButton.UseVisualStyleBackColor = true;
@@ -183,9 +194,10 @@ namespace IntralismToolBox.Forms
             // 
             // CheckRankCheckBox
             // 
-            this.CheckRankCheckBox.Location = new System.Drawing.Point(248, 31);
+            this.CheckRankCheckBox.Location = new System.Drawing.Point(289, 36);
+            this.CheckRankCheckBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.CheckRankCheckBox.Name = "CheckRankCheckBox";
-            this.CheckRankCheckBox.Size = new System.Drawing.Size(100, 26);
+            this.CheckRankCheckBox.Size = new System.Drawing.Size(117, 30);
             this.CheckRankCheckBox.TabIndex = 5;
             this.CheckRankCheckBox.Text = "Check by Rank";
             this.CheckRankCheckBox.UseVisualStyleBackColor = true;
@@ -193,9 +205,10 @@ namespace IntralismToolBox.Forms
             // PlayerListButton
             // 
             this.PlayerListButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.PlayerListButton.Location = new System.Drawing.Point(165, 60);
+            this.PlayerListButton.Location = new System.Drawing.Point(192, 69);
+            this.PlayerListButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.PlayerListButton.Name = "PlayerListButton";
-            this.PlayerListButton.Size = new System.Drawing.Size(77, 26);
+            this.PlayerListButton.Size = new System.Drawing.Size(90, 30);
             this.PlayerListButton.TabIndex = 4;
             this.PlayerListButton.Text = "Player List";
             this.PlayerListButton.UseVisualStyleBackColor = true;
@@ -204,9 +217,10 @@ namespace IntralismToolBox.Forms
             // LastCheckedPlayerButton
             // 
             this.LastCheckedPlayerButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.LastCheckedPlayerButton.Location = new System.Drawing.Point(65, 60);
+            this.LastCheckedPlayerButton.Location = new System.Drawing.Point(76, 69);
+            this.LastCheckedPlayerButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.LastCheckedPlayerButton.Name = "LastCheckedPlayerButton";
-            this.LastCheckedPlayerButton.Size = new System.Drawing.Size(94, 26);
+            this.LastCheckedPlayerButton.Size = new System.Drawing.Size(110, 30);
             this.LastCheckedPlayerButton.TabIndex = 3;
             this.LastCheckedPlayerButton.Text = "Last Checked";
             this.LastCheckedPlayerButton.UseVisualStyleBackColor = true;
@@ -215,9 +229,10 @@ namespace IntralismToolBox.Forms
             // CheckPlayerButton
             // 
             this.CheckPlayerButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CheckPlayerButton.Location = new System.Drawing.Point(6, 60);
+            this.CheckPlayerButton.Location = new System.Drawing.Point(7, 69);
+            this.CheckPlayerButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.CheckPlayerButton.Name = "CheckPlayerButton";
-            this.CheckPlayerButton.Size = new System.Drawing.Size(53, 26);
+            this.CheckPlayerButton.Size = new System.Drawing.Size(62, 30);
             this.CheckPlayerButton.TabIndex = 2;
             this.CheckPlayerButton.Text = "Check";
             this.CheckPlayerButton.UseVisualStyleBackColor = true;
@@ -225,17 +240,19 @@ namespace IntralismToolBox.Forms
             // 
             // PlayerLinkLabel
             // 
-            this.PlayerLinkLabel.Location = new System.Drawing.Point(6, 19);
+            this.PlayerLinkLabel.Location = new System.Drawing.Point(7, 22);
+            this.PlayerLinkLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.PlayerLinkLabel.Name = "PlayerLinkLabel";
-            this.PlayerLinkLabel.Size = new System.Drawing.Size(120, 12);
+            this.PlayerLinkLabel.Size = new System.Drawing.Size(140, 14);
             this.PlayerLinkLabel.TabIndex = 1;
             this.PlayerLinkLabel.Text = "Player Link | Search for";
             // 
             // PlayerLinkTextBox
             // 
-            this.PlayerLinkTextBox.Location = new System.Drawing.Point(6, 34);
+            this.PlayerLinkTextBox.Location = new System.Drawing.Point(7, 39);
+            this.PlayerLinkTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.PlayerLinkTextBox.Name = "PlayerLinkTextBox";
-            this.PlayerLinkTextBox.Size = new System.Drawing.Size(236, 20);
+            this.PlayerLinkTextBox.Size = new System.Drawing.Size(275, 23);
             this.PlayerLinkTextBox.TabIndex = 0;
             // 
             // IntralismToManiaGroupBox
@@ -245,35 +262,40 @@ namespace IntralismToolBox.Forms
             this.IntralismToManiaGroupBox.Controls.Add(this.ConvertToManiaButton);
             this.IntralismToManiaGroupBox.Controls.Add(this.SelectManiaSongFolderButton);
             this.IntralismToManiaGroupBox.Controls.Add(this.SelectIntralismMapButton);
-            this.IntralismToManiaGroupBox.Location = new System.Drawing.Point(12, 114);
+            this.IntralismToManiaGroupBox.Location = new System.Drawing.Point(14, 132);
+            this.IntralismToManiaGroupBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.IntralismToManiaGroupBox.Name = "IntralismToManiaGroupBox";
-            this.IntralismToManiaGroupBox.Size = new System.Drawing.Size(215, 93);
+            this.IntralismToManiaGroupBox.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.IntralismToManiaGroupBox.Size = new System.Drawing.Size(251, 107);
             this.IntralismToManiaGroupBox.TabIndex = 8;
             this.IntralismToManiaGroupBox.TabStop = false;
             this.IntralismToManiaGroupBox.Text = "Intralism To Mania Converter";
             // 
             // OffsetLabel
             // 
-            this.OffsetLabel.Location = new System.Drawing.Point(6, 47);
+            this.OffsetLabel.Location = new System.Drawing.Point(7, 54);
+            this.OffsetLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.OffsetLabel.Name = "OffsetLabel";
-            this.OffsetLabel.Size = new System.Drawing.Size(50, 11);
+            this.OffsetLabel.Size = new System.Drawing.Size(58, 13);
             this.OffsetLabel.TabIndex = 4;
             this.OffsetLabel.Text = "Offset";
             // 
             // OffsetTextBox
             // 
-            this.OffsetTextBox.Location = new System.Drawing.Point(6, 61);
+            this.OffsetTextBox.Location = new System.Drawing.Point(7, 70);
+            this.OffsetTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.OffsetTextBox.Name = "OffsetTextBox";
-            this.OffsetTextBox.Size = new System.Drawing.Size(94, 20);
+            this.OffsetTextBox.Size = new System.Drawing.Size(109, 23);
             this.OffsetTextBox.TabIndex = 3;
             this.OffsetTextBox.Text = "40";
             // 
             // ConvertToManiaButton
             // 
             this.ConvertToManiaButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ConvertToManiaButton.Location = new System.Drawing.Point(107, 57);
+            this.ConvertToManiaButton.Location = new System.Drawing.Point(125, 66);
+            this.ConvertToManiaButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.ConvertToManiaButton.Name = "ConvertToManiaButton";
-            this.ConvertToManiaButton.Size = new System.Drawing.Size(100, 26);
+            this.ConvertToManiaButton.Size = new System.Drawing.Size(117, 30);
             this.ConvertToManiaButton.TabIndex = 2;
             this.ConvertToManiaButton.Text = "Convert";
             this.ConvertToManiaButton.UseVisualStyleBackColor = true;
@@ -282,9 +304,10 @@ namespace IntralismToolBox.Forms
             // SelectManiaSongFolderButton
             // 
             this.SelectManiaSongFolderButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SelectManiaSongFolderButton.Location = new System.Drawing.Point(107, 19);
+            this.SelectManiaSongFolderButton.Location = new System.Drawing.Point(125, 22);
+            this.SelectManiaSongFolderButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.SelectManiaSongFolderButton.Name = "SelectManiaSongFolderButton";
-            this.SelectManiaSongFolderButton.Size = new System.Drawing.Size(100, 25);
+            this.SelectManiaSongFolderButton.Size = new System.Drawing.Size(117, 30);
             this.SelectManiaSongFolderButton.TabIndex = 1;
             this.SelectManiaSongFolderButton.Text = "Mania Folder";
             this.SelectManiaSongFolderButton.UseVisualStyleBackColor = true;
@@ -293,9 +316,10 @@ namespace IntralismToolBox.Forms
             // SelectIntralismMapButton
             // 
             this.SelectIntralismMapButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SelectIntralismMapButton.Location = new System.Drawing.Point(6, 19);
+            this.SelectIntralismMapButton.Location = new System.Drawing.Point(7, 22);
+            this.SelectIntralismMapButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.SelectIntralismMapButton.Name = "SelectIntralismMapButton";
-            this.SelectIntralismMapButton.Size = new System.Drawing.Size(95, 25);
+            this.SelectIntralismMapButton.Size = new System.Drawing.Size(111, 30);
             this.SelectIntralismMapButton.TabIndex = 0;
             this.SelectIntralismMapButton.Text = "Intralism Map";
             this.SelectIntralismMapButton.UseVisualStyleBackColor = true;
@@ -304,9 +328,10 @@ namespace IntralismToolBox.Forms
             // testButton
             // 
             this.testButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.testButton.Location = new System.Drawing.Point(547, 252);
+            this.testButton.Location = new System.Drawing.Point(638, 291);
+            this.testButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.testButton.Name = "testButton";
-            this.testButton.Size = new System.Drawing.Size(75, 23);
+            this.testButton.Size = new System.Drawing.Size(88, 27);
             this.testButton.TabIndex = 9;
             this.testButton.Text = "Test";
             this.testButton.UseVisualStyleBackColor = true;
@@ -316,9 +341,10 @@ namespace IntralismToolBox.Forms
             // ReportBugButton
             // 
             this.ReportBugButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ReportBugButton.Location = new System.Drawing.Point(12, 321);
+            this.ReportBugButton.Location = new System.Drawing.Point(14, 370);
+            this.ReportBugButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.ReportBugButton.Name = "ReportBugButton";
-            this.ReportBugButton.Size = new System.Drawing.Size(101, 23);
+            this.ReportBugButton.Size = new System.Drawing.Size(118, 30);
             this.ReportBugButton.TabIndex = 10;
             this.ReportBugButton.Text = "Report Bug";
             this.ReportBugButton.UseVisualStyleBackColor = true;
@@ -329,9 +355,11 @@ namespace IntralismToolBox.Forms
             this.AudioConverterGroupBox.Controls.Add(this.ConvertAudioButton);
             this.AudioConverterGroupBox.Controls.Add(this.SelectAudioOutputButton);
             this.AudioConverterGroupBox.Controls.Add(this.SelectAudioButton);
-            this.AudioConverterGroupBox.Location = new System.Drawing.Point(12, 213);
+            this.AudioConverterGroupBox.Location = new System.Drawing.Point(14, 246);
+            this.AudioConverterGroupBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.AudioConverterGroupBox.Name = "AudioConverterGroupBox";
-            this.AudioConverterGroupBox.Size = new System.Drawing.Size(215, 83);
+            this.AudioConverterGroupBox.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.AudioConverterGroupBox.Size = new System.Drawing.Size(251, 96);
             this.AudioConverterGroupBox.TabIndex = 11;
             this.AudioConverterGroupBox.TabStop = false;
             this.AudioConverterGroupBox.Text = "To .ogg Converter";
@@ -339,9 +367,10 @@ namespace IntralismToolBox.Forms
             // ConvertAudioButton
             // 
             this.ConvertAudioButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ConvertAudioButton.Location = new System.Drawing.Point(6, 50);
+            this.ConvertAudioButton.Location = new System.Drawing.Point(7, 58);
+            this.ConvertAudioButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.ConvertAudioButton.Name = "ConvertAudioButton";
-            this.ConvertAudioButton.Size = new System.Drawing.Size(94, 25);
+            this.ConvertAudioButton.Size = new System.Drawing.Size(110, 30);
             this.ConvertAudioButton.TabIndex = 2;
             this.ConvertAudioButton.Text = "Convert";
             this.ConvertAudioButton.UseVisualStyleBackColor = true;
@@ -350,9 +379,10 @@ namespace IntralismToolBox.Forms
             // SelectAudioOutputButton
             // 
             this.SelectAudioOutputButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SelectAudioOutputButton.Location = new System.Drawing.Point(107, 19);
+            this.SelectAudioOutputButton.Location = new System.Drawing.Point(125, 22);
+            this.SelectAudioOutputButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.SelectAudioOutputButton.Name = "SelectAudioOutputButton";
-            this.SelectAudioOutputButton.Size = new System.Drawing.Size(100, 25);
+            this.SelectAudioOutputButton.Size = new System.Drawing.Size(117, 30);
             this.SelectAudioOutputButton.TabIndex = 1;
             this.SelectAudioOutputButton.Text = "Select Output";
             this.SelectAudioOutputButton.UseVisualStyleBackColor = true;
@@ -361,9 +391,10 @@ namespace IntralismToolBox.Forms
             // SelectAudioButton
             // 
             this.SelectAudioButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SelectAudioButton.Location = new System.Drawing.Point(6, 19);
+            this.SelectAudioButton.Location = new System.Drawing.Point(7, 22);
+            this.SelectAudioButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.SelectAudioButton.Name = "SelectAudioButton";
-            this.SelectAudioButton.Size = new System.Drawing.Size(94, 25);
+            this.SelectAudioButton.Size = new System.Drawing.Size(110, 30);
             this.SelectAudioButton.TabIndex = 0;
             this.SelectAudioButton.Text = "Select Audio";
             this.SelectAudioButton.UseVisualStyleBackColor = true;
@@ -378,9 +409,11 @@ namespace IntralismToolBox.Forms
             this.SpeedChangerGroupBox.Controls.Add(this.SpeedCheckBox);
             this.SpeedChangerGroupBox.Controls.Add(this.ChangeSpeedButton);
             this.SpeedChangerGroupBox.Controls.Add(this.SelectConfigButton);
-            this.SpeedChangerGroupBox.Location = new System.Drawing.Point(233, 114);
+            this.SpeedChangerGroupBox.Location = new System.Drawing.Point(272, 132);
+            this.SpeedChangerGroupBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.SpeedChangerGroupBox.Name = "SpeedChangerGroupBox";
-            this.SpeedChangerGroupBox.Size = new System.Drawing.Size(349, 93);
+            this.SpeedChangerGroupBox.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.SpeedChangerGroupBox.Size = new System.Drawing.Size(407, 107);
             this.SpeedChangerGroupBox.TabIndex = 12;
             this.SpeedChangerGroupBox.TabStop = false;
             this.SpeedChangerGroupBox.Text = "Speed Changer";
@@ -388,40 +421,45 @@ namespace IntralismToolBox.Forms
             // EachSpeedTextBox
             // 
             this.EachSpeedTextBox.Enabled = false;
-            this.EachSpeedTextBox.Location = new System.Drawing.Point(100, 63);
+            this.EachSpeedTextBox.Location = new System.Drawing.Point(117, 73);
+            this.EachSpeedTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.EachSpeedTextBox.Name = "EachSpeedTextBox";
-            this.EachSpeedTextBox.Size = new System.Drawing.Size(119, 20);
+            this.EachSpeedTextBox.Size = new System.Drawing.Size(138, 23);
             this.EachSpeedTextBox.TabIndex = 7;
             // 
             // EachSpeedLabel
             // 
-            this.EachSpeedLabel.Location = new System.Drawing.Point(100, 47);
+            this.EachSpeedLabel.Location = new System.Drawing.Point(117, 54);
+            this.EachSpeedLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.EachSpeedLabel.Name = "EachSpeedLabel";
-            this.EachSpeedLabel.Size = new System.Drawing.Size(119, 14);
+            this.EachSpeedLabel.Size = new System.Drawing.Size(139, 16);
             this.EachSpeedLabel.TabIndex = 6;
             this.EachSpeedLabel.Text = "Change each speed by";
             // 
             // AllSpeedTextBox
             // 
-            this.AllSpeedTextBox.Location = new System.Drawing.Point(100, 26);
+            this.AllSpeedTextBox.Location = new System.Drawing.Point(117, 30);
+            this.AllSpeedTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.AllSpeedTextBox.Name = "AllSpeedTextBox";
-            this.AllSpeedTextBox.Size = new System.Drawing.Size(119, 20);
+            this.AllSpeedTextBox.Size = new System.Drawing.Size(138, 23);
             this.AllSpeedTextBox.TabIndex = 5;
             // 
             // AllSpeedLabel
             // 
-            this.AllSpeedLabel.Location = new System.Drawing.Point(100, 11);
+            this.AllSpeedLabel.Location = new System.Drawing.Point(117, 13);
+            this.AllSpeedLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.AllSpeedLabel.Name = "AllSpeedLabel";
-            this.AllSpeedLabel.Size = new System.Drawing.Size(119, 16);
+            this.AllSpeedLabel.Size = new System.Drawing.Size(139, 18);
             this.AllSpeedLabel.TabIndex = 4;
             this.AllSpeedLabel.Text = "Change every speed to";
             // 
             // SpeedCheckBox
             // 
             this.SpeedCheckBox.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.SpeedCheckBox.Location = new System.Drawing.Point(225, 16);
+            this.SpeedCheckBox.Location = new System.Drawing.Point(262, 18);
+            this.SpeedCheckBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.SpeedCheckBox.Name = "SpeedCheckBox";
-            this.SpeedCheckBox.Size = new System.Drawing.Size(117, 71);
+            this.SpeedCheckBox.Size = new System.Drawing.Size(136, 82);
             this.SpeedCheckBox.TabIndex = 3;
             this.SpeedCheckBox.Text = "Change speed differently by a value";
             this.SpeedCheckBox.UseVisualStyleBackColor = true;
@@ -430,10 +468,11 @@ namespace IntralismToolBox.Forms
             // ChangeSpeedButton
             // 
             this.ChangeSpeedButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ChangeSpeedButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ChangeSpeedButton.Location = new System.Drawing.Point(6, 57);
+            this.ChangeSpeedButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ChangeSpeedButton.Location = new System.Drawing.Point(7, 66);
+            this.ChangeSpeedButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.ChangeSpeedButton.Name = "ChangeSpeedButton";
-            this.ChangeSpeedButton.Size = new System.Drawing.Size(88, 26);
+            this.ChangeSpeedButton.Size = new System.Drawing.Size(103, 30);
             this.ChangeSpeedButton.TabIndex = 1;
             this.ChangeSpeedButton.Text = "Change Speed";
             this.ChangeSpeedButton.UseVisualStyleBackColor = true;
@@ -442,9 +481,10 @@ namespace IntralismToolBox.Forms
             // SelectConfigButton
             // 
             this.SelectConfigButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SelectConfigButton.Location = new System.Drawing.Point(6, 19);
+            this.SelectConfigButton.Location = new System.Drawing.Point(7, 22);
+            this.SelectConfigButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.SelectConfigButton.Name = "SelectConfigButton";
-            this.SelectConfigButton.Size = new System.Drawing.Size(88, 25);
+            this.SelectConfigButton.Size = new System.Drawing.Size(103, 30);
             this.SelectConfigButton.TabIndex = 0;
             this.SelectConfigButton.Text = "Select Config";
             this.SelectConfigButton.UseVisualStyleBackColor = true;
@@ -453,9 +493,10 @@ namespace IntralismToolBox.Forms
             // MapEditorButton
             // 
             this.MapEditorButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.MapEditorButton.Location = new System.Drawing.Point(502, 281);
+            this.MapEditorButton.Location = new System.Drawing.Point(586, 324);
+            this.MapEditorButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.MapEditorButton.Name = "MapEditorButton";
-            this.MapEditorButton.Size = new System.Drawing.Size(120, 23);
+            this.MapEditorButton.Size = new System.Drawing.Size(140, 27);
             this.MapEditorButton.TabIndex = 13;
             this.MapEditorButton.Text = "Map Editor";
             this.MapEditorButton.UseVisualStyleBackColor = true;
@@ -465,9 +506,10 @@ namespace IntralismToolBox.Forms
             // updateCsvButton
             // 
             this.updateCsvButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.updateCsvButton.Location = new System.Drawing.Point(368, 321);
+            this.updateCsvButton.Location = new System.Drawing.Point(429, 370);
+            this.updateCsvButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.updateCsvButton.Name = "updateCsvButton";
-            this.updateCsvButton.Size = new System.Drawing.Size(107, 23);
+            this.updateCsvButton.Size = new System.Drawing.Size(125, 30);
             this.updateCsvButton.TabIndex = 14;
             this.updateCsvButton.Text = "Update Score CSV";
             this.updateCsvButton.UseVisualStyleBackColor = true;
@@ -476,9 +518,10 @@ namespace IntralismToolBox.Forms
             // StoryboardAssistantButton
             // 
             this.StoryboardAssistantButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.StoryboardAssistantButton.Location = new System.Drawing.Point(233, 218);
+            this.StoryboardAssistantButton.Location = new System.Drawing.Point(272, 254);
+            this.StoryboardAssistantButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.StoryboardAssistantButton.Name = "StoryboardAssistantButton";
-            this.StoryboardAssistantButton.Size = new System.Drawing.Size(126, 23);
+            this.StoryboardAssistantButton.Size = new System.Drawing.Size(147, 30);
             this.StoryboardAssistantButton.TabIndex = 15;
             this.StoryboardAssistantButton.Text = "Storyboard Assistant";
             this.StoryboardAssistantButton.UseVisualStyleBackColor = true;
@@ -486,9 +529,9 @@ namespace IntralismToolBox.Forms
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(593, 356);
+            this.ClientSize = new System.Drawing.Size(692, 411);
             this.Controls.Add(this.StoryboardAssistantButton);
             this.Controls.Add(this.updateCsvButton);
             this.Controls.Add(this.MapEditorButton);
@@ -502,6 +545,7 @@ namespace IntralismToolBox.Forms
             this.Controls.Add(this.ManiaToIntralismGroupBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.Text = "Intralism Toolbox";
@@ -515,6 +559,7 @@ namespace IntralismToolBox.Forms
             this.SpeedChangerGroupBox.ResumeLayout(false);
             this.SpeedChangerGroupBox.PerformLayout();
             this.ResumeLayout(false);
+
         }
 
         private System.Windows.Forms.Button StoryboardAssistantButton;

@@ -49,9 +49,9 @@ namespace IntralismToolBox
                 {
                     this.Speeds.Add(entry);
                 }
-                else if (!entry.IsEventOfType(EventType.SpawnObj)
-                      && !entry.IsEventOfType(EventType.SetSpeed)
-                      && !entry.IsEventOfType(EventType.SetPlayerDistance))
+                else if (!entry.IsEventOfType(EventType.SpawnObj) && 
+                         !entry.IsEventOfType(EventType.SetSpeed) &&
+                         !entry.IsEventOfType(EventType.SetPlayerDistance))
                 {
                     this.StoryBoard.Add(entry);
                 }

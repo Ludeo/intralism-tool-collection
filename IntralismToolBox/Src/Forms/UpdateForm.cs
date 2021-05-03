@@ -1,17 +1,14 @@
 ﻿using System;
-using System.Configuration;
 using System.Diagnostics;
 using System.Text;
-using System.Windows.Forms;
-using IntralismToolBox.ColorSchemes;
 using Octokit;
 
 namespace IntralismToolBox.Forms
 {
     /// <summary>
-    ///     Form that pops up if a new github release is available.
+    ///     <see cref="ThemedForm"/> that pops up if a new github release is available.
     /// </summary>
-    public partial class UpdateForm : Form
+    public partial class UpdateForm : ThemedForm
     {
         private readonly Release release;
 
@@ -36,26 +33,6 @@ namespace IntralismToolBox.Forms
             sb.AppendLine(string.Empty);
             sb.AppendLine(this.release.Name);
             this.ReleaseNotesTextBox.Text = sb.ToString();
-        }
-
-        /// <summary>
-        ///     Reloads the color theme of the form. It's public so <see cref="SettingsForm"/> can call it.
-        /// </summary>
-        public void ReloadTheme()
-        {
-            Configuration config = Functions.LoadConfig();
-
-            switch (config.AppSettings.Settings["darkmode"].Value)
-            {
-                case "true":
-                    Functions.ChangeTheme<DarkColorScheme>(this);
-
-                    break;
-                case "false":
-                    Functions.ChangeTheme<LightColorScheme>(this);
-
-                    break;
-            }
         }
 
         private void UpdateClicked(object sender, EventArgs e) =>

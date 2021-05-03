@@ -1,21 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Data;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using IntralismScoreChecker;
-using IntralismToolBox.ColorSchemes;
 using Newtonsoft.Json;
 
 namespace IntralismToolBox.Forms
 {
     /// <summary>
-    ///     Form that gets shown when <see cref="StatisticsPlayerListForm.ShowStatisticsButton"/> was pressed.
+    ///     <see cref="ThemedForm"/> that gets shown when <see cref="StatisticsPlayerListForm.ShowStatisticsButton"/> was pressed.
     /// </summary>
-    public partial class StatisticsForm : Form
+    public partial class StatisticsForm : ThemedForm
     {
         private static readonly Type DoubleType = Type.GetType("System.Double");
         private static readonly Type Int32Type = Type.GetType("System.Int32");
@@ -75,11 +73,9 @@ namespace IntralismToolBox.Forms
 
         private static void FillPlayerLists(string playerName, List<IntralismScoreChecker.Player> allPlayers)
         {
-            players = allPlayers.FindAll(x => playerName
-                                             .Contains(x.Id.ToString()));
+            players = allPlayers.FindAll(x => playerName.Contains(x.Id.ToString()));
 
-            remainingPlayers = allPlayers.FindAll(x => !playerName
-                                                      .Contains(x.Id.ToString()));
+            remainingPlayers = allPlayers.FindAll(x => !playerName.Contains(x.Id.ToString()));
         }
 
         private void LoadAverageAccuracyChart()
@@ -418,26 +414,6 @@ namespace IntralismToolBox.Forms
             }
 
             ScoreDataGridView.DataSource = table;
-        }
-
-        /// <summary>
-        ///     Reloads the color theme of the form. It's public so <see cref="SettingsForm"/> can call it.
-        /// </summary>
-        public void ReloadTheme()
-        {
-            Configuration config = Functions.LoadConfig();
-
-            switch (config.AppSettings.Settings["darkmode"].Value)
-            {
-                case "true":
-                    Functions.ChangeTheme<DarkColorScheme>(this);
-
-                    break;
-                case "false":
-                    Functions.ChangeTheme<LightColorScheme>(this);
-
-                    break;
-            }
         }
     }
 }

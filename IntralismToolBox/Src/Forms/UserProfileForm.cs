@@ -1,17 +1,14 @@
-﻿using System.Configuration;
-using System.Drawing;
+﻿using System.Drawing;
 using System.IO;
 using System.Net;
-using System.Windows.Forms;
-using IntralismToolBox.ColorSchemes;
 
 namespace IntralismToolBox.Forms
 {
     /// <summary>
-    ///     Form that gets shown when <see cref="MainForm.CheckPlayerButton"/>, <see cref="MainForm.LastCheckedPlayerButton"/> or
+    ///     <see cref="ThemedForm"/> that gets shown when <see cref="MainForm.CheckPlayerButton"/>, <see cref="MainForm.LastCheckedPlayerButton"/> or
     ///     <see cref="PlayerListForm.CheckPlayerButton"/> was pressed.
     /// </summary>
-    public partial class UserProfileForm : Form
+    public partial class UserProfileForm : ThemedForm
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="UserProfileForm"/> class.
@@ -73,26 +70,6 @@ namespace IntralismToolBox.Forms
             Image image = Image.FromStream(stream!);
             Image newImage = new Bitmap(image, new Size(this.PlayerPictureLabel.Width, this.PlayerPictureLabel.Height));
             this.PlayerPictureLabel.Image = newImage;
-        }
-
-        /// <summary>
-        ///     Reloads the color theme of the form. It's public so <see cref="SettingsForm"/> can call it.
-        /// </summary>
-        public void ReloadTheme()
-        {
-            Configuration config = Functions.LoadConfig();
-
-            switch (config.AppSettings.Settings["darkmode"].Value)
-            {
-                case "true":
-                    Functions.ChangeTheme<DarkColorScheme>(this);
-
-                    break;
-                case "false":
-                    Functions.ChangeTheme<LightColorScheme>(this);
-
-                    break;
-            }
         }
     }
 }

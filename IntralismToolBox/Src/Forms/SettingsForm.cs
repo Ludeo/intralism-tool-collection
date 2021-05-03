@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Configuration;
 using System.Windows.Forms;
-using IntralismToolBox.ColorSchemes;
 
 namespace IntralismToolBox.Forms
 {
     /// <summary>
-    ///     Form that gets shown when <see cref="MainForm.SettingsButton"/> was pressed.
+    ///     <see cref="ThemedForm"/> that gets shown when <see cref="MainForm.SettingsButton"/> was pressed.
     /// </summary>
-    public partial class SettingsForm : Form
+    public partial class SettingsForm : ThemedForm
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="SettingsForm"/> class.
@@ -37,23 +36,6 @@ namespace IntralismToolBox.Forms
             };
         }
 
-        private void ReloadTheme()
-        {
-            Configuration config = Functions.LoadConfig();
-
-            switch (config.AppSettings.Settings["darkmode"].Value)
-            {
-                case "true":
-                    Functions.ChangeTheme<DarkColorScheme>(this);
-
-                    break;
-                case "false":
-                    Functions.ChangeTheme<LightColorScheme>(this);
-
-                    break;
-            }
-        }
-
         private void SaveConfig(object sender, EventArgs e)
         {
             Configuration config = Functions.LoadConfig();
@@ -66,55 +48,9 @@ namespace IntralismToolBox.Forms
 
             FormCollection formCollection = Application.OpenForms;
 
-            foreach (Form form in formCollection)
+            foreach (ThemedForm form in formCollection)
             {
-                switch (form)
-                {
-                    case MainForm mainForm:
-                        mainForm.ReloadTheme();
-
-                        break;
-
-                    case AddPlayerForm addPlayerForm:
-                        addPlayerForm.ReloadTheme();
-
-                        break;
-
-                    case PlayerListForm playerListForm:
-                        playerListForm.ReloadTheme();
-
-                        break;
-
-                    case SettingsForm settingsForm:
-                        settingsForm.ReloadTheme();
-
-                        break;
-
-                    case UserProfileForm userProfileForm:
-                        userProfileForm.ReloadTheme();
-
-                        break;
-
-                    case UserScoreForm userScoreForm:
-                        userScoreForm.ReloadTheme();
-
-                        break;
-
-                    case UpdateForm updateForm:
-                        updateForm.ReloadTheme();
-
-                        break;
-
-                    case StatisticsPlayerListForm statisticsPlayerListForm:
-                        statisticsPlayerListForm.ReloadTheme();
-
-                        break;
-
-                    case StatisticsForm statisticsForm:
-                        statisticsForm.ReloadTheme();
-
-                        break;
-                }
+                form.ReloadTheme();
             }
         }
 

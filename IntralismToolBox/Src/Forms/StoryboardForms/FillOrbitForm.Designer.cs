@@ -30,273 +30,250 @@ namespace IntralismToolBox.Forms.StoryboardForms
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.UpDn_SunsCount = new System.Windows.Forms.NumericUpDown();
-            this.UpDn_Radius = new System.Windows.Forms.NumericUpDown();
-            this.label3 = new System.Windows.Forms.Label();
-            this.UpDn_CirclingSpeed = new System.Windows.Forms.NumericUpDown();
-            this.Btn_Enter = new System.Windows.Forms.Button();
-            this.Btn_Cancel = new System.Windows.Forms.Button();
-            this.Txt_SunName = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.SunNameTip = new System.Windows.Forms.ToolTip(this.components);
-            this.UpDn_FirstNum = new System.Windows.Forms.NumericUpDown();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.UpDn_Time = new System.Windows.Forms.NumericUpDown();
-            this.UpDn_Emission = new System.Windows.Forms.NumericUpDown();
-            this.label7 = new System.Windows.Forms.Label();
-            this.Chb_Stack = new System.Windows.Forms.CheckBox();
-            ((System.ComponentModel.ISupportInitialize)(this.UpDn_SunsCount)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.UpDn_Radius)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.UpDn_CirclingSpeed)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.UpDn_FirstNum)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.UpDn_Time)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.UpDn_Emission)).BeginInit();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FillOrbitForm));
+            this.sunsCountLabel = new System.Windows.Forms.Label();
+            this.radiusLabel = new System.Windows.Forms.Label();
+            this.sunsCountUpDown = new System.Windows.Forms.NumericUpDown();
+            this.radiusUpDown = new System.Windows.Forms.NumericUpDown();
+            this.circlingSpeedLabel = new System.Windows.Forms.Label();
+            this.circlingSpeedUpDown = new System.Windows.Forms.NumericUpDown();
+            this.enterButton = new System.Windows.Forms.Button();
+            this.cancelButton = new System.Windows.Forms.Button();
+            this.sunNameTextBox = new System.Windows.Forms.TextBox();
+            this.sunNameLabel = new System.Windows.Forms.Label();
+            this.sunNameToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.firstNumberUpDown = new System.Windows.Forms.NumericUpDown();
+            this.nameOffsetLabel = new System.Windows.Forms.Label();
+            this.timeLabel = new System.Windows.Forms.Label();
+            this.timeUpDown = new System.Windows.Forms.NumericUpDown();
+            this.emissionUpDown = new System.Windows.Forms.NumericUpDown();
+            this.emissionLabel = new System.Windows.Forms.Label();
+            this.stackedCheckBox = new System.Windows.Forms.CheckBox();
+            ((System.ComponentModel.ISupportInitialize)(this.sunsCountUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radiusUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.circlingSpeedUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.firstNumberUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.timeUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emissionUpDown)).BeginInit();
             this.SuspendLayout();
             // 
-            // label1
+            // sunsCountLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Palatino Linotype", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(13, 15);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(90, 21);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Suns count";
+            this.sunsCountLabel.AutoSize = true;
+            this.sunsCountLabel.Location = new System.Drawing.Point(9, 9);
+            this.sunsCountLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.sunsCountLabel.Name = "sunsCountLabel";
+            this.sunsCountLabel.Size = new System.Drawing.Size(66, 15);
+            this.sunsCountLabel.TabIndex = 0;
+            this.sunsCountLabel.Text = "Suns count";
             // 
-            // label2
+            // radiusLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Palatino Linotype", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(13, 74);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(60, 21);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Radius";
+            this.radiusLabel.AutoSize = true;
+            this.radiusLabel.Location = new System.Drawing.Point(9, 63);
+            this.radiusLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.radiusLabel.Name = "radiusLabel";
+            this.radiusLabel.Size = new System.Drawing.Size(42, 15);
+            this.radiusLabel.TabIndex = 1;
+            this.radiusLabel.Text = "Radius";
             // 
-            // UpDn_SunsCount
+            // sunsCountUpDown
             // 
-            this.UpDn_SunsCount.BackColor = System.Drawing.Color.White;
-            this.UpDn_SunsCount.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.UpDn_SunsCount.Location = new System.Drawing.Point(13, 40);
-            this.UpDn_SunsCount.Name = "UpDn_SunsCount";
-            this.UpDn_SunsCount.Size = new System.Drawing.Size(89, 16);
-            this.UpDn_SunsCount.TabIndex = 2;
+            this.sunsCountUpDown.Location = new System.Drawing.Point(9, 27);
+            this.sunsCountUpDown.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.sunsCountUpDown.Name = "sunsCountUpDown";
+            this.sunsCountUpDown.Size = new System.Drawing.Size(104, 23);
+            this.sunsCountUpDown.TabIndex = 2;
             // 
-            // UpDn_Radius
+            // radiusUpDown
             // 
-            this.UpDn_Radius.BackColor = System.Drawing.Color.White;
-            this.UpDn_Radius.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.UpDn_Radius.Location = new System.Drawing.Point(13, 98);
-            this.UpDn_Radius.Name = "UpDn_Radius";
-            this.UpDn_Radius.Size = new System.Drawing.Size(89, 16);
-            this.UpDn_Radius.TabIndex = 3;
+            this.radiusUpDown.Location = new System.Drawing.Point(9, 81);
+            this.radiusUpDown.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.radiusUpDown.Name = "radiusUpDown";
+            this.radiusUpDown.Size = new System.Drawing.Size(104, 23);
+            this.radiusUpDown.TabIndex = 3;
             // 
-            // label3
+            // circlingSpeedLabel
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Palatino Linotype", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(13, 134);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(111, 21);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Circling speed";
+            this.circlingSpeedLabel.AutoSize = true;
+            this.circlingSpeedLabel.Location = new System.Drawing.Point(9, 121);
+            this.circlingSpeedLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.circlingSpeedLabel.Name = "circlingSpeedLabel";
+            this.circlingSpeedLabel.Size = new System.Drawing.Size(82, 15);
+            this.circlingSpeedLabel.TabIndex = 4;
+            this.circlingSpeedLabel.Text = "Circling speed";
             // 
-            // UpDn_CirclingSpeed
+            // circlingSpeedUpDown
             // 
-            this.UpDn_CirclingSpeed.BackColor = System.Drawing.Color.White;
-            this.UpDn_CirclingSpeed.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.UpDn_CirclingSpeed.Increment = new decimal(new int[] {
+            this.circlingSpeedUpDown.Increment = new decimal(new int[] {
             10,
             0,
             0,
             0});
-            this.UpDn_CirclingSpeed.Location = new System.Drawing.Point(13, 165);
-            this.UpDn_CirclingSpeed.Maximum = new decimal(new int[] {
+            this.circlingSpeedUpDown.Location = new System.Drawing.Point(9, 139);
+            this.circlingSpeedUpDown.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.circlingSpeedUpDown.Maximum = new decimal(new int[] {
             6000000,
             0,
             0,
             0});
-            this.UpDn_CirclingSpeed.Name = "UpDn_CirclingSpeed";
-            this.UpDn_CirclingSpeed.Size = new System.Drawing.Size(89, 16);
-            this.UpDn_CirclingSpeed.TabIndex = 5;
+            this.circlingSpeedUpDown.Name = "circlingSpeedUpDown";
+            this.circlingSpeedUpDown.Size = new System.Drawing.Size(104, 23);
+            this.circlingSpeedUpDown.TabIndex = 5;
             // 
-            // Btn_Enter
+            // enterButton
             // 
-            this.Btn_Enter.BackColor = System.Drawing.Color.White;
-            this.Btn_Enter.DialogResult = System.Windows.Forms.DialogResult.Yes;
-            this.Btn_Enter.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Btn_Enter.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(47)))), ((int)(((byte)(32)))));
-            this.Btn_Enter.Location = new System.Drawing.Point(149, 25);
-            this.Btn_Enter.Name = "Btn_Enter";
-            this.Btn_Enter.Size = new System.Drawing.Size(81, 31);
-            this.Btn_Enter.TabIndex = 6;
-            this.Btn_Enter.Text = "Enter";
-            this.Btn_Enter.UseVisualStyleBackColor = false;
+            this.enterButton.DialogResult = System.Windows.Forms.DialogResult.Yes;
+            this.enterButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.enterButton.Location = new System.Drawing.Point(9, 240);
+            this.enterButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.enterButton.Name = "enterButton";
+            this.enterButton.Size = new System.Drawing.Size(104, 30);
+            this.enterButton.TabIndex = 6;
+            this.enterButton.Text = "Enter";
+            this.enterButton.UseVisualStyleBackColor = true;
             // 
-            // Btn_Cancel
+            // cancelButton
             // 
-            this.Btn_Cancel.BackColor = System.Drawing.Color.White;
-            this.Btn_Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.Btn_Cancel.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Btn_Cancel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(47)))), ((int)(((byte)(32)))));
-            this.Btn_Cancel.Location = new System.Drawing.Point(149, 211);
-            this.Btn_Cancel.Name = "Btn_Cancel";
-            this.Btn_Cancel.Size = new System.Drawing.Size(81, 29);
-            this.Btn_Cancel.TabIndex = 7;
-            this.Btn_Cancel.Text = "Cancel";
-            this.Btn_Cancel.UseVisualStyleBackColor = false;
+            this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.cancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cancelButton.Location = new System.Drawing.Point(151, 240);
+            this.cancelButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.cancelButton.Name = "cancelButton";
+            this.cancelButton.Size = new System.Drawing.Size(104, 30);
+            this.cancelButton.TabIndex = 7;
+            this.cancelButton.Text = "Cancel";
+            this.cancelButton.UseVisualStyleBackColor = true;
             // 
-            // Txt_SunName
+            // sunNameTextBox
             // 
-            this.Txt_SunName.BackColor = System.Drawing.Color.White;
-            this.Txt_SunName.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.Txt_SunName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Txt_SunName.Location = new System.Drawing.Point(13, 221);
-            this.Txt_SunName.Name = "Txt_SunName";
-            this.Txt_SunName.Size = new System.Drawing.Size(81, 19);
-            this.Txt_SunName.TabIndex = 8;
-            this.Txt_SunName.Text = "s";
-            this.Txt_SunName.MouseHover += new System.EventHandler(this.textBox1_MouseHover);
+            this.sunNameTextBox.Location = new System.Drawing.Point(9, 195);
+            this.sunNameTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.sunNameTextBox.Name = "sunNameTextBox";
+            this.sunNameTextBox.Size = new System.Drawing.Size(104, 23);
+            this.sunNameTextBox.TabIndex = 8;
+            this.sunNameTextBox.Text = "s";
             // 
-            // label4
+            // sunNameLabel
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Palatino Linotype", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(13, 199);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(81, 21);
-            this.label4.TabIndex = 9;
-            this.label4.Text = "Sun name";
+            this.sunNameLabel.AutoSize = true;
+            this.sunNameLabel.Location = new System.Drawing.Point(9, 177);
+            this.sunNameLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.sunNameLabel.Name = "sunNameLabel";
+            this.sunNameLabel.Size = new System.Drawing.Size(60, 15);
+            this.sunNameLabel.TabIndex = 9;
+            this.sunNameLabel.Text = "Sun name";
             // 
-            // SunNameTip
+            // firstNumberUpDown
             // 
-            this.SunNameTip.Popup += new System.Windows.Forms.PopupEventHandler(this.SunNameTip_Popup);
+            this.firstNumberUpDown.Location = new System.Drawing.Point(151, 139);
+            this.firstNumberUpDown.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.firstNumberUpDown.Name = "firstNumberUpDown";
+            this.firstNumberUpDown.Size = new System.Drawing.Size(104, 23);
+            this.firstNumberUpDown.TabIndex = 10;
             // 
-            // UpDn_FirstNum
+            // nameOffsetLabel
             // 
-            this.UpDn_FirstNum.BackColor = System.Drawing.Color.White;
-            this.UpDn_FirstNum.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.UpDn_FirstNum.Location = new System.Drawing.Point(156, 165);
-            this.UpDn_FirstNum.Name = "UpDn_FirstNum";
-            this.UpDn_FirstNum.Size = new System.Drawing.Size(60, 16);
-            this.UpDn_FirstNum.TabIndex = 10;
+            this.nameOffsetLabel.AutoSize = true;
+            this.nameOffsetLabel.Location = new System.Drawing.Point(151, 121);
+            this.nameOffsetLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.nameOffsetLabel.Name = "nameOffsetLabel";
+            this.nameOffsetLabel.Size = new System.Drawing.Size(72, 15);
+            this.nameOffsetLabel.TabIndex = 11;
+            this.nameOffsetLabel.Text = "Name offset";
             // 
-            // label5
+            // timeLabel
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Palatino Linotype", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(138, 134);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(91, 21);
-            this.label5.TabIndex = 11;
-            this.label5.Text = "Name offset";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
+            this.timeLabel.AutoSize = true;
+            this.timeLabel.Location = new System.Drawing.Point(151, 63);
+            this.timeLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.timeLabel.Name = "timeLabel";
+            this.timeLabel.Size = new System.Drawing.Size(33, 15);
+            this.timeLabel.TabIndex = 13;
+            this.timeLabel.Text = "Time";
             // 
-            // label6
+            // timeUpDown
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Palatino Linotype", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(171, 74);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(45, 21);
-            this.label6.TabIndex = 13;
-            this.label6.Text = "Time";
+            this.timeUpDown.Location = new System.Drawing.Point(151, 81);
+            this.timeUpDown.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.timeUpDown.Name = "timeUpDown";
+            this.timeUpDown.Size = new System.Drawing.Size(104, 23);
+            this.timeUpDown.TabIndex = 14;
             // 
-            // UpDn_Time
+            // emissionUpDown
             // 
-            this.UpDn_Time.BackColor = System.Drawing.Color.White;
-            this.UpDn_Time.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.UpDn_Time.Location = new System.Drawing.Point(148, 98);
-            this.UpDn_Time.Name = "UpDn_Time";
-            this.UpDn_Time.Size = new System.Drawing.Size(82, 16);
-            this.UpDn_Time.TabIndex = 14;
-            // 
-            // UpDn_Emission
-            // 
-            this.UpDn_Emission.BackColor = System.Drawing.Color.White;
-            this.UpDn_Emission.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.UpDn_Emission.DecimalPlaces = 2;
-            this.UpDn_Emission.Increment = new decimal(new int[] {
+            this.emissionUpDown.DecimalPlaces = 2;
+            this.emissionUpDown.Increment = new decimal(new int[] {
             0,
             0,
             0,
             0});
-            this.UpDn_Emission.Location = new System.Drawing.Point(258, 39);
-            this.UpDn_Emission.Maximum = new decimal(new int[] {
+            this.emissionUpDown.Location = new System.Drawing.Point(151, 27);
+            this.emissionUpDown.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.emissionUpDown.Maximum = new decimal(new int[] {
             1000,
             0,
             0,
             0});
-            this.UpDn_Emission.Name = "UpDn_Emission";
-            this.UpDn_Emission.Size = new System.Drawing.Size(89, 16);
-            this.UpDn_Emission.TabIndex = 16;
-            this.UpDn_Emission.ValueChanged += new System.EventHandler(this.UpDn_Emission_ValueChanged);
+            this.emissionUpDown.Name = "emissionUpDown";
+            this.emissionUpDown.Size = new System.Drawing.Size(104, 23);
+            this.emissionUpDown.TabIndex = 16;
             // 
-            // label7
+            // emissionLabel
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Palatino Linotype", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label7.ForeColor = System.Drawing.Color.Black;
-            this.label7.Location = new System.Drawing.Point(258, 15);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(74, 21);
-            this.label7.TabIndex = 15;
-            this.label7.Text = "Emission";
+            this.emissionLabel.AutoSize = true;
+            this.emissionLabel.Location = new System.Drawing.Point(151, 9);
+            this.emissionLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.emissionLabel.Name = "emissionLabel";
+            this.emissionLabel.Size = new System.Drawing.Size(54, 15);
+            this.emissionLabel.TabIndex = 15;
+            this.emissionLabel.Text = "Emission";
             // 
-            // Chb_Stack
+            // stackedCheckBox
             // 
-            this.Chb_Stack.AutoSize = true;
-            this.Chb_Stack.ForeColor = System.Drawing.Color.Black;
-            this.Chb_Stack.Location = new System.Drawing.Point(258, 96);
-            this.Chb_Stack.Name = "Chb_Stack";
-            this.Chb_Stack.Size = new System.Drawing.Size(90, 17);
-            this.Chb_Stack.TabIndex = 17;
-            this.Chb_Stack.Text = "Stack Events";
-            this.Chb_Stack.UseVisualStyleBackColor = true;
-            this.Chb_Stack.CheckedChanged += new System.EventHandler(this.Chb_Stack_CheckedChanged);
+            this.stackedCheckBox.AutoSize = true;
+            this.stackedCheckBox.Location = new System.Drawing.Point(151, 195);
+            this.stackedCheckBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.stackedCheckBox.Name = "stackedCheckBox";
+            this.stackedCheckBox.Size = new System.Drawing.Size(91, 19);
+            this.stackedCheckBox.TabIndex = 17;
+            this.stackedCheckBox.Text = "Stack Events";
+            this.stackedCheckBox.UseVisualStyleBackColor = true;
             // 
             // FillOrbitForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(214)))), ((int)(((byte)(220)))));
-            this.ClientSize = new System.Drawing.Size(362, 259);
-            this.Controls.Add(this.Chb_Stack);
-            this.Controls.Add(this.UpDn_Emission);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.UpDn_Time);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.UpDn_FirstNum);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.Txt_SunName);
-            this.Controls.Add(this.Btn_Cancel);
-            this.Controls.Add(this.Btn_Enter);
-            this.Controls.Add(this.UpDn_CirclingSpeed);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.UpDn_Radius);
-            this.Controls.Add(this.UpDn_SunsCount);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.ClientSize = new System.Drawing.Size(269, 283);
+            this.Controls.Add(this.stackedCheckBox);
+            this.Controls.Add(this.emissionUpDown);
+            this.Controls.Add(this.emissionLabel);
+            this.Controls.Add(this.timeUpDown);
+            this.Controls.Add(this.timeLabel);
+            this.Controls.Add(this.nameOffsetLabel);
+            this.Controls.Add(this.firstNumberUpDown);
+            this.Controls.Add(this.sunNameLabel);
+            this.Controls.Add(this.sunNameTextBox);
+            this.Controls.Add(this.cancelButton);
+            this.Controls.Add(this.enterButton);
+            this.Controls.Add(this.circlingSpeedUpDown);
+            this.Controls.Add(this.circlingSpeedLabel);
+            this.Controls.Add(this.radiusUpDown);
+            this.Controls.Add(this.sunsCountUpDown);
+            this.Controls.Add(this.radiusLabel);
+            this.Controls.Add(this.sunsCountLabel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.MaximizeBox = false;
             this.Name = "FillOrbitForm";
             this.Text = "FillOrbitForm";
-            this.Load += new System.EventHandler(this.FillOrbitForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.UpDn_SunsCount)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.UpDn_Radius)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.UpDn_CirclingSpeed)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.UpDn_FirstNum)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.UpDn_Time)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.UpDn_Emission)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sunsCountUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radiusUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.circlingSpeedUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.firstNumberUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.timeUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emissionUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -304,23 +281,23 @@ namespace IntralismToolBox.Forms.StoryboardForms
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button Btn_Enter;
-        public System.Windows.Forms.NumericUpDown UpDn_SunsCount;
-        public System.Windows.Forms.NumericUpDown UpDn_Radius;
-        public System.Windows.Forms.NumericUpDown UpDn_CirclingSpeed;
-        private System.Windows.Forms.Button Btn_Cancel;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ToolTip SunNameTip;
-        public System.Windows.Forms.TextBox Txt_SunName;
-        private System.Windows.Forms.Label label5;
-        public System.Windows.Forms.NumericUpDown UpDn_FirstNum;
-        private System.Windows.Forms.Label label6;
-        public System.Windows.Forms.NumericUpDown UpDn_Time;
-        public System.Windows.Forms.NumericUpDown UpDn_Emission;
-        private System.Windows.Forms.Label label7;
-        public System.Windows.Forms.CheckBox Chb_Stack;
+        private System.Windows.Forms.Label sunsCountLabel;
+        private System.Windows.Forms.Label radiusLabel;
+        private System.Windows.Forms.Label circlingSpeedLabel;
+        private System.Windows.Forms.Button enterButton;
+        public System.Windows.Forms.NumericUpDown sunsCountUpDown;
+        public System.Windows.Forms.NumericUpDown radiusUpDown;
+        public System.Windows.Forms.NumericUpDown circlingSpeedUpDown;
+        private System.Windows.Forms.Button cancelButton;
+        private System.Windows.Forms.Label sunNameLabel;
+        private System.Windows.Forms.ToolTip sunNameToolTip;
+        public System.Windows.Forms.TextBox sunNameTextBox;
+        private System.Windows.Forms.Label nameOffsetLabel;
+        public System.Windows.Forms.NumericUpDown firstNumberUpDown;
+        private System.Windows.Forms.Label timeLabel;
+        public System.Windows.Forms.NumericUpDown timeUpDown;
+        public System.Windows.Forms.NumericUpDown emissionUpDown;
+        private System.Windows.Forms.Label emissionLabel;
+        public System.Windows.Forms.CheckBox stackedCheckBox;
     }
 }

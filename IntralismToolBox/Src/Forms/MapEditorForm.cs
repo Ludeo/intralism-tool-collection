@@ -13,9 +13,9 @@ using JsonSerializer = System.Text.Json.JsonSerializer;
 namespace IntralismToolBox.Forms
 {
     /// <summary>
-    ///     Form that is opened when <see cref="MainForm.MapEditorButton"/> was pressed.
+    ///     <see cref="ThemedForm"/> that is opened when <see cref="MainForm.MapEditorButton"/> was pressed.
     /// </summary>
-    public partial class MapEditorForm : Form
+    public partial class MapEditorForm : ThemedForm
     {
         private readonly string editorDirectory;
         private string workingDirectory;
@@ -33,6 +33,7 @@ namespace IntralismToolBox.Forms
         {
             this.editorDirectory = editorDirectory;
             this.InitializeComponent();
+            this.ReloadTheme();
         }
 
         private string ConfigPath => this.workingDirectory + @"\config.txt";
@@ -44,7 +45,6 @@ namespace IntralismToolBox.Forms
             if (this.workingDirectory != string.Empty)
             {
                 this.loadedMap = new EditorIntralismMap(new IntralismBeatMap(this.ConfigPath));
-
                 this.UpdateTextBox();
             }
         }
@@ -55,8 +55,7 @@ namespace IntralismToolBox.Forms
             this.mouseIsDown = true;
         }
 
-        private void FormMouseUp(object sender, MouseEventArgs e)
-            => this.mouseIsDown = false;
+        private void FormMouseUp(object sender, MouseEventArgs e) => this.mouseIsDown = false;
 
         private string OpenMap(string folderToCheck)
         {
@@ -66,7 +65,7 @@ namespace IntralismToolBox.Forms
             {
                 try
                 {
-                    IntralismBeatMap testMap = new (folderToCheck + @"\config.txt");
+                    IntralismBeatMap testMap = new(folderToCheck + @"\config.txt");
 
                     if (testMap.ConfigVersion == 3)
                     {
@@ -124,11 +123,8 @@ namespace IntralismToolBox.Forms
 
         private void ResizePanels(int x, int y)
         {
-            int mouseDownXLocation = x;
-            int mouseDownYLocation = y;
-
-            int xDifference = this.lastMouseDownLocation.X - mouseDownXLocation;
-            int yDifference = this.lastMouseDownLocation.Y - mouseDownYLocation;
+            int xDifference = this.lastMouseDownLocation.X - x;
+            int yDifference = this.lastMouseDownLocation.Y - y;
 
             // Get current size
             Size splitSize = this.splitConfigs.Size;
@@ -159,6 +155,7 @@ namespace IntralismToolBox.Forms
         private void ArcSpawnTextBoxTextChanged(object sender, EventArgs e)
         {
             int lastCursorPosition = this.ArcSpawnTextBox.SelectionStart;
+            
             try
             {
                 this.loadedMap.ArcSpawns = JsonConvert.DeserializeObject<List<Event>>(this.ArcSpawnTextBox.Text!);
@@ -265,6 +262,7 @@ namespace IntralismToolBox.Forms
             this.ZoomEventTextBox.Text = JsonConvert.SerializeObject(this.loadedMap.Zooms, Formatting.Indented);
             this.SpeedEventTextBox.Text = JsonConvert.SerializeObject(this.loadedMap.Speeds, Formatting.Indented);
             this.StoryBoardTextBox.Text = JsonConvert.SerializeObject(this.loadedMap.StoryBoard, Formatting.Indented);
+            
             this.DefaultViewTextBox.Text = JsonSerializer.Serialize(
                 this.loadedMap,
                 new JsonSerializerOptions { WriteIndented = true });

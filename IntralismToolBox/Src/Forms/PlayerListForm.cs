@@ -1,17 +1,14 @@
 ﻿using System;
-using System.Configuration;
 using System.IO;
 using System.Text;
-using System.Windows.Forms;
 using IntralismScoreChecker;
-using IntralismToolBox.ColorSchemes;
 
 namespace IntralismToolBox.Forms
 {
     /// <summary>
-    ///     Form that gets shown when <see cref="MainForm.PlayerListButton"/> was pressed.
+    ///     <see cref="ThemedForm"/> that gets shown when <see cref="MainForm.PlayerListButton"/> was pressed.
     /// </summary>
-    public partial class PlayerListForm : Form
+    public partial class PlayerListForm : ThemedForm
     {
         private const string SavedPlayersCsv = "savedplayers.csv";
 
@@ -40,10 +37,10 @@ namespace IntralismToolBox.Forms
 
         private void AddClicked(object sender, EventArgs e)
         {
-            Form addPlayerForm = new AddPlayerForm();
+            AddPlayerForm addPlayerForm = new();
             addPlayerForm.ShowDialog();
 
-            Form newPlayerListForm = new PlayerListForm();
+            PlayerListForm newPlayerListForm = new();
             newPlayerListForm.Show();
             this.Close();
         }
@@ -54,26 +51,6 @@ namespace IntralismToolBox.Forms
             Functions.CheckPlayer(current.Link);
         }
 
-        /// <summary>
-        ///     Reloads the color theme of the form. It's public so <see cref="SettingsForm"/> can call it.
-        /// </summary>
-        public void ReloadTheme()
-        {
-            Configuration config = Functions.LoadConfig();
-
-            switch (config.AppSettings.Settings["darkmode"].Value)
-            {
-                case "true":
-                    Functions.ChangeTheme<DarkColorScheme>(this);
-
-                    break;
-                case "false":
-                    Functions.ChangeTheme<LightColorScheme>(this);
-
-                    break;
-            }
-        }
-
         private void RemoveClicked(object sender, EventArgs e)
         {
             Player current = (Player)this.PlayerListListBox.SelectedItem;
@@ -82,8 +59,8 @@ namespace IntralismToolBox.Forms
 
             foreach (string[] player in players)
             {
-                if (player[0].Equals(current.Name)
-                 && player[1].Equals(current.Link)) {}
+                if (player[0].Equals(current.Name) &&
+                    player[1].Equals(current.Link)) {}
                 else
                 {
                     sb.AppendLine(player[0] + "," + player[1]);
@@ -92,7 +69,7 @@ namespace IntralismToolBox.Forms
 
             File.WriteAllText(SavedPlayersCsv, sb.ToString());
 
-            Form newPlayerList = new PlayerListForm();
+            PlayerListForm newPlayerList = new();
             newPlayerList.Show();
             this.Close();
         }

@@ -75,6 +75,11 @@ namespace IntralismToolBox
                         textBox.ForeColor = scheme.TextBoxForegroundColor;
 
                         break;
+                    case RichTextBox richTextBox: 
+                        richTextBox.BackColor = scheme.TextBoxBackgroundColor;
+                        richTextBox.ForeColor = scheme.TextBoxForegroundColor;
+
+                        break;
                     case GroupBox groupBox:
                         ChangeTheme(scheme, groupBox.Controls);
                         groupBox.ForeColor = scheme.GroupBoxForegroundColor;

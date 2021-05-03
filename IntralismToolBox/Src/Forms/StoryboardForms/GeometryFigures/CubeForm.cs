@@ -1,22 +1,25 @@
-﻿using System;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace IntralismToolBox.Forms.StoryboardForms.GeometryFigures
 {
-    public partial class CubeForm : Form
+    /// <summary>
+    ///     <see cref="ThemedForm"/> that gets shown when <see cref="GeometryForm.cubeButton"/> was pressed.
+    /// </summary>
+    public partial class CubeForm : ThemedForm
     {
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="CubeForm"/> class.
+        /// </summary>
         public CubeForm()
         {
             this.InitializeComponent();
-            ToolTip tp1 = new();
-            ToolTip tp2 = new ();
-            tp1.SetToolTip(this.Btn_Help, "It will be name of satellite to which the cube(all the suns) will be attached \n" +
-                                          " all suns will have additional \"S\" in names like \"Sat, SatS0, SatS1 ...\"");
-            tp2.SetToolTip(this.UpDn_TimeStart,"When will we spawn a cube?");
+            this.ReloadTheme();
+            ToolTip helpButtonToolTip = new();
+            helpButtonToolTip.SetToolTip(this.helpButton, "It will be name of satellite to which the cube(all the suns) will be attached \n" +
+                                                          " all suns will have additional \"S\" in names like \"Sat, SatS0, SatS1 ...\"");
+            
+            ToolTip timeStartUpDownToolTip = new();
+            timeStartUpDownToolTip.SetToolTip(this.timeStartUpDown,"When will we spawn a cube?");
         }
-
-        private void label1_Click(object sender, EventArgs e) { }
-
-        private void Cube_Load(object sender, EventArgs e) { }
     }
 }

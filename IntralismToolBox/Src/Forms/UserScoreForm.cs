@@ -1,18 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Data;
-using System.Windows.Forms;
 using IntralismScoreChecker;
-using IntralismToolBox.ColorSchemes;
 
 namespace IntralismToolBox.Forms
 {
     /// <summary>
-    ///     Form that gets shown when <see cref="MainForm.CheckPlayerButton"/>, <see cref="MainForm.LastCheckedPlayerButton"/> or
+    ///     <see cref="ThemedForm"/> that gets shown when <see cref="MainForm.CheckPlayerButton"/>, <see cref="MainForm.LastCheckedPlayerButton"/> or
     ///     <see cref="PlayerListForm.CheckPlayerButton"/> was pressed.
     /// </summary>
-    public partial class UserScoreForm : Form
+    public partial class UserScoreForm : ThemedForm
     {
         private readonly Type doubleType = Type.GetType("System.Double");
         private readonly Type int32Type = Type.GetType("System.Int32");
@@ -51,26 +48,6 @@ namespace IntralismToolBox.Forms
 
             this.ScoreDataGridView.DataSource = this.table;
             this.ReloadTheme();
-        }
-
-        /// <summary>
-        ///     Reloads the color theme of the form. It's public so <see cref="SettingsForm"/> can call it.
-        /// </summary>
-        public void ReloadTheme()
-        {
-            Configuration config = Functions.LoadConfig();
-
-            switch (config.AppSettings.Settings["darkmode"].Value)
-            {
-                case "true":
-                    Functions.ChangeTheme<DarkColorScheme>(this);
-
-                    break;
-                case "false":
-                    Functions.ChangeTheme<LightColorScheme>(this);
-
-                    break;
-            }
         }
     }
 }

@@ -1,17 +1,14 @@
 ﻿using System;
-using System.Configuration;
 using System.IO;
 using System.Text;
-using System.Windows.Forms;
 using IntralismScoreChecker;
-using IntralismToolBox.ColorSchemes;
 
 namespace IntralismToolBox.Forms
 {
     /// <summary>
-    ///     Form that gets shown when <see cref="PlayerListForm.AddPlayerButton"/> was pressed.
+    ///     <see cref="ThemedForm"/> that gets shown when <see cref="PlayerListForm.AddPlayerButton"/> was pressed.
     /// </summary>
-    public partial class AddPlayerForm : Form
+    public partial class AddPlayerForm : ThemedForm
     {
         private const string SavedPlayersCsvPath = "savedplayers.csv";
 
@@ -46,26 +43,6 @@ namespace IntralismToolBox.Forms
         }
 
         private void CombineString(string a, string b) => this.stringBuilder.AppendLine(a + "," + b);
-
-        /// <summary>
-        ///     Reloads the color theme of the form. It's public so <see cref="SettingsForm"/> can call it.
-        /// </summary>
-        public void ReloadTheme()
-        {
-            Configuration config = Functions.LoadConfig();
-
-            switch (config.AppSettings.Settings["darkmode"].Value)
-            {
-                case "true":
-                    Functions.ChangeTheme<DarkColorScheme>(this);
-
-                    break;
-                case "false":
-                    Functions.ChangeTheme<LightColorScheme>(this);
-
-                    break;
-            }
-        }
 
         private void SaveContents() => File.WriteAllText(SavedPlayersCsvPath, this.stringBuilder.ToString());
     }
