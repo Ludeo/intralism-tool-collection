@@ -1,4 +1,5 @@
 using System;
+using System.Globalization;
 using System.Windows.Forms;
 using IntralismToolBox.Forms;
 
@@ -15,6 +16,7 @@ namespace IntralismToolBox
         [STAThread]
         private static void Main()
         {
+            CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

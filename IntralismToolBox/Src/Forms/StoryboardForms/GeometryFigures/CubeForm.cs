@@ -17,9 +17,11 @@ namespace IntralismToolBox.Forms.StoryboardForms.GeometryFigures
         {
             this.InitializeComponent();
             this.ReloadTheme();
+            
             ToolTip helpButtonToolTip = new();
-            helpButtonToolTip.SetToolTip(this.helpButton, "It will be name of satellite to which the cube(all the suns) will be attached \n" +
-                                                          " all suns will have additional \"S\" in names like \"Sat, SatS0, SatS1 ...\"");
+            helpButtonToolTip.SetToolTip(this.helpButton, 
+                                         "It will be name of satellite to which the cube(all the suns) will be attached \n" +
+                                         " all suns will have additional \"S\" in names like \"Sat, SatS0, SatS1 ...\"");
             
             ToolTip timeStartUpDownToolTip = new();
             timeStartUpDownToolTip.SetToolTip(this.timeStartUpDown,"When will we spawn a cube?");

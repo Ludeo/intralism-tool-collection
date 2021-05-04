@@ -17,9 +17,11 @@ namespace IntralismToolBox.Forms.StoryboardForms.GeometryFigures
         {
             this.InitializeComponent();
             this.ReloadTheme();
+            
             ToolTip helpButtonToolTip = new();
-            helpButtonToolTip.SetToolTip(this.helpButton, "That's something like buffer to contain figures only \n" +
-                                          " so if you mess up with the figures you will not mess up all the text in the Mainform");
+            helpButtonToolTip.SetToolTip(this.helpButton, 
+                                         "That's something like buffer to contain figures only \n " +
+                                         "so if you mess up with the figures you will not mess up all the text in the Mainform");
 
             this.storyboardAssistantForm = storyboardAssistantForm;
         }

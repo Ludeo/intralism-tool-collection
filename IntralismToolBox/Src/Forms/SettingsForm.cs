@@ -32,7 +32,7 @@ namespace IntralismToolBox.Forms
             {
                 "true"  => true,
                 "false" => false,
-                var _   => this.DarkModeToggleButton.Checked,
+                _       => this.DarkModeToggleButton.Checked,
             };
         }
 

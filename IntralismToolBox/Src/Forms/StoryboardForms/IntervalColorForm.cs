@@ -26,8 +26,8 @@ namespace IntralismToolBox.Forms.StoryboardForms
             this.ReloadTheme();
             this.chosenColor = Array.Empty<Color>();
             this.stacked = false;
-            ToolTip tip1 = new();
-            tip1.SetToolTip(this.stackedCheckBox,"All your objects are changing color at the same time or one after another");
+            ToolTip toolTip = new();
+            toolTip.SetToolTip(this.stackedCheckBox,"All your objects are changing color at the same time or one after another");
             this.storyboardAssistantForm = storyboardAssistantForm;
         }
 
@@ -54,7 +54,7 @@ namespace IntralismToolBox.Forms.StoryboardForms
                 0 => "SetSunColors",
                 1 => "SetSatelliteColor",
                 2 => "SetParticlesColor",
-                var _ => "SetSunColors",
+                _ => "SetSunColors",
             };
         }
 
@@ -100,9 +100,7 @@ namespace IntralismToolBox.Forms.StoryboardForms
                 
                 for (int i = (int)firstNum; i < count + firstNum; i++)
                 {
-                    result += 
-                        $@"{{""time"":{u + timescale},""data"":[""{this.objEv}"",""{name + i},#{hexColor[n]}""]}},";
-                    
+                    result += $@"{{""time"":{u + timescale},""data"":[""{this.objEv}"",""{name + i},#{hexColor[n]}""]}},";
                     timescale += timescale;
                 }
                 

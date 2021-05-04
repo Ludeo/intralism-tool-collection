@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Globalization;
 using System.Windows.Forms;
 using IntralismToolBox.Forms.StoryboardForms;
 using IntralismToolBox.Forms.StoryboardForms.GeometryFigures;
@@ -18,9 +17,8 @@ namespace IntralismToolBox.Forms
         {
             this.InitializeComponent();
             this.ReloadTheme();
-            CultureInfo.CurrentCulture = CultureInfo.GetCultureInfo("en");
-            ToolTip tp1 = new();
-            tp1.SetToolTip(this.resetButton, "U just found an Undertale reeeeeeffffeeeeerrrrenceeeee");
+            ToolTip toolTip = new();
+            toolTip.SetToolTip(this.resetButton, "U just found an Undertale reeeeeeffffeeeeerrrrenceeeee");
         }
 
         private void FillOrbitButtonClicked(object sender, EventArgs e)
@@ -29,7 +27,7 @@ namespace IntralismToolBox.Forms
             fillOrbitForm.Show();
         }
 
-        private void ResetButtonClicked(object sender, EventArgs e) => this.resultTextBox.Text = "";
+        private void ResetButtonClicked(object sender, EventArgs e) => this.resultTextBox.Text = string.Empty;
 
         private void GradientColorButtonClicked(object sender, EventArgs e)
         {

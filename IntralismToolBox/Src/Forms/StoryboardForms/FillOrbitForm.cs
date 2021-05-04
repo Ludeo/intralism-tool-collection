@@ -16,7 +16,10 @@ namespace IntralismToolBox.Forms.StoryboardForms
         {
             this.InitializeComponent();
             this.ReloadTheme();
-            this.sunNameToolTip.SetToolTip(this.sunNameTextBox,"If you write here \"Sun\", suns will be called like \"Sun0\", \"Sun1\", \"Sun2\"...");
+            
+            this.sunNameToolTip.SetToolTip(this.sunNameTextBox, 
+                                           "If you write here \"Sun\", suns will be called like \"Sun0\", \"Sun1\", \"Sun2\"...");
+            
             this.emissionUpDown.Increment = 0.5M;
             this.storyboardAssistantForm = storyboardAssistantForm;
         }

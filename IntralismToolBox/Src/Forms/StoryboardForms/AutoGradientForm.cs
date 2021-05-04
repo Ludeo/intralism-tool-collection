@@ -51,14 +51,15 @@ namespace IntralismToolBox.Forms.StoryboardForms
         {
             this.objEv = this.objectTypeComboBox.SelectedIndex switch
             {
-                0     => "SetSunColors",
-                1     => "SetSatelliteColor",
-                2     => "SetParticlesColor",
-                var _ => "SetSunColors",
+                0 => "SetSunColors",
+                1 => "SetSatelliteColor",
+                2 => "SetParticlesColor",
+                _ => "SetSunColors",
             };
             
             string result = this.storyboardAssistantForm.resultTextBox.Text;
-            double offset = (double)this.timeStartUpDown.Value, duration = (double)this.fullDurationUpDown.Value;
+            double offset = (double)this.timeStartUpDown.Value;
+            double duration = (double)this.fullDurationUpDown.Value;
             Color[] twoEndColors = this.twoColors;
 
             double redCoef = duration / Math.Abs(Math.Max(twoEndColors[0].R, twoEndColors[1].R) - Math.Min(twoEndColors[0].R, twoEndColors[1].R));
@@ -66,7 +67,9 @@ namespace IntralismToolBox.Forms.StoryboardForms
             double blueCoef = duration / Math.Abs(Math.Max(twoEndColors[0].B, twoEndColors[1].B) - Math.Min(twoEndColors[0].B, twoEndColors[1].B));
             double mainTimeScale = Math.Min(redCoef,Math.Min(blueCoef,greenCoef));
 
-            int rSign = 0, gSign = 0, bSign = 0;
+            int rSign = 0;
+            int gSign = 0;
+            int bSign = 0;
             int i = 0;
 
             if (twoEndColors[0].R < twoEndColors[1].R)
@@ -139,8 +142,7 @@ namespace IntralismToolBox.Forms.StoryboardForms
                     hexColor = $"{hexColor} , #{hexColor}";
                 }
                 
-                result += $"{{\"time\":{offset},\"data\":[\"{this.objEv}\",\"{this.objectNameTextBox.Text + i}," +
-                          $"#{hexColor}\"]}},";
+                result += $"{{\"time\":{offset},\"data\":[\"{this.objEv}\",\"{this.objectNameTextBox.Text + i},#{hexColor}\"]}},";
                 i++;
             }
             
