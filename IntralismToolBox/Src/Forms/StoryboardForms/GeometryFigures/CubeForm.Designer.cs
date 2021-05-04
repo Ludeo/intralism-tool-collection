@@ -51,7 +51,6 @@ namespace IntralismToolBox.Forms.StoryboardForms.GeometryFigures
             // 
             // cancelButton
             // 
-            this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.cancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cancelButton.Location = new System.Drawing.Point(287, 80);
             this.cancelButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -60,10 +59,10 @@ namespace IntralismToolBox.Forms.StoryboardForms.GeometryFigures
             this.cancelButton.TabIndex = 50;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Click += new System.EventHandler(this.CancelButtonClicked);
             // 
             // enterButton
             // 
-            this.enterButton.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.enterButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.enterButton.Location = new System.Drawing.Point(287, 27);
             this.enterButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -72,6 +71,7 @@ namespace IntralismToolBox.Forms.StoryboardForms.GeometryFigures
             this.enterButton.TabIndex = 49;
             this.enterButton.Text = "Enter";
             this.enterButton.UseVisualStyleBackColor = true;
+            this.enterButton.Click += new System.EventHandler(this.EnterButtonClicked);
             // 
             // spawnTimeLabel
             // 

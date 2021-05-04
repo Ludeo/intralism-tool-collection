@@ -123,7 +123,6 @@ namespace IntralismToolBox.Forms.StoryboardForms
             // 
             // enterButton
             // 
-            this.enterButton.DialogResult = System.Windows.Forms.DialogResult.Yes;
             this.enterButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.enterButton.Location = new System.Drawing.Point(9, 240);
             this.enterButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -132,10 +131,10 @@ namespace IntralismToolBox.Forms.StoryboardForms
             this.enterButton.TabIndex = 6;
             this.enterButton.Text = "Enter";
             this.enterButton.UseVisualStyleBackColor = true;
+            this.enterButton.Click += new System.EventHandler(this.EnterButtonClicked);
             // 
             // cancelButton
             // 
-            this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.cancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cancelButton.Location = new System.Drawing.Point(151, 240);
             this.cancelButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -144,6 +143,7 @@ namespace IntralismToolBox.Forms.StoryboardForms
             this.cancelButton.TabIndex = 7;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Click += new System.EventHandler(this.CancelButtonClicked);
             // 
             // sunNameTextBox
             // 

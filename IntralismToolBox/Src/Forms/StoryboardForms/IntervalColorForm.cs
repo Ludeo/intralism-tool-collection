@@ -9,32 +9,26 @@ namespace IntralismToolBox.Forms.StoryboardForms
     /// </summary>
     public partial class IntervalColorForm : ThemedForm
     {
-        /// <summary>
-        ///     An Array of Colors that saves the colors that got chosen through the colorDialog.
-        /// </summary>
-        public Color[] ChosenColor;
+        private Color[] chosenColor;
         
-        /// <summary>
-        ///     Saves what kind of object got selected.
-        /// </summary>
-        public string ObjEv;
+        private string objEv;
         
-        /// <summary>
-        ///     Saves if the user selected stackedEvents or not.
-        /// </summary>
-        public bool Stacked;
+        private bool stacked;
+
+        private readonly StoryboardAssistantForm storyboardAssistantForm;
         
         /// <summary>
         ///     Initializes a new instance of the <see cref="IntervalColorForm"/> class.
         /// </summary>
-        public IntervalColorForm()
+        public IntervalColorForm(StoryboardAssistantForm storyboardAssistantForm)
         {
             this.InitializeComponent();
             this.ReloadTheme();
-            this.ChosenColor = Array.Empty<Color>();
-            this.Stacked = false;
+            this.chosenColor = Array.Empty<Color>();
+            this.stacked = false;
             ToolTip tip1 = new();
             tip1.SetToolTip(this.stackedCheckBox,"All your objects are changing color at the same time or one after another");
+            this.storyboardAssistantForm = storyboardAssistantForm;
         }
 
         private void ChooseButtonClicked(object sender, EventArgs e)
@@ -48,14 +42,14 @@ namespace IntralismToolBox.Forms.StoryboardForms
                 
                 if (colorDialog.ShowDialog() == DialogResult.OK)
                 {
-                    Array.Resize(ref this.ChosenColor, this.ChosenColor.Length + 1);
-                    this.ChosenColor[g] = colorDialog.Color;
-                    graph.Clear(this.ChosenColor[g]);
+                    Array.Resize(ref this.chosenColor, this.chosenColor.Length + 1);
+                    this.chosenColor[g] = colorDialog.Color;
+                    graph.Clear(this.chosenColor[g]);
                     this.demoPictureBox.Image = map;
                 }
             }
 
-            this.ObjEv = this.objectTypeComboBox.SelectedIndex switch
+            this.objEv = this.objectTypeComboBox.SelectedIndex switch
             {
                 0 => "SetSunColors",
                 1 => "SetSatelliteColor",
@@ -64,6 +58,62 @@ namespace IntralismToolBox.Forms.StoryboardForms
             };
         }
 
-        private void StackedCheckBoxChanged(object sender, EventArgs e) => this.Stacked = this.stackedCheckBox.Checked;
+        private void StackedCheckBoxChanged(object sender, EventArgs e) => this.stacked = this.stackedCheckBox.Checked;
+
+        private void EnterButtonClicked(object sender, EventArgs e)
+        {
+            string name = this.objectNameTextBox.Text;
+            double time1 = (double)this.timeStartUpDown.Value;
+            double duration = (double)this.cycleDurationUpDown.Value;
+            double count = (double)this.objectCountUpDown.Value;
+            double laps = (double)this.lapsCountUpDown.Value;
+            double timescale = duration / count / laps;
+            double firstNum = (double)this.firstObjectNumberUpDown.Value;
+            string[] hexColor = Array.Empty<string>();
+            Color[] theColors = this.chosenColor;
+            int n = 0;
+
+            if (this.stacked)
+            {
+                timescale = 0;
+            }
+            
+            for (int c = 0; c < this.chosenColor.Length; c++)
+            {
+                Array.Resize(ref hexColor, hexColor.Length + 1);
+                hexColor[c] = theColors[c].R.ToString("X2") + theColors[c].G.ToString("X2") + theColors[c].B.ToString("X2");
+                
+                if (this.objEv == "SetSunColors")
+                {
+                    hexColor[c] = $"{hexColor[c]},#{hexColor[c]}";
+                }
+            }
+
+            string result = string.Empty;
+            
+            for (double u = time1; u <= duration + time1; u += duration / laps)
+            {
+                if (n == hexColor.Length)
+                {
+                    n = 0;
+                }
+                
+                for (int i = (int)firstNum; i < count + firstNum; i++)
+                {
+                    result += 
+                        $@"{{""time"":{u + timescale},""data"":[""{this.objEv}"",""{name + i},#{hexColor[n]}""]}},";
+                    
+                    timescale += timescale;
+                }
+                
+                n++;
+            }
+
+            this.storyboardAssistantForm.resultTextBox.Text += result;
+            
+            this.Close();
+        }
+
+        private void CancelButtonClicked(object sender, EventArgs e) => this.Close();
     }
 }

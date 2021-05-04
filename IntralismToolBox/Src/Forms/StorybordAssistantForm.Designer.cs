@@ -132,7 +132,7 @@ namespace IntralismToolBox.Forms
         #endregion
 
         private System.Windows.Forms.Button fillOrbitButton;
-        private System.Windows.Forms.RichTextBox resultTextBox;
+        public System.Windows.Forms.RichTextBox resultTextBox;
         private System.Windows.Forms.Button resetButton;
         private System.Windows.Forms.Button intervalColorButton;
         private System.Windows.Forms.Button autoGradientButton;
