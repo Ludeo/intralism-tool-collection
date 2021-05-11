@@ -59,9 +59,8 @@ namespace IntralismToolBox.Forms
 
             foreach (string[] player in players)
             {
-                if (player[0].Equals(current.Name) &&
-                    player[1].Equals(current.Link)) {}
-                else
+                if (!(player[0].Equals(current.Name) &&
+                      player[1].Equals(current.Link)))
                 {
                     sb.AppendLine(player[0] + "," + player[1]);
                 }

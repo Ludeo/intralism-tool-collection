@@ -74,22 +74,23 @@ namespace IntralismToolBox.Forms
                             return folderToCheck;
                         }
 
-                        if (MessageBox.Show(
-                            @"This map might be encoded, you still want to continue?",
-                            @"Config v3",
-                            MessageBoxButtons.YesNo,
-                            MessageBoxIcon.Information) == DialogResult.Yes)
+                        if (MessageBox.Show(@"This map might be encoded, you still want to continue?",
+                                            @"Config v3",
+                                            MessageBoxButtons.YesNo,
+                                            MessageBoxIcon.Information) == DialogResult.Yes)
                         {
                             return folderToCheck;
                         }
 
                         Functions.DisplayErrorMessage("Please select a map folder with a config.txt!");
+
                         return this.OpenMap(Functions.OpenFolderAndGetName(this.editorDirectory));
                     }
                 }
                 catch
                 {
                     Functions.DisplayErrorMessage("Please select a map folder with a config.txt!");
+
                     return this.OpenMap(Functions.OpenFolderAndGetName(this.editorDirectory));
                 }
 
@@ -98,6 +99,7 @@ namespace IntralismToolBox.Forms
 
             // Otherwise retry the folder dialog
             Functions.DisplayErrorMessage("Please select a map folder with a config.txt!");
+
             return this.OpenMap(Functions.OpenFolderAndGetName(this.editorDirectory));
         }
 
@@ -155,15 +157,14 @@ namespace IntralismToolBox.Forms
         private void ArcSpawnTextBoxTextChanged(object sender, EventArgs e)
         {
             int lastCursorPosition = this.ArcSpawnTextBox.SelectionStart;
-            
+
             try
             {
                 this.loadedMap.ArcSpawns = JsonConvert.DeserializeObject<List<Event>>(this.ArcSpawnTextBox.Text!);
                 this.loadedMap.BuildEvents();
 
-                this.DefaultViewTextBox.Text = JsonSerializer.Serialize(
-                    this.loadedMap,
-                    new JsonSerializerOptions { WriteIndented = true });
+                this.DefaultViewTextBox.Text = JsonSerializer.Serialize(this.loadedMap,
+                                                                        new JsonSerializerOptions { WriteIndented = true });
             }
             catch (Exception e2)
             {
@@ -182,9 +183,8 @@ namespace IntralismToolBox.Forms
                 this.loadedMap.Zooms = JsonConvert.DeserializeObject<List<Event>>(this.ZoomEventTextBox.Text!);
                 this.loadedMap.BuildEvents();
 
-                this.DefaultViewTextBox.Text = JsonSerializer.Serialize(
-                    this.loadedMap,
-                    new JsonSerializerOptions { WriteIndented = true });
+                this.DefaultViewTextBox.Text = JsonSerializer.Serialize(this.loadedMap,
+                                                                        new JsonSerializerOptions { WriteIndented = true });
             }
             catch (Exception e2)
             {
@@ -203,9 +203,8 @@ namespace IntralismToolBox.Forms
                 this.loadedMap.Speeds = JsonConvert.DeserializeObject<List<Event>>(this.SpeedEventTextBox.Text!);
                 this.loadedMap.BuildEvents();
 
-                this.DefaultViewTextBox.Text = JsonSerializer.Serialize(
-                    this.loadedMap,
-                    new JsonSerializerOptions { WriteIndented = true });
+                this.DefaultViewTextBox.Text = JsonSerializer.Serialize(this.loadedMap,
+                                                                        new JsonSerializerOptions { WriteIndented = true });
             }
             catch (Exception e2)
             {
@@ -224,9 +223,8 @@ namespace IntralismToolBox.Forms
                 this.loadedMap.StoryBoard = JsonConvert.DeserializeObject<List<Event>>(this.StoryBoardTextBox.Text!);
                 this.loadedMap.BuildEvents();
 
-                this.DefaultViewTextBox.Text = JsonSerializer.Serialize(
-                    this.loadedMap,
-                    new JsonSerializerOptions { WriteIndented = true });
+                this.DefaultViewTextBox.Text = JsonSerializer.Serialize(this.loadedMap,
+                                                                        new JsonSerializerOptions { WriteIndented = true });
             }
             catch (Exception e2)
             {
@@ -262,10 +260,9 @@ namespace IntralismToolBox.Forms
             this.ZoomEventTextBox.Text = JsonConvert.SerializeObject(this.loadedMap.Zooms, Formatting.Indented);
             this.SpeedEventTextBox.Text = JsonConvert.SerializeObject(this.loadedMap.Speeds, Formatting.Indented);
             this.StoryBoardTextBox.Text = JsonConvert.SerializeObject(this.loadedMap.StoryBoard, Formatting.Indented);
-            
-            this.DefaultViewTextBox.Text = JsonSerializer.Serialize(
-                this.loadedMap,
-                new JsonSerializerOptions { WriteIndented = true });
+
+            this.DefaultViewTextBox.Text = JsonSerializer.Serialize(this.loadedMap,
+                                                                    new JsonSerializerOptions { WriteIndented = true });
         }
     }
 }

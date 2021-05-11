@@ -49,7 +49,7 @@ namespace IntralismToolBox
                 {
                     this.Speeds.Add(entry);
                 }
-                else if (!entry.IsEventOfType(EventType.SpawnObj) && 
+                else if (!entry.IsEventOfType(EventType.SpawnObj) &&
                          !entry.IsEventOfType(EventType.SetSpeed) &&
                          !entry.IsEventOfType(EventType.SetPlayerDistance))
                 {
@@ -93,10 +93,10 @@ namespace IntralismToolBox
         /// </summary>
         public void BuildEvents() =>
             this.Events = this.UncategorizedEvents!
-                          .Concat(this.ArcSpawns!)
-                          .Concat(this.Zooms!)
-                          .Concat(this.Speeds!)
-                          .Concat(this.StoryBoard!)
-                          .ToList();
+                              .Concat(this.ArcSpawns!)
+                              .Concat(this.Zooms!)
+                              .Concat(this.Speeds!)
+                              .Concat(this.StoryBoard!)
+                              .ToList();
     }
 }

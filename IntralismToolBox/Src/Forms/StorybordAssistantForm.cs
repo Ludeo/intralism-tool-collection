@@ -29,7 +29,7 @@ namespace IntralismToolBox.Forms
 
         private void ResetButtonClicked(object sender, EventArgs e) => this.resultTextBox.Text = string.Empty;
 
-        private void GradientColorButtonClicked(object sender, EventArgs e)
+        private void IntervalColorButtonClicked(object sender, EventArgs e)
         {
             IntervalColorForm intervalColorForm = new(this);
             intervalColorForm.Show();

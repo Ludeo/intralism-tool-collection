@@ -267,7 +267,7 @@ namespace IntralismToolBox.Forms.StoryboardForms
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.MaximizeBox = false;
             this.Name = "FillOrbitForm";
-            this.Text = "FillOrbitForm";
+            this.Text = "Fill Orbit";
             ((System.ComponentModel.ISupportInitialize)(this.sunsCountUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radiusUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.circlingSpeedUpDown)).EndInit();

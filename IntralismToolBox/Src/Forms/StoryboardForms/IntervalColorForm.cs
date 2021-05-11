@@ -10,13 +10,13 @@ namespace IntralismToolBox.Forms.StoryboardForms
     public partial class IntervalColorForm : ThemedForm
     {
         private Color[] chosenColor;
-        
+
         private string objEv;
-        
+
         private bool stacked;
 
         private readonly StoryboardAssistantForm storyboardAssistantForm;
-        
+
         /// <summary>
         ///     Initializes a new instance of the <see cref="IntervalColorForm"/> class.
         /// </summary>
@@ -27,7 +27,7 @@ namespace IntralismToolBox.Forms.StoryboardForms
             this.chosenColor = Array.Empty<Color>();
             this.stacked = false;
             ToolTip toolTip = new();
-            toolTip.SetToolTip(this.stackedCheckBox,"All your objects are changing color at the same time or one after another");
+            toolTip.SetToolTip(this.stackedCheckBox, "All your objects are changing color at the same time or one after another");
             this.storyboardAssistantForm = storyboardAssistantForm;
         }
 
@@ -35,11 +35,11 @@ namespace IntralismToolBox.Forms.StoryboardForms
         {
             Bitmap map = new(this.demoPictureBox.Width, this.demoPictureBox.Height);
             Graphics graph = Graphics.FromImage(map);
-            
+
             for (int g = 0; g < this.colorsCountUpDown.Value; g++)
             {
                 ColorDialog colorDialog = new();
-                
+
                 if (colorDialog.ShowDialog() == DialogResult.OK)
                 {
                     Array.Resize(ref this.chosenColor, this.chosenColor.Length + 1);
@@ -77,12 +77,12 @@ namespace IntralismToolBox.Forms.StoryboardForms
             {
                 timescale = 0;
             }
-            
+
             for (int c = 0; c < this.chosenColor.Length; c++)
             {
                 Array.Resize(ref hexColor, hexColor.Length + 1);
                 hexColor[c] = theColors[c].R.ToString("X2") + theColors[c].G.ToString("X2") + theColors[c].B.ToString("X2");
-                
+
                 if (this.objEv == "SetSunColors")
                 {
                     hexColor[c] = $"{hexColor[c]},#{hexColor[c]}";
@@ -90,25 +90,25 @@ namespace IntralismToolBox.Forms.StoryboardForms
             }
 
             string result = string.Empty;
-            
+
             for (double u = time1; u <= duration + time1; u += duration / laps)
             {
                 if (n == hexColor.Length)
                 {
                     n = 0;
                 }
-                
+
                 for (int i = (int)firstNum; i < count + firstNum; i++)
                 {
                     result += $@"{{""time"":{u + timescale},""data"":[""{this.objEv}"",""{name + i},#{hexColor[n]}""]}},";
                     timescale += timescale;
                 }
-                
+
                 n++;
             }
 
             this.storyboardAssistantForm.resultTextBox.Text += result;
-            
+
             this.Close();
         }
 

@@ -75,7 +75,7 @@ namespace IntralismToolBox
                         textBox.ForeColor = scheme.TextBoxForegroundColor;
 
                         break;
-                    case RichTextBox richTextBox: 
+                    case RichTextBox richTextBox:
                         richTextBox.BackColor = scheme.TextBoxBackgroundColor;
                         richTextBox.ForeColor = scheme.TextBoxForegroundColor;
 

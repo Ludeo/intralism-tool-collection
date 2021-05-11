@@ -36,7 +36,7 @@ namespace IntralismToolBox
             {
                 CopyTo(gs, mso);
             }
-                    
+
             return Encoding.UTF8.GetString(mso.ToArray());
         }
 

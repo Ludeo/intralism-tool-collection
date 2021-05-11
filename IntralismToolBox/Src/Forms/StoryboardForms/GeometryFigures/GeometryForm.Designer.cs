@@ -138,7 +138,7 @@ namespace IntralismToolBox.Forms.StoryboardForms.GeometryFigures
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.MaximizeBox = false;
             this.Name = "GeometryForm";
-            this.Text = "GeometryForm";
+            this.Text = "Geometric Forms";
             this.ResumeLayout(false);
 
         }

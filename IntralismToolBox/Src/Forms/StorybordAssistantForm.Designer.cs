@@ -46,7 +46,7 @@ namespace IntralismToolBox.Forms
             this.fillOrbitButton.Name = "fillOrbitButton";
             this.fillOrbitButton.Size = new System.Drawing.Size(110, 30);
             this.fillOrbitButton.TabIndex = 0;
-            this.fillOrbitButton.Text = "Fill orbit";
+            this.fillOrbitButton.Text = "Fill Orbit";
             this.fillOrbitButton.UseVisualStyleBackColor = true;
             this.fillOrbitButton.Click += new System.EventHandler(this.FillOrbitButtonClicked);
             // 
@@ -79,9 +79,9 @@ namespace IntralismToolBox.Forms
             this.intervalColorButton.Name = "intervalColorButton";
             this.intervalColorButton.Size = new System.Drawing.Size(110, 30);
             this.intervalColorButton.TabIndex = 4;
-            this.intervalColorButton.Text = "Interval changing color";
+            this.intervalColorButton.Text = "Interval Color";
             this.intervalColorButton.UseVisualStyleBackColor = true;
-            this.intervalColorButton.Click += new System.EventHandler(this.GradientColorButtonClicked);
+            this.intervalColorButton.Click += new System.EventHandler(this.IntervalColorButtonClicked);
             // 
             // autoGradientButton
             // 
@@ -91,7 +91,7 @@ namespace IntralismToolBox.Forms
             this.autoGradientButton.Name = "autoGradientButton";
             this.autoGradientButton.Size = new System.Drawing.Size(110, 30);
             this.autoGradientButton.TabIndex = 6;
-            this.autoGradientButton.Text = "Gradient";
+            this.autoGradientButton.Text = "Auto Gradient";
             this.autoGradientButton.UseVisualStyleBackColor = true;
             this.autoGradientButton.Click += new System.EventHandler(this.AutoGradientButtonClicked);
             // 

@@ -8,7 +8,7 @@ namespace IntralismToolBox.Forms.StoryboardForms
     public partial class FillOrbitForm : ThemedForm
     {
         private readonly StoryboardAssistantForm storyboardAssistantForm;
-        
+
         /// <summary>
         ///     Initializes a new instance of the <see cref="FillOrbitForm"/> class.
         /// </summary>
@@ -16,10 +16,10 @@ namespace IntralismToolBox.Forms.StoryboardForms
         {
             this.InitializeComponent();
             this.ReloadTheme();
-            
-            this.sunNameToolTip.SetToolTip(this.sunNameTextBox, 
+
+            this.sunNameToolTip.SetToolTip(this.sunNameTextBox,
                                            "If you write here \"Sun\", suns will be called like \"Sun0\", \"Sun1\", \"Sun2\"...");
-            
+
             this.emissionUpDown.Increment = 0.5M;
             this.storyboardAssistantForm = storyboardAssistantForm;
         }
@@ -39,25 +39,25 @@ namespace IntralismToolBox.Forms.StoryboardForms
             bool stack = this.stackedCheckBox.Checked;
             double[] x = new double[(int)sunCount + firstNum];
             double[] y = new double[(int)sunCount + firstNum];
-            
+
             time += 0.001;
             result += $"{{\"time\":{time},\"data\":[\"AddEnvironmentObject\",\"1,{sunName + "Sat"}\"]}},";
             result += $"{{\"time\":{time + 0.001},\"data\":[\"SetSatelliteSensitivity\",\"{sunName + "Sat"},0\"]}},";
             result += $"{{\"time\":{time + 0.001},\"data\":[\"SetSatelliteRadius\",\"{sunName + "Sat"},0\"]}},";
             time += 0.001;
-            
+
             if (stack)
             {
                 timeChanger = 0;
             }
-            
+
             for (int i = 0; i < sunCount; i++)
             {
-                x[i] = Math.Round(radius * Math.Cos(degrees * i),3);
-                y[i] = Math.Round(radius * Math.Sin(degrees * i),3);
+                x[i] = Math.Round(radius * Math.Cos(degrees * i), 3);
+                y[i] = Math.Round(radius * Math.Sin(degrees * i), 3);
             }
-            
-            for (int i = firstNum, n = 0; i < sunCount + firstNum ; i++)
+
+            for (int i = firstNum, n = 0; i < sunCount + firstNum; i++)
             {
                 result += $"{{\"time\":{time},\"data\":[\"AddEnvironmentObject\",\"0,{sunName + i}\"]}},";
                 time += timeChanger;
@@ -68,10 +68,10 @@ namespace IntralismToolBox.Forms.StoryboardForms
                 result += $"{{\"time\":{time + 0.0003},\"data\":[\"SetSunEmission\",\"{sunName + i},{emission}\"]}},";
                 n++;
             }
-            
+
             result += $"{{\"time\":{time},\"data\":[\"SetSatelliteRotationSpeed\",\"{sunName + "Sat"},{speed}\"]}},";
             this.storyboardAssistantForm.resultTextBox.Text = result;
-            
+
             this.Close();
         }
 

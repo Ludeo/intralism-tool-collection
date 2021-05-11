@@ -318,7 +318,7 @@ namespace IntralismToolBox.Forms.StoryboardForms
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.MaximizeBox = false;
             this.Name = "IntervalColorForm";
-            this.Text = "GradientColor";
+            this.Text = "Interval Color";
             ((System.ComponentModel.ISupportInitialize)(this.timeStartUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.firstObjectNumberUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.objectCountUpDown)).EndInit();
